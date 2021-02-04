@@ -1,6 +1,6 @@
 # Aurora but Better A02 Group 6
 
--- Note that this is a draft --
+-- Note that this is a draft -- (:)))
 
 :) General Introduction to our application
 [ name ] is a mobile application that will allow students to enroll in university courses independently. [ name ] will display student information, current timetables, intuition fees, and graduation progress, providing an environment for students to explore and manage their choice of classes for a term.
