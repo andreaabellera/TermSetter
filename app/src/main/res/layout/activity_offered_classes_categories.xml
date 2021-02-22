@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#32363A"
+    android:padding="@dimen/box_inset_layout_padding"
+    tools:context=".OfferedClassesCategories"
+    tools:deviceIds="wear">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/categories_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/categories"
+            android:textColor="@color/foreground"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/compsci_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="96dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/foreground"
+            android:text="Computer Science"
+            android:textAllCaps="false"
+            android:textColor="@color/background"
+            app:layout_constraintEnd_toStartOf="@+id/math_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/accounting_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/foreground"
+            android:text="Accounting"
+            android:textAllCaps="false"
+            android:textColor="@color/background"
+            app:layout_constraintEnd_toStartOf="@+id/mis_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/compsci_btn" />
+
+        <Button
+            android:id="@+id/mis_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="@color/foreground"
+            android:text="Management Information Systems"
+            android:textAllCaps="false"
+            android:textColor="@color/background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/accounting_btn"
+            app:layout_constraintTop_toBottomOf="@id/math_btn" />
+
+        <Button
+            android:id="@+id/math_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="96dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="@color/foreground"
+            android:text="Mathematics"
+            android:textAllCaps="false"
+            android:textColor="@color/background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/compsci_btn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.wear.widget.BoxInsetLayout>
