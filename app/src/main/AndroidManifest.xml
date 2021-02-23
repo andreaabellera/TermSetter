@@ -26,13 +26,20 @@
             android:value="true" />
 
         <activity
+            android:name=".OfferedClassesDetail"
+            android:label="@string/title_activity_offered_classes_detail"
+            android:parentActivityName=".OfferedClassesView">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".OfferedClassesView" />
+        </activity>
+        <activity
             android:name=".OfferedClassesView"
-            android:label="@string/title_activity_offered_classes_view">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:label="@string/title_activity_offered_classes_view"
+            android:parentActivityName=".OfferedClassesCategories">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".OfferedClassesCategories" />
         </activity>
         <activity
             android:name=".OfferedClassesCategories"
