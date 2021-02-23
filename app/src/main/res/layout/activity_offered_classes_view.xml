@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:padding="@dimen/box_inset_layout_padding"
+    tools:context=".OfferedClassesView"
+    tools:deviceIds="wear">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <TextView
+            android:id="@+id/className_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="Computer Science"
+            android:textColor="@color/foreground"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lv1000_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="1000 Level"
+            android:textColor="@color/foreground"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/className_txt" />
+
+        <TextView
+            android:id="@+id/lv2000_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="2000 Level"
+            android:textColor="@color/foreground"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp1010_btn" />
+
+        <TextView
+            android:id="@+id/lv3000_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="3000 Level"
+            android:textColor="@color/foreground"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp2080_btn" />
+
+        <Button
+            android:id="@+id/comp1010_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/foreground"
+            android:text="COMP 1010"
+            android:textColor="@color/background"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/comp1012_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lv1000_txt" />
+
+        <Button
+            android:id="@+id/comp2080_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/foreground"
+            android:text="COMP 2080"
+            android:textColor="@color/background"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/comp2140_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lv2000_txt" />
+
+        <Button
+            android:id="@+id/comp3010_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/foreground"
+            android:text="COMP 3010"
+            android:textColor="@color/background"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/comp2140_btn"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lv3000_txt" />
+
+        <Button
+            android:id="@+id/comp3170_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:backgroundTint="@color/foreground"
+            android:text="COMP 3170"
+            android:textColor="@color/background"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/comp3010_btn"
+            app:layout_constraintEnd_toStartOf="@+id/comp3190_btn"
+            app:layout_constraintStart_toEndOf="@+id/comp3010_btn" />
+
+        <Button
+            android:id="@+id/comp3190_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:backgroundTint="@color/foreground"
+            android:text="COMP 3190"
+            android:textColor="@color/background"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/comp3170_btn"
+            app:layout_constraintEnd_toStartOf="@+id/comp3350_btn"
+            app:layout_constraintStart_toEndOf="@+id/comp3170_btn" />
+
+        <Button
+            android:id="@+id/comp3350_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="@color/foreground"
+            android:text="COMP 3350"
+            android:textColor="@color/background"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/comp3190_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/comp3190_btn" />
+
+        <Button
+            android:id="@+id/comp2140_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:backgroundTint="@color/foreground"
+            android:text="COMP 2140"
+            android:textColor="@color/background"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/comp2080_btn"
+            app:layout_constraintEnd_toStartOf="@+id/comp2150_btn"
+            app:layout_constraintStart_toEndOf="@+id/comp2080_btn" />
+
+        <Button
+            android:id="@+id/comp2150_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:backgroundTint="@color/foreground"
+            android:text="COMP 2150"
+            android:textColor="@color/background"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/comp2140_btn"
+            app:layout_constraintEnd_toStartOf="@+id/comp2160_btn"
+            app:layout_constraintStart_toEndOf="@+id/comp2140_btn" />
+
+        <Button
+            android:id="@+id/comp2160_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="@color/foreground"
+            android:text="COMP 2160"
+            android:textColor="@color/background"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/comp2150_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/comp2150_btn" />
+
+        <Button
+            android:id="@+id/comp1012_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:backgroundTint="@color/foreground"
+            android:text="COMP 1012"
+            android:textColor="@color/background"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/comp1010_btn"
+            app:layout_constraintEnd_toStartOf="@+id/comp1020_btn"
+            app:layout_constraintStart_toEndOf="@+id/comp1010_btn" />
+
+        <Button
+            android:id="@+id/comp1020_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:backgroundTint="@color/foreground"
+            android:text="COMP 1020"
+            android:textColor="@color/background"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/comp1012_btn"
+            app:layout_constraintEnd_toStartOf="@+id/comp1500_btn"
+            app:layout_constraintStart_toEndOf="@+id/comp1012_btn" />
+
+        <Button
+            android:id="@+id/comp1500_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="@color/foreground"
+            android:text="COMP 1500"
+            android:textColor="@color/background"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/comp1020_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/comp1020_btn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.wear.widget.BoxInsetLayout>
