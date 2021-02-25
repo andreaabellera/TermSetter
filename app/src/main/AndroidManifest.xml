@@ -13,6 +13,10 @@
         android:roundIcon="@drawable/ts_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+
+        <!--The default activity is set to Login Page (if otherwise, please check your Edit configuration)-->
+
+        <!--Mika-->
         <activity
             android:name=".AccountSettings"
             android:parentActivityName=".AccountManagementMenu">
@@ -67,8 +71,8 @@
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
-        <!--
-       Login Page (Parent)
+        <!-- Kevin
+        Login Page (Parent)
        Create Account (Child)
         -->
         <activity
