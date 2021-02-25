@@ -19,5 +19,15 @@ public class LoginPage extends AppCompatActivity {
 
     public void onClickLoginButton(View view){
         Toast.makeText(this, "Login Button pressed!", Toast.LENGTH_LONG).show();
+        // Add backend code here pls
     }
+
+    public void onClickCreateAccountButton(View view){
+        // Brief message
+        // Shows create account page
+        Toast.makeText(this, "Create Account Button pressed!", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, CreateAccount.class);
+        startActivity(intent);
+    }
+
 }
