@@ -13,10 +13,52 @@
         android:roundIcon="@drawable/ts_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+        <activity
+            android:name=".AccountSettings"
+            android:parentActivityName=".AccountManagementMenu">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AccountManagementMenu"/>
+        </activity>
+        <activity
+            android:name=".AccountChangePassword"
+            android:parentActivityName=".AccountManagementMenu">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AccountManagementMenu"/>
+        </activity>
+        <activity
+            android:name=".AccountUpdateEmail"
+            android:parentActivityName=".AccountManagementMenu">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AccountManagementMenu"/>
+        </activity>
+        <activity
+            android:name=".AccountManageProfile"
+            android:parentActivityName=".AccountManagementMenu">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AccountManagementMenu"/>
+        </activity>
+        <activity
+            android:name=".AccountManagementMenu"
+            android:parentActivityName=".TempNavigationLinks">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".TempNavigationLinks"/>
+        </activity>
+        <activity
+            android:name=".TempNavigationLinks"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+
         <uses-library
             android:name="com.google.android.wearable"
             android:required="false" />
-
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
@@ -43,12 +85,15 @@
         </activity>
         <activity
             android:name=".OfferedClassesCategories"
-            android:label="@string/title_activity_offered_classes_categories">
-            <intent-filter>
+            android:parentActivityName=".TempNavigationLinks">
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter> -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".TempNavigationLinks"/>
         </activity>
         <activity
             android:name=".MainActivity"
