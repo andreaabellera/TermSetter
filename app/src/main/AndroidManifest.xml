@@ -13,10 +13,10 @@
         android:roundIcon="@drawable/ts_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+
         <uses-library
             android:name="com.google.android.wearable"
             android:required="false" />
-
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
@@ -25,6 +25,31 @@
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
+        <!--
+       Login Page (Parent)
+       Create Account (Child)
+        -->
+        <activity
+            android:name=".LoginPage"
+            android:label="@string/title_activity_login_page">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CreateAccount"
+            android:label="@string/title_activity_create_account"
+            android:parentActivityName=".OfferedClassesView">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginPage" />
+        </activity>
+
+        <!--
+        Andrea
+        -->
         <activity
             android:name=".OfferedClassesDetail"
             android:label="@string/title_activity_offered_classes_detail"
