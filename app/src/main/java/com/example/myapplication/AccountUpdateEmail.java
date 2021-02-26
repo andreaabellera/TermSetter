@@ -38,6 +38,7 @@ import android.widget.Toast;
                 if (validate) {
                     user = database.getUser();
                     user.setEmail(inputNewEmail);
+                    database.updateUser(user);
                     Toast.makeText(AccountUpdateEmail.this, "Email changes!", Toast.LENGTH_SHORT).show();
                     Intent intentI = new Intent(AccountUpdateEmail.this, AccountManagementMenu.class);
                     intentI.putExtra("database", database);
