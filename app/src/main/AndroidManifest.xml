@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.myapplication">
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.type.watch" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ts_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ts_icon"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyApplication">
+
+        <!--The default activity is set to Login Page (if otherwise, please check your Edit configuration)-->
+
+        <!--Mika-->
+        <activity
+            android:name=".AccountSettings"
+            android:parentActivityName=".AccountManagementMenu">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AccountManagementMenu"/>
+        </activity>
+        <activity
+            android:name=".AccountChangePassword"
+            android:parentActivityName=".AccountManagementMenu">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AccountManagementMenu"/>
+        </activity>
+        <activity
+            android:name=".AccountUpdateEmail"
+            android:parentActivityName=".AccountManagementMenu">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AccountManagementMenu"/>
+        </activity>
+        <activity
+            android:name=".AccountManageProfile"
+            android:parentActivityName=".AccountManagementMenu">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AccountManagementMenu"/>
+        </activity>
+        <activity
+            android:name=".AccountManagementMenu"
+            android:parentActivityName=".TempNavigationLinks">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".TempNavigationLinks"/>
+        </activity>
+        <activity
+            android:name=".TempNavigationLinks"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+
+        <uses-library
+            android:name="com.google.android.wearable"
+            android:required="false" />
+        <!--
+               Set to true if your app is Standalone, that is, it does not require the handheld
+               app to run.
+        -->
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <!-- Kevin
+        Login Page (Parent)
+       Create Account (Child)
+        -->
+        <activity
+            android:name=".LoginPage"
+            android:label="@string/title_activity_login_page">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CreateAccount"
+            android:label="@string/title_activity_create_account"
+            android:parentActivityName=".OfferedClassesView">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginPage" />
+        </activity>
+
+        <!--
+        Andrea
+        -->
+        <activity
+            android:name=".OfferedClassesDetail"
+            android:label="@string/title_activity_offered_classes_detail"
+            android:parentActivityName=".OfferedClassesView">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".OfferedClassesView" />
+        </activity>
+        <activity
+            android:name=".OfferedClassesView"
+            android:label="@string/title_activity_offered_classes_view"
+            android:parentActivityName=".OfferedClassesCategories">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".OfferedClassesCategories" />
+        </activity>
+        <activity
+            android:name=".OfferedClassesCategories"
+            android:parentActivityName=".TempNavigationLinks">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".TempNavigationLinks"/>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
