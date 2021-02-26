@@ -23,7 +23,7 @@ import android.widget.Toast;
         public void updateEmail(View view) {
             Intent intent = getIntent();
             Database database = (Database)intent.getSerializableExtra("database");
-            database.isEmpty();
+            User user;
 
             newEmail = findViewById(R.id.update_email_input1);
             newEmailConfirm = findViewById(R.id.update_email_input2);
@@ -36,7 +36,9 @@ import android.widget.Toast;
             } else {
                 validate = validate(inputNewEmail, inputNewEmailConfirm);
                 if (validate) {
-                    Toast.makeText(AccountUpdateEmail.this, "Password changes!", Toast.LENGTH_SHORT).show();
+                    user = database.getUser();
+                    user.setEmail(inputNewEmail);
+                    Toast.makeText(AccountUpdateEmail.this, "Email changes!", Toast.LENGTH_SHORT).show();
                     Intent intentI = new Intent(AccountUpdateEmail.this, AccountManagementMenu.class);
                     intentI.putExtra("database", database);
                     startActivity(intentI);

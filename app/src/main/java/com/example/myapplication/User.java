@@ -6,7 +6,7 @@ public class User implements Serializable {
 
     private String Name;
     private String Password;
-    private String EmailAddress;
+    private String Email;
     private String Phone;
     private String StudentNumber;
 
@@ -15,7 +15,7 @@ public class User implements Serializable {
     {
         this.Name = name;
         this.Password = password;
-        this.EmailAddress = email;
+        this.Email= email;
         this.Phone = phone;
         this.StudentNumber = "1234567";
     }
@@ -34,7 +34,7 @@ public class User implements Serializable {
 
     public String getEmailAddress()
     {
-        return this.EmailAddress;
+        return this.Email;
     }
 
     public String getPhoneNumber()
@@ -55,5 +55,10 @@ public class User implements Serializable {
     public void setPassword(String input)
     {
             this.Password = input;
+    }
+
+    public void setEmail(String input)
+    {
+        this.Email = input;
     }
 }

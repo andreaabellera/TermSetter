@@ -27,6 +27,7 @@ public class AccountChangePassword extends AppCompatActivity {
     public void onClickConfirmButton(View view) {
         Intent intent = getIntent();
         Database database = (Database) intent.getSerializableExtra("database");
+        User user;
 
         oldPassword = findViewById(R.id.change_password_input1);
         newPassword = findViewById(R.id.change_password_input2);
@@ -41,7 +42,8 @@ public class AccountChangePassword extends AppCompatActivity {
         } else {
             validate = validate(inputOldPassword, inputNewPassword, inputNewPasswordConfirm);
             if (validate) {
-                database.isEmpty();
+                user = database.getUser();
+                user.setEmail(inputNewPassword);
                 Toast.makeText(AccountChangePassword.this, "Password changes!", Toast.LENGTH_SHORT).show();
                 Intent intentI = new Intent(AccountChangePassword.this, AccountManagementMenu.class);
                 intentI.putExtra("database", database);
