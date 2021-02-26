@@ -1,14 +1,11 @@
 package com.example.myapplication;
 
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -52,7 +49,7 @@ public class OfferedClassesCategories extends AppCompatActivity {
     private void init(){
 
         try{
-            InputStream is = getResources().openRawResource(R.raw.classdb);
+            InputStream is = getResources().openRawResource(R.raw.classdatabase);
             courseDatabase = new CourseCategoryDriver(is);
 
             for(int i = 0; i < btnCount; i++) {
@@ -63,7 +60,7 @@ public class OfferedClassesCategories extends AppCompatActivity {
             }
         }
         catch(IOException e){
-            System.out.println("Database source file 'classDB.txt' is missing from res/assets.");
+            System.out.println("Database source file 'classd.txt' is missing from res/assets.");
             e.printStackTrace();
         }
     }

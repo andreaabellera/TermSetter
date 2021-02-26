@@ -24,8 +24,8 @@ public class Faculty implements Serializable {
         return listOfCourses.get(index);
     }
 
-    public void addCourses(CourseOffering course ) {
-        listOfCourses.add((course));
+    public void addCourses(CourseOffering course) {
+        listOfCourses.add(course);
     }
 
     public void print() {

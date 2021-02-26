@@ -20,6 +20,7 @@ public class CourseOffering implements Serializable {
     public List<CourseSection> getSections() {
         return sections;
     }
+
     public CourseSection getCourse(int index) {
         return sections.get(index);
     }
@@ -36,14 +37,14 @@ public class CourseOffering implements Serializable {
         return creditHours;
     }
 
-    public void addSection(CourseSection section ) {
-        sections.add((section));
+    public void addSection(CourseSection section) {
+        sections.add(section);
     }
 
     public void print() {
         //for debugging
         System.out.println("Sections Details");
-        for(int i = 0; i < sections.size(); i++) {
+        for (int i = 0; i < sections.size(); i++) {
             sections.get(i).print();
 
         }
