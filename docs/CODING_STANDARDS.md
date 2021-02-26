@@ -76,6 +76,27 @@ Every line should have no more than 120 characters to avoid horizontal scrolling
 
 # Comments
 
+When implementing a feature, please leave a block of comment block containing the followings:
+- Name of method
+- Date of module creation
+- Author of the module
+- Different functions supported in the module along with their input output parameters
+- Brief description of what the function does in a nutshell
+- Global variables accessed or modified by the module??<- (optional)
+ 
+ ```Java
+/* 
+* Method Name: goGreeting
+* Date: 2021-02-26
+* Author: Kevin
+* Supported modules: ModuleName 
+*
+* Returns the computed mass of our sun.
+*
+* @param length represents the length of array... (optional)
+*/
+```
+
 If you have to use a number of single comments for a specific function. Try to either write it cleaner or use a comment block instead to describe what is happening.
 
 ```Java
@@ -86,6 +107,7 @@ public void doGreeting(...) {
     System.out.println("Hello, World!");
 }
 ```
+
 
 # Braces
 

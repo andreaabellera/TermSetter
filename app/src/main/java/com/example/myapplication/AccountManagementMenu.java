@@ -14,13 +14,14 @@ public class AccountManagementMenu extends AppCompatActivity {
         setContentView(R.layout.activity_account_management_menu);
     }
 
-    public void openManageProfile(View view) {
+    public void openManageProfile(View view)
+    {
         Intent intent = new Intent(this, AccountManageProfile.class);
         startActivity(intent);
     }
 
-    public void openUpdateEmail(View view) {
-        // retrieving the database and create another intent to pass it to Update Email Activity
+    public void openUpdateEmail(View view)
+    {
         Intent intent = getIntent();
         Database database = (Database)intent.getSerializableExtra("database");
         Intent intentI = new Intent(this, AccountUpdateEmail.class);
@@ -28,8 +29,8 @@ public class AccountManagementMenu extends AppCompatActivity {
         startActivity(intentI);
     }
 
-    public void openChangePassword(View view) {
-        // retrieving the database and create another intent to pass it to Change Password Activity
+    public void openChangePassword(View view)
+    {
         Intent intent = getIntent();
         Database database = (Database)intent.getSerializableExtra("database");
         Intent intentI = new Intent(this, AccountChangePassword.class);
@@ -37,7 +38,8 @@ public class AccountManagementMenu extends AppCompatActivity {
         startActivity(intentI);
     }
 
-    public void openSettings(View view) {
+    public void openSettings(View view)
+    {
         Intent intent = new Intent(this, AccountSettings.class);
         startActivity(intent);
     }

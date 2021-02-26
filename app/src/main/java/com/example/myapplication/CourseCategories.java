@@ -23,6 +23,7 @@ public class CourseCategories {
 
     public void print() {
         //for debugging
+
         for(int i = 0; i < faculties.size(); i++) {
             System.out.println("Faculty");
             System.out.println(faculties.get(i).getName());

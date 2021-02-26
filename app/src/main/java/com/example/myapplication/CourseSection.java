@@ -24,6 +24,7 @@ public class CourseSection implements Serializable {
     }
 
     public String getDays() {
+
         return days;
     }
 

@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
     public class AccountUpdateEmail extends AppCompatActivity {
-
-        // declare local variable
         private EditText newEmail;
         private EditText newEmailConfirm;
         boolean validate;
@@ -23,13 +21,10 @@ import android.widget.Toast;
         }
 
         public void updateEmail(View view) {
-
-            // Retrieving the "database" from the Account Management Menu activity
             Intent intent = getIntent();
             Database database = (Database)intent.getSerializableExtra("database");
             User user;
 
-            // retrieving user's input and extract the text for validation
             newEmail = findViewById(R.id.update_email_input1);
             newEmailConfirm = findViewById(R.id.update_email_input2);
 
@@ -41,13 +36,10 @@ import android.widget.Toast;
             } else {
                 validate = validate(inputNewEmail, inputNewEmailConfirm);
                 if (validate) {
-
-                    // retrieve existing user from the database
                     user = database.getUser();
                     user.setEmail(inputNewEmail);
+                    //database.updateUser(user);
                     Toast.makeText(AccountUpdateEmail.this, "Email changes!", Toast.LENGTH_SHORT).show();
-
-                    // another intent to pass along the database back to the Account Management Menu
                     Intent intentI = new Intent(AccountUpdateEmail.this, AccountManagementMenu.class);
                     intentI.putExtra("database", database);
                     startActivity(intentI);
