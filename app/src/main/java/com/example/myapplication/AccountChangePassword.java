@@ -17,9 +17,6 @@ public class AccountChangePassword extends AppCompatActivity {
     private Button change = findViewById(R.id.change_password_btn1);
     boolean validate;
 
-    Intent intent = getIntent();
-    Database database = (Database)intent.getSerializableExtra("database");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +25,11 @@ public class AccountChangePassword extends AppCompatActivity {
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent = getIntent();
+                Database database = (Database)intent.getSerializableExtra("database");
+
+
                 String inputOldPassword = oldPassword.getText().toString();
                 String inputNewPassword = newPassword.getText().toString();
                 String inputNewPasswordConfirm = newPasswordConfirm.getText().toString();
@@ -38,9 +40,9 @@ public class AccountChangePassword extends AppCompatActivity {
                     validate = validate(inputOldPassword, inputNewPassword, inputNewPasswordConfirm);
                     if (validate) {
                         Toast.makeText(AccountChangePassword.this, "Password changes!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(AccountChangePassword.this, AccountManagementMenu.class);
-                        intent.putExtra("database", database);
-                        startActivity(intent);
+                        Intent intentI = new Intent(AccountChangePassword.this, AccountManagementMenu.class);
+                        intentI.putExtra("database", database);
+                        startActivity(intentI);
                     } else {
                         Toast.makeText(AccountChangePassword.this, "Please try again!", Toast.LENGTH_SHORT).show();
                     }
@@ -51,6 +53,8 @@ public class AccountChangePassword extends AppCompatActivity {
 
     private boolean validate(String oldPass, String newPass, String newPassConfirm) {
         boolean result = false;
+        Intent intent = getIntent();
+        Database database = (Database)intent.getSerializableExtra("database");
         User user = database.getUser();
         if (user.getPassword().equals(oldPass) && newPass.equals(newPassConfirm)) {
             result = true;

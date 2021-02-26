@@ -8,9 +8,6 @@ import android.view.View;
 
 public class TempNavigationLinks extends AppCompatActivity {
 
-    Intent intent = getIntent();
-    Database database = (Database)intent.getSerializableExtra("database");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +22,10 @@ public class TempNavigationLinks extends AppCompatActivity {
 
     public void openAccountManagementMenu(View view)
     {
-        Intent intent = new Intent(this, AccountManagementMenu.class);
-        intent.putExtra("database", database);
-        startActivity(intent);
+        Intent intent = getIntent();
+        Database database = (Database)intent.getSerializableExtra("database");
+        Intent intentI = new Intent(this, AccountManagementMenu.class);
+        intentI.putExtra("database", database);
+        startActivity(intentI);
     }
 }

@@ -26,6 +26,11 @@ import android.widget.Toast;
             change.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    Intent intent = getIntent();
+                    Database database = (Database)intent.getSerializableExtra("database");
+
+
                     String inputNewEmail = newEmail.getText().toString();
                     String inputNewEmailConfirm = newEmailConfirm.getText().toString();
 
@@ -35,9 +40,9 @@ import android.widget.Toast;
                         validate = validate(inputNewEmail, inputNewEmailConfirm);
                         if (validate) {
                             Toast.makeText(AccountUpdateEmail.this, "Password changes!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(AccountUpdateEmail.this, AccountManagementMenu.class);
-                            intent.putExtra("database", database);
-                            startActivity(intent);
+                            Intent intentI = new Intent(AccountUpdateEmail.this, AccountManagementMenu.class);
+                            intentI.putExtra("database", database);
+                            startActivity(intentI);
                         } else {
                             Toast.makeText(AccountUpdateEmail.this, "Please try again!", Toast.LENGTH_SHORT).show();
                         }
