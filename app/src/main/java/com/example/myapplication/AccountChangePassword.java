@@ -57,9 +57,7 @@ public class AccountChangePassword extends AppCompatActivity {
     private boolean validate(String oldPass, String newPass, String newPassConfirm) {
         boolean result = false;
         Intent intent = getIntent();
-        Database database = (Database)intent.getSerializableExtra("database");
-        User user = database.getUser();
-        if (user.getPassword().equals(oldPass) && newPass.equals(newPassConfirm)) {
+        if (newPass.equals(newPassConfirm)) {
             result = true;
         }
         return result;
