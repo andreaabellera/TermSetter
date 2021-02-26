@@ -22,30 +22,6 @@ public class LoginPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-
-
-
-
-        eLogin.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String inputName = eName.getText().toString();
-                String inputPassword = ePassword.getText().toString();
-
-                if (inputName.isEmpty() || inputPassword.isEmpty()) {
-                    Toast.makeText(LoginPage.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
-                } else {
-                    validate = validate(inputName, inputPassword);
-                    if (validate) {
-                        Toast.makeText(LoginPage.this, "Welcome " + inputName + " !", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LoginPage.this, MainActivity.class);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(LoginPage.this, "Please try again!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        });
     }
 
     public void onClickLoginButton(View view){

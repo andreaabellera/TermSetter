@@ -52,18 +52,11 @@ public class CreateAccount extends AppCompatActivity {
         else {
             validate = validate(inputName, inputPassword, inputEmail, inputConfirmPassword, inputPhone);
             if (validate) {
-                // automatically increment ID after a student register
-                User user = new User(String.valueOf(idCount++), inputPassword, inputEmail, inputName);
-                // This is me inserting the new user to the "database"
-                boolean success = ((Database) getApplication()).addUser(user);
-                if (success) {
-                    Toast.makeText(CreateAccount.this, "Welcome " + inputName + " !", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(CreateAccount.this, LoginPage.class);
-                    startActivity(intent);
-                }
+                Toast.makeText(CreateAccount.this, "Welcome " + inputName + " !", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(CreateAccount.this, LoginPage.class);
+                startActivity(intent);
             }
         }
-        Toast.makeText(this, "Confirm Button pressed!", Toast.LENGTH_LONG).show();
     }
 
     private boolean validate(String name, String password, String email, String confirmPassword, String phone) {
