@@ -59,7 +59,7 @@ public class CreateAccount extends AppCompatActivity {
         }
     }
 
-    private boolean validate(String name, String password, String email, String confirmPassword, String phone) {
+    public static boolean validate(String name, String password, String email, String confirmPassword, String phone) {
         boolean result = false;
         boolean validPassword = password.equals(confirmPassword);
         boolean validName = name.length() <= 20;

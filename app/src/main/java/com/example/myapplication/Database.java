@@ -18,7 +18,11 @@ public class Database implements Serializable {
     }
 
     public User getUser() {
-        return users.get(0);
+        User user = null;
+        if(users.size()>0){
+            user = users.get(0);
+        }
+        return user;
     }
 
     public boolean isEmpty() {
