@@ -39,7 +39,7 @@
             android:backgroundTint="@color/foreground"
             android:onClick="openNavigationLinks"
             android:padding="16dp"
-            android:text="Naviagtion links"
+            android:text="Navigation links"
             android:textColor="#32363a"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

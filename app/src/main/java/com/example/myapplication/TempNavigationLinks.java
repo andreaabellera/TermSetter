@@ -22,6 +22,8 @@ public class TempNavigationLinks extends AppCompatActivity {
 
     public void openAccountManagementMenu(View view)
     {
+
+        // retrieve the database and pass it to Account Management Menu Activity
         Intent intent = getIntent();
         Database database = (Database)intent.getSerializableExtra("database");
         Intent intentI = new Intent(this, AccountManagementMenu.class);
