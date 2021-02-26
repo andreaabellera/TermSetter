@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 public class AccountChangePassword extends AppCompatActivity {
 
-    // declare local variable
     private EditText oldPassword;
     private EditText newPassword;
     private EditText newPasswordConfirm;
@@ -26,13 +25,10 @@ public class AccountChangePassword extends AppCompatActivity {
 
 
     public void onClickConfirmButton(View view) {
-
-        // Retrieving the "database" from the Account Management Menu activity
         Intent intent = getIntent();
         Database database = (Database) intent.getSerializableExtra("database");
         User user;
 
-        // retrieving user's input and extract the text for validation
         oldPassword = findViewById(R.id.change_password_input1);
         newPassword = findViewById(R.id.change_password_input2);
         newPasswordConfirm = findViewById(R.id.change_password_input3);
@@ -46,13 +42,10 @@ public class AccountChangePassword extends AppCompatActivity {
         } else {
             validate = validate(inputOldPassword, inputNewPassword, inputNewPasswordConfirm);
             if (validate) {
-
-                // retrieve existing user from the database
                 user = database.getUser();
                 user.setEmail(inputNewPassword);
+                //database.updateUser(user);
                 Toast.makeText(AccountChangePassword.this, "Password changes!", Toast.LENGTH_SHORT).show();
-
-                // another intent to pass along the database back to the Account Management Menu
                 Intent intentI = new Intent(AccountChangePassword.this, AccountManagementMenu.class);
                 intentI.putExtra("database", database);
                 startActivity(intentI);
@@ -62,13 +55,13 @@ public class AccountChangePassword extends AppCompatActivity {
         }
     }
 
-    private boolean validate(String oldPass, String newPass, String newPassConfirm) {
 
-        // retrieve existing user from the database
+
+
+    private boolean validate(String oldPass, String newPass, String newPassConfirm) {
         Intent intent = getIntent();
         Database database = (Database) intent.getSerializableExtra("database");
         User user = database.getUser();
-
         boolean result = false;
         if (oldPass.equals(user.getPassword())) {
             if (newPass.equals(newPassConfirm)) {

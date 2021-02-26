@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CreateAccount extends AppCompatActivity {
 
-    // declare local variable
     private EditText eName;
     private EditText eMail;
     private EditText ePassword;
@@ -29,7 +28,6 @@ public class CreateAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
-        // retrieving user's input
         eName = findViewById(R.id.idText);
         eMail = findViewById(R.id.emailText);
         ePassword = findViewById(R.id.passwordText);
@@ -38,8 +36,6 @@ public class CreateAccount extends AppCompatActivity {
     }
 
     public void onClickConfirmButton(View view) {
-
-        // extract the text for validation
         String inputName = eName.getText().toString();
         String inputPassword = ePassword.getText().toString();
         String inputEmail = eMail.getText().toString();
@@ -52,19 +48,10 @@ public class CreateAccount extends AppCompatActivity {
         else {
             validate = validate(inputName, inputPassword, inputEmail, inputConfirmPassword, inputPhone);
             if (validate) {
-
-                // create a new user
                 User user = new User(inputName, inputPassword, inputEmail, inputPhone);
-
-                // create a database
                 Database database = new Database();
-
-                // add user to database
                 database.addUser(user);
-
                 Toast.makeText(CreateAccount.this, "Welcome " + inputName + " !", Toast.LENGTH_SHORT).show();
-
-                // pass database to Login Page Activity
                 Intent intent = new Intent(CreateAccount.this, LoginPage.class);
                 intent.putExtra("database", database);
                 startActivity(intent);
@@ -72,8 +59,8 @@ public class CreateAccount extends AppCompatActivity {
         }
     }
 
-    private boolean validate(String name, String password, String email, String confirmPassword, String phone) {
-        boolean result = false;
+    public static boolean validate(String name, String password, String email, String confirmPassword, String phone) {
+        boolean result = false; 
         boolean validPassword = password.equals(confirmPassword);
         boolean validName = name.length() <= 20;
         boolean validEmail = email.contains("@myumanitoba.ca");

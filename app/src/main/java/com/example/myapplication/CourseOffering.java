@@ -37,7 +37,7 @@ public class CourseOffering implements Serializable {
         return creditHours;
     }
 
-    public void addSection(CourseSection section ) {
+    public void addSection(CourseSection section) {
         sections.add((section));
     }
 
