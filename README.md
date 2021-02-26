@@ -13,3 +13,25 @@ Prior to release, early iterations of the Termsetter will use simulated data to 
 Termsetter will present a variety of improvements to the currently used Aurora system by specifically addressing usability issues brought to light by users. While Termsetter provides the same functionality for class enrollment, its unique features aim to improve ease of use, locatability of items, and quicker completion of tasks. The intended design direction will combine lookup and enrollment in one feature, providing a more simplified workflow in contrast to Aurora. The addition of a course tree will assist in the visualization of degree completion.
 
 The success of the Termsetter will be measured primarily by user preference in comparison to Aurora. A survey will be conducted to determine which system best fulfills usability criteria, with a focus on overall user enjoyment. Additional evaluations of user performance, such as the amount of time needed to complete certain tasks, or number of actions (presses) needed to navigate to certain menus, may also be implemented. 
+
+# Architecture
+
+Link:
+
+# Worksheet
+
+Link: 
+
+# Coding Standard
+
+Link:
+
+# Branching Strategy
+
+Link: 
+
+For this project, the team will be using a strategy that is a hybrid between GitHub flow and Git flow, since it is best suited to our needs. 
+
+There will be a **shadow-master** branch that as the name suggests will shadow the master branch and will serve as a developer branch of sorts. Any features or bugs that need to be worked on will have a separate branch for it, and everything will be merged to shadow-master initially. Shadow-master will be reviewed, then finally merged into master before the due date of each iteration, ensuring that the master branch is always production-ready. This will allow team members to work separately and collaboratively on different features at the same time. 
+
+Pull requests can be made to review code, discuss proposed changes and safely make adjustments at the shadow-master level, without making the master branch messy. 
