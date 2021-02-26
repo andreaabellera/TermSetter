@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         Database database = (Database)intent.getSerializableExtra("database");
         Toast.makeText(this, "See you again soon!", Toast.LENGTH_LONG).show();
         Intent intentI = new Intent(this, LoginPage.class);
+        intentI.putExtra("database", database);
         startActivity(intentI);
     }
 }
