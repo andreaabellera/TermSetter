@@ -19,36 +19,32 @@ import android.widget.Toast;
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_account_change_password);
+        }
 
-            change.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        public void onClickConfirmButton(View view) {
+            Intent intent = getIntent();
+            Database database = (Database)intent.getSerializableExtra("database");
 
-                    Intent intent = getIntent();
-                    Database database = (Database)intent.getSerializableExtra("database");
+            newEmail = findViewById(R.id.update_email_input1);
+            newEmailConfirm = findViewById(R.id.update_email_input2);
+            change = findViewById(R.id.btn_confirm);
 
-                    newEmail = findViewById(R.id.update_email_input1);
-                    newEmailConfirm = findViewById(R.id.update_email_input2);
-                    change = findViewById(R.id.btn_confirm);
+            String inputNewEmail = newEmail.getText().toString();
+            String inputNewEmailConfirm = newEmailConfirm.getText().toString();
 
-                    String inputNewEmail = newEmail.getText().toString();
-                    String inputNewEmailConfirm = newEmailConfirm.getText().toString();
-
-                    if (inputNewEmail.isEmpty() || inputNewEmailConfirm.isEmpty()) {
-                        Toast.makeText(AccountUpdateEmail.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        validate = validate(inputNewEmail, inputNewEmailConfirm);
-                        if (validate) {
-                            Toast.makeText(AccountUpdateEmail.this, "Password changes!", Toast.LENGTH_SHORT).show();
-                            Intent intentI = new Intent(AccountUpdateEmail.this, AccountManagementMenu.class);
-                            intentI.putExtra("database", database);
-                            startActivity(intentI);
-                        } else {
-                            Toast.makeText(AccountUpdateEmail.this, "Please try again!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+            if (inputNewEmail.isEmpty() || inputNewEmailConfirm.isEmpty()) {
+                Toast.makeText(AccountUpdateEmail.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
+            } else {
+                validate = validate(inputNewEmail, inputNewEmailConfirm);
+                if (validate) {
+                    Toast.makeText(AccountUpdateEmail.this, "Password changes!", Toast.LENGTH_SHORT).show();
+                    Intent intentI = new Intent(AccountUpdateEmail.this, AccountManagementMenu.class);
+                    intentI.putExtra("database", database);
+                    startActivity(intentI);
+                } else {
+                    Toast.makeText(AccountUpdateEmail.this, "Please try again!", Toast.LENGTH_SHORT).show();
                 }
-            });
+            }
         }
 
         private boolean validate(String newEmail, String newEmailConfirm) {
