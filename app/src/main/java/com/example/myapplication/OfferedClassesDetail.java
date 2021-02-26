@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +31,17 @@ public class OfferedClassesDetail extends AppCompatActivity {
     }
 
     public void openCategories(View view) {
-        Toast.makeText(this, "Successfully enrolled in " + course.getCourseCode(), Toast.LENGTH_LONG).show();
+        String section = "";
+        int s1_id = getResources().getIdentifier("s1_rbtn", "id", getPackageName());
+        RadioGroup rg = findViewById(R.id.sections_rgrp);
+        if(rg.getCheckedRadioButtonId() == s1_id){
+            section = "A01";
+        }
+        else{
+            section = "A02";
+        }
+
+        Toast.makeText(this, "Successfully enrolled in " + course.getCourseCode() + " " + section, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, OfferedClassesCategories.class);
         startActivity(intent);
     }
