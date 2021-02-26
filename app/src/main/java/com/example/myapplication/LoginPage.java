@@ -17,6 +17,8 @@ public class LoginPage extends AppCompatActivity {
     private EditText ePassword;
     private Button eLogin;
     boolean validate;
+    Intent intent = getIntent();
+    Database database = (Database)intent.getSerializableExtra("database");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void onClickLoginButton(View view){
-        boolean noUserExist = ((Database) getApplication()).isEmpty();
+        boolean noUserExist = database.isEmpty();
         if (!noUserExist) {
             eName = findViewById(R.id.idText);
             ePassword = findViewById(R.id.passwordText);
@@ -41,6 +43,7 @@ public class LoginPage extends AppCompatActivity {
                 if (validate) {
                     Toast.makeText(LoginPage.this, "Welcome " + inputName + " !", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginPage.this, MainActivity.class);
+                    intent.putExtra("database", database);
                     startActivity(intent);
                 } else {
                     Toast.makeText(LoginPage.this, "Please try again!", Toast.LENGTH_SHORT).show();
@@ -50,7 +53,7 @@ public class LoginPage extends AppCompatActivity {
     }
 
     private boolean validate(String name, String password) {
-        User user = ((Database) getApplication()).getUser();
+        User user = database.getUser();
         boolean result = false;
         if (name.equals(user.getName()) && password.equals(user.getPassword())) {
             result = true;

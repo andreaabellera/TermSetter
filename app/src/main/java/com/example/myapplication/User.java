@@ -2,30 +2,27 @@ package com.example.myapplication;
 
 public class User {
 
-    private String UserId;
+    private String Name;
     private String Password;
     private String EmailAddress;
-
+    private String Phone;
     private String StudentNumber;
-    private String Name;
-    private String PreferredName;
 
     // constructor
-    public User(String id, String password, String email, String name)
+    public User(String name, String password, String email, String phone)
     {
-        this.UserId = id;
+        this.Name = name;
         this.Password = password;
         this.EmailAddress = email;
-        this.Name = name;
-        this.StudentNumber = "1234567"; // should access a database
-        this.PreferredName = this.Name; //default
+        this.Phone = phone;
+        this.StudentNumber = "1234567";
     }
 
     /* Getters */
 
-    public String getUserId()
+    public String getName()
     {
-        return this.UserId;
+        return this.Name;
     }
 
     public String getPassword()
@@ -38,59 +35,23 @@ public class User {
         return this.EmailAddress;
     }
 
-    public String getName()
+    public String getPhoneNumber()
     {
-        return this.Name;
+        return this.Phone;
     }
 
-    public String getPreferredName()
-    {
-        return this.PreferredName;
-    }
 
     /* Setters */
 
-    // purpose: sets user id
+    // purpose: sets username
     // input: the String to assign to user id
-    public void setUserId(String input)
+    public void setUserName(String input)
     {
-        if(validUserId(input))
-            this.UserId = input;
-    }
-
-    private boolean validUserId(String userId)
-    {
-        boolean idValid = false;
-
-        // requirements:
-        // not empty
-        // no symbols
-        // min ? characters
-        // max ? characters
-
-        return idValid;
+            this.Name = input;
     }
 
     public void setPassword(String input)
     {
-        if(validPassword(input))
             this.Password = input;
     }
-
-    private boolean validPassword(String password)
-    {
-        boolean pwValid = false;
-
-        // requirements
-        // not empty
-        // 1 number
-        // 1 lowercase
-        // 1 uppercase
-        //
-
-        return pwValid;
-    }
-
-
-
 }

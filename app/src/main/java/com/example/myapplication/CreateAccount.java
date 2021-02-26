@@ -52,8 +52,12 @@ public class CreateAccount extends AppCompatActivity {
         else {
             validate = validate(inputName, inputPassword, inputEmail, inputConfirmPassword, inputPhone);
             if (validate) {
+                User user = new User(inputName, inputPassword, inputEmail, inputPhone);
+                Database database = new Database();
+                database.addUser(user);
                 Toast.makeText(CreateAccount.this, "Welcome " + inputName + " !", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(CreateAccount.this, LoginPage.class);
+                intent.putExtra("database", database);
                 startActivity(intent);
             }
         }

@@ -8,6 +8,9 @@ import android.view.View;
 
 public class AccountManagementMenu extends AppCompatActivity {
 
+    Intent intent = getIntent();
+    Database database = (Database)intent.getSerializableExtra("database");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,12 +26,14 @@ public class AccountManagementMenu extends AppCompatActivity {
     public void openUpdateEmail(View view)
     {
         Intent intent = new Intent(this, AccountUpdateEmail.class);
+        intent.putExtra("database", database);
         startActivity(intent);
     }
 
     public void openChangePassword(View view)
     {
         Intent intent = new Intent(this, AccountChangePassword.class);
+        intent.putExtra("database", database);
         startActivity(intent);
     }
 

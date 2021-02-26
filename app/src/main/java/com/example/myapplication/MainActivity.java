@@ -14,6 +14,9 @@ import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
 
+    Intent intent = getIntent();
+    Database database = (Database)intent.getSerializableExtra("database");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public void openNavigationLinks(View view)
     {
         Intent intent = new Intent(this, TempNavigationLinks.class);
+        intent.putExtra("database", database);
         startActivity(intent);
     }
 

@@ -1,26 +1,28 @@
 package com.example.myapplication;
 
 import android.app.Application;
+import java.io.Serializable;
 
 import java.util.ArrayList;
 
-public class Database extends Application {
-    private ArrayList<User> users = new ArrayList<User>();
+public class Database implements Serializable {
 
-    public ArrayList<User> getGlobalVariable() {
-        return users;
+    private ArrayList<User> users;
+
+    public Database() {
+        users = new ArrayList<User>();
     }
 
-    public boolean addUser(User user) {
+    public void addUser(User user) {
         users.add(user);
-        return true;
+    }
+
+    public User getUser() {
+        return users.get(0);
     }
 
     public boolean isEmpty() {
         return users.isEmpty();
     }
 
-    public User getUser() {
-        return users.get(0);
-    }
 }
