@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -18,22 +19,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(navView, navController);
     }
 
     public void openNavigationLinks(View view)
     {
-        Intent intent = new Intent(this, TempNavigationLinks.class);
-        startActivity(intent);
+        Intent intent = getIntent();
+        Database database = (Database)intent.getSerializableExtra("database");
+        Intent intentI = new Intent(this, TempNavigationLinks.class);
+        intentI.putExtra("database", database);
+        startActivity(intentI);
     }
 
+    public void onClickLogOutButton(View view) {
 
+        // Brief message
+        // Shows create account page
+        Intent intent = getIntent();
+        Database database = (Database)intent.getSerializableExtra("database");
+        Toast.makeText(this, "See you again soon!", Toast.LENGTH_LONG).show();
+        Intent intentI = new Intent(this, LoginPage.class);
+        intentI.putExtra("database", database);
+        startActivity(intentI);
+    }
 }

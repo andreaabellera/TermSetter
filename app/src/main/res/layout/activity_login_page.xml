@@ -81,6 +81,7 @@
                 android:background="@color/teal_200"/>
 
             <Button
+                android:id="@+id/btnLogin"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
