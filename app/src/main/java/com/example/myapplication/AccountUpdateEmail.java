@@ -18,7 +18,7 @@ import android.widget.Toast;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_account_change_password);
+            setContentView(R.layout.activity_account_update_email);
         }
 
         public void onClickConfirmButton(View view) {
