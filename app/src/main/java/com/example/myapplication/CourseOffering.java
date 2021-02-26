@@ -20,6 +20,7 @@ public class CourseOffering implements Serializable {
     public List<CourseSection> getSections() {
         return sections;
     }
+
     public CourseSection getCourse(int index) {
         return sections.get(index);
     }

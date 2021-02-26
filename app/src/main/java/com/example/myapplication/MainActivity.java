@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void openNavigationLinks(View view)
     {
+
+        // retrieve the database and pass it to TempNavigationLinks Activity
         Intent intent = getIntent();
         Database database = (Database)intent.getSerializableExtra("database");
         Intent intentI = new Intent(this, TempNavigationLinks.class);
@@ -34,9 +36,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Brief message
         // Shows create account page
+
+        // retrieve the database
         Intent intent = getIntent();
         Database database = (Database)intent.getSerializableExtra("database");
         Toast.makeText(this, "See you again soon!", Toast.LENGTH_LONG).show();
+
+        // pass the database to Login Page Activity
         Intent intentI = new Intent(this, LoginPage.class);
         intentI.putExtra("database", database);
         startActivity(intentI);

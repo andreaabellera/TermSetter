@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginPage extends AppCompatActivity {
 
-
+    // declare local variable
     private EditText eName;
     private EditText ePassword;
     private Button eLogin;
@@ -28,9 +28,15 @@ public class LoginPage extends AppCompatActivity {
         Intent intent = getIntent();
         Database database = (Database)intent.getSerializableExtra("database");
 
+        // If the database is not yet initialized since this is the first time the app is used
+        // the program will ask users to create an account (begins at line 64)
         if (database != null) {
+
+            // another check to see if the database is Empty
             boolean noUserExist = database.isEmpty();
             if (!noUserExist) {
+
+                // retrieving user's input and extract the text for validation
                 eName = findViewById(R.id.idText);
                 ePassword = findViewById(R.id.passwordText);
                 eLogin = findViewById(R.id.btnLogin);
@@ -44,6 +50,8 @@ public class LoginPage extends AppCompatActivity {
                     validate = validate(inputName, inputPassword);
                     if (validate) {
                         Toast.makeText(LoginPage.this, "Welcome " + inputName + " !", Toast.LENGTH_SHORT).show();
+
+                        // another intent to pass along the database back to the Main Activity
                         Intent intentI = new Intent(LoginPage.this, MainActivity.class);
                         intentI.putExtra("database", database);
                         startActivity(intentI);
@@ -69,9 +77,12 @@ public class LoginPage extends AppCompatActivity {
     }
 
     private boolean validate(String name, String password) {
+
+        // retrieve existing user from the database
         Intent intent = getIntent();
         Database database = (Database)intent.getSerializableExtra("database");
         User user = database.getUser();
+
         boolean result = false;
         if (name.equals(user.getName()) && password.equals(user.getPassword())) {
             result = true;
