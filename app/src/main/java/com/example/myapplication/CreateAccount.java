@@ -22,8 +22,6 @@ public class CreateAccount extends AppCompatActivity {
     private int idCount = 0;
 
     boolean validate;
-    String Username = "Admin";
-    String Password = "12345678";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +35,7 @@ public class CreateAccount extends AppCompatActivity {
         ePhone = findViewById(R.id.phoneText);
     }
 
-
-
-    public void onClickConfirmButton(View view){
+    public void onClickConfirmButton(View view) {
         String inputName = eName.getText().toString();
         String inputPassword = ePassword.getText().toString();
         String inputEmail = eMail.getText().toString();
