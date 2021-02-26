@@ -1,7 +1,10 @@
+package com.example.myapplication;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseOffering {
+public class CourseOffering implements Serializable {
     private String courseCode;
     private String name;
     private int creditHours;

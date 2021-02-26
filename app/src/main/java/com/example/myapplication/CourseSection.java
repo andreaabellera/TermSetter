@@ -1,4 +1,8 @@
-public class CourseSection {
+package com.example.myapplication;
+
+import java.io.Serializable;
+
+public class CourseSection implements Serializable {
     private String section;
     private String days;
     private String timeSlot;

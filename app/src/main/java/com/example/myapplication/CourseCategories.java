@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +28,8 @@ public class CourseCategories {
             System.out.println("Faculty");
             System.out.println(faculties.get(i).getName());
             faculties.get(i).print();
-
         }
+
     }
 
 }

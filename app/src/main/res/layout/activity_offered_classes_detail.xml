@@ -150,6 +150,7 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:backgroundTint="@color/foreground"
+            android:onClick="openCategories"
             android:text="ENROLL"
             android:textColor="@color/background"
             app:layout_constraintBottom_toBottomOf="parent"

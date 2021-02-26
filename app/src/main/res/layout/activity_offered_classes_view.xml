@@ -48,7 +48,7 @@
             android:textColor="@color/foreground"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/comp1010_btn" />
+            app:layout_constraintTop_toBottomOf="@+id/lv1_1_btn" />
 
         <TextView
             android:id="@+id/lv3000_txt"
@@ -60,173 +60,173 @@
             android:textColor="@color/foreground"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/comp2080_btn" />
+            app:layout_constraintTop_toBottomOf="@+id/lv2_1_btn" />
 
         <Button
-            android:id="@+id/comp1010_btn"
+            android:id="@+id/lv1_1_btn"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/foreground"
-            android:onClick="openClassDetail"
+            android:onClick="openClassDetail0"
             android:text="COMP 1010"
             android:textColor="@color/background"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/comp1012_btn"
+            app:layout_constraintEnd_toStartOf="@+id/lv1_2_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lv1000_txt" />
 
         <Button
-            android:id="@+id/comp2080_btn"
+            android:id="@+id/lv2_1_btn"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/foreground"
-            android:onClick="openClassDetail"
+            android:onClick="openClassDetail4"
             android:text="COMP 2080"
             android:textColor="@color/background"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/comp2140_btn"
+            app:layout_constraintEnd_toStartOf="@+id/lv2_2_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lv2000_txt" />
 
         <Button
-            android:id="@+id/comp3010_btn"
+            android:id="@+id/lv3_1_btn"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/foreground"
-            android:onClick="openClassDetail"
+            android:onClick="openClassDetail8"
             android:text="COMP 3010"
             android:textColor="@color/background"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/comp2140_btn"
+            app:layout_constraintEnd_toStartOf="@+id/lv2_2_btn"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lv3000_txt" />
 
         <Button
-            android:id="@+id/comp3170_btn"
+            android:id="@+id/lv3_2_btn"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:backgroundTint="@color/foreground"
-            android:onClick="openClassDetail"
+            android:onClick="openClassDetail9"
             android:text="COMP 3170"
             android:textColor="@color/background"
             android:textSize="12sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/comp3010_btn"
-            app:layout_constraintEnd_toStartOf="@+id/comp3190_btn"
-            app:layout_constraintStart_toEndOf="@+id/comp3010_btn" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/lv3_1_btn"
+            app:layout_constraintEnd_toStartOf="@+id/lv3_3_btn"
+            app:layout_constraintStart_toEndOf="@+id/lv3_1_btn" />
 
         <Button
-            android:id="@+id/comp3190_btn"
+            android:id="@+id/lv3_3_btn"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:backgroundTint="@color/foreground"
-            android:onClick="openClassDetail"
+            android:onClick="openClassDetail10"
             android:text="COMP 3190"
             android:textColor="@color/background"
             android:textSize="12sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/comp3170_btn"
-            app:layout_constraintEnd_toStartOf="@+id/comp3350_btn"
-            app:layout_constraintStart_toEndOf="@+id/comp3170_btn" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/lv3_2_btn"
+            app:layout_constraintEnd_toStartOf="@+id/lv3_4_btn"
+            app:layout_constraintStart_toEndOf="@+id/lv3_2_btn" />
 
         <Button
-            android:id="@+id/comp3350_btn"
+            android:id="@+id/lv3_4_btn"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_marginEnd="32dp"
             android:backgroundTint="@color/foreground"
-            android:onClick="openClassDetail"
+            android:onClick="openClassDetail11"
             android:text="COMP 3350"
             android:textColor="@color/background"
             android:textSize="12sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/comp3190_btn"
+            app:layout_constraintBaseline_toBaselineOf="@+id/lv3_3_btn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/comp3190_btn" />
+            app:layout_constraintStart_toEndOf="@+id/lv3_3_btn" />
 
         <Button
-            android:id="@+id/comp2140_btn"
+            android:id="@+id/lv2_2_btn"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:backgroundTint="@color/foreground"
-            android:onClick="openClassDetail"
+            android:onClick="openClassDetail5"
             android:text="COMP 2140"
             android:textColor="@color/background"
             android:textSize="12sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/comp2080_btn"
-            app:layout_constraintEnd_toStartOf="@+id/comp2150_btn"
-            app:layout_constraintStart_toEndOf="@+id/comp2080_btn" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/lv2_1_btn"
+            app:layout_constraintEnd_toStartOf="@+id/lv2_3_btn"
+            app:layout_constraintStart_toEndOf="@+id/lv2_1_btn" />
 
         <Button
-            android:id="@+id/comp2150_btn"
+            android:id="@+id/lv2_3_btn"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:backgroundTint="@color/foreground"
-            android:onClick="openClassDetail"
+            android:onClick="openClassDetail6"
             android:text="COMP 2150"
             android:textColor="@color/background"
             android:textSize="12sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/comp2140_btn"
-            app:layout_constraintEnd_toStartOf="@+id/comp2160_btn"
-            app:layout_constraintStart_toEndOf="@+id/comp2140_btn" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/lv2_2_btn"
+            app:layout_constraintEnd_toStartOf="@+id/lv2_4_btn"
+            app:layout_constraintStart_toEndOf="@+id/lv2_2_btn" />
 
         <Button
-            android:id="@+id/comp2160_btn"
+            android:id="@+id/lv2_4_btn"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_marginEnd="32dp"
             android:backgroundTint="@color/foreground"
-            android:onClick="openClassDetail"
+            android:onClick="openClassDetail7"
             android:text="COMP 2160"
             android:textColor="@color/background"
             android:textSize="12sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/comp2150_btn"
+            app:layout_constraintBaseline_toBaselineOf="@+id/lv2_3_btn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/comp2150_btn" />
+            app:layout_constraintStart_toEndOf="@+id/lv2_3_btn" />
 
         <Button
-            android:id="@+id/comp1012_btn"
+            android:id="@+id/lv1_2_btn"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:backgroundTint="@color/foreground"
-            android:onClick="openClassDetail"
+            android:onClick="openClassDetail1"
             android:text="COMP 1012"
             android:textColor="@color/background"
             android:textSize="12sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/comp1010_btn"
-            app:layout_constraintEnd_toStartOf="@+id/comp1020_btn"
-            app:layout_constraintStart_toEndOf="@+id/comp1010_btn" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/lv1_1_btn"
+            app:layout_constraintEnd_toStartOf="@+id/lv1_3_btn"
+            app:layout_constraintStart_toEndOf="@+id/lv1_1_btn" />
 
         <Button
-            android:id="@+id/comp1020_btn"
+            android:id="@+id/lv1_3_btn"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:backgroundTint="@color/foreground"
-            android:onClick="openClassDetail"
+            android:onClick="openClassDetail2"
             android:text="COMP 1020"
             android:textColor="@color/background"
             android:textSize="12sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/comp1012_btn"
-            app:layout_constraintEnd_toStartOf="@+id/comp1500_btn"
-            app:layout_constraintStart_toEndOf="@+id/comp1012_btn" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/lv1_2_btn"
+            app:layout_constraintEnd_toStartOf="@+id/lv1_4_btn"
+            app:layout_constraintStart_toEndOf="@+id/lv1_2_btn" />
 
         <Button
-            android:id="@+id/comp1500_btn"
+            android:id="@+id/lv1_4_btn"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_marginEnd="32dp"
             android:backgroundTint="@color/foreground"
-            android:onClick="openClassDetail"
+            android:onClick="openClassDetail3"
             android:text="COMP 1500"
             android:textColor="@color/background"
             android:textSize="12sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/comp1020_btn"
+            app:layout_constraintBaseline_toBaselineOf="@+id/lv1_3_btn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/comp1020_btn" />
+            app:layout_constraintStart_toEndOf="@+id/lv1_3_btn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
