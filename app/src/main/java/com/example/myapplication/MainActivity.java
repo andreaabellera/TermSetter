@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -29,5 +30,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intentI);
     }
 
+    public void onClickLogOutButton(View view) {
 
+        // Brief message
+        // Shows create account page
+        Intent intent = getIntent();
+        Database database = (Database)intent.getSerializableExtra("database");
+        Toast.makeText(this, "See you again soon!", Toast.LENGTH_LONG).show();
+        Intent intentI = new Intent(this, LoginPage.class);
+        startActivity(intentI);
+    }
 }

@@ -62,8 +62,16 @@ public class AccountChangePassword extends AppCompatActivity {
         Database database = (Database) intent.getSerializableExtra("database");
         User user = database.getUser();
         boolean result = false;
-        if (oldPass.equals(user.getPassword()) && newPass.equals(newPassConfirm)) {
-            result = true;
+        if (oldPass.equals(user.getPassword())) {
+            if (newPass.equals(newPassConfirm)) {
+                result = true;
+            }
+            else {
+                Toast.makeText(AccountChangePassword.this, "Please confirm your password again!", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else {
+            Toast.makeText(AccountChangePassword.this, "Your old password is incorrect!", Toast.LENGTH_SHORT).show();
         }
         return result;
     }

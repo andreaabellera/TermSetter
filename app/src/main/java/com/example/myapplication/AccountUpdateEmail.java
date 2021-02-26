@@ -50,7 +50,7 @@ import android.widget.Toast;
 
         private boolean validate(String newEmail, String newEmailConfirm) {
             boolean result = false;
-            if (newEmail.equals(newEmailConfirm)) {
+            if (newEmail.contains("@myumanitoba.ca") && newEmail.equals(newEmailConfirm)) {
                 result = true;
             }
             return result;
