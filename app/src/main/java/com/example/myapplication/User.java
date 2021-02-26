@@ -7,28 +7,18 @@ public class User {
     private String EmailAddress;
 
     private String StudentNumber;
-    private String FirstName;
-    private String LastName;
+    private String Name;
     private String PreferredName;
 
     // constructor
-    public User()
+    public User(String id, String password, String email, String name)
     {
-        init();
+        this.UserId = id;
+        this.Password = password;
+        this.EmailAddress = email;
+        this.Name = name;
         this.StudentNumber = "1234567"; // should access a database
-        this.PreferredName = this.FirstName; //default
-    }
-
-    // initializer
-    private void init()
-    {
-        this.UserId = "";
-        this.Password = "";
-        this.StudentNumber = "";
-        this.EmailAddress = "";
-        this.FirstName = "";
-        this.LastName = "";
-        this.PreferredName = "";
+        this.PreferredName = this.Name; //default
     }
 
     /* Getters */
@@ -48,9 +38,9 @@ public class User {
         return this.EmailAddress;
     }
 
-    public String getFullName()
+    public String getName()
     {
-        return this.FirstName + this.LastName;
+        return this.Name;
     }
 
     public String getPreferredName()
