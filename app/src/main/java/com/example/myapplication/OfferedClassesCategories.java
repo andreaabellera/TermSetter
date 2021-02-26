@@ -49,7 +49,7 @@ public class OfferedClassesCategories extends AppCompatActivity {
     private void init(){
 
         try{
-            InputStream is = getResources().openRawResource(R.raw.classdb);
+            InputStream is = getResources().openRawResource(R.raw.classdatabase);
             courseDatabase = new CourseCategoryDriver(is);
 
             for(int i = 0; i < btnCount; i++) {
