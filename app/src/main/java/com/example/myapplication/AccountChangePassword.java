@@ -31,7 +31,6 @@ public class AccountChangePassword extends AppCompatActivity {
         oldPassword = findViewById(R.id.change_password_input1);
         newPassword = findViewById(R.id.change_password_input2);
         newPasswordConfirm = findViewById(R.id.change_password_input3);
-        change = findViewById(R.id.change_password_btn1);
 
         String inputOldPassword = oldPassword.getText().toString();
         String inputNewPassword = newPassword.getText().toString();

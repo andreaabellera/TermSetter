@@ -12,7 +12,6 @@ import android.widget.Toast;
     public class AccountUpdateEmail extends AppCompatActivity {
         private EditText newEmail;
         private EditText newEmailConfirm;
-        private Button change;
         boolean validate;
 
         @Override
@@ -21,7 +20,7 @@ import android.widget.Toast;
             setContentView(R.layout.activity_account_update_email);
         }
 
-        public void onClickConfirmButton(View view) {
+        public void updateEmail(View view) {
             Intent intent = getIntent();
             Database database = (Database)intent.getSerializableExtra("database");
 
