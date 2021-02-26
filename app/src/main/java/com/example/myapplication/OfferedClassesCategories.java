@@ -63,7 +63,7 @@ public class OfferedClassesCategories extends AppCompatActivity {
             }
         }
         catch(IOException e){
-            System.out.println("Database source file 'classDB.txt' is missing from res/assets.");
+            System.out.println("Database source file 'classdb.txt' is missing from res/assets.");
             e.printStackTrace();
         }
     }
