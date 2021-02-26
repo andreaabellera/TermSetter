@@ -27,7 +27,6 @@ import android.widget.Toast;
 
             newEmail = findViewById(R.id.update_email_input1);
             newEmailConfirm = findViewById(R.id.update_email_input2);
-            change = findViewById(R.id.btn_confirm);
 
             String inputNewEmail = newEmail.getText().toString();
             String inputNewEmailConfirm = newEmailConfirm.getText().toString();

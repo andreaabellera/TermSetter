@@ -28,29 +28,33 @@ public class LoginPage extends AppCompatActivity {
         Intent intent = getIntent();
         Database database = (Database)intent.getSerializableExtra("database");
 
-        boolean noUserExist = database.isEmpty();
-        if (!noUserExist) {
-            eName = findViewById(R.id.idText);
-            ePassword = findViewById(R.id.passwordText);
-            eLogin = findViewById(R.id.btnLogin);
+        if (database != null) {
+            boolean noUserExist = database.isEmpty();
+            if (!noUserExist) {
+                eName = findViewById(R.id.idText);
+                ePassword = findViewById(R.id.passwordText);
+                eLogin = findViewById(R.id.btnLogin);
 
-            String inputName = eName.getText().toString();
-            String inputPassword = ePassword.getText().toString();
+                String inputName = eName.getText().toString();
+                String inputPassword = ePassword.getText().toString();
 
-            if (inputName.isEmpty() || inputPassword.isEmpty()) {
-                Toast.makeText(LoginPage.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
-            } else {
-                validate = validate(inputName, inputPassword);
-                if (validate) {
-                    Toast.makeText(LoginPage.this, "Welcome " + inputName + " !", Toast.LENGTH_SHORT).show();
-                    Intent intentI = new Intent(LoginPage.this, MainActivity.class);
-                    intentI.putExtra("database", database);
-                    startActivity(intentI);
+                if (inputName.isEmpty() || inputPassword.isEmpty()) {
+                    Toast.makeText(LoginPage.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(LoginPage.this, "Please try again!", Toast.LENGTH_SHORT).show();
+                    validate = validate(inputName, inputPassword);
+                    if (validate) {
+                        Toast.makeText(LoginPage.this, "Welcome " + inputName + " !", Toast.LENGTH_SHORT).show();
+                        Intent intentI = new Intent(LoginPage.this, MainActivity.class);
+                        intentI.putExtra("database", database);
+                        startActivity(intentI);
+                    } else {
+                        Toast.makeText(LoginPage.this, "Please try again!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         }
+
+        boolean noUserExist = database.isEmpty();
     }
 
     private boolean validate(String name, String password) {
