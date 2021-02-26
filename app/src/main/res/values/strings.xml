@@ -25,9 +25,9 @@
     <string name="txt_update_email_prompt1">Current email:</string>
     <string name="txt_update_email_prompt2">New email:</string>
     <string name="txt_update_email_prompt3">Confirm new email:</string>
-    <string name="txt_update_email_current_email">[ current.email@example.com ]</string>
-    <string name="txt_update_email_hint1">e.g. new.email@example.com</string>
-    <string name="txt_update_email_hint2">e.g. new.email@example.com</string>
+    <string name="txt_update_email_current_email">[ current.email@myumanitoba.ca ]</string>
+    <string name="txt_update_email_hint1">e.g. new.email@myumanitoba.ca</string>
+    <string name="txt_update_email_hint2">e.g. new.email@myumanitoba.ca</string>
     <string name="btn_update_email_confirm">Confirm email</string>
 
     <string name="header_change_password">Change Password</string>
