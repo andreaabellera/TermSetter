@@ -23,6 +23,7 @@ import android.widget.Toast;
         public void updateEmail(View view) {
             Intent intent = getIntent();
             Database database = (Database)intent.getSerializableExtra("database");
+            database.isEmpty();
 
             newEmail = findViewById(R.id.update_email_input1);
             newEmailConfirm = findViewById(R.id.update_email_input2);
