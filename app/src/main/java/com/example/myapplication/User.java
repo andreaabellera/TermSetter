@@ -1,41 +1,30 @@
 package com.example.myapplication;
 
-public class User {
+import java.io.Serializable;
 
-    private String UserId;
+public class User implements Serializable {
+
+    private String Name;
     private String Password;
-    private String EmailAddress;
-
+    private String Email;
+    private String Phone;
     private String StudentNumber;
-    private String FirstName;
-    private String LastName;
-    private String PreferredName;
 
     // constructor
-    public User()
+    public User(String name, String password, String email, String phone)
     {
-        init();
-        this.StudentNumber = "1234567"; // should access a database
-        this.PreferredName = this.FirstName; //default
-    }
-
-    // initializer
-    private void init()
-    {
-        this.UserId = "";
-        this.Password = "";
-        this.StudentNumber = "";
-        this.EmailAddress = "";
-        this.FirstName = "";
-        this.LastName = "";
-        this.PreferredName = "";
+        this.Name = name;
+        this.Password = password;
+        this.Email= email;
+        this.Phone = phone;
+        this.StudentNumber = "1234567";
     }
 
     /* Getters */
 
-    public String getUserId()
+    public String getName()
     {
-        return this.UserId;
+        return this.Name;
     }
 
     public String getPassword()
@@ -45,62 +34,31 @@ public class User {
 
     public String getEmailAddress()
     {
-        return this.EmailAddress;
+        return this.Email;
     }
 
-    public String getFullName()
+    public String getPhoneNumber()
     {
-        return this.FirstName + this.LastName;
+        return this.Phone;
     }
 
-    public String getPreferredName()
-    {
-        return this.PreferredName;
-    }
 
     /* Setters */
 
-    // purpose: sets user id
+    // purpose: sets username
     // input: the String to assign to user id
-    public void setUserId(String input)
+    public void setUserName(String input)
     {
-        if(validUserId(input))
-            this.UserId = input;
-    }
-
-    private boolean validUserId(String userId)
-    {
-        boolean idValid = false;
-
-        // requirements:
-        // not empty
-        // no symbols
-        // min ? characters
-        // max ? characters
-
-        return idValid;
+            this.Name = input;
     }
 
     public void setPassword(String input)
     {
-        if(validPassword(input))
             this.Password = input;
     }
 
-    private boolean validPassword(String password)
+    public void setEmail(String input)
     {
-        boolean pwValid = false;
-
-        // requirements
-        // not empty
-        // 1 number
-        // 1 lowercase
-        // 1 uppercase
-        //
-
-        return pwValid;
+        this.Email = input;
     }
-
-
-
 }

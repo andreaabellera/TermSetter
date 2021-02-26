@@ -22,14 +22,20 @@ public class AccountManagementMenu extends AppCompatActivity {
 
     public void openUpdateEmail(View view)
     {
-        Intent intent = new Intent(this, AccountUpdateEmail.class);
-        startActivity(intent);
+        Intent intent = getIntent();
+        Database database = (Database)intent.getSerializableExtra("database");
+        Intent intentI = new Intent(this, AccountUpdateEmail.class);
+        intentI.putExtra("database", database);
+        startActivity(intentI);
     }
 
     public void openChangePassword(View view)
     {
-        Intent intent = new Intent(this, AccountChangePassword.class);
-        startActivity(intent);
+        Intent intent = getIntent();
+        Database database = (Database)intent.getSerializableExtra("database");
+        Intent intentI = new Intent(this, AccountChangePassword.class);
+        intentI.putExtra("database", database);
+        startActivity(intentI);
     }
 
     public void openSettings(View view)

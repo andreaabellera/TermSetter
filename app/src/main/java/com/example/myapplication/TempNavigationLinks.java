@@ -22,7 +22,10 @@ public class TempNavigationLinks extends AppCompatActivity {
 
     public void openAccountManagementMenu(View view)
     {
-        Intent intent = new Intent(this, AccountManagementMenu.class);
-        startActivity(intent);
+        Intent intent = getIntent();
+        Database database = (Database)intent.getSerializableExtra("database");
+        Intent intentI = new Intent(this, AccountManagementMenu.class);
+        intentI.putExtra("database", database);
+        startActivity(intentI);
     }
 }
