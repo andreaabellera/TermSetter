@@ -62,7 +62,7 @@ public class AccountChangePassword extends AppCompatActivity {
         Database database = (Database) intent.getSerializableExtra("database");
         User user = database.getUser();
         boolean result = false;
-        if (newPass.equals(newPassConfirm)) {
+        if (oldPass.equals(user.getPassword()) && newPass.equals(newPassConfirm)) {
             result = true;
         }
         return result;
