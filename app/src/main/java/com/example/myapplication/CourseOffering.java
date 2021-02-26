@@ -44,7 +44,7 @@ public class CourseOffering implements Serializable {
     public void print() {
         //for debugging
         System.out.println("Sections Details");
-        for (int i = 0; i < sections.size(); i++) {
+        for(int i = 0; i < sections.size(); i++) {
             sections.get(i).print();
 
         }
