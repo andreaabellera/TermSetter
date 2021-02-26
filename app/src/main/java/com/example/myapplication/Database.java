@@ -17,7 +17,7 @@ public class Database implements Serializable {
         users.add(user);
     }
 
-    public void replaceUser(User user) {
+    public void updateUser(User user) {
         users.remove(0);
         users.add(user);
     }

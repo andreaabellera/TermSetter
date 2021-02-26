@@ -53,6 +53,19 @@ public class LoginPage extends AppCompatActivity {
                 }
             }
         }
+        else {
+            eName = findViewById(R.id.idText);
+            ePassword = findViewById(R.id.passwordText);
+
+            String inputName = eName.getText().toString();
+            String inputPassword = ePassword.getText().toString();
+
+            if (inputName.isEmpty() || inputPassword.isEmpty()) {
+                Toast.makeText(LoginPage.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(LoginPage.this, "Account doesn't exist!", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     private boolean validate(String name, String password) {
