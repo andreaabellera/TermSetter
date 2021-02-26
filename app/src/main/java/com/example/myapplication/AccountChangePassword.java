@@ -44,6 +44,7 @@ public class AccountChangePassword extends AppCompatActivity {
             if (validate) {
                 user = database.getUser();
                 user.setEmail(inputNewPassword);
+                database.replaceUser(user);
                 Toast.makeText(AccountChangePassword.this, "Password changes!", Toast.LENGTH_SHORT).show();
                 Intent intentI = new Intent(AccountChangePassword.this, AccountManagementMenu.class);
                 intentI.putExtra("database", database);
