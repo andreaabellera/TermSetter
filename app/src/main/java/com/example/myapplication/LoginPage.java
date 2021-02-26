@@ -53,8 +53,6 @@ public class LoginPage extends AppCompatActivity {
                 }
             }
         }
-
-        boolean noUserExist = database.isEmpty();
     }
 
     private boolean validate(String name, String password) {
