@@ -10,13 +10,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
     public class AccountUpdateEmail extends AppCompatActivity {
-        private EditText newEmail = findViewById(R.id.update_email_input1);
-        private EditText newEmailConfirm = findViewById(R.id.update_email_input2);
-        private Button change = findViewById(R.id.btn_confirm);
+        private EditText newEmail;
+        private EditText newEmailConfirm;
+        private Button change;
         boolean validate;
-
-        Intent intent = getIntent();
-        Database database = (Database)intent.getSerializableExtra("database");
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +27,9 @@ import android.widget.Toast;
                     Intent intent = getIntent();
                     Database database = (Database)intent.getSerializableExtra("database");
 
+                    newEmail = findViewById(R.id.update_email_input1);
+                    newEmailConfirm = findViewById(R.id.update_email_input2);
+                    change = findViewById(R.id.btn_confirm);
 
                     String inputNewEmail = newEmail.getText().toString();
                     String inputNewEmailConfirm = newEmailConfirm.getText().toString();

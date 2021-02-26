@@ -11,10 +11,10 @@ import android.widget.Toast;
 
 public class AccountChangePassword extends AppCompatActivity {
 
-    private EditText oldPassword = findViewById(R.id.change_password_input1);
-    private EditText newPassword = findViewById(R.id.change_password_input2);
-    private EditText newPasswordConfirm = findViewById(R.id.change_password_input3);
-    private Button change = findViewById(R.id.change_password_btn1);
+    private EditText oldPassword;
+    private EditText newPassword;
+    private EditText newPasswordConfirm;
+    private Button change;
     boolean validate;
 
     @Override
@@ -29,6 +29,10 @@ public class AccountChangePassword extends AppCompatActivity {
                 Intent intent = getIntent();
                 Database database = (Database)intent.getSerializableExtra("database");
 
+                oldPassword = findViewById(R.id.change_password_input1);
+                newPassword = findViewById(R.id.change_password_input2);
+                newPasswordConfirm = findViewById(R.id.change_password_input3);
+                change = findViewById(R.id.change_password_btn1);
 
                 String inputOldPassword = oldPassword.getText().toString();
                 String inputNewPassword = newPassword.getText().toString();
