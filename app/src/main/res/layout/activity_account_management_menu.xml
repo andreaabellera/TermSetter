@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#32363A"
-    tools:context=".AccountManagementMenu">
+    tools:context=".Presentation.AccountManagementMenu">
 
     <TextView
         android:id="@+id/header_account_management"
