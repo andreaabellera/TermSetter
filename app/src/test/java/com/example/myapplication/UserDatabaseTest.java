@@ -1,4 +1,4 @@
-package com.example.termsetter.UnitTests;
+package com.example.myapplication;
 
 import com.example.termsetter.Persistence.DomainSpecific.Database;
 import com.example.termsetter.Persistence.DomainSpecific.User;

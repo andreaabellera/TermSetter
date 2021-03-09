@@ -1,4 +1,4 @@
-package com.example.termsetter.UnitTests;
+package com.example.termsetter.Tests;
 
 import com.example.termsetter.Persistence.CreateAccount;
 

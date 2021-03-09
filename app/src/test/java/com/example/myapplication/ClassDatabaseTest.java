@@ -1,4 +1,4 @@
-package com.example.termsetter.UnitTests;
+package com.example.myapplication;
 
 import com.example.termsetter.Persistence.CourseCategories;
 import com.example.termsetter.Persistence.CourseOffering;
@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ClassDatabaseTest{
 
@@ -115,7 +116,7 @@ public class ClassDatabaseTest{
     public void testCreateSection(){
         System.out.println("\nStarting testCreateSection: object exists after creation\n");
         CourseSection s = new CourseSection("T01","MTWRF","8:30pm - 9:30pm","Test Dr.");
-        assertNotNull(s); 
+        assertNotNull(s);
         System.out.println("\nEnd testCreateSection: object exists after creation\n");
     }
 }
