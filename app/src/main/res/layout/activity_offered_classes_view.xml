@@ -8,6 +8,11 @@
     android:padding="@dimen/box_inset_layout_padding"
     tools:context=".Presentation.OfferedClassesView">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout2"
         android:layout_width="match_parent"
@@ -62,6 +67,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lv2_1_btn" />
 
+        <TextView
+            android:id="@+id/lv4000_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="4000 Level"
+            android:textColor="@color/foreground"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lv3_1_btn" />
+
         <Button
             android:id="@+id/lv1_1_btn"
             android:layout_width="0dp"
@@ -107,6 +124,24 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lv3000_txt" />
+
+        <Button
+            android:id="@+id/lv4_1_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@color/foreground"
+            android:onClick="openClassDetail8"
+            android:text="COMP 4000"
+            android:textColor="@color/background"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/lv2_2_btn"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lv4000_txt" />
 
         <Button
             android:id="@+id/lv3_2_btn"
@@ -229,4 +264,6 @@
             app:layout_constraintStart_toEndOf="@+id/lv1_3_btn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 </FrameLayout>
