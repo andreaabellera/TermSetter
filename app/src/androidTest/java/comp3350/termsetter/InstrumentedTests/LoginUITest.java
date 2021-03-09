@@ -1,6 +1,6 @@
-package com.example.termsetter.InstrumentedTests;
-import com.example.termsetter.R;
-import com.example.termsetter.Presentation.LoginPage;
+package comp3350.termsetter.InstrumentedTests;
+import comp3350.termsetter.R;
+import comp3350.termsetter.Presentation.LoginPage;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

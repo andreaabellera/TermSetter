@@ -7,7 +7,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.termsetter.R;
+import comp3350.termsetter.R;
 
 import comp3350.termsetter.Persistence.DomainSpecific.Database;
 

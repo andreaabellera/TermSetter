@@ -1,4 +1,4 @@
-package com.example.termsetter.ui.notifications;
+package comp3350.termsetter.ui.notifications;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,16 +12,16 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.termsetter.R;
+import comp3350.termsetter.R;
 
 public class NotificationsFragment extends Fragment {
 
-    private NotificationsViewModel notificationsViewModel;
+    private com.example.termsetter.ui.notifications.NotificationsViewModel notificationsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
+                new ViewModelProvider(this).get(com.example.termsetter.ui.notifications.NotificationsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_notifications, container, false);
         final TextView textView = root.findViewById(R.id.text_notifications);
         notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {

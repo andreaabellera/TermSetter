@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.termsetter.R;
+import comp3350.termsetter.R;
 
 import comp3350.termsetter.Persistence.Faculty;
 

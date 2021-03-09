@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.termsetter.R;
+import comp3350.termsetter.R;
 
 import java.io.IOException;
 import java.io.InputStream;

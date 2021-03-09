@@ -1,6 +1,6 @@
-package com.example.termsetter;
+package comp3350.termsetter;
 
-import com.example.termsetter.InstrumentedTests.LoginUITest;
+import comp3350.termsetter.InstrumentedTests.LoginUITest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

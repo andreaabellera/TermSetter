@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.termsetter.R;
+import comp3350.termsetter.R;
 
 import comp3350.termsetter.Persistence.CreateAccount;
 import comp3350.termsetter.Persistence.DomainSpecific.Database;
