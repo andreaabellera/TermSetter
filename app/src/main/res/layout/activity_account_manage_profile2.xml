@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#32363A"
-    tools:context=".AccountManageProfile">
+    tools:context=".Presentation.AccountManageProfile">
 
     <TextView
         android:id="@+id/header_manage_profile"
