@@ -1,5 +1,8 @@
 package com.example.myapplication;
 
+import com.example.termsetter.Persistence.DomainSpecific.Database;
+import com.example.termsetter.Persistence.DomainSpecific.User;
+
 import static org.junit.Assert.*;
 import org.junit.Test;
 

@@ -1,5 +1,10 @@
 package com.example.myapplication;
 
+import com.example.termsetter.Persistence.CourseCategories;
+import com.example.termsetter.Persistence.CourseOffering;
+import com.example.termsetter.Persistence.CourseSection;
+import com.example.termsetter.Persistence.Faculty;
+
 import static org.junit.Assert.*;
 import org.junit.Test;
 
