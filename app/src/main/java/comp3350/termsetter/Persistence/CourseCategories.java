@@ -23,15 +23,4 @@ public class CourseCategories {
         faculties.add(faculty);
     }
 
-    public void print() {
-        //for debugging
-
-        for (int i = 0; i < faculties.size(); i++) {
-            System.out.println("Faculty");
-            System.out.println(faculties.get(i).getName());
-            faculties.get(i).print();
-        }
-
-    }
-
 }

@@ -6,10 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import java.util.List;
+
 import comp3350.termsetter.Persistence.Faculty;
 import comp3350.termsetter.R;
 
-public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDataAdapter.ViewHolder> {
+public class RecyclerFacultyDataAdapter extends RecyclerView.Adapter<RecyclerFacultyDataAdapter.ViewHolder> {
 
     private List<Faculty> viewItems;
 
@@ -19,7 +20,7 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
         void onItemClick(int position);
     }
 
-    public RecyclerViewDataAdapter(List<Faculty> viewItems) {
+    public RecyclerFacultyDataAdapter(List<Faculty> viewItems) {
         this.viewItems = viewItems;
     }
 
@@ -41,7 +42,7 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
         // Get LayoutInflater object.
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         // Inflate the RecyclerView item layout xml.
-        View itemView = layoutInflater.inflate(R.layout.widget_recycler_card, parent, false);
+        View itemView = layoutInflater.inflate(R.layout.widget_faculty_recycler_card, parent, false);
 
         // Create and return our customRecycler View Holder object.
         ViewHolder ret = new ViewHolder(itemView);
@@ -51,11 +52,9 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if(viewItems!=null) {
-            // Get car item dto in list.
             Faculty viewItem = viewItems.get(position);
 
             if(viewItem != null) {
-                // Set car item title.
                 holder.textView.setText(viewItem.getName());
 
                 holder.textView.setOnClickListener(new View.OnClickListener() {
@@ -71,8 +70,7 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
     @Override
     public int getItemCount() {
         int ret = 0;
-        if(viewItems!=null)
-        {
+        if(viewItems!=null) {
             ret = viewItems.size();
         }
         return ret;
