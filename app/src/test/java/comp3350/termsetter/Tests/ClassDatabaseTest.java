@@ -151,5 +151,33 @@ public class ClassDatabaseTest {
         assertNotNull(s);
         System.out.println("\nEnd testCreateSection: object exists after creation\n");
     }
+
+    @Test
+    public void testCourseAvailable() {
+        System.out.println("\nStarting testCourseAvailable: value is true\n");
+        CourseSection s = new CourseSection("T01", "MTWRF", "8:30pm - 9:30pm", "Test Dr.");
+        int maxOccupancy = 20;
+        int occupants = 19;
+        s.setMaxOccupancy(maxOccupancy);
+        for(int i = 0; i < occupants; i++){
+            s.enroll();
+        }
+        assertTrue(s.courseAvailable());
+        System.out.println("\nEnd testCourseAvailable: value is true\n");
+    }
+
+    @Test
+    public void testCourseNotAvailable() {
+        System.out.println("\nStarting testCourseNotAvailable: value is false\n");
+        CourseSection s = new CourseSection("T01", "MTWRF", "8:30pm - 9:30pm", "Test Dr.");
+        int maxOccupancy = 20;
+        s.setMaxOccupancy(maxOccupancy);
+        for(int i = 0; i < maxOccupancy; i++){
+            s.enroll();
+        }
+        assertFalse(s.courseAvailable());
+        System.out.println("\nEnd testCourseNotAvailable: value is false\n");
+    }
+
 }
 

@@ -36,7 +36,13 @@ public class CourseSection implements Serializable {
         return instructor;
     }
 
-    protected void enroll() {
+    public int getOccupancy(){ return occupants; }
+
+    public void setMaxOccupancy(int max) {
+        maxOccupancy = max;
+    }
+
+    public void enroll() {
         if (courseAvailable())
             occupants++;
     }

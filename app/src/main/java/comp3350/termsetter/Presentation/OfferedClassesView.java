@@ -59,16 +59,16 @@ public class OfferedClassesView extends AppCompatActivity {
         layoutManager4.setOrientation(LinearLayoutManager.HORIZONTAL);
         lv4.setLayoutManager(layoutManager4);
 
-        RecyclerCourseDataAdapter recyclerAdapter1= new RecyclerCourseDataAdapter(lv1Courses);
+        RecyclerCourseDataAdapter recyclerAdapter1= new RecyclerCourseDataAdapter(lv1Courses,1);
         lv1.setAdapter(recyclerAdapter1);
         recyclerAdapter1.setOnClick(this::onItemClick1);
-        RecyclerCourseDataAdapter recyclerAdapter2= new RecyclerCourseDataAdapter(lv2Courses);
+        RecyclerCourseDataAdapter recyclerAdapter2= new RecyclerCourseDataAdapter(lv2Courses,2);
         lv2.setAdapter(recyclerAdapter2);
         recyclerAdapter2.setOnClick(this::onItemClick2);
-        RecyclerCourseDataAdapter recyclerAdapter3= new RecyclerCourseDataAdapter(lv3Courses);
+        RecyclerCourseDataAdapter recyclerAdapter3= new RecyclerCourseDataAdapter(lv3Courses,3);
         lv3.setAdapter(recyclerAdapter3);
         recyclerAdapter3.setOnClick(this::onItemClick3);
-        RecyclerCourseDataAdapter recyclerAdapter4= new RecyclerCourseDataAdapter(lv4Courses);
+        RecyclerCourseDataAdapter recyclerAdapter4= new RecyclerCourseDataAdapter(lv4Courses,4);
         lv4.setAdapter(recyclerAdapter4);
         recyclerAdapter4.setOnClick(this::onItemClick4);
 

@@ -1,6 +1,9 @@
 package comp3350.termsetter.Logic;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,7 @@ import comp3350.termsetter.R;
 public class RecyclerCourseDataAdapter extends RecyclerView.Adapter<RecyclerCourseDataAdapter.ViewHolder> {
 
     private List<CourseOffering> viewItems;
+    private int color;
 
     private OnItemClicked onClick;
 
@@ -21,8 +25,9 @@ public class RecyclerCourseDataAdapter extends RecyclerView.Adapter<RecyclerCour
         void onItemClick(int position);
     }
 
-    public RecyclerCourseDataAdapter(List<CourseOffering> viewItems) {
+    public RecyclerCourseDataAdapter(List<CourseOffering> viewItems, int color) {
         this.viewItems = viewItems;
+        this.color = color;
     }
 
     public interface btnClickListener {
@@ -30,10 +35,12 @@ public class RecyclerCourseDataAdapter extends RecyclerView.Adapter<RecyclerCour
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
+        public CardView cardView;
         public TextView textView;
 
         public ViewHolder(View v){
             super(v);
+            cardView = (CardView) v.findViewById(R.id.recycler_card);
             textView = (TextView)v.findViewById(R.id.recycler_card_txt);
         }
     }
@@ -57,6 +64,19 @@ public class RecyclerCourseDataAdapter extends RecyclerView.Adapter<RecyclerCour
 
             if(viewItem != null) {
                 holder.textView.setText(viewItem.getCourseCode());
+
+                if(color == 1){
+                    holder.cardView.setCardBackgroundColor(Color.rgb(125,180,175));
+                }
+                else if(color == 2){
+                    holder.cardView.setCardBackgroundColor(Color.rgb(175,160,195));
+                }
+                else if(color == 3){
+                    holder.cardView.setCardBackgroundColor(Color.rgb(75,200,235));
+                }
+                else if(color == 4){
+                    holder.cardView.setCardBackgroundColor(Color.rgb(125,140,235));
+                }
 
                 holder.textView.setOnClickListener(new View.OnClickListener() {
                     @Override
