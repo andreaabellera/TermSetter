@@ -42,6 +42,27 @@ public class OfferedClassesView extends AppCompatActivity {
                 button.setText(faculty.getCourse(i + l * btnCount).getCourseCode());
             }
         }
+
+        /* For under initwidgets
+        RecyclerView lv1 = (RecyclerView)findViewById(R.id.lv1_rv);
+        RecyclerView lv2 = (RecyclerView)findViewById(R.id.lv2_rv);
+        RecyclerView lv3 = (RecyclerView)findViewById(R.id.lv3_rv);
+        RecyclerView lv4 = (RecyclerView)findViewById(R.id.lv4_rv);
+
+        GridLayoutManager layoutManager = new GridLayoutManager(this,1);
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        lv1.setLayoutManager(layoutManager);
+        lv2.setLayoutManager(layoutManager);
+        lv3.setLayoutManager(layoutManager);
+        lv4.setLayoutManager(layoutManager);
+
+        RecyclerViewDataAdapter recyclerAdapter= new RecyclerViewDataAdapter(courseData);
+        lv1.setAdapter(recyclerAdapter);
+        lv2.setAdapter(recyclerAdapter);
+        lv3.setAdapter(recyclerAdapter);
+        lv4.setAdapter(recyclerAdapter);
+        //lv1.scrollToPosition(0);
+         */
     }
 
     public void openClassDetail0(View view) {
