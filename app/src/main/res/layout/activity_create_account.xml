@@ -16,7 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/background"
             android:orientation="vertical">
 
             <TextView
@@ -26,6 +26,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="10dp"
                 android:text="Registration"
+                android:textColor="@color/foreground"
                 android:textSize="30dp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -33,6 +34,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/background"
             android:orientation="vertical">
 
             <EditText
@@ -41,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
-                android:background="@color/teal_200"
+                android:background="@color/accent_1"
                 android:drawableStart="@drawable/ic_baseline_person_24"
                 android:drawableLeft="@drawable/ic_baseline_person_24"
                 android:hint="ID"
@@ -51,74 +53,75 @@
                 android:textColorHint="#ffffff" />
 
             <EditText
-                android:inputType="textPassword"
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:hint="Password"
-                android:layout_gravity="center"
-                android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
                 android:id="@+id/passwordText"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@color/accent_1"
                 android:drawableStart="@drawable/ic_baseline_https_24"
                 android:drawableLeft="@drawable/ic_baseline_https_24"
-                android:layout_marginTop="10dp"
-                android:background="@color/teal_200"/>
-
-            <EditText
+                android:hint="Password"
                 android:inputType="textPassword"
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:hint="Confirm Password"
-                android:layout_gravity="center"
                 android:padding="10dp"
                 android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
-                android:id="@+id/confirmPasswordText"
-                android:drawableStart="@drawable/ic_baseline_https_24"
-                android:drawableLeft="@drawable/ic_baseline_https_24"
-                android:layout_marginTop="10dp"
-                android:background="@color/teal_200"/>
+                android:textColorHint="#ffffff" />
 
             <EditText
+                android:id="@+id/confirmPasswordText"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:hint="Email"
                 android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@color/accent_1"
+                android:drawableStart="@drawable/ic_baseline_https_24"
+                android:drawableLeft="@drawable/ic_baseline_https_24"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
                 android:padding="10dp"
                 android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColorHint="#ffffff" />
+
+            <EditText
                 android:id="@+id/emailText"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@color/accent_1"
                 android:drawableStart="@drawable/ic_baseline_mail_outline_24"
                 android:drawableLeft="@drawable/ic_baseline_mail_outline_24"
-                android:layout_marginTop="10dp"
-                android:background="@color/teal_200"/>
-
-            <EditText
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:hint="Phone"
-                android:layout_gravity="center"
+                android:hint="Email"
                 android:padding="10dp"
                 android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColorHint="#ffffff" />
+
+            <EditText
                 android:id="@+id/phoneText"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@color/accent_1"
                 android:drawableStart="@drawable/ic_baseline_phone_24"
                 android:drawableLeft="@drawable/ic_baseline_phone_24"
-                android:layout_marginTop="10dp"
-                android:background="@color/teal_200"/>
+                android:hint="Phone"
+                android:padding="10dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff" />
 
             <Button
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
-                android:background="@color/black"
+                android:backgroundTint="@color/foreground"
                 android:onClick="onClickConfirmButton"
                 android:text="CREATE ACCOUNT"
-                android:textColor="#ffffff"
+                android:textColor="@color/background"
+                android:textColorHighlight="@color/accent_2"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
 
         </LinearLayout>
