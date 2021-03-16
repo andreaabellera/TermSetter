@@ -1,42 +1,27 @@
 package comp3350.termsetter.Persistence;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.List;
-import static java.lang.Integer.parseInt;
 
-public class CourseCategoryDriver {
+public class CourseCategorySQLDriver{
 
     private CourseCategories categories;
 
-    public CourseCategoryDriver(InputStream is) throws IOException {
-        init(is);
+    public CourseCategorySQLDriver() throws SQLException {
+        init();
     }
 
     public List<Faculty> getFaculties(){
         return categories.getFaculties();
     }
 
+    private void init(){
+        // Connect to hsqldb
+        // Execute retrieval queries
+        // Result set items must be used as parameters to the create corresponding java course object
+        // Close hsqldb
 
-    private void init(InputStream is) throws IOException {
-
-        // max 3 sections per course
-        final int MAX_VALUE = 3;
-
-        // String Arrays to fill sections constructors
-        String[] days = {"MWF", "TTR"};
-        String[] timeSlots = {"8:30AM-9:20AM", "11:30AM-12:45PM", "4:00pm-5:15pm", "2:30PM-3:45PM", "12:30PM-1:20PM"};
-        String[] sectionArray = {"A01", "A02", "A03"};
-        String instructor = "TBD";
-        Faculty faculty = null;
-        categories = new CourseCategories();
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
-        //Read the file and populate Course Objects
-        String i = br.readLine();
+        /*
         while (i != null) {
             if (i.charAt(0) == '$') {
                 faculty = new Faculty(i.substring(1));
@@ -56,7 +41,6 @@ public class CourseCategoryDriver {
             }
             i = br.readLine();
         }
-        br.close();
+        */
     }
-
 }
