@@ -45,15 +45,5 @@ public class CourseSection implements Serializable {
         return occupants < maxOccupancy;
     }
 
-    public void print() {
-        //for debugging
-
-        System.out.print(section + "\t");
-        System.out.print(days + "\t");
-        System.out.print(timeSlot + "\t");
-        System.out.print(instructor + "\t");
-        System.out.println("Current Capacity = " + occupants + "/" + maxOccupancy);
-
-    }
 }
 

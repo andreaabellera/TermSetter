@@ -30,15 +30,21 @@ public class Faculty implements Serializable {
         listOfCourses.add((course));
     }
 
-    public void print() {
-        //for debugging
+    public List<CourseOffering> getCoursesByLevel(int lv) {
+        ArrayList<CourseOffering> theCourses = new ArrayList<CourseOffering>();
         for (int i = 0; i < listOfCourses.size(); i++) {
-            System.out.println("Course");
-            System.out.print(listOfCourses.get(i).getCourseCode() + "\t");
-            System.out.print(listOfCourses.get(i).getName() + "\t\t");
-            System.out.println(listOfCourses.get(i).getCreditHours());
-            listOfCourses.get(i).print();
+            String code = listOfCourses.get(i).getCourseCode();
+            int startInd = 4;
+            if(Character.isDigit(code.charAt(3))){ // handle some course codes that contain 3 letters
+                startInd = 3;
+            }
+            int start = Integer.parseInt(code.substring(startInd, startInd+1));
+            if(start == lv){
+                theCourses.add(listOfCourses.get(i));
+            }
         }
+        return (List) theCourses;
     }
+
 }
 
