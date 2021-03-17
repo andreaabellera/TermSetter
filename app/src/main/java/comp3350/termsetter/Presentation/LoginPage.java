@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.R;
 
 import comp3350.termsetter.Persistence.CreateAccount;
@@ -18,9 +19,9 @@ import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 public class LoginPage extends AppCompatActivity {
 
-
+    private StubDatabase database = new StubDatabase(this,"test.db");
     boolean validate;
-    private EditText eName;
+    private EditText eID;
     private EditText ePassword;
     private Button eLogin;
 
@@ -31,38 +32,32 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void onClickLoginButton(View view) {
-        Intent intent = getIntent();
-        Database database = (Database) intent.getSerializableExtra("database");
 
         if (database != null) {
-            boolean noUserExist = database.isEmpty();
-            if (!noUserExist) {
-                eName = findViewById(R.id.idText);
-                ePassword = findViewById(R.id.passwordText);
-                eLogin = findViewById(R.id.btnLogin);
+            eID = findViewById(R.id.idText);
+            ePassword = findViewById(R.id.passwordText);
+            eLogin = findViewById(R.id.btnLogin);
 
-                String inputName = eName.getText().toString();
-                String inputPassword = ePassword.getText().toString();
+            String inputID = eID.getText().toString();
+            String inputPassword = ePassword.getText().toString();
 
-                if (inputName.isEmpty() || inputPassword.isEmpty()) {
-                    Toast.makeText(LoginPage.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
+            if (inputID.isEmpty() || inputPassword.isEmpty()) {
+                Toast.makeText(LoginPage.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
+            } else {
+                validate = validate(inputID, inputPassword);
+                if (validate) {
+                    Toast.makeText(LoginPage.this, "Welcome " + inputID + " !", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginPage.this, MainActivity.class);
+                    startActivity(intent);
                 } else {
-                    validate = validate(inputName, inputPassword);
-                    if (validate) {
-                        Toast.makeText(LoginPage.this, "Welcome " + inputName + " !", Toast.LENGTH_SHORT).show();
-                        Intent intentI = new Intent(LoginPage.this, MainActivity.class);
-                        intentI.putExtra("database", database);
-                        startActivity(intentI);
-                    } else {
-                        Toast.makeText(LoginPage.this, "Please try again!", Toast.LENGTH_SHORT).show();
-                    }
+                    Toast.makeText(LoginPage.this, "Please try again!", Toast.LENGTH_SHORT).show();
                 }
             }
         } else {
-            eName = findViewById(R.id.idText);
+            eID = findViewById(R.id.idText);
             ePassword = findViewById(R.id.passwordText);
 
-            String inputName = eName.getText().toString();
+            String inputName = eID.getText().toString();
             String inputPassword = ePassword.getText().toString();
 
             if (inputName.isEmpty() || inputPassword.isEmpty()) {
@@ -73,13 +68,14 @@ public class LoginPage extends AppCompatActivity {
         }
     }
 
-    private boolean validate(String name, String password) {
-        Intent intent = getIntent();
-        Database database = (Database) intent.getSerializableExtra("database");
-        User user = database.getUser();
+    private boolean validate(String id, String password) {
         boolean result = false;
-        if (name.equals(user.getName()) && password.equals(user.getPassword())) {
-            result = true;
+
+        if (database.checkUser(id)) {
+            User user = database.getUser(id);
+            if (password.equals(user.getPassword())) {
+                result = true;
+            }
         }
         return result;
     }

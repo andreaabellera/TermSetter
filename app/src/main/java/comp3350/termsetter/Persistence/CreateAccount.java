@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.R;
 
 import comp3350.termsetter.Persistence.DomainSpecific.Database;
@@ -18,21 +19,24 @@ import comp3350.termsetter.Presentation.LoginPage;
 
 public class CreateAccount extends AppCompatActivity {
 
+    private StubDatabase database = new StubDatabase(this,"test.db");
     boolean validate;
     private EditText eName;
     private EditText eMail;
     private EditText ePassword;
     private EditText eConfirmPassword;
     private EditText ePhone;
+    private EditText eStudentID;
     private Button eCreate;
     private final int idCount = 0;
 
-    public static boolean validate(String name, String password, String email, String confirmPassword, String phone) {
+    public static boolean validate(String name, String password, String email, String confirmPassword, String phone, String studentID) {
         boolean result = false;
         boolean validPassword = password.equals(confirmPassword);
         boolean validName = name.length() <= 20;
         boolean validEmail = email.contains("@myumanitoba.ca");
         boolean validPhone = phone.length() <= 10;
+        boolean validStudentID = studentID.length() <= 10;
 
         if (validPassword && validName && validEmail && validPhone) {
             result = true;
@@ -50,6 +54,7 @@ public class CreateAccount extends AppCompatActivity {
         ePassword = findViewById(R.id.passwordText);
         eConfirmPassword = findViewById(R.id.confirmPasswordText);
         ePhone = findViewById(R.id.phoneText);
+        eStudentID = findViewById(R.id.studenIDtext);
     }
 
     public void onClickConfirmButton(View view) {
@@ -58,18 +63,17 @@ public class CreateAccount extends AppCompatActivity {
         String inputEmail = eMail.getText().toString();
         String inputConfirmPassword = eConfirmPassword.getText().toString();
         String inputPhone = ePhone.getText().toString();
+        String inputID = eStudentID.getText().toString();
 
         if (inputName.isEmpty() || inputPassword.isEmpty()) {
             Toast.makeText(CreateAccount.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
         } else {
-            validate = validate(inputName, inputPassword, inputEmail, inputConfirmPassword, inputPhone);
+            validate = validate(inputName, inputPassword, inputEmail, inputConfirmPassword, inputPhone, inputID);
             if (validate) {
-                User user = new User(inputName, inputPassword, inputEmail, inputPhone);
-                Database database = new Database();
-                database.addUser(user);
+                User user = new User(inputName, inputPassword, inputEmail, inputPhone, inputID);
+                database.insert(user);
                 Toast.makeText(CreateAccount.this, "Welcome " + inputName + " !", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(CreateAccount.this, LoginPage.class);
-                intent.putExtra("database", database);
                 startActivity(intent);
             }
         }
