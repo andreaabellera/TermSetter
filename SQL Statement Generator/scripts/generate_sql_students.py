@@ -19,13 +19,15 @@ def generateSQLStatements(lines, tablename):
             continue
 
         # student_id           = separated_lines[0] -> str
-        # student_password     = separated_lines[1] -> str
-        # student_email        = separated_lines[2] -> str
-        # student_phone        = separated_lines[3] -> str
+        # student_name         = separated_lines[1] -> str
+        # student_password     = separated_lines[2] -> str
+        # student_email        = separated_lines[3] -> str
+        # student_phone        = separated_lines[4] -> str
 
-        statement = '''INSERT INTO %s (student_id, student_password, student_email, student_phone) VALUES (\'%s\', \'%s\', \'%s\', \'%s\');''' % (
+        statement = '''INSERT INTO %s (student_id, student_name, student_password, student_email, student_phone) VALUES (\'%s\', \'%s\', \'%s\', \'%s\', \'%s\');''' % (
             tablename, separated_lines[0], 
-            separated_lines[1], separated_lines[2], separated_lines[3],
+            separated_lines[1], separated_lines[2],
+            separated_lines[3], separated_lines[4]
         )
         statements.append(statement)
 

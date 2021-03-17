@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS courses;
 
 SELECT * FROM courses;
 
-CREATE TABLE courses (
+CREATE TABLE IF NOT EXISTS courses (
     course_id VARCHAR(100) NOT NULL,
     course_name VARCHAR(100),
     course_credit_hours INTEGER,
@@ -11,7 +11,7 @@ CREATE TABLE courses (
     course_time VARCHAR(100),
     course_period VARCHAR(100),
 
-    CONSTRAINT COURSES_PK PRIMARY KEY(course_id, course_section)
+    CONSTRAINT COURSES_PK PRIMARY KEY(course_id)
 );
 
 INSERT INTO courses (course_id, course_name, course_credit_hours, course_section, course_days, course_time, course_period) VALUES ('ACC1100', 'Introductory Financial Accounting', 3, 'A01', 'MWF', '11:30-12:20', '2021/01/18-2021/04/18');
