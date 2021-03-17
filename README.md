@@ -1,3 +1,7 @@
+# NOTE
+
+In case any of the links below are not working, most of the documents (Vision statement, Architecture, etc.) are available under /docs directory.
+
 # Vision statement
 
 [Vision statement from Iteration 0](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/VISION_STATEMENT.md)
