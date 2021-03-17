@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import comp3350.termsetter.Logic.OfferedClassLogic;
-import comp3350.termsetter.Logic.RecyclerFacultyDataAdapter;
+import comp3350.termsetter.UIadapters.RecyclerFacultyDataAdapter;
 import comp3350.termsetter.Persistence.Faculty;
 import comp3350.termsetter.R;
 import java.util.List;

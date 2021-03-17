@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import comp3350.termsetter.R;
 
-import comp3350.termsetter.Persistence.CreateAccount;
+import comp3350.termsetter.Presentation.CreateAccount;
 import comp3350.termsetter.Persistence.DomainSpecific.Database;
 import comp3350.termsetter.Persistence.DomainSpecific.User;
 
