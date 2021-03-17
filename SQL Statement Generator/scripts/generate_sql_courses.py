@@ -63,7 +63,7 @@ def generateSQLStatements(lines, tablename):
     return statements
 
 
-sections = ["A01", "A02"]
+sections = ["A01"]
 days = ["MWF","TR"]
 timesMWF = [
     "09:30-10:20",
