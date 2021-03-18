@@ -1,10 +1,10 @@
 import random
 
-def generateRandomLine(sections, days, timesMWF, timesTR, periods):
+def generateRandomLine(section, days, timesMWF, timesTR, periods):
     MWF = [True, False]
     randomLine = ""
 
-    section = random.choice(sections)
+    # section = random.choice(sections)
     day = random.choice(days)
 
     threeDays = random.choice(MWF)
@@ -15,7 +15,7 @@ def generateRandomLine(sections, days, timesMWF, timesTR, periods):
 
     period = random.choice(periods)
 
-    randomLine = """@%s@%s@%s@%s""" % (section, day, time, period)
+    randomLine = """#%s#%s#%s#%s""" % (section, day, time, period)
     return randomLine
 
 
@@ -28,9 +28,10 @@ def generateNewLines(filename):
             if line.find('$') != -1:
                 lines.append(line)
             else:
-                extraLine = generateRandomLine(sections, days, timesMWF, timesTR, periods)
-                newLine = line + extraLine
-                lines.append(newLine)
+                for section in sections:
+                    extraLine = generateRandomLine(section, days, timesMWF, timesTR, periods)
+                    newLine = line + extraLine
+                    lines.append(newLine)
     return lines
 
 
@@ -38,20 +39,20 @@ def generateSQLStatements(lines, tablename):
     statements = []
 
     for line in lines:
-        separated_lines = line.split("@")
+        separated_lines = line.split("#")
 
         if len(separated_lines) == 1:
             continue
 
-        # id           = separated_lines[0] -> str
-        # name         = separated_lines[1] -> str
-        # credit_hours = separated_lines[2] -> int
-        # section      = separated_lines[3] -> str
-        # days         = separated_lines[4] -> str
-        # time         = separated_lines[5] -> hour:minute-hour:minute
-        # period       = separated_lines[6] -> month:day-month:day
+        # course_id           = separated_lines[0] -> str
+        # course_name         = separated_lines[1] -> str
+        # course_credit_hours = separated_lines[2] -> int
+        # course_section      = separated_lines[3] -> str
+        # course_days         = separated_lines[4] -> str
+        # course_time         = separated_lines[5] -> hour:minute-hour:minute
+        # course_period       = separated_lines[6] -> month:day-month:day
 
-        statement = '''INSERT INTO %s (id, name, credit_hours, section, days, time, period) VALUES (\'%s\', \'%s\', %s, \'%s\', \'%s\', \'%s\', \'%s\');''' % (
+        statement = '''INSERT INTO %s (course_id, course_name, course_credit_hours, course_section, course_days, course_time, course_period) VALUES (\'%s\', \'%s\', %s, \'%s\', \'%s\', \'%s\', \'%s\');''' % (
             tablename, separated_lines[0], 
             separated_lines[1], separated_lines[2], 
             separated_lines[3], separated_lines[4], 
@@ -80,7 +81,7 @@ timesTR = [
     ]
 periods = ["2021/01/18-2021/04/18"]
 
-inputfilename = 'classdatabase.txt'
+inputfilename = 'raw_courses.txt'
 tablename = "courses"
 
 newLines = generateNewLines(inputfilename)
@@ -88,4 +89,3 @@ statements = generateSQLStatements(newLines, tablename)
 
 for s in statements:
     print(s)
-
