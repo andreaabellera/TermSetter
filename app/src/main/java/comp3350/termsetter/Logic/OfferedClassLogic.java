@@ -47,7 +47,7 @@ public class OfferedClassLogic{
             courseData = courseDatabase.getFaculties();
         }
         catch(IOException e){
-            System.out.println("Database source file 'classdb.txt' is missing from res/assets.");
+            System.out.println("Database source file 'classdatabase.txt' is missing from res/assets.");
             e.printStackTrace();
         }
     }
