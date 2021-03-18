@@ -77,6 +77,19 @@ public class CreateAccount extends AppCompatActivity {
             if (validate) {
                 User user = new User(inputName, inputPassword, inputEmail, inputPhone, inputID);
                 database.insert(user);
+
+                if (database.checkUser(inputID)) {
+                    Toast.makeText(CreateAccount.this, "Insertion is working", Toast.LENGTH_SHORT).show();
+
+                    User user1 = database.getUser(inputID);
+                    if (inputPassword.equals(user1.getPassword())) {
+                        Toast.makeText(CreateAccount.this, "Password is correct!", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(CreateAccount.this, "WRONG password!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
                 Toast.makeText(CreateAccount.this, "Welcome " + inputName + " !", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(CreateAccount.this, LoginPage.class);
                 startActivity(intent);

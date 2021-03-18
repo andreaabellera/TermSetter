@@ -26,7 +26,6 @@ public class StubDatabase {
     }
 
     public void insert(User user){
-        count += 1;
         String name = user.getName();
         String password = user.getPassword();
         String email = user.getEmailAddress();
@@ -45,6 +44,8 @@ public class StubDatabase {
         editor.putString(phoneKey, phoneNumber);
         editor.putString(idKey, studentID);
         editor.apply();
+
+        count += 1;
     }
 
     public void delete(Activity activity, User user) {
