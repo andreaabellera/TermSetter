@@ -22,7 +22,6 @@ public class CreateAccount extends AppCompatActivity {
     private static Context mContext;
     private StubDatabase database;
 
-    boolean validate;
     private EditText eName;
     private EditText eMail;
     private EditText ePassword;
@@ -33,23 +32,22 @@ public class CreateAccount extends AppCompatActivity {
     private final int idCount = 0;
 
     public static boolean validate(String name, String password, String email, String confirmPassword, String phone, String studentID) {
-        boolean result = false;
         boolean validPassword = password.equals(confirmPassword);
         boolean validName = name.length() <= 20;
         boolean validEmail = email.contains("@myumanitoba.ca");
         boolean validPhone = phone.length() <= 10;
         boolean validStudentID = studentID.length() <= 10;
 
-        if (validPassword && validName && validEmail && validPhone) {
-            result = true;
+        if (validPassword && validName && validEmail && validPhone && validStudentID) {
+            return true;
         }
-        return result;
+
+        return false;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_create_account);
 
         mContext = getApplicationContext();
@@ -63,36 +61,24 @@ public class CreateAccount extends AppCompatActivity {
     }
 
     public void onClickConfirmButton(View view) {
-        String inputName = eName.getText().toString();
+        String inputID = eStudentID.getText().toString();
         String inputPassword = ePassword.getText().toString();
         String inputEmail = eMail.getText().toString();
         String inputConfirmPassword = eConfirmPassword.getText().toString();
         String inputPhone = ePhone.getText().toString();
-        String inputID = eStudentID.getText().toString();
+        String inputName = eName.getText().toString();
 
-        if (inputName.isEmpty() || inputPassword.isEmpty()) {
+        // If either ID or Password is empty
+        if (inputID.isEmpty() || inputPassword.isEmpty()) {
             Toast.makeText(CreateAccount.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
-        } else {
-            validate = validate(inputName, inputPassword, inputEmail, inputConfirmPassword, inputPhone, inputID);
-            if (validate) {
+        }
+        else {
+            if (validate(inputName, inputPassword, inputEmail, inputConfirmPassword, inputPhone, inputID)) {
                 User user = new User(inputName, inputPassword, inputEmail, inputPhone, inputID);
-                database.insert(user);
-
-                if (database.checkUser(inputID)) {
-                    Toast.makeText(CreateAccount.this, "Insertion is working", Toast.LENGTH_SHORT).show();
-
-                    User user1 = database.getUser(inputID);
-                    if (inputPassword.equals(user1.getPassword())) {
-                        Toast.makeText(CreateAccount.this, "Password is correct!", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText(CreateAccount.this, "WRONG password!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                Toast.makeText(CreateAccount.this, "Welcome " + inputName + " !", Toast.LENGTH_SHORT).show();
+                database.insertUser(user);
                 Intent intent = new Intent(CreateAccount.this, LoginPage.class);
                 startActivity(intent);
+                Toast.makeText(CreateAccount.this, "Welcome " + inputName + "!", Toast.LENGTH_SHORT).show();
             }
         }
     }
