@@ -10,6 +10,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+
+import comp3350.termsetter.Persistence.ConnectDB;
+import comp3350.termsetter.Persistence.DBHelper;
+import comp3350.termsetter.Persistence.Main;
 import comp3350.termsetter.R;
 
 import comp3350.termsetter.Persistence.CreateAccount;
@@ -28,6 +33,11 @@ public class LoginPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
+        try {
+            DBHelper.copyDatabaseToDevice(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void onClickLoginButton(View view) {
@@ -87,8 +97,10 @@ public class LoginPage extends AppCompatActivity {
     public void onClickCreateAccountButton(View view) {
         // Brief message
         // Shows create account page
-        Toast.makeText(this, "Create Account Button pressed!", Toast.LENGTH_LONG).show();
+       /* Toast.makeText(this, "Create Account Button pressed!", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, CreateAccount.class);
-        startActivity(intent);
+        startActivity(intent);*/
+
+        ConnectDB db = new ConnectDB(Main.getDBPathName());
     }
 }

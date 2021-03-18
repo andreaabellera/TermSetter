@@ -39,6 +39,7 @@ public class User implements Serializable {
     }
 
 
+
     /* Setters */
 
     public String getPhoneNumber() {
@@ -54,4 +55,6 @@ public class User implements Serializable {
     public void setEmail(String input) {
         this.Email = input;
     }
+
+    //public void setStudentNumber(String studentID){ this.StudentNumber = studentID}
 }
