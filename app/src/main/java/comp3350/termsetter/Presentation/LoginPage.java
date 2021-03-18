@@ -21,7 +21,6 @@ import comp3350.termsetter.Persistence.DomainSpecific.User;
 public class LoginPage extends AppCompatActivity {
     private static Context mContext;
     private StubDatabase database;
-    boolean validate;
     private EditText eID;
     private EditText ePassword;
     private Button eLogin;
@@ -36,7 +35,6 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void onClickLoginButton(View view) {
-
         if (database != null) {
             eID = findViewById(R.id.idText);
             ePassword = findViewById(R.id.passwordText);
@@ -45,34 +43,41 @@ public class LoginPage extends AppCompatActivity {
             String inputID = eID.getText().toString();
             String inputPassword = ePassword.getText().toString();
 
+            // If either ID or Password is missing
             if (inputID.isEmpty() || inputPassword.isEmpty()) {
                 Toast.makeText(LoginPage.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
-            } else {
-                validate = validate(inputID, inputPassword);
-                if (validate) {
+            }
+            else {
+                // Validate user profile from the database
+                if (validateUser(inputID, inputPassword)) {
                     Toast.makeText(LoginPage.this, "Welcome " + inputID + " !", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginPage.this, MainActivity.class);
                     startActivity(intent);
-                } else {
+                }
+                else {
                     Toast.makeText(LoginPage.this, "Please try again!", Toast.LENGTH_SHORT).show();
                 }
             }
-        } else {
+        }
+        else {
             eID = findViewById(R.id.idText);
             ePassword = findViewById(R.id.passwordText);
 
             String inputName = eID.getText().toString();
             String inputPassword = ePassword.getText().toString();
 
+            // If either ID or Password is missing
             if (inputName.isEmpty() || inputPassword.isEmpty()) {
                 Toast.makeText(LoginPage.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
-            } else {
+            }
+            // Invalid account
+            else {
                 Toast.makeText(LoginPage.this, "Account doesn't exist!", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    private boolean validate(String id, String password) {
+    private boolean validateUser(String id, String password) {
         boolean result = false;
 
         if (database.checkUser(id)) {
@@ -85,8 +90,6 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void onClickCreateAccountButton(View view) {
-        // Brief message
-        // Shows create account page
         Toast.makeText(this, "Create Account Button pressed!", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, CreateAccount.class);
         startActivity(intent);

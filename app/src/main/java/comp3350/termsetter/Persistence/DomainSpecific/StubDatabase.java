@@ -17,15 +17,15 @@ import static android.content.Context.MODE_PRIVATE;
 public class StubDatabase {
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
-    int count = 0;
-    int lookupIndex = 0;
+    private static int count = 0;
+    private static int lookupIndex = 0;
 
     public StubDatabase(Context context, String dbName){
         preferences = context.getApplicationContext().getSharedPreferences(dbName, MODE_PRIVATE);
         editor = preferences.edit();
     }
 
-    public void insert(User user){
+    public void insertUser(User user){
         String name = user.getName();
         String password = user.getPassword();
         String email = user.getEmailAddress();
