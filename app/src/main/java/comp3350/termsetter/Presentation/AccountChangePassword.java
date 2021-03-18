@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.R;
 
 import comp3350.termsetter.Persistence.DomainSpecific.Database;

@@ -46,7 +46,22 @@
                 android:background="@color/accent_1"
                 android:drawableStart="@drawable/ic_baseline_person_24"
                 android:drawableLeft="@drawable/ic_baseline_person_24"
-                android:hint="ID"
+                android:hint="Name"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff" />
+
+            <EditText
+                android:id="@+id/studenIDtext"
+                android:layout_width="282dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@color/accent_1"
+                android:drawableStart="@drawable/ic_baseline_person_24"
+                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:hint="Student ID"
                 android:inputType="text"
                 android:padding="10dp"
                 android:textColor="#ffffff"
@@ -83,20 +98,6 @@
                 android:textColorHint="#ffffff" />
 
             <EditText
-                android:id="@+id/emailText"
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@color/accent_1"
-                android:drawableStart="@drawable/ic_baseline_mail_outline_24"
-                android:drawableLeft="@drawable/ic_baseline_mail_outline_24"
-                android:hint="Email"
-                android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff" />
-
-            <EditText
                 android:id="@+id/phoneText"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
@@ -106,6 +107,20 @@
                 android:drawableStart="@drawable/ic_baseline_phone_24"
                 android:drawableLeft="@drawable/ic_baseline_phone_24"
                 android:hint="Phone"
+                android:padding="10dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff" />
+
+            <EditText
+                android:id="@+id/emailText"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@color/accent_1"
+                android:drawableStart="@drawable/ic_baseline_mail_outline_24"
+                android:drawableLeft="@drawable/ic_baseline_mail_outline_24"
+                android:hint="Email"
                 android:padding="10dp"
                 android:textColor="#ffffff"
                 android:textColorHint="#ffffff" />
