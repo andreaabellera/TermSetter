@@ -46,10 +46,14 @@ public class AccountUpdateEmail extends AppCompatActivity {
         } else {
             validate = validate(inputNewEmail, inputNewEmailConfirm);
             if (validate) {
-                database.updateEmail(inputNewEmail);
-                Toast.makeText(AccountUpdateEmail.this, "Email changes!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(AccountUpdateEmail.this, AccountManagementMenu.class);
-                startActivity(intent);
+                if (database.updateEmail(inputNewEmail)) {
+                    Toast.makeText(AccountUpdateEmail.this, "Email changes!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AccountUpdateEmail.this, AccountManagementMenu.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(this, "Update Email is not working!", Toast.LENGTH_SHORT).show();
+                }
             } else {
                 Toast.makeText(AccountUpdateEmail.this, "Please try again!", Toast.LENGTH_SHORT).show();
             }

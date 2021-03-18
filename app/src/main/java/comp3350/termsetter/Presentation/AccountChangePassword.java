@@ -52,10 +52,14 @@ public class AccountChangePassword extends AppCompatActivity {
         } else {
             validate = validate(inputOldPassword, inputNewPassword, inputNewPasswordConfirm);
             if (validate) {
-                database.updatePassword(inputNewPassword);
-                Toast.makeText(AccountChangePassword.this, "Password changes!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(AccountChangePassword.this, AccountManagementMenu.class);
-                startActivity(intent);
+                if (database.updatePassword(inputNewPassword)) {
+                    Toast.makeText(AccountChangePassword.this, "Password changes!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AccountChangePassword.this, AccountManagementMenu.class);
+                    startActivity(intent);
+                }
+                else {
+                Toast.makeText(AccountChangePassword.this, "Update PW is not working!", Toast.LENGTH_SHORT).show();
+                }
             } else {
                 Toast.makeText(AccountChangePassword.this, "Please try again!", Toast.LENGTH_SHORT).show();
             }
