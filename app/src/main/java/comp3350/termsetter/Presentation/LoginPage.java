@@ -88,6 +88,7 @@ public class LoginPage extends AppCompatActivity {
             else {
                 // Validate user profile from the database
                 if (validateUser(inputID, inputPassword)) {
+                    database.setCurrentUser(inputID);
                     Toast.makeText(LoginPage.this, "Welcome " + inputID + " !", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginPage.this, MainActivity.class);
                     startActivity(intent);
@@ -118,9 +119,8 @@ public class LoginPage extends AppCompatActivity {
     private boolean validateUser(String id, String password) {
         boolean result = false;
 
-        if (database.checkUser(id)) {
+        if (database.getUser(id) != null) {
             Toast.makeText(this, "Insertion is working", Toast.LENGTH_SHORT).show();
-        //if (database.checkUser(id)) {
             User user = database.getUser(id);
             if (password.equals(user.getPassword())) {
                 Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();

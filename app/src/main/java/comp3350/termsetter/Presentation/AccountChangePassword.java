@@ -1,6 +1,7 @@
 package comp3350.termsetter.Presentation;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,24 +18,26 @@ import comp3350.termsetter.Persistence.DomainSpecific.Database;
 import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 public class AccountChangePassword extends AppCompatActivity {
-
-    boolean validate;
+    private static Context mContext;
+    private StubDatabase database;
+    private boolean validate;
     private EditText oldPassword;
     private EditText newPassword;
     private EditText newPasswordConfirm;
+    private User user;
     private Button change;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_change_password);
+
+        mContext = getApplicationContext();
+        database = new StubDatabase(mContext,"test.db");
     }
 
 
     public void onClickConfirmButton(View view) {
-        Intent intent = getIntent();
-        Database database = (Database) intent.getSerializableExtra("database");
-        User user;
 
         oldPassword = findViewById(R.id.changePasswordEdtxt1);
         newPassword = findViewById(R.id.changePasswordEdtxt2);
@@ -49,13 +52,10 @@ public class AccountChangePassword extends AppCompatActivity {
         } else {
             validate = validate(inputOldPassword, inputNewPassword, inputNewPasswordConfirm);
             if (validate) {
-                user = database.getUser();
-                user.setEmail(inputNewPassword);
-                //database.updateUser(user);
+                database.updatePassword(inputNewPassword);
                 Toast.makeText(AccountChangePassword.this, "Password changes!", Toast.LENGTH_SHORT).show();
-                Intent intentI = new Intent(AccountChangePassword.this, AccountManagementMenu.class);
-                intentI.putExtra("database", database);
-                startActivity(intentI);
+                Intent intent = new Intent(AccountChangePassword.this, AccountManagementMenu.class);
+                startActivity(intent);
             } else {
                 Toast.makeText(AccountChangePassword.this, "Please try again!", Toast.LENGTH_SHORT).show();
             }
@@ -64,10 +64,9 @@ public class AccountChangePassword extends AppCompatActivity {
 
 
     private boolean validate(String oldPass, String newPass, String newPassConfirm) {
-        Intent intent = getIntent();
-        Database database = (Database) intent.getSerializableExtra("database");
-        User user = database.getUser();
+        User user = database.getCurrentUser();
         boolean result = false;
+
         if (oldPass.equals(user.getPassword())) {
             if (newPass.equals(newPassConfirm)) {
                 result = true;

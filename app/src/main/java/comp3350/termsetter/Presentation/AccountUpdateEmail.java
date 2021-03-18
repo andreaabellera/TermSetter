@@ -1,6 +1,7 @@
 package comp3350.termsetter.Presentation;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,13 +10,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.R;
 
 import comp3350.termsetter.Persistence.DomainSpecific.Database;
 import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 public class AccountUpdateEmail extends AppCompatActivity {
-    boolean validate;
+    private static Context mContext;
+    private StubDatabase database;
+    private boolean validate;
     private EditText newEmail;
     private EditText newEmailConfirm;
 
@@ -23,11 +27,12 @@ public class AccountUpdateEmail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_update_email);
+
+        mContext = getApplicationContext();
+        database = new StubDatabase(mContext,"test.db");
     }
 
     public void updateEmail(View view) {
-        Intent intent = getIntent();
-        Database database = (Database) intent.getSerializableExtra("database");
         User user;
 
         newEmail = findViewById(R.id.updateEmailEdtxt1);
@@ -41,13 +46,10 @@ public class AccountUpdateEmail extends AppCompatActivity {
         } else {
             validate = validate(inputNewEmail, inputNewEmailConfirm);
             if (validate) {
-                user = database.getUser();
-                user.setEmail(inputNewEmail);
-                //database.updateUser(user);
+                database.updateEmail(inputNewEmail);
                 Toast.makeText(AccountUpdateEmail.this, "Email changes!", Toast.LENGTH_SHORT).show();
-                Intent intentI = new Intent(AccountUpdateEmail.this, AccountManagementMenu.class);
-                intentI.putExtra("database", database);
-                startActivity(intentI);
+                Intent intent = new Intent(AccountUpdateEmail.this, AccountManagementMenu.class);
+                startActivity(intent);
             } else {
                 Toast.makeText(AccountUpdateEmail.this, "Please try again!", Toast.LENGTH_SHORT).show();
             }
