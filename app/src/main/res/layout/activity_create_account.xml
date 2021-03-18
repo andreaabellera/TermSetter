@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,139 +8,130 @@
     android:padding="0dp"
     tools:context=".Persistence.CreateAccount">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <TextView
+        android:id="@+id/createAccountHeader"
+        style="@style/CustomHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Registration"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/loginEdtxt1"
+            style="@style/CustomEditText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/background"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:hint="ID"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/loginEdtxt2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="10dp"
-                android:text="Registration"
-                android:textColor="@color/foreground"
-                android:textSize="30dp"
-                android:textStyle="bold" />
-        </LinearLayout>
+        <EditText
+            android:id="@+id/loginEdtxt2"
+            style="@style/CustomEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_baseline_https_24"
+            android:drawableLeft="@drawable/ic_baseline_https_24"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/createAccountEdtxt3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginEdtxt1" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/background"
-            android:orientation="vertical">
+        <EditText
+            android:id="@+id/createAccountEdtxt3"
+            style="@style/CustomEditText"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_baseline_https_24"
+            android:drawableLeft="@drawable/ic_baseline_https_24"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/createAccountEdtxt4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginEdtxt2" />
 
-            <EditText
-                android:id="@+id/idText"
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:background="@color/accent_1"
-                android:drawableStart="@drawable/ic_baseline_person_24"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
-                android:hint="Name"
-                android:inputType="text"
-                android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff" />
+        <EditText
+            android:id="@+id/createAccountEdtxt4"
+            style="@style/CustomEditText"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_baseline_mail_outline_24"
+            android:drawableLeft="@drawable/ic_baseline_mail_outline_24"
+            android:hint="Email"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/createAccountEdtxt5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createAccountEdtxt3" />
 
-            <EditText
-                android:id="@+id/studenIDtext"
-                android:layout_width="282dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:background="@color/accent_1"
-                android:drawableStart="@drawable/ic_baseline_person_24"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
-                android:hint="Student ID"
-                android:inputType="text"
-                android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff" />
+        <EditText
+            android:id="@+id/createAccountEdtxt5"
+            style="@style/CustomEditText"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_baseline_phone_24"
+            android:drawableLeft="@drawable/ic_baseline_phone_24"
+            android:hint="Phone"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/createAccountBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createAccountEdtxt4" />
 
-            <EditText
-                android:id="@+id/passwordText"
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@color/accent_1"
-                android:drawableStart="@drawable/ic_baseline_https_24"
-                android:drawableLeft="@drawable/ic_baseline_https_24"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff" />
-
-            <EditText
-                android:id="@+id/confirmPasswordText"
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@color/accent_1"
-                android:drawableStart="@drawable/ic_baseline_https_24"
-                android:drawableLeft="@drawable/ic_baseline_https_24"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff" />
-
-            <EditText
-                android:id="@+id/phoneText"
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@color/accent_1"
-                android:drawableStart="@drawable/ic_baseline_phone_24"
-                android:drawableLeft="@drawable/ic_baseline_phone_24"
-                android:hint="Phone"
-                android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff" />
-
-            <EditText
-                android:id="@+id/emailText"
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@color/accent_1"
-                android:drawableStart="@drawable/ic_baseline_mail_outline_24"
-                android:drawableLeft="@drawable/ic_baseline_mail_outline_24"
-                android:hint="Email"
-                android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff" />
-
-            <Button
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:backgroundTint="@color/foreground"
-                android:onClick="onClickConfirmButton"
-                android:text="CREATE ACCOUNT"
-                android:textColor="@color/background"
-                android:textColorHighlight="@color/accent_2"
-                android:textSize="20dp"
-                android:textStyle="normal" />
+        <Button
+            android:id="@+id/createAccountBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:onClick="onClickConfirmButton"
+            android:text="CREATE ACCOUNT"
+            android:textSize="20dp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createAccountEdtxt5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </LinearLayout>
-
-    </LinearLayout>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

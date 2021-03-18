@@ -20,16 +20,36 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void openNavigationLinks(View view) {
+    /*public void openNavigationLinks(View view) {
         Intent intent = getIntent();
         Database database = (Database) intent.getSerializableExtra("database");
         Intent intentI = new Intent(this, TempNavigationLinks.class);
         intentI.putExtra("database", database);
         startActivity(intentI);
+    }*/
+
+    public void openMyCourses(View view) {
+        // code
+        // (idk which class we want this to connect to)
     }
 
-    public void onClickLogOutButton(View view) {
+    public void openOfferedClassesCategories(View view) {
+        Intent intent = new Intent(this, OfferedClassesCategories.class);
+        startActivity(intent);
+    }
 
+
+
+    public void openAccountManagementMenu(View view) {
+        Intent intent = getIntent();
+        Database database = (Database) intent.getSerializableExtra("database");
+        Intent intentI = new Intent(this, AccountManagementMenu.class);
+        intentI.putExtra("database", database);
+        startActivity(intentI);
+    }
+
+
+    public void onClickLogOutButton(View view) {
         // Brief message
         // Shows create account page
         Intent intent = getIntent();

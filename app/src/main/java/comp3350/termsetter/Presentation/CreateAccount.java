@@ -52,11 +52,12 @@ public class CreateAccount extends AppCompatActivity {
 
         mContext = getApplicationContext();
         database = new StubDatabase(mContext,"test.db");
-        eName = findViewById(R.id.idText);
-        eMail = findViewById(R.id.emailText);
-        ePassword = findViewById(R.id.passwordText);
-        eConfirmPassword = findViewById(R.id.confirmPasswordText);
-        ePhone = findViewById(R.id.phoneText);
+
+        eName = findViewById(R.id.loginEdtxt1);
+        eMail = findViewById(R.id.createAccountEdtxt4);
+        ePassword = findViewById(R.id.loginEdtxt2);
+        eConfirmPassword = findViewById(R.id.createAccountEdtxt3);
+        ePhone = findViewById(R.id.createAccountEdtxt5);
         eStudentID = findViewById(R.id.studenIDtext);
     }
 

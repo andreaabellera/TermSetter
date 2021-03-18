@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     android:padding="@dimen/box_inset_layout_padding"
     tools:context=".Presentation.OfferedClassesView">
 
@@ -18,15 +17,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/selectedCategory_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:text="Computer Science"
-            android:textColor="@color/foreground"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/selectedCategory_txt"
+                style="@style/CustomHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:text="Computer Science" />
 
             <TextView
                 android:id="@+id/lv1000_txt"
@@ -35,14 +33,13 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:text="1000 Level"
-                android:textColor="@color/foreground"
                 android:textSize="18sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lv1_rv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center" />
 
             <TextView
                 android:id="@+id/lv2000_txt"
@@ -51,14 +48,13 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:text="2000 Level"
-                android:textColor="@color/foreground"
                 android:textSize="18sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lv2_rv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center" />
 
             <TextView
                 android:id="@+id/lv3000_txt"
@@ -67,14 +63,13 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:text="3000 Level"
-                android:textColor="@color/foreground"
                 android:textSize="18sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lv3_rv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center" />
 
             <TextView
                 android:id="@+id/lv4000_txt"
@@ -83,14 +78,13 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:text="4000 Level"
-                android:textColor="@color/foreground"
                 android:textSize="18sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lv4_rv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center" />
 
         </LinearLayout>
 
