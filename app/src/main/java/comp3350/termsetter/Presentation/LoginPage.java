@@ -74,7 +74,7 @@ public class LoginPage extends AppCompatActivity {
         */
 
         if (database != null) {
-            eID = findViewById(R.id.idText);
+            eID = findViewById(R.id.loginEdtxt1);
             ePassword = findViewById(R.id.loginEdtxt2);
             eLogin = findViewById(R.id.loginBtn);
 
