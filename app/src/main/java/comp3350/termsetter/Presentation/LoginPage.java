@@ -11,6 +11,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+
+import comp3350.termsetter.Persistence.ConnectDB;
+import comp3350.termsetter.Persistence.DBHelper;
+import comp3350.termsetter.Persistence.Main;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.R;
 
@@ -32,9 +37,17 @@ public class LoginPage extends AppCompatActivity {
 
         mContext = getApplicationContext();
         database = new StubDatabase(mContext,"test.db");
+        //try {
+        //    DBHelper.copyDatabaseToDevice(this);
+        //} catch (IOException e) {
+        //    e.printStackTrace();
+        //}
     }
 
     public void onClickLoginButton(View view) {
+        Intent intent = getIntent();
+        Database database = (Database) intent.getSerializableExtra("database");
+
         if (database != null) {
             eID = findViewById(R.id.idText);
             ePassword = findViewById(R.id.passwordText);
@@ -94,7 +107,12 @@ public class LoginPage extends AppCompatActivity {
 
     public void onClickCreateAccountButton(View view) {
         Toast.makeText(this, "Create Account Button pressed!", Toast.LENGTH_LONG).show();
+        // Brief message
+        // Shows create account page
+       /* Toast.makeText(this, "Create Account Button pressed!", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, CreateAccount.class);
-        startActivity(intent);
+        startActivity(intent);*/
+
+        //ConnectDB db = new ConnectDB(Main.getDBPathName());
     }
 }

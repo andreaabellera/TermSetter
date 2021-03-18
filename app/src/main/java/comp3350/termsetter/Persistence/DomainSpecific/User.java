@@ -39,6 +39,7 @@ public class User  {
         return this.studentID;
     }
 
+
     /* Setters */
 
 
@@ -55,4 +56,6 @@ public class User  {
     public void setEmail(String input) {
         this.Email = input;
     }
+
+    //public void setStudentNumber(String studentID){ this.StudentNumber = studentID}
 }
