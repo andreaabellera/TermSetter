@@ -7,7 +7,7 @@
     tools:context=".Presentation.AccountManageProfile">
 
     <TextView
-        android:id="@+id/header_manage_profile"
+        android:id="@+id/headerManageProfile"
         style="@style/CustomHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,16 +19,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint_man_prof"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_manage_profile">
+        app:layout_constraintTop_toBottomOf="@+id/headerManageProfile">
 
         <TextView
-            android:id="@+id/txt_man_prof_1"
+            android:id="@+id/manageProfileTxt1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -37,51 +36,51 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txt_man_prof_2"
+            android:id="@+id/manageProfileTxt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/txt_manage_profile_prompt2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_man_prof_1" />
+            app:layout_constraintTop_toBottomOf="@+id/manageProfileTxt1" />
 
         <TextView
-            android:id="@+id/txt_man_prof_3"
+            android:id="@+id/manageProfileTxt3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/txt_manage_profile_prompt3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_man_prof_2" />
+            app:layout_constraintTop_toBottomOf="@+id/manageProfileTxt2" />
 
         <TextView
-            android:id="@+id/man_prof_txt_student_number"
+            android:id="@+id/manageProfileTxtStudent1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:text="@string/txt_manage_profile_student_number"
-            app:layout_constraintStart_toEndOf="@+id/txt_man_prof_1"
+            app:layout_constraintStart_toEndOf="@+id/manageProfileTxt1"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/man_prof_txt_student_name"
+            android:id="@+id/manageProfileTxtStudent2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/txt_manage_profile_student_name"
-            app:layout_constraintStart_toEndOf="@+id/txt_man_prof_1"
-            app:layout_constraintTop_toBottomOf="@+id/man_prof_txt_student_number" />
+            app:layout_constraintStart_toEndOf="@+id/manageProfileTxt1"
+            app:layout_constraintTop_toBottomOf="@+id/manageProfileTxtStudent1" />
 
         <TextView
-            android:id="@+id/man_prof_txt_student_name2"
+            android:id="@+id/manageProfileTxtStudent3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/txt_manage_profile_user_id"
-            app:layout_constraintStart_toEndOf="@+id/txt_man_prof_1"
-            app:layout_constraintTop_toBottomOf="@+id/man_prof_txt_student_name" />
+            app:layout_constraintStart_toEndOf="@+id/manageProfileTxt1"
+            app:layout_constraintTop_toBottomOf="@+id/manageProfileTxtStudent2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

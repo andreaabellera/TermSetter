@@ -45,11 +45,11 @@ public class CreateAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
-        eName = findViewById(R.id.create_edtxt_id);
-        eMail = findViewById(R.id.create_edtxt_email);
-        ePassword = findViewById(R.id.create_edtxt_pw);
-        eConfirmPassword = findViewById(R.id.create_edtxt_conf);
-        ePhone = findViewById(R.id.create_edtxt_phone);
+        eName = findViewById(R.id.loginEdtxt1);
+        eMail = findViewById(R.id.createAccountEdtxt4);
+        ePassword = findViewById(R.id.loginEdtxt2);
+        eConfirmPassword = findViewById(R.id.createAccountEdtxt3);
+        ePhone = findViewById(R.id.createAccountEdtxt5);
     }
 
     public void onClickConfirmButton(View view) {

@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
@@ -10,7 +9,7 @@
     tools:context=".Persistence.CreateAccount">
 
     <TextView
-        android:id="@+id/create_account_header"
+        android:id="@+id/createAccountHeader"
         style="@style/CustomHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,7 +21,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/create_account_constraint_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/create_edtxt_id"
+            android:id="@+id/loginEdtxt1"
             style="@style/CustomEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -41,31 +39,14 @@
             android:drawableLeft="@drawable/ic_baseline_person_24"
             android:hint="ID"
             android:inputType="text"
-            app:layout_constraintBottom_toTopOf="@+id/create_edtxt_pw"
+            app:layout_constraintBottom_toTopOf="@+id/loginEdtxt2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/create_edtxt_phone"
-            style="@style/CustomEditText"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/ic_baseline_phone_24"
-            android:drawableLeft="@drawable/ic_baseline_phone_24"
-            android:hint="Phone"
-            android:padding="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/create_btn_1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_edtxt_email" />
-
-        <EditText
-            android:id="@+id/create_edtxt_pw"
+            android:id="@+id/loginEdtxt2"
             style="@style/CustomEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -76,14 +57,14 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/create_edtxt_conf"
+            app:layout_constraintBottom_toTopOf="@+id/createAccountEdtxt3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_edtxt_id" />
+            app:layout_constraintTop_toBottomOf="@+id/loginEdtxt1" />
 
         <EditText
-            android:id="@+id/create_edtxt_conf"
+            android:id="@+id/createAccountEdtxt3"
             style="@style/CustomEditText"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
@@ -94,14 +75,14 @@
             android:hint="Confirm Password"
             android:inputType="textPassword"
             android:padding="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/create_edtxt_email"
+            app:layout_constraintBottom_toTopOf="@+id/createAccountEdtxt4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_edtxt_pw" />
+            app:layout_constraintTop_toBottomOf="@+id/loginEdtxt2" />
 
         <EditText
-            android:id="@+id/create_edtxt_email"
+            android:id="@+id/createAccountEdtxt4"
             style="@style/CustomEditText"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
@@ -111,14 +92,31 @@
             android:drawableLeft="@drawable/ic_baseline_mail_outline_24"
             android:hint="Email"
             android:padding="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/create_edtxt_phone"
+            app:layout_constraintBottom_toTopOf="@+id/createAccountEdtxt5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_edtxt_conf" />
+            app:layout_constraintTop_toBottomOf="@+id/createAccountEdtxt3" />
+
+        <EditText
+            android:id="@+id/createAccountEdtxt5"
+            style="@style/CustomEditText"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_baseline_phone_24"
+            android:drawableLeft="@drawable/ic_baseline_phone_24"
+            android:hint="Phone"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/createAccountBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createAccountEdtxt4" />
 
         <Button
-            android:id="@+id/create_btn_1"
+            android:id="@+id/createAccountBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -132,7 +130,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_edtxt_phone" />
+            app:layout_constraintTop_toBottomOf="@+id/createAccountEdtxt5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -2,14 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Presentation.LoginPage">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/login_txt_1"
+            android:id="@+id/loginHeader1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -32,7 +30,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/login_img_logo"
+            android:id="@+id/loginImg"
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:layout_gravity="center"
@@ -41,10 +39,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_txt_1" />
+            app:layout_constraintTop_toBottomOf="@+id/loginHeader1" />
 
         <TextView
-            android:id="@+id/login_header_1"
+            android:id="@+id/loginHeader2"
             style="@style/CustomHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,10 +53,10 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_img_logo" />
+            app:layout_constraintTop_toBottomOf="@+id/loginImg" />
 
         <EditText
-            android:id="@+id/create_edtxt_id"
+            android:id="@+id/loginEdtxt1"
             style="@style/CustomEditText"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
@@ -70,10 +68,10 @@
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_header_1" />
+            app:layout_constraintTop_toBottomOf="@+id/loginHeader2" />
 
         <EditText
-            android:id="@+id/create_edtxt_pw"
+            android:id="@+id/loginEdtxt2"
             style="@style/CustomEditText"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
@@ -86,10 +84,10 @@
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_edtxt_id" />
+            app:layout_constraintTop_toBottomOf="@+id/loginEdtxt1" />
 
         <Button
-            android:id="@+id/login_btn_login"
+            android:id="@+id/loginBtn"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -100,10 +98,10 @@
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_edtxt_pw" />
+            app:layout_constraintTop_toBottomOf="@+id/loginEdtxt2" />
 
         <TextView
-            android:id="@+id/login_btn_create_account"
+            android:id="@+id/loginTxtClickable"
             style="@style/CustomClickableText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -115,7 +113,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_btn_login" />
+            app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

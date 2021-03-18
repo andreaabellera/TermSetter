@@ -30,8 +30,8 @@ public class AccountUpdateEmail extends AppCompatActivity {
         Database database = (Database) intent.getSerializableExtra("database");
         User user;
 
-        newEmail = findViewById(R.id.update_email_input1);
-        newEmailConfirm = findViewById(R.id.update_email_input2);
+        newEmail = findViewById(R.id.updateEmailEdtxt1);
+        newEmailConfirm = findViewById(R.id.updateEmailEdtxt2);
 
         String inputNewEmail = newEmail.getText().toString();
         String inputNewEmailConfirm = newEmailConfirm.getText().toString();
