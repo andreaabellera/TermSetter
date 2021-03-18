@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#32363A"
     android:onClick="backToMenu"
     android:padding="@dimen/box_inset_layout_padding"
     tools:context=".Presentation.OfferedClassesCategories">
@@ -21,7 +20,6 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:text="Back to Menu"
-            android:textColor="@color/foreground"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,8 +28,7 @@
             android:id="@+id/faculties_rv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
-
+            android:layout_gravity="center" />
 
 
     </LinearLayout>

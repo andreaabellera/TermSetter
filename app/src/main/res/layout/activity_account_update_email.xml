@@ -23,7 +23,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/acc_updt_em_constraint_cont"
         android:layout_width="300dp"
-        android:layout_height="450dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,7 @@
             android:id="@+id/update_email_txt3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="32dp"
             android:text="@string/txt_update_email_prompt2"
             android:textColor="@color/foreground"
             app:layout_constraintStart_toStartOf="parent"
@@ -77,13 +77,12 @@
             app:layout_constraintTop_toBottomOf="@+id/update_email_input1" />
 
         <Button
-            android:id="@+id/btn_confirm"
+            android:id="@+id/update_email_btn_conf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:onClick="updateEmail"
             android:text="@string/btn_update_email_confirm"
-            android:textColor="@color/foreground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/update_email_input2" />

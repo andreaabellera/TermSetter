@@ -38,7 +38,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/idText"
+                android:id="@+id/login_edtxt_id"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -53,7 +53,7 @@
                 android:textColorHint="#ffffff" />
 
             <EditText
-                android:id="@+id/passwordText"
+                android:id="@+id/login_edtxt_pw"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

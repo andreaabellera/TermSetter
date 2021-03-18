@@ -37,9 +37,9 @@ public class LoginPage extends AppCompatActivity {
         if (database != null) {
             boolean noUserExist = database.isEmpty();
             if (!noUserExist) {
-                eName = findViewById(R.id.idText);
-                ePassword = findViewById(R.id.passwordText);
-                eLogin = findViewById(R.id.btnLogin);
+                eName = findViewById(R.id.login_edtxt_id);
+                ePassword = findViewById(R.id.login_edtxt_pw);
+                eLogin = findViewById(R.id.login_btn_login);
 
                 String inputName = eName.getText().toString();
                 String inputPassword = ePassword.getText().toString();
@@ -59,8 +59,8 @@ public class LoginPage extends AppCompatActivity {
                 }
             }
         } else {
-            eName = findViewById(R.id.idText);
-            ePassword = findViewById(R.id.passwordText);
+            eName = findViewById(R.id.login_edtxt_id);
+            ePassword = findViewById(R.id.login_edtxt_pw);
 
             String inputName = eName.getText().toString();
             String inputPassword = ePassword.getText().toString();

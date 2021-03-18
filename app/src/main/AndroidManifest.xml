@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ts_icon"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApplication">
+        android:theme="@style/Aquira">
 
         <!--The default activity is set to Login Page (if otherwise, please check your Edit configuration)-->
 

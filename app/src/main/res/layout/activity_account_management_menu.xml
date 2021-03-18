@@ -5,16 +5,14 @@
     android:id="@+id/btn_frame_acc_man"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#32363A"
     tools:context=".Presentation.AccountManagementMenu">
 
     <TextView
-        android:id="@+id/header_account_management"
+        android:id="@+id/acc_man_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/header_account_management"
-        android:textColor="@color/foreground"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +20,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_buttons_acc_man"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="450dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,55 +28,43 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/acc_man_btn_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/foreground"
             android:onClick="openSettings"
-            android:padding="16dp"
             android:text="@string/btn_account_management_settings"
-            android:textColor="@color/background"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button6"
+            app:layout_constraintTop_toBottomOf="@+id/acc_man_btn_3"
             tools:layout_editor_absoluteX="59dp" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/acc_man_btn_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/foreground"
             android:onClick="openUpdateEmail"
-            android:padding="16dp"
             android:text="@string/btn_account_management_update_email"
-            android:textColor="@color/background"
-            app:layout_constraintBottom_toTopOf="@+id/button6"
-            app:layout_constraintTop_toBottomOf="@+id/button2"
+            app:layout_constraintBottom_toTopOf="@+id/acc_man_btn_3"
+            app:layout_constraintTop_toBottomOf="@+id/acc_man_btn_1"
             tools:layout_editor_absoluteX="40dp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/acc_man_btn_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/foreground"
             android:onClick="openManageProfile"
-            android:padding="16dp"
             android:text="@string/btn_account_management_manage_profile"
-            android:textColor="@color/background"
-            app:layout_constraintBottom_toTopOf="@+id/button5"
+            app:layout_constraintBottom_toTopOf="@+id/acc_man_btn_2"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="1dp" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/acc_man_btn_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/foreground"
             android:onClick="openChangePassword"
-            android:padding="16dp"
             android:text="@string/btn_account_management_change_password"
-            android:textColor="@color/background"
-            app:layout_constraintBottom_toTopOf="@+id/button7"
-            app:layout_constraintTop_toBottomOf="@+id/button5"
+            app:layout_constraintBottom_toTopOf="@+id/acc_man_btn_4"
+            app:layout_constraintTop_toBottomOf="@+id/acc_man_btn_2"
             tools:layout_editor_absoluteX="20dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

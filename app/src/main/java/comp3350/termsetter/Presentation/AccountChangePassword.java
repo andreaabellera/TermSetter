@@ -35,9 +35,9 @@ public class AccountChangePassword extends AppCompatActivity {
         Database database = (Database) intent.getSerializableExtra("database");
         User user;
 
-        oldPassword = findViewById(R.id.change_password_input1);
-        newPassword = findViewById(R.id.change_password_input2);
-        newPasswordConfirm = findViewById(R.id.change_password_input3);
+        oldPassword = findViewById(R.id.change_password_edtxt_1);
+        newPassword = findViewById(R.id.change_password_edtxt_2);
+        newPasswordConfirm = findViewById(R.id.change_password_edtxt_3);
 
         String inputOldPassword = oldPassword.getText().toString();
         String inputNewPassword = newPassword.getText().toString();

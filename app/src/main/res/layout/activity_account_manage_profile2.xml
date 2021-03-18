@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#32363A"
     tools:context=".Presentation.AccountManageProfile">
 
     <TextView
@@ -13,7 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/btn_account_management_manage_profile"
-        android:textColor="@color/foreground"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,11 +20,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_man_prof"
         android:layout_width="300dp"
-        android:layout_height="450dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/header_manage_profile">
 
         <TextView
             android:id="@+id/txt_man_prof_1"
@@ -34,7 +32,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="@string/txt_manage_profile_prompt1"
-            android:textColor="@color/foreground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +41,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/txt_manage_profile_prompt2"
-            android:textColor="@color/foreground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_man_prof_1" />
 
@@ -54,7 +50,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/txt_manage_profile_prompt3"
-            android:textColor="@color/foreground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_man_prof_2" />
 
@@ -65,7 +60,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:text="@string/txt_manage_profile_student_number"
-            android:textColor="@color/foreground"
             app:layout_constraintStart_toEndOf="@+id/txt_man_prof_1"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -76,7 +70,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/txt_manage_profile_student_name"
-            android:textColor="@color/foreground"
             app:layout_constraintStart_toEndOf="@+id/txt_man_prof_1"
             app:layout_constraintTop_toBottomOf="@+id/man_prof_txt_student_number" />
 
@@ -87,7 +80,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/txt_manage_profile_user_id"
-            android:textColor="@color/foreground"
             app:layout_constraintStart_toEndOf="@+id/txt_man_prof_1"
             app:layout_constraintTop_toBottomOf="@+id/man_prof_txt_student_name" />
     </androidx.constraintlayout.widget.ConstraintLayout>
