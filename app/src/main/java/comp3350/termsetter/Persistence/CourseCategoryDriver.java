@@ -26,10 +26,10 @@ public class CourseCategoryDriver {
         final int MAX_VALUE = 3;
 
         // String Arrays to fill sections constructors
-        String[] days = {"MWF", "TTR"};
-        String[] timeSlots = {"8:30AM-9:20AM", "11:30AM-12:45PM", "4:00pm-5:15pm", "2:30PM-3:45PM", "12:30PM-1:20PM"};
+        String[] days = {"MWF", "TR"};
+        String[] timeSlots = {"8:30-9:20", "11:30-12:45", "4:00-5:15", "2:30-3:45", "12:30-1:20"};
         String[] sectionArray = {"A01", "A02", "A03"};
-        String instructor = "TBD";
+        String instructor = "Dr. Andrea Bunt";
         Faculty faculty = null;
         categories = new CourseCategories();
 

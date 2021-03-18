@@ -19,7 +19,7 @@ import comp3350.termsetter.Persistence.Main;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.R;
 
-import comp3350.termsetter.Persistence.CreateAccount;
+import comp3350.termsetter.Presentation.CreateAccount;
 import comp3350.termsetter.Persistence.DomainSpecific.Database;
 import comp3350.termsetter.Persistence.DomainSpecific.User;
 

@@ -3,7 +3,7 @@ package comp3350.termsetter.Tests;
 
 import org.junit.Test;
 
-import comp3350.termsetter.Persistence.CreateAccount;
+import comp3350.termsetter.Presentation.CreateAccount;
 import static org.junit.Assert.*;
 
 public class AccountValidationTest {

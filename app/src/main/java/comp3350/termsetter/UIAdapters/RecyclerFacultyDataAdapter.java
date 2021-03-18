@@ -1,23 +1,18 @@
-package comp3350.termsetter.Logic;
+package comp3350.termsetter.UIadapters;
 
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import java.util.List;
 
-import comp3350.termsetter.Persistence.CourseOffering;
 import comp3350.termsetter.Persistence.Faculty;
 import comp3350.termsetter.R;
 
-public class RecyclerCourseDataAdapter extends RecyclerView.Adapter<RecyclerCourseDataAdapter.ViewHolder> {
+public class RecyclerFacultyDataAdapter extends RecyclerView.Adapter<RecyclerFacultyDataAdapter.ViewHolder> {
 
-    private List<CourseOffering> viewItems;
-    private int color;
+    private List<Faculty> viewItems;
 
     private OnItemClicked onClick;
 
@@ -25,9 +20,8 @@ public class RecyclerCourseDataAdapter extends RecyclerView.Adapter<RecyclerCour
         void onItemClick(int position);
     }
 
-    public RecyclerCourseDataAdapter(List<CourseOffering> viewItems, int color) {
+    public RecyclerFacultyDataAdapter(List<Faculty> viewItems) {
         this.viewItems = viewItems;
-        this.color = color;
     }
 
     public interface btnClickListener {
@@ -35,12 +29,10 @@ public class RecyclerCourseDataAdapter extends RecyclerView.Adapter<RecyclerCour
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        public CardView cardView;
         public TextView textView;
 
         public ViewHolder(View v){
             super(v);
-            cardView = (CardView) v.findViewById(R.id.recycler_card);
             textView = (TextView)v.findViewById(R.id.recycler_card_txt);
         }
     }
@@ -50,7 +42,7 @@ public class RecyclerCourseDataAdapter extends RecyclerView.Adapter<RecyclerCour
         // Get LayoutInflater object.
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         // Inflate the RecyclerView item layout xml.
-        View itemView = layoutInflater.inflate(R.layout.widget_course_recycler_card, parent, false);
+        View itemView = layoutInflater.inflate(R.layout.widget_faculty_recycler_card, parent, false);
 
         // Create and return our customRecycler View Holder object.
         ViewHolder ret = new ViewHolder(itemView);
@@ -60,23 +52,10 @@ public class RecyclerCourseDataAdapter extends RecyclerView.Adapter<RecyclerCour
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if(viewItems!=null) {
-            CourseOffering viewItem = viewItems.get(position);
+            Faculty viewItem = viewItems.get(position);
 
             if(viewItem != null) {
-                holder.textView.setText(viewItem.getCourseCode());
-
-                if(color == 1){
-                    holder.cardView.setCardBackgroundColor(Color.rgb(125,180,175));
-                }
-                else if(color == 2){
-                    holder.cardView.setCardBackgroundColor(Color.rgb(175,160,195));
-                }
-                else if(color == 3){
-                    holder.cardView.setCardBackgroundColor(Color.rgb(75,200,235));
-                }
-                else if(color == 4){
-                    holder.cardView.setCardBackgroundColor(Color.rgb(125,140,235));
-                }
+                holder.textView.setText(viewItem.getName());
 
                 holder.textView.setOnClickListener(new View.OnClickListener() {
                     @Override
