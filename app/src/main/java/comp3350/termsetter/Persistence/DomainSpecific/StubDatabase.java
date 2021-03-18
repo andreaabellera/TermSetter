@@ -1,12 +1,16 @@
 package comp3350.termsetter.Persistence.DomainSpecific;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import comp3350.termsetter.Persistence.CourseOffering;
+import comp3350.termsetter.Persistence.CreateAccount;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -16,8 +20,8 @@ public class StubDatabase {
     int count = 0;
     int lookupIndex = 0;
 
-    public StubDatabase(Activity activity, String dbName){
-        preferences = activity.getSharedPreferences(dbName, MODE_PRIVATE);
+    public StubDatabase(Context context, String dbName){
+        preferences = context.getApplicationContext().getSharedPreferences(dbName, MODE_PRIVATE);
         editor = preferences.edit();
     }
 
@@ -50,18 +54,18 @@ public class StubDatabase {
     public boolean checkUser(String studentID) {
         boolean found = false;
         String id;
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < this.count; i++) {
             id = "id" + i;
             if (preferences.getString(id,"").equals(studentID)) {
                 lookupIndex = i;
                 found = true;
+                break;
             }
         }
         return found;
     }
 
     public User getUser(String id) {
-
         String nameKey = "name" + lookupIndex;
         String passwordKey = "password" + lookupIndex;
         String emailKey = "email" + lookupIndex;

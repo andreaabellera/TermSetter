@@ -1,6 +1,7 @@
 package comp3350.termsetter.Persistence;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,8 +19,9 @@ import comp3350.termsetter.Persistence.DomainSpecific.User;
 import comp3350.termsetter.Presentation.LoginPage;
 
 public class CreateAccount extends AppCompatActivity {
+    private static Context mContext;
+    private StubDatabase database;
 
-    private StubDatabase database = new StubDatabase(this,"test.db");
     boolean validate;
     private EditText eName;
     private EditText eMail;
@@ -47,8 +49,11 @@ public class CreateAccount extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_create_account);
 
+        mContext = getApplicationContext();
+        database = new StubDatabase(mContext,"test.db");
         eName = findViewById(R.id.idText);
         eMail = findViewById(R.id.emailText);
         ePassword = findViewById(R.id.passwordText);

@@ -1,6 +1,7 @@
 package comp3350.termsetter.Presentation;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,8 +19,8 @@ import comp3350.termsetter.Persistence.DomainSpecific.Database;
 import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 public class LoginPage extends AppCompatActivity {
-
-    private StubDatabase database = new StubDatabase(this,"test.db");
+    private static Context mContext;
+    private StubDatabase database;
     boolean validate;
     private EditText eID;
     private EditText ePassword;
@@ -29,6 +30,9 @@ public class LoginPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
+
+        mContext = getApplicationContext();
+        database = new StubDatabase(mContext,"test.db");
     }
 
     public void onClickLoginButton(View view) {
