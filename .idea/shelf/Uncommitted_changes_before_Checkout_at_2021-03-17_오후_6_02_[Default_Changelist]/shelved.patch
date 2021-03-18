@@ -1,0 +1,152 @@
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"comp3350.termsetter\">\r\n\r\n    <uses-permission android:name=\"android.permission.WAKE_LOCK\" />\r\n\r\n\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@drawable/ts_icon\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@drawable/ts_icon\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.MyApplication\">\r\n\r\n        <!--The default activity is set to Login Page (if otherwise, please check your Edit configuration)-->\r\n\r\n        <activity\r\n            android:name=\"comp3350.termsetter.Presentation.AccountSettings\"\r\n            android:parentActivityName=\"comp3350.termsetter.Presentation.AccountManagementMenu\">\r\n            <meta-data\r\n                android:name=\"android.support.PARENT_ACTIVITY\"\r\n                android:value=\"comp3350.termsetter.Presentation.AccountManagementMenu\"/>\r\n        </activity>\r\n        <activity\r\n            android:name=\"comp3350.termsetter.Presentation.AccountChangePassword\"\r\n            android:parentActivityName=\"comp3350.termsetter.Presentation.AccountManagementMenu\">\r\n            <meta-data\r\n                android:name=\"android.support.PARENT_ACTIVITY\"\r\n                android:value=\"comp3350.termsetter.Presentation.AccountManagementMenu\"/>\r\n        </activity>\r\n        <activity\r\n            android:name=\"comp3350.termsetter.Presentation.AccountUpdateEmail\"\r\n            android:parentActivityName=\"comp3350.termsetter.Presentation.AccountManagementMenu\">\r\n            <meta-data\r\n                android:name=\"android.support.PARENT_ACTIVITY\"\r\n                android:value=\"comp3350.termsetter.Presentation.AccountManagementMenu\"/>\r\n        </activity>\r\n        <activity\r\n            android:name=\"comp3350.termsetter.Presentation.AccountManageProfile\"\r\n            android:parentActivityName=\"comp3350.termsetter.Presentation.AccountManagementMenu\">\r\n            <meta-data\r\n                android:name=\"android.support.PARENT_ACTIVITY\"\r\n                android:value=\"comp3350.termsetter.Presentation.AccountManagementMenu\"/>\r\n        </activity>\r\n        <activity\r\n            android:name=\"comp3350.termsetter.Presentation.AccountManagementMenu\"\r\n            android:parentActivityName=\"comp3350.termsetter.Presentation.TempNavigationLinks\">\r\n            <meta-data\r\n                android:name=\"android.support.PARENT_ACTIVITY\"\r\n                android:value=\"comp3350.termsetter.Presentation.TempNavigationLinks\"/>\r\n        </activity>\r\n        <activity\r\n            android:name=\"comp3350.termsetter.Presentation.TempNavigationLinks\"\r\n            android:parentActivityName=\"comp3350.termsetter.Presentation.MainActivity\">\r\n            <meta-data\r\n                android:name=\"android.support.PARENT_ACTIVITY\"\r\n                android:value=\"comp3350.termsetter.Presentation.MainActivity\"/>\r\n        </activity>\r\n\r\n        <uses-library\r\n            android:name=\"com.google.android.wearable\"\r\n            android:required=\"false\" />\r\n        <!--\r\n               Set to true if your app is Standalone, that is, it does not require the handheld\r\n               app to run.\r\n        -->\r\n        <meta-data\r\n            android:name=\"com.google.android.wearable.standalone\"\r\n            android:value=\"true\" />\r\n\r\n        <activity\r\n            android:name=\"comp3350.termsetter.Presentation.LoginPage\"\r\n            android:label=\"@string/title_activity_login_page\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n        <activity\r\n            android:name=\"comp3350.termsetter.Persistence.CreateAccount\"\r\n            android:label=\"@string/title_activity_create_account\"\r\n            android:parentActivityName=\"comp3350.termsetter.Presentation.OfferedClassesView\">\r\n            <meta-data\r\n                android:name=\"android.support.PARENT_ACTIVITY\"\r\n                android:value=\"comp3350.termsetter.Presentation.LoginPage\" />\r\n        </activity>\r\n\r\n        <!--\r\n        Andrea\r\n        -->\r\n        <activity\r\n            android:name=\"comp3350.termsetter.Presentation.OfferedClassesDetail\"\r\n            android:label=\"@string/title_activity_offered_classes_detail\"\r\n            android:parentActivityName=\"comp3350.termsetter.Presentation.OfferedClassesView\">\r\n            <meta-data\r\n                android:name=\"android.support.PARENT_ACTIVITY\"\r\n                android:value=\"comp3350.termsetter.Presentation.OfferedClassesView\" />\r\n        </activity>\r\n        <activity\r\n            android:name=\"comp3350.termsetter.Presentation.OfferedClassesView\"\r\n            android:label=\"@string/title_activity_offered_classes_view\"\r\n            android:parentActivityName=\"comp3350.termsetter.Presentation.OfferedClassesCategories\">\r\n            <meta-data\r\n                android:name=\"android.support.PARENT_ACTIVITY\"\r\n                android:value=\"comp3350.termsetter.Presentation.OfferedClassesCategories\" />\r\n        </activity>\r\n        <activity\r\n            android:name=\"comp3350.termsetter.Presentation.OfferedClassesCategories\"\r\n            android:parentActivityName=\"comp3350.termsetter.Presentation.TempNavigationLinks\">\r\n            <meta-data\r\n                android:name=\"android.support.PARENT_ACTIVITY\"\r\n                android:value=\"comp3350.termsetter.Presentation.TempNavigationLinks\"/>\r\n        </activity>\r\n        <activity\r\n            android:name=\"comp3350.termsetter.Presentation.MainActivity\"\r\n            android:label=\"@string/app_name\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 373730a4b759864882904febd7d784b1552baa54)
++++ app/src/main/AndroidManifest.xml	(date 1616021971673)
+@@ -4,8 +4,6 @@
+ 
+     <uses-permission android:name="android.permission.WAKE_LOCK" />
+ 
+-
+-
+     <application
+         android:allowBackup="true"
+         android:icon="@drawable/ts_icon"
+@@ -13,50 +11,49 @@
+         android:roundIcon="@drawable/ts_icon"
+         android:supportsRtl="true"
+         android:theme="@style/Theme.MyApplication">
+-
+-        <!--The default activity is set to Login Page (if otherwise, please check your Edit configuration)-->
+-
++        <activity android:name=".manageCourses"></activity>
++        <!-- The default activity is set to Login Page (if otherwise, please check your Edit configuration) -->
+         <activity
+-            android:name="comp3350.termsetter.Presentation.AccountSettings"
+-            android:parentActivityName="comp3350.termsetter.Presentation.AccountManagementMenu">
++            android:name=".Presentation.AccountSettings"
++            android:parentActivityName=".Presentation.AccountManagementMenu">
+             <meta-data
+                 android:name="android.support.PARENT_ACTIVITY"
+-                android:value="comp3350.termsetter.Presentation.AccountManagementMenu"/>
++                android:value="comp3350.termsetter.Presentation.AccountManagementMenu" />
+         </activity>
+         <activity
+-            android:name="comp3350.termsetter.Presentation.AccountChangePassword"
+-            android:parentActivityName="comp3350.termsetter.Presentation.AccountManagementMenu">
++            android:name=".Presentation.AccountChangePassword"
++            android:parentActivityName=".Presentation.AccountManagementMenu">
+             <meta-data
+                 android:name="android.support.PARENT_ACTIVITY"
+-                android:value="comp3350.termsetter.Presentation.AccountManagementMenu"/>
++                android:value="comp3350.termsetter.Presentation.AccountManagementMenu" />
+         </activity>
+         <activity
+-            android:name="comp3350.termsetter.Presentation.AccountUpdateEmail"
+-            android:parentActivityName="comp3350.termsetter.Presentation.AccountManagementMenu">
++            android:name=".Presentation.AccountUpdateEmail"
++            android:parentActivityName=".Presentation.AccountManagementMenu">
+             <meta-data
+                 android:name="android.support.PARENT_ACTIVITY"
+-                android:value="comp3350.termsetter.Presentation.AccountManagementMenu"/>
++                android:value="comp3350.termsetter.Presentation.AccountManagementMenu" />
+         </activity>
+         <activity
+-            android:name="comp3350.termsetter.Presentation.AccountManageProfile"
+-            android:parentActivityName="comp3350.termsetter.Presentation.AccountManagementMenu">
++            android:name=".Presentation.AccountManageProfile"
++            android:parentActivityName=".Presentation.AccountManagementMenu">
+             <meta-data
+                 android:name="android.support.PARENT_ACTIVITY"
+-                android:value="comp3350.termsetter.Presentation.AccountManagementMenu"/>
++                android:value="comp3350.termsetter.Presentation.AccountManagementMenu" />
+         </activity>
+         <activity
+-            android:name="comp3350.termsetter.Presentation.AccountManagementMenu"
+-            android:parentActivityName="comp3350.termsetter.Presentation.TempNavigationLinks">
++            android:name=".Presentation.AccountManagementMenu"
++            android:parentActivityName=".Presentation.TempNavigationLinks">
+             <meta-data
+                 android:name="android.support.PARENT_ACTIVITY"
+-                android:value="comp3350.termsetter.Presentation.TempNavigationLinks"/>
++                android:value="comp3350.termsetter.Presentation.TempNavigationLinks" />
+         </activity>
+         <activity
+-            android:name="comp3350.termsetter.Presentation.TempNavigationLinks"
+-            android:parentActivityName="comp3350.termsetter.Presentation.MainActivity">
++            android:name=".Presentation.TempNavigationLinks"
++            android:parentActivityName=".Presentation.MainActivity">
+             <meta-data
+                 android:name="android.support.PARENT_ACTIVITY"
+-                android:value="comp3350.termsetter.Presentation.MainActivity"/>
++                android:value="comp3350.termsetter.Presentation.MainActivity" />
+         </activity>
+ 
+         <uses-library
+@@ -71,7 +68,7 @@
+             android:value="true" />
+ 
+         <activity
+-            android:name="comp3350.termsetter.Presentation.LoginPage"
++            android:name=".Presentation.LoginPage"
+             android:label="@string/title_activity_login_page">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+@@ -80,42 +77,39 @@
+             </intent-filter>
+         </activity>
+         <activity
+-            android:name="comp3350.termsetter.Persistence.CreateAccount"
++            android:name=".Persistence.CreateAccount"
+             android:label="@string/title_activity_create_account"
+-            android:parentActivityName="comp3350.termsetter.Presentation.OfferedClassesView">
++            android:parentActivityName=".Presentation.OfferedClassesView">
+             <meta-data
+                 android:name="android.support.PARENT_ACTIVITY"
+                 android:value="comp3350.termsetter.Presentation.LoginPage" />
+         </activity>
+-
+-        <!--
+-        Andrea
+-        -->
++        <!--         Andrea -->
+         <activity
+-            android:name="comp3350.termsetter.Presentation.OfferedClassesDetail"
++            android:name=".Presentation.OfferedClassesDetail"
+             android:label="@string/title_activity_offered_classes_detail"
+-            android:parentActivityName="comp3350.termsetter.Presentation.OfferedClassesView">
++            android:parentActivityName=".Presentation.OfferedClassesView">
+             <meta-data
+                 android:name="android.support.PARENT_ACTIVITY"
+                 android:value="comp3350.termsetter.Presentation.OfferedClassesView" />
+         </activity>
+         <activity
+-            android:name="comp3350.termsetter.Presentation.OfferedClassesView"
++            android:name=".Presentation.OfferedClassesView"
+             android:label="@string/title_activity_offered_classes_view"
+-            android:parentActivityName="comp3350.termsetter.Presentation.OfferedClassesCategories">
++            android:parentActivityName=".Presentation.OfferedClassesCategories">
+             <meta-data
+                 android:name="android.support.PARENT_ACTIVITY"
+                 android:value="comp3350.termsetter.Presentation.OfferedClassesCategories" />
+         </activity>
+         <activity
+-            android:name="comp3350.termsetter.Presentation.OfferedClassesCategories"
+-            android:parentActivityName="comp3350.termsetter.Presentation.TempNavigationLinks">
++            android:name=".Presentation.OfferedClassesCategories"
++            android:parentActivityName=".Presentation.TempNavigationLinks">
+             <meta-data
+                 android:name="android.support.PARENT_ACTIVITY"
+-                android:value="comp3350.termsetter.Presentation.TempNavigationLinks"/>
++                android:value="comp3350.termsetter.Presentation.TempNavigationLinks" />
+         </activity>
+         <activity
+-            android:name="comp3350.termsetter.Presentation.MainActivity"
++            android:name=".Presentation.MainActivity"
+             android:label="@string/app_name">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
