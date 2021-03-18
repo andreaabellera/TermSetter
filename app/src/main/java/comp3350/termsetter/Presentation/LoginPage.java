@@ -45,8 +45,6 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void onClickLoginButton(View view) {
-        Intent intent = getIntent();
-        Database database = (Database) intent.getSerializableExtra("database");
 
         if (database != null) {
             eID = findViewById(R.id.idText);
