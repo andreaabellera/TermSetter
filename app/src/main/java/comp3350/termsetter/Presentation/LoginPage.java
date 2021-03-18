@@ -76,8 +76,11 @@ public class LoginPage extends AppCompatActivity {
         boolean result = false;
 
         if (database.checkUser(id)) {
+            Toast.makeText(this, "Insertion is working", Toast.LENGTH_SHORT).show();
+        //if (database.checkUser(id)) {
             User user = database.getUser(id);
             if (password.equals(user.getPassword())) {
+                Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
                 result = true;
             }
         }
