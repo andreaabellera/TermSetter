@@ -9,6 +9,7 @@
 
     <TextView
         android:id="@+id/acc_man_header"
+        style="@style/CustomHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -21,21 +22,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_buttons_acc_man"
         android:layout_width="300dp"
-        android:layout_height="450dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/acc_man_btn_4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="openSettings"
-            android:text="@string/btn_account_management_settings"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/acc_man_btn_3"
-            tools:layout_editor_absoluteX="59dp" />
 
         <Button
             android:id="@+id/acc_man_btn_2"
@@ -43,17 +34,21 @@
             android:layout_height="wrap_content"
             android:onClick="openUpdateEmail"
             android:text="@string/btn_account_management_update_email"
-            app:layout_constraintBottom_toTopOf="@+id/acc_man_btn_3"
-            app:layout_constraintTop_toBottomOf="@+id/acc_man_btn_1"
-            tools:layout_editor_absoluteX="40dp" />
+            app:layout_constraintBottom_toTopOf="@+id/acc_man_text_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/acc_man_btn_3" />
 
         <Button
             android:id="@+id/acc_man_btn_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
             android:onClick="openManageProfile"
             android:text="@string/btn_account_management_manage_profile"
-            app:layout_constraintBottom_toTopOf="@+id/acc_man_btn_2"
+            app:layout_constraintBottom_toTopOf="@+id/acc_man_btn_3"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="1dp" />
 
@@ -61,11 +56,25 @@
             android:id="@+id/acc_man_btn_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
             android:onClick="openChangePassword"
             android:text="@string/btn_account_management_change_password"
-            app:layout_constraintBottom_toTopOf="@+id/acc_man_btn_4"
-            app:layout_constraintTop_toBottomOf="@+id/acc_man_btn_2"
+            app:layout_constraintBottom_toTopOf="@+id/acc_man_btn_2"
+            app:layout_constraintTop_toBottomOf="@+id/acc_man_btn_1"
             tools:layout_editor_absoluteX="20dp" />
+
+        <TextView
+            android:id="@+id/acc_man_text_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/acc_man_btn_2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

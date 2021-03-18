@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ts_icon"
         android:supportsRtl="true"
-        android:theme="@style/Aquira">
+        android:theme="@style/TermsetterBase">
 
         <!--The default activity is set to Login Page (if otherwise, please check your Edit configuration)-->
 
@@ -33,10 +33,6 @@
         <activity
             android:name="comp3350.termsetter.Presentation.AccountManagementMenu"
             android:label="Account Management">
-        </activity>
-        <activity
-            android:name="comp3350.termsetter.Presentation.TempNavigationLinks"
-            android:label="Navigation">
         </activity>
 
         <uses-library

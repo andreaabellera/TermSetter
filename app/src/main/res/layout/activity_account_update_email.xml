@@ -5,17 +5,15 @@
     android:id="@+id/btn_update_email"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#32363A"
     tools:context=".Logic.AccountUpdateEmail">
 
     <TextView
         android:id="@+id/header_update_email"
+        style="@style/CustomHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/header_update_email"
-        android:textColor="@color/foreground"
-        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +32,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/foreground"
             android:ems="10"
             android:hint="@string/txt_update_email_hint1"
             android:inputType="textEmailAddress"
@@ -47,7 +44,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/foreground"
             android:ems="10"
             android:hint="@string/txt_update_email_hint2"
             android:inputType="textEmailAddress"
@@ -62,7 +58,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="@string/txt_update_email_prompt2"
-            android:textColor="@color/foreground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/update_email_txt2" />
 
@@ -72,7 +67,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/txt_update_email_prompt3"
-            android:textColor="@color/foreground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/update_email_input1" />
 
@@ -93,7 +87,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/txt_update_email_prompt1"
-            android:textColor="@color/foreground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -103,7 +96,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/txt_update_email_current_email"
-            android:textColor="@color/foreground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/update_email_txt1" />

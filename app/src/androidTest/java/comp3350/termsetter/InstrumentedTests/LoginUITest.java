@@ -32,15 +32,15 @@ public class LoginUITest {
 
     @Test
     public void changeText() {
-        onView(withId(R.id.login_edtxt_id))
+        onView(withId(R.id.create_edtxt_id))
                 .perform(typeText(validUser), closeSoftKeyboard());
-        onView(withId(R.id.login_edtxt_pw))
+        onView(withId(R.id.create_edtxt_pw))
                 .perform(typeText(validPasswd), closeSoftKeyboard());
         onView(withId(R.id.login_btn_login)).perform(click());
 
-        onView(withId(R.id.login_edtxt_id))
+        onView(withId(R.id.create_edtxt_id))
                 .check(matches(withText(validUser)));
-        onView(withId(R.id.login_edtxt_pw))
+        onView(withId(R.id.create_edtxt_pw))
                 .check(matches(withText(validPasswd)));
     }
 }

@@ -15,6 +15,7 @@
 
     <!-- Custom theme colours -->
     <color name="soft_white">#fafafa</color>
+    <color name="dark_cool_grey">#32363A</color>
     <color name="faded_black">#383838</color>
     <color name="dark_grey">#303030</color>
     <color name="cool_grey">#cfd8dc</color>

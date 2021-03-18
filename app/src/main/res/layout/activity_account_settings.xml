@@ -4,17 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#32363A"
     tools:context=".Logic.AccountSettings">
 
     <TextView
         android:id="@+id/header_settings"
+        style="@style/CustomHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/header_settings"
-        android:textColor="@color/foreground"
-        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,11 +30,9 @@
             android:id="@+id/settings_button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/foreground"
             android:onClick="activateThonk"
             android:padding="16dp"
             android:text="Big Brain Time"
-            android:textColor="#32363A"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

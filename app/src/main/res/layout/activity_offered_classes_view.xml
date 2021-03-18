@@ -19,12 +19,12 @@
 
             <TextView
                 android:id="@+id/selectedCategory_txt"
+                style="@style/CustomHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
-                android:text="Computer Science"
-                android:textSize="24sp" />
+                android:text="Computer Science" />
 
             <TextView
                 android:id="@+id/lv1000_txt"
