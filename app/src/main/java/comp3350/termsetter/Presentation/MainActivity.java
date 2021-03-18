@@ -41,22 +41,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void openAccountManagementMenu(View view) {
-        Intent intent = getIntent();
-        Database database = (Database) intent.getSerializableExtra("database");
-        Intent intentI = new Intent(this, AccountManagementMenu.class);
-        intentI.putExtra("database", database);
-        startActivity(intentI);
+        Intent intent = new Intent(this, AccountManagementMenu.class);
+        startActivity(intent);
     }
 
 
     public void onClickLogOutButton(View view) {
         // Brief message
         // Shows create account page
-        Intent intent = getIntent();
-        Database database = (Database) intent.getSerializableExtra("database");
         Toast.makeText(this, "See you again soon!", Toast.LENGTH_LONG).show();
-        Intent intentI = new Intent(this, LoginPage.class);
-        intentI.putExtra("database", database);
-        startActivity(intentI);
+        Intent intent = new Intent(this, LoginPage.class);
+        startActivity(intent);
     }
 }
