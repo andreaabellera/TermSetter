@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "comp3350.termsetter"
+        applicationId "com.example.myapplication"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
