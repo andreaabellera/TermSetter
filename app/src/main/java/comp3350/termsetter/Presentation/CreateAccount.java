@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 import java.sql.SQLException;
 
-//import comp3350.termsetter.Logic.AccessStudents;
+import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Logic.AccountValidation;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
@@ -58,7 +58,7 @@ public class CreateAccount extends AppCompatActivity {
         ePhone = findViewById(R.id.createAccountEdtxt5);
     }
 
-    public static boolean validate(String name, String id, String password, String confirmPassword, String email, String phone) {
+    public boolean validate(String name, String id, String password, String confirmPassword, String email, String phone) {
 //        Pattern p;
 //        Matcher m;
 //
@@ -158,24 +158,22 @@ public class CreateAccount extends AppCompatActivity {
         String inputPhone = ePhone.getText().toString();
 
         if (validate(inputName, inputID, inputPassword, inputConfirmPassword, inputEmail, inputPhone)) {
-//            User user = new User(inputName, inputPassword, inputEmail, inputPhone, inputID);
-//            database.insertUser(user);
+            User user = new User(inputID, inputName, inputPassword, inputEmail, inputPhone);
+            database.insertUser(user);
+            Intent intent = new Intent(CreateAccount.this, LoginPage.class);
+            startActivity(intent);
+            Toast.makeText(CreateAccount.this, "Welcome " + inputName + "!", Toast.LENGTH_SHORT).show();
+
+//            accessStudents.insertStudent(user);
+//
+//            User test = accessStudents.getStudent(inputID);
+
+            //System.out.println(test.getStudentID());
+
 //            Intent intent = new Intent(CreateAccount.this, LoginPage.class);
 //
 //            startActivity(intent);
 //            Toast.makeText(CreateAccount.this, "Welcome " + inputName + "!", Toast.LENGTH_SHORT).show();
-
-            User user = new User(inputID, inputName, inputPassword, inputEmail, inputPhone);
-            accessStudents.insertStudent(user);
-
-            User test = accessStudents.getStudent(inputID);
-
-            System.out.println(test.getStudentID());
-
-            Intent intent = new Intent(CreateAccount.this, LoginPage.class);
-
-            startActivity(intent);
-            Toast.makeText(CreateAccount.this, "Welcome " + inputName + "!", Toast.LENGTH_SHORT).show();
         }
 
     }

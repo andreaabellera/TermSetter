@@ -20,10 +20,10 @@ public class AccountValidation{
     public AccountValidation(){ }
 
     public boolean validAccount(String name, String id, String password, String email, String phone){
-        return validNewName(name) && validNewID(id) && validNewPassword(password) && validNewEmail(email) && validNewPhone(phone);
+        return validName(name) && validID(id) && validPassword(password) && validEmail(email) && validPhone(phone);
     }
 
-    public boolean validNewName(String name){
+    public boolean validName(String name){
         Pattern p = Pattern.compile("^[a-zA-Z]+\\s{1}[a-zA-z]+$");
         Matcher m = p.matcher(name);
         return m.matches() && name.length() >= MIN_NAME_LENGTH && name.length() <= MAX_NAME_LENGTH;
@@ -37,7 +37,7 @@ public class AccountValidation{
 //        return true;
     }
 
-    public boolean validNewID(String id){
+    public boolean validID(String id){
         p = Pattern.compile("^[a-zA-Z]+[0-9]*$");
         m = p.matcher(id);
 
@@ -48,7 +48,7 @@ public class AccountValidation{
         //return name.length() >= MIN_NAME_LENGTH && name.length() <= MAX_NAME_LENGTH;
     }
 
-    public boolean validNewPassword(String password){
+    public boolean validPassword(String password){
 //        boolean validLength = password.length() >= MIN_PASS_LENGTH && password.length() <= MAX_PASS_LENGTH;
 //        boolean hasLetter = false;
 //        boolean hasNumber = false;
@@ -65,7 +65,7 @@ public class AccountValidation{
         return password.length() <= 10;
     }
 
-    public boolean validNewEmail(String email){
+    public boolean validEmail(String email){
         boolean validLength = false;
         boolean validDomain = false;
         if(email.contains("@")){
@@ -83,7 +83,7 @@ public class AccountValidation{
 //        return true;
     }
 
-    public boolean validNewPhone(String phone){
+    public boolean validPhone(String phone){
 //        String digits = "";
 //        boolean hasInvalidChar = false;
 //        boolean hasOpenBracket = false;
