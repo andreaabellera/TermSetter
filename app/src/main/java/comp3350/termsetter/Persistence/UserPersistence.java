@@ -11,7 +11,7 @@ public interface UserPersistence {
 
     User getCurrentUser();
 
-    boolean isEmpty();
+    boolean isEmpty() throws SQLException;
 
     boolean updatePassword(String password);
 
