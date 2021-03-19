@@ -9,7 +9,8 @@ import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 public class EnrollmentLogic
 {
-    private List<CourseSection> currClasses;
+    private List<CourseSection> currClasses;    //Sections for currClasses
+    private String[] currCourseCodes;           //CourseCodes for currClasses
 
     private String courseCode;
     CourseSection selectedClass;
@@ -17,7 +18,7 @@ public class EnrollmentLogic
 
     private String[] startTimes;    //startTimes of currClasses
     private String[] endTimes;      //EndTimes of currClasses
-    private String[] currCourseCodes; //CourseCodes for currClasses
+
     int maxClasses = 6;             //maxNo.ofClassesAllowed
 
     //EnrollmentLogic Constructor
@@ -133,7 +134,6 @@ public class EnrollmentLogic
                 conflict = true;
             }
          }
-
         return conflict;
      }
 
@@ -146,7 +146,6 @@ public class EnrollmentLogic
             parseTimeSlots(cs);
         }
     }
-
 
 
     //function to parse timeslots and add them to start and end time arrays
@@ -173,7 +172,6 @@ public class EnrollmentLogic
     {
         return hour*60+minute;
     }
-
 
     //adder method for arrays
     private static String[] addT(int n, String[] array, String item)
