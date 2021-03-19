@@ -41,8 +41,8 @@ public class AccountChangePassword extends AppCompatActivity {
         setContentView(R.layout.activity_account_change_password);
 
         mContext = getApplicationContext();
-        //database = new StubDatabase(mContext,"test.db");
-        database = new StudentAccess("users.db");
+        database = new StubDatabase(mContext,"test.db");
+       // database = new StudentAccess("users.db");
         //accessStudents = new AccessStudents();
         //database = accessStudents.getStudentPersistence();
     }
@@ -58,7 +58,7 @@ public class AccountChangePassword extends AppCompatActivity {
         String inputNewPassword = newPassword.getText().toString();
         String inputNewPasswordConfirm = newPasswordConfirm.getText().toString();
 
-        if (accountValidation.validPassword(inputOldPassword) || accountValidation.validPassword(inputNewPassword) || accountValidation.validPassword(inputNewPasswordConfirm)) {
+        if (!accountValidation.validPassword(inputOldPassword) || !accountValidation.validPassword(inputNewPassword) || !accountValidation.validPassword(inputNewPasswordConfirm)) {
             Toast.makeText(AccountChangePassword.this, "Please enter valid password!", Toast.LENGTH_SHORT).show();
         } else {
             if (accountValidation.verifyCurrentPassword(inputOldPassword, database.getCurrentUser())) {

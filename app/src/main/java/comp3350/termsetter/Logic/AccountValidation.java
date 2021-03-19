@@ -62,6 +62,7 @@ public class AccountValidation{
 //            }
 //        }
 //        return validLength && hasLetter && hasNumber;
+        System.out.println(password.length());
         return password.length() <= 10;
     }
 
@@ -122,6 +123,9 @@ public class AccountValidation{
     }
 
     public boolean verifyCurrentPassword(String currentPassword, User currentUser) {
+        System.out.println("test");
+        System.out.println(currentPassword);
+        System.out.println(currentUser.getPassword());
         if (currentPassword.equals(currentUser.getPassword())) {
             return true;
         }

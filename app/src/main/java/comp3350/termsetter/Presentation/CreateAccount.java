@@ -127,7 +127,7 @@ public class CreateAccount extends AppCompatActivity {
 
         // 4. Check confirm password
         boolean validConfirmPassword = accountValidation.validPassword(confirmPassword);
-        if(validPassword || !(accountValidation.confirmPassword(password, confirmPassword))){
+        if(!validPassword || !(accountValidation.confirmPassword(password, confirmPassword))){
             Toast.makeText(mContext, "Please check confirm password again!", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -158,7 +158,7 @@ public class CreateAccount extends AppCompatActivity {
         String inputPhone = ePhone.getText().toString();
 
         if (validate(inputName, inputID, inputPassword, inputConfirmPassword, inputEmail, inputPhone)) {
-            User user = new User(inputID, inputName, inputPassword, inputEmail, inputPhone);
+            User user = new User(inputName, inputPassword, inputEmail, inputPhone,inputID);
             database.insertUser(user);
             Intent intent = new Intent(CreateAccount.this, LoginPage.class);
             startActivity(intent);
