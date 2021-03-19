@@ -1,5 +1,7 @@
 package comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects;
 
+import android.content.Context;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,8 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import comp3350.termsetter.Persistence.DomainSpecific.User;
+import comp3350.termsetter.Persistence.UserPersistence;
 
-public class StudentAccess {
+public class StudentAccess implements UserPersistence {
 
     Connection connect = null;
     private final String dbPath;
@@ -26,32 +29,43 @@ public class StudentAccess {
     }
 
 
+    public void insertUser(User user) throws SQLException {
 
-
-
-    public List<String> getAllStudents() throws SQLException {
-        List<String> studentIDs= new ArrayList<>();
         // first connect
         connect = this.connection();
 
+        //get Data from user
+        String name = user.getName();
+        String password = user.getPassword();
+        String email = user.getEmailAddress();
+        String phoneNumber = user.getPhoneNumber();
+        String studentID = user.getStudentID();
+
+
         //query
-        PreparedStatement statement = connect.prepareStatement("select * from students");
+        PreparedStatement statement = connect.prepareStatement("INSERT INTO students VALUES (?,?, ?, ?, ?);");
+        statement.setString(1, user.getStudentID());
+        statement.setString(2, user.getName());
+        statement.setString(3, user.getPassword());
+        statement.setString(4, user.getEmailAddress());
+        statement.setString(5, user.getPhoneNumber());
+        // ResultSet resultSet = statement.executeQuery();
 
-        ResultSet resultSet = statement.executeQuery();
-
-        //collect
-        while(resultSet.next()) {
-
-            //just get the ID's for now
-            final String student_id = resultSet.getString("student_id");
-
-            //put them in a list for now
-            studentIDs.add(student_id);
-        }
-        return studentIDs;
+        //Update DB
+        statement.executeUpdate();
     }
 
-    public User getStudent(String student_id) throws SQLException {
+    @Override
+    public void setCurrentUser(String sID) {
+        
+    }
+
+    @Override
+    public int findUserIndex(String sID) {
+        return 0;
+    }
+
+    public User getUser(String student_id) throws SQLException {
         //will change this later
         connect = this.connection();
 
@@ -80,34 +94,32 @@ public class StudentAccess {
 
         //whoever uses this method, check if the user is null or not.
         return user;
-
     }
-   public void insertUser(User user) throws SQLException {
 
-       // first connect
-       connect = this.connection();
+    @Override
+    public User getCurrentUser() {
+        return null;
+    }
 
-       //get Data from user
-       String name = user.getName();
-       String password = user.getPassword();
-       String email = user.getEmailAddress();
-       String phoneNumber = user.getPhoneNumber();
-       String studentID = user.getStudentID();
+    public List<String> getAllStudents() throws SQLException {
+        List<String> studentIDs= new ArrayList<>();
+        // first connect
+        connect = this.connection();
 
+        //query
+        PreparedStatement statement = connect.prepareStatement("select * from students");
 
-       //query
-       PreparedStatement statement = connect.prepareStatement("INSERT INTO students VALUES (?,?, ?, ?, ?);");
-       statement.setString(1, user.getStudentID());
-       statement.setString(2, user.getName());
-       statement.setString(3, user.getPassword());
-       statement.setString(4, user.getEmailAddress());
-       statement.setString(5, user.getPhoneNumber());
-      // ResultSet resultSet = statement.executeQuery();
+        ResultSet resultSet = statement.executeQuery();
 
-       //Update DB
-       statement.executeUpdate();
+        //collect
+        while(resultSet.next()) {
 
-   }
+            //just get the ID's for now
+            final String student_id = resultSet.getString("student_id");
 
-
+            //put them in a list for now
+            studentIDs.add(student_id);
+        }
+        return studentIDs;
+    }
 }
