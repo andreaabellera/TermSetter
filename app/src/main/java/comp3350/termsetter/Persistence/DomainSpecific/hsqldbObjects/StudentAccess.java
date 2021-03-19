@@ -35,11 +35,11 @@ public class StudentAccess implements UserPersistence {
             connect = this.connection();
             //query
             PreparedStatement statement = connect.prepareStatement("INSERT INTO students VALUES (?,?,?,?,?);");
-            statement.setString(1, user.getStudentID());
-            statement.setString(2, user.getName());
-            statement.setString(3, user.getPassword());
-            statement.setString(4, user.getEmailAddress());
-            statement.setString(5, user.getPhoneNumber());
+            statement.setString(5, user.getStudentID());
+            statement.setString(1, user.getName());
+            statement.setString(2, user.getPassword());
+            statement.setString(3, user.getEmailAddress());
+            statement.setString(4, user.getPhoneNumber());
             // ResultSet resultSet = statement.executeQuery();
 
             //Update DB
@@ -74,7 +74,7 @@ public class StudentAccess implements UserPersistence {
             final String phoneNumber = resultSet.getString("phoneNum");
             final String email = resultSet.getString("email");
 
-            user = new User(studentID, name, passID, phoneNumber, email);
+            user = new User( name, passID, phoneNumber, email, studentID);
 
 
         }

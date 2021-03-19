@@ -25,8 +25,7 @@ public class AccountManageProfile extends AppCompatActivity {
         setContentView(R.layout.activity_account_manage_profile2);
 
         mContext = getApplicationContext();
-//        database = new StubDatabase(mContext,"test.db");
-
+       // database = new StubDatabase(mContext,"test.db");
         accessStudents = new AccessStudents();
         database = accessStudents.getStudentPersistence();
         try {
@@ -37,7 +36,8 @@ public class AccountManageProfile extends AppCompatActivity {
     }
 
     private void displayProfile() throws SQLException {
-        User user = accessStudents.getStudent("asdf");
+        User user = database.getCurrentUser();
+        //User user = accessStudents.getStudent("asdf");
 
         TextView studentName = findViewById(R.id.manageProfileTxtStudent2);
         TextView studentID = findViewById(R.id.manageProfileTxtStudent3);
