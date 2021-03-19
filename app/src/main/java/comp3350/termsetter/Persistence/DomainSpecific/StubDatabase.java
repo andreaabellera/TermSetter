@@ -62,11 +62,11 @@ public class StubDatabase {
         int lookupIndex = findUserIndex(sID);
 
         if (lookupIndex != 0) {
-            String nameKey = "name" + lookupIndex;
+            String nameKey = "name" + lookupIndex; //name1
             String passwordKey = "password" + lookupIndex;
             String emailKey = "email" + lookupIndex;
             String phoneKey = "phone" + lookupIndex;
-            String idKey = "id" + lookupIndex;
+            String idKey = "id" + lookupIndex; //id1
 
             String name = preferences.getString(nameKey,"");
             String password = preferences.getString(passwordKey,"");
