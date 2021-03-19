@@ -7,6 +7,8 @@ import org.junit.Test;
 
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.Persistence.DomainSpecific.User;
+import comp3350.termsetter.Persistence.UserPersistence;
+
 import static org.junit.Assert.*;
 
 public class UserDatabaseTest extends AppCompatActivity {
@@ -21,7 +23,7 @@ public class UserDatabaseTest extends AppCompatActivity {
     @Test
     public void testDatabaseCreate() {
         System.out.println("\nStarting testDatabaseCreate: object exists after creation\n");
-        StubDatabase db = new StubDatabase(this,"test.db");
+        UserPersistence db = new StubDatabase(this,"test.db");
         assertNotNull(db);
         System.out.println("End testDatabaseCreate: object exists after creation\n");
     }
