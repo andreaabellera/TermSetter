@@ -17,4 +17,6 @@ public interface UserPersistence {
     boolean updatePassword(String password);
 
     boolean updateEmail(String email);
+
+    void setCurrentUser(String inputID);
 }

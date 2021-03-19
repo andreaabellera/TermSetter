@@ -10,13 +10,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.SQLException;
+
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
+import comp3350.termsetter.Persistence.UserPersistence;
 import comp3350.termsetter.R;
 import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 public class CreateAccount extends AppCompatActivity {
     private static Context mContext;
-    private StubDatabase database;
+    private UserPersistence database;
 
     private EditText eName;
     private EditText eMail;
@@ -73,7 +76,7 @@ public class CreateAccount extends AppCompatActivity {
         return true;
     }
 
-    public void onClickConfirmButton(View view) {
+    public void onClickConfirmButton(View view) throws SQLException {
         String inputName = eName.getText().toString();
         String inputID = eStudentID.getText().toString();
         String inputPassword = ePassword.getText().toString();

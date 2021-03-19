@@ -11,16 +11,19 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.SQLException;
+
 import comp3350.termsetter.Persistence.ConnectDB;
 import comp3350.termsetter.Persistence.Main;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
+import comp3350.termsetter.Persistence.UserPersistence;
 import comp3350.termsetter.R;
 
 import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 public class LoginPage extends AppCompatActivity {
     private static Context mContext;
-    private StubDatabase database;
+    private UserPersistence database;
     private EditText eID;
     private EditText ePassword;
     private Button eLogin;
@@ -39,7 +42,7 @@ public class LoginPage extends AppCompatActivity {
         //}
     }
 
-    public void onClickLoginButton(View view) {
+    public void onClickLoginButton(View view) throws SQLException {
         if (database != null) {
             eID = findViewById(R.id.loginEdtxt1);
             ePassword = findViewById(R.id.loginEdtxt2);
@@ -83,7 +86,7 @@ public class LoginPage extends AppCompatActivity {
         }
     }
 
-    private boolean validateUser(String id, String password) {
+    private boolean validateUser(String id, String password) throws SQLException {
         boolean result = false;
         User user = database.getUser(id);
 
