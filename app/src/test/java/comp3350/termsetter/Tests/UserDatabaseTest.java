@@ -13,6 +13,7 @@ public class UserDatabaseTest {
     String validPasswd = "123pass";
     String validEmail = "mailme@myumanitoba.ca";
     String validPhone = "204";
+    String validID = "hohoho";
 
     @Test
     public void testDatabaseCreate() {
@@ -42,7 +43,7 @@ public class UserDatabaseTest {
     public void testDatabaseAdd() {
         System.out.println("\nStarting testDatabaseAdd: getUser maintains integrity of inputs in added object\n");
         Database db = new Database();
-        db.addUser(new User(validName, validPasswd, validEmail, validPhone));
+        db.addUser(new User(validName, validPasswd, validEmail, validPhone, validID));
 
         boolean sameValues = true;
         sameValues = validName.equals(db.getUser().getName());
@@ -58,9 +59,9 @@ public class UserDatabaseTest {
     public void testDatabaseGetFirst() {
         System.out.println("\nStarting testDatabaseGetFirst: getUser only retrieves the first list element\n");
         Database db = new Database();
-        db.addUser(new User("first", validPasswd, validEmail, validPhone));
-        db.addUser(new User("second", validPasswd, validEmail, validPhone));
-        db.addUser(new User("third", validPasswd, validEmail, validPhone));
+        db.addUser(new User("first", validPasswd, validEmail, validPhone, validID));
+        db.addUser(new User("second", validPasswd, validEmail, validPhone, validID));
+        db.addUser(new User("third", validPasswd, validEmail, validPhone, validID));
 
         assertEquals(db.getUser().getName(), "first");
         System.out.println("End testDatabaseGetFirst: getUser only retrieves the first list element\n");
@@ -70,8 +71,8 @@ public class UserDatabaseTest {
     public void testDatabaseUpdateUser() {
         System.out.println("\nStarting testDatabaseUpdateUser: new user overwrites the first user\n");
         Database db = new Database();
-        db.addUser(new User("first", validPasswd, validEmail, validPhone));
-        db.updateUser(new User("secondThatBecameFirst", validPasswd, validEmail, validPhone));
+        db.addUser(new User("first", validPasswd, validEmail, validPhone, validID));
+        db.updateUser(new User("secondThatBecameFirst", validPasswd, validEmail, validPhone, validID));
         assertEquals(db.getUser().getName(), "secondThatBecameFirst");
         System.out.println("End testDatabaseUpdateUser: new user overwrites the first user\n");
     }
