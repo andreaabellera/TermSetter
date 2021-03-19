@@ -256,7 +256,7 @@ public class AccountValidationTest {
     @Test
     public void testConfirmPasswordFalse() {
         System.out.println("\nStarting testConfirmPasswordFalse: given 2 passwords are invalid\n");
-        boolean result = newPass.equals(newPassTrue);
+        boolean result = newPass.equals(newPassFalse);
         assertFalse(result);
         System.out.println("End testConfirmPasswordFalse: given 2 passwords are invalid\n");
     }
