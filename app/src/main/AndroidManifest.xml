@@ -55,7 +55,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="comp3350.termsetter.Persistence.CreateAccount"
+            android:name="comp3350.termsetter.Presentation.CreateAccount"
             android:label="Create Account">
         </activity>
         <activity

@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class DBHelper {
+public class DBImporter {
 
     public static void copyDatabaseToDevice(Context context) throws IOException {
         final String DB_PATH = "databases";
