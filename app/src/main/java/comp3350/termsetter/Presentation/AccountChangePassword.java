@@ -84,43 +84,6 @@ public class AccountChangePassword extends AppCompatActivity {
             else {
                 Toast.makeText(AccountChangePassword.this, "Your current password is invalid!", Toast.LENGTH_SHORT).show();
             }
-
-//            if (validate(inputOldPassword, inputNewPassword, inputNewPasswordConfirm)) {
-//                Toast.makeText(AccountChangePassword.this, "Old Password: " + inputOldPassword, Toast.LENGTH_SHORT).show();
-//                Toast.makeText(AccountChangePassword.this, "New Password: " + inputNewPassword, Toast.LENGTH_SHORT).show();
-//                Toast.makeText(AccountChangePassword.this, "Confirm Password: " + inputNewPasswordConfirm, Toast.LENGTH_SHORT).show();
-//
-//                if (database.updatePassword(inputNewPassword)) {
-//                    Toast.makeText(AccountChangePassword.this, "Password has been changed!", Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(AccountChangePassword.this, AccountManagementMenu.class);
-//                    startActivity(intent);
-//                }
-//                else {
-//                    Toast.makeText(AccountChangePassword.this, "Update password is not working!", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//            else {
-//                Toast.makeText(AccountChangePassword.this, "Please try again!", Toast.LENGTH_SHORT).show();
-//            }
         }
     }
-
-
-//    private boolean validate(String oldPass, String newPass, String newPassConfirm) throws SQLException {
-//        User user = database.getCurrentUser();
-//        boolean result = false;
-//
-//        if (oldPass.equals(user.getPassword())) {
-//            if (newPass.equals(newPassConfirm)) {
-//                result = true;
-//            }
-//            else {
-//                Toast.makeText(AccountChangePassword.this, "Please confirm your password again!", Toast.LENGTH_SHORT).show();
-//            }
-//        }
-//        else {
-//            Toast.makeText(AccountChangePassword.this, "Your old password is incorrect!", Toast.LENGTH_SHORT).show();
-//        }
-//        return result;
-//    }
 }

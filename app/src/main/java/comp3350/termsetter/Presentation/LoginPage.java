@@ -53,7 +53,6 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void onClickLoginButton(View view) throws SQLException {
-        //if (database != null) {
         eID = findViewById(R.id.loginEdtxt1);
         ePassword = findViewById(R.id.loginEdtxt2);
         eLogin = findViewById(R.id.loginBtn);
@@ -78,57 +77,11 @@ public class LoginPage extends AppCompatActivity {
             }
     }
 
-
-//        // If either ID or Password is missing
-//        if (inputID.isEmpty() || inputPassword.isEmpty()) {
-//            Toast.makeText(LoginPage.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
-//        }
-//        else {
-//            // Validate user profile from the database
-//
-//        }
-        //}
-//        else {
-//            eID = findViewById(R.id.loginEdtxt1);
-//            ePassword = findViewById(R.id.loginEdtxt2);
-//
-//            String inputID = eID.getText().toString();
-//            String inputPassword = ePassword.getText().toString();
-//
-//            // If either ID or Password is missing
-//            if (inputID.isEmpty() || inputPassword.isEmpty()) {
-//                Toast.makeText(LoginPage.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
-//            }
-//            // Invalid account
-//            else {
-//                Toast.makeText(LoginPage.this, "Account doesn't exist!", Toast.LENGTH_SHORT).show();
-//            }
-//        }
-
-//    private boolean validateUser(String id, String password) throws SQLException {
-//        boolean result = false;
-//        User user = database.getUser(id);
-//
-//        if (user != null) {
-//            if (password.equals(user.getPassword())) {
-//                result = true;
-//            }
-//        }
-//        return result;
-//    }
-
     public void onClickCreateAccountButton(View view) throws SQLException {
         // Brief message
         // Shows create account page
         Toast.makeText(this, "Create Account Button pressed!", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, CreateAccount.class);
         startActivity(intent);
-
-        //ConnectDB db = new ConnectDB(Main.getDBPathName());
-        /*StudentAccess db = new StudentAccess(Main.getDBPathName());
-
-        User eriq = db.getUser("hamptone");
-        System.out.println(eriq.getName());*/
-
     }
 }
