@@ -1,5 +1,8 @@
 package comp3350.termsetter.Logic;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class AccountValidation{
 
     final int MIN_NAME_LENGTH = 1;
@@ -11,11 +14,17 @@ public class AccountValidation{
 
     public AccountValidation(){ }
 
-    public boolean validAccount(String name, String password, String email, String phone){
-        return validNewName(name) && validNewPassword(password) && validNewEmail(email) && validNewPhone(phone);
+    public boolean validAccount(String name, String id, String password, String email, String phone){
+        return validNewName(name) && validNewID(id) && validNewPassword(password) && validNewEmail(email) && validNewPhone(phone);
     }
 
     public boolean validNewName(String name){
+        Pattern p = Pattern.compile("^[a-zA-Z]+\\s{1}[a-zA-z]+$");
+        Matcher m = p.matcher(name);
+        return m.matches() && name.length() >= MIN_NAME_LENGTH && name.length() <= MAX_NAME_LENGTH;
+    }
+
+    public boolean validNewID(String name){
         return name.length() >= MIN_NAME_LENGTH && name.length() <= MAX_NAME_LENGTH;
     }
 
@@ -36,9 +45,13 @@ public class AccountValidation{
     }
 
     public boolean validNewEmail(String email){
-        String[] tokens = email.split("@");
-        boolean validLength = tokens[1].length() >= MIN_NAME_LENGTH && tokens[1].length() <= MAX_NAME_LENGTH;
-        boolean validDomain = tokens[2].contains("myumanitoba.ca");
+        boolean validLength = false;
+        boolean validDomain = false;
+        if(email.contains("@")){
+            String[] tokens = email.split("@");
+            validLength = tokens[0].length() >= MIN_NAME_LENGTH && tokens[0].length() <= MAX_NAME_LENGTH;
+            validDomain = tokens[1].contains("myumanitoba.ca");
+        }
         return validLength && validDomain;
     }
 
@@ -52,7 +65,7 @@ public class AccountValidation{
                 digits += ch;
             }
             else{
-                if(ch != '+' || ch != ' ' || ch != '-' || ch != '(' || ch != ')'){
+                if(ch != '+' && ch != ' ' && ch != '-' && ch != '(' && ch != ')'){
                     hasInvalidChar = true;
                 }
                 else{
