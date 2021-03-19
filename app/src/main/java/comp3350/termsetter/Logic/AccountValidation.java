@@ -25,14 +25,10 @@ public class AccountValidation{
 
     public boolean validName(String name){
 //        return name.length() >= MIN_NAME_LENGTH && name.length() <= MAX_NAME_LENGTH;
-
-
-        // 1. Check Name
         p = Pattern.compile("^[a-zA-Z]+\\s{1}[a-zA-z]+$");
         m = p.matcher(name);
 
         if(!m.matches() || name.isEmpty() || !(name.length() <= 30)){
-            Toast.makeText(mContext, "The name consist of First name, 1 whitespace, and Last name.", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -43,7 +39,6 @@ public class AccountValidation{
         m = p.matcher(id);
 
         if(!m.matches() || id.isEmpty() || !(id.length() <= 20)){
-            Toast.makeText(mContext, "Your student ID must begin with a character.", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -65,13 +60,19 @@ public class AccountValidation{
         return validLength && hasLetter && hasNumber;
     }
 
-    public boolean validEmail(String email){
-        String[] tokens = email.split("@");
-        boolean validLength = tokens[1].length() >= MIN_NAME_LENGTH && tokens[1].length() <= MAX_NAME_LENGTH;
-        boolean validDomain = tokens[2].contains("myumanitoba.ca");
-        return validLength && validDomain;
-    }
+    public boolean validEmail(String email) {
+//        String[] tokens = email.split("@");
+//        boolean validLength = tokens[1].length() >= MIN_NAME_LENGTH && tokens[1].length() <= MAX_NAME_LENGTH;
+//        boolean validDomain = tokens[2].contains("myumanitoba.ca");
+//        return validLength && validDomain;
 
+        p = Pattern.compile("^[a-zA-Z]+[0-9]*@myumanitoba\\.ca$");
+        m = p.matcher(email);
+        if (!m.matches() || email.isEmpty() || !(email.contains("@myumanitoba.ca")) || !(email.length() > "@myumanitoba.ca".length())) {
+            return false;
+        }
+        return true;
+    }
     public boolean validPhone(String phone){
         String digits = "";
         boolean hasInvalidChar = false;

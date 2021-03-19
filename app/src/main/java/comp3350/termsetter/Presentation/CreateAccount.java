@@ -57,29 +57,38 @@ public class CreateAccount extends AppCompatActivity {
 
         // 1. Check Name
         boolean validName = accountValidation.validName(name);
+        if (!validName) {
+            Toast.makeText(mContext, "The name consist of First name, 1 whitespace, and Last name.", Toast.LENGTH_SHORT).show();
+        }
 
         // 2. Check ID (must start with a character, then some numbers)
         boolean validID = accountValidation.validID(id);
+        if (!validID) {
+            Toast.makeText(mContext, "Your student ID must begin with a character.", Toast.LENGTH_SHORT).show();
+        }
 
         // 3. Check password
-        if(password.isEmpty()){
-            Toast.makeText(mContext, "Password must be at least 10 characters and contain both letters and numbers!", Toast.LENGTH_SHORT).show();
-            return false;
+        boolean validPassword = accountValidation.validPassword(password);
+        if (!validPassword) {
+            Toast.makeText(mContext, "Password must be 10 characters long and contain both letter and number!", Toast.LENGTH_SHORT).show();
         }
+
         // 4. Check confirm password
-        if(confirmPassword.isEmpty() || !(confirmPassword.equals(password))){
+        boolean validConfirmPassword = accountValidation.validPassword(confirmPassword);
+        if(validPassword || !(accountValidation.confirmPassword(password, confirmPassword))){
             Toast.makeText(mContext, "Please check confirm password again!", Toast.LENGTH_SHORT).show();
             return false;
         }
         // 5. Check email
-        p = Pattern.compile("^[a-zA-Z]+[0-9]*@myumanitoba\\.ca$");
-        m = p.matcher(email);
-        if(!m.matches() || email.isEmpty() || !(email.contains("@myumanitoba.ca")) || !(email.length() > "@myumanitoba.ca".length())){
+
+        boolean validEmail = accountValidation.validEmail(email);
+        if (!validEmail) {
             Toast.makeText(mContext, "Your email domain should contain @myumanitoba.ca and some strings in front.", Toast.LENGTH_SHORT).show();
-            return false;
         }
+
         // 6. Check phone number (guaranteed to be just number)
-        if(phone.isEmpty() || phone.length() != 10){
+        boolean validPhone = accountValidation.validPhone(phone);
+        if(!validPhone){
             Toast.makeText(mContext, "Your phone number has to be exactly 10 numbers.", Toast.LENGTH_SHORT).show();
             return false;
         }
