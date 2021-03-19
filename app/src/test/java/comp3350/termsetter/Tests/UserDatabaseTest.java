@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.junit.Test;
 
-import comp3350.termsetter.Persistence.DomainSpecific.Database;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.Persistence.DomainSpecific.User;
 import static org.junit.Assert.*;

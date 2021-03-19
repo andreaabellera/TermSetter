@@ -10,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import comp3350.termsetter.R;
 
-import comp3350.termsetter.Persistence.DomainSpecific.Database;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override

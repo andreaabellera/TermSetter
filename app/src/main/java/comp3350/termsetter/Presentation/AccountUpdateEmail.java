@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.R;
 
-import comp3350.termsetter.Persistence.DomainSpecific.Database;
 import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 public class AccountUpdateEmail extends AppCompatActivity {

@@ -25,12 +25,7 @@ public class AccountManageProfile extends AppCompatActivity {
     }
 
     private void displayProfile(){
-        if (database.getCount() == 0){
-            return;
-        }
-
-        String userCurrentID = database.getCurrentID();
-        User user = database.getUser(userCurrentID);
+        User user = database.getCurrentUser();
 
         TextView studentName = findViewById(R.id.manageProfileTxtStudent2);
         TextView studentID = findViewById(R.id.manageProfileTxtStudent3);

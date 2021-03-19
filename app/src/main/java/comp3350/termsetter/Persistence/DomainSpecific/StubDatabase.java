@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 
+import comp3350.termsetter.Persistence.UserPersistence;
+
 import static android.content.Context.MODE_PRIVATE;
 
-public class StubDatabase {
+public class StubDatabase implements UserPersistence {
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
     private static int count = 0;
