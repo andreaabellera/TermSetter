@@ -1,31 +1,30 @@
 package comp3350.termsetter.Tests;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
 import comp3350.termsetter.Logic.OfferedClassLogic;
+import comp3350.termsetter.Presentation.OfferedClassesCategories;
 
 import static org.junit.Assert.*;
 
 public class CourseCategoryIntegrationTest {
 
-    OfferedClassLogic stub;
     OfferedClassLogic sql;
+    OfferedClassesCategories act;
 
-    @Test
-    public void testStubDatabaseCreate() throws IOException {
-        System.out.println("\nStarting testStubDatabaseCreate: object exists after creation\n");
-        stub = new OfferedClassLogic(false, null);
-        assertNotNull(stub);
-        System.out.println("End testStubDatabaseCreate: object exists after creation\n");
+    @Before
+    public void setContext(){
+        act = new OfferedClassesCategories();
     }
 
     @Test
     public void testSQLDatabaseCreate() throws SQLException {
         System.out.println("\nStarting testSQLDatabaseCreate: object exists after creation\n");
-        sql = new OfferedClassLogic(true, null);
+        sql = new OfferedClassLogic(true, act);
         assertNotNull(sql);
         System.out.println("End testSQLDatabaseCreate: object exists after creation\n");
     }

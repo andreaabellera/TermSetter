@@ -10,7 +10,8 @@ import static org.junit.Assert.*;
 public class AccountValidationTest {
 
     AccountValidation av;
-    String validName = "name";
+    String validName = "Name Surname";
+    String validID = "username";
     String validPasswd = "123pass";
     String validEmail = "mailme@myumanitoba.ca";
     String validPhone = "2045588878";
@@ -42,7 +43,7 @@ public class AccountValidationTest {
     @Test
     public void testValidAccount() {
         System.out.println("\nStarting testValidAccount: given values are valid\n");
-        boolean result = av.validAccount(validName, validPasswd, validEmail, validPhone);
+        boolean result = av.validAccount(validName, validID, validPasswd, validEmail, validPhone);
         assertTrue(result);
         System.out.println("End testValidAccount: given values are valid\n");
     }
@@ -61,6 +62,31 @@ public class AccountValidationTest {
         boolean result = av.validNewName(longName);
         assertFalse(result);
         System.out.println("End testInvalidNameLong: given name is not valid\n");
+    }
+
+    @Test
+    public void testInvalidNameNoSpace() {
+        System.out.println("\nStarting testInvalidNameNoSpace: given name is not valid\n");
+        String nospace = "notavalidname";
+        boolean result = av.validNewName(nospace);
+        assertFalse(result);
+        System.out.println("End testInvalidNameNoSpace: given name is not valid\n");
+    }
+
+    @Test
+    public void testInvalidIDEmpty() {
+        System.out.println("\nStarting testInvalidIDEmpty: given ID is not valid\n");
+        boolean result = av.validNewName(empty);
+        assertFalse(result);
+        System.out.println("End testInvalidIDEmpty: given ID is not valid\n");
+    }
+
+    @Test
+    public void testInvalidIDLong() {
+        System.out.println("\nStarting testInvalidIDLong: given ID is not valid\n");
+        boolean result = av.validNewName(longName);
+        assertFalse(result);
+        System.out.println("End testInvalidIDLong: given ID is not valid\n");
     }
 
     @Test
