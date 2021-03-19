@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Persistence.ConnectDB;
 import comp3350.termsetter.Persistence.DBImporter;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
@@ -30,6 +31,7 @@ public class LoginPage extends AppCompatActivity {
     private EditText eID;
     private EditText ePassword;
     private Button eLogin;
+    private AccessStudents accessStudents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +44,9 @@ public class LoginPage extends AppCompatActivity {
         }
         mContext = getApplicationContext();
         //database = new StubDatabase(mContext,"test.db");
-        database = new StudentAccess(Main.getDBPathName());
 
-
-
+        accessStudents = new AccessStudents();
+        database = accessStudents.getStudentPersistence();
     }
 
     public void onClickLoginButton(View view) throws SQLException {
@@ -65,6 +66,11 @@ public class LoginPage extends AppCompatActivity {
                 // Validate user profile from the database
                 if (validateUser(inputID, inputPassword)) {
                     database.setCurrentUser(inputID);
+
+                    User test = accessStudents.getStudent(inputID);
+
+                    System.out.println(test.getStudentID());
+
                     Toast.makeText(LoginPage.this, "Welcome " + inputID + " !", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginPage.this, MainActivity.class);
                     startActivity(intent);
@@ -94,7 +100,7 @@ public class LoginPage extends AppCompatActivity {
 
     private boolean validateUser(String id, String password) throws SQLException {
         boolean result = false;
-        User user = database.getUser(id);
+        User user = accessStudents.getStudent(id);
 
         if (user != null) {
             if (password.equals(user.getPassword())) {
