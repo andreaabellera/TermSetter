@@ -57,5 +57,4 @@ public class User  {
         this.Email = input;
     }
 
-    //public void setStudentNumber(String studentID){ this.StudentNumber = studentID}
 }

@@ -33,6 +33,13 @@ public class UserTest {
         System.out.println("End testSetName: set and return correct value\n");
     }
 
+    public void testID() {
+        System.out.println("\nStarting testSetName: set and return correct value\n");
+        User user = new User(validName, validPasswd, validEmail, validPhone, validID);
+        assertEquals(user.getStudentID(), validID);
+        System.out.println("End testID: return correct value\n");
+    }
+
     @Test
     public void testSetPassword() {
         System.out.println("\nStarting testSetPassword: set and return correct value\n");
