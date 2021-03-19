@@ -18,6 +18,9 @@ public class User  {
     }
 
     /* Getters */
+    public String getStudentID() {
+        return this.studentID;
+    }
 
     public String getName() {
         return this.Name;
@@ -35,13 +38,7 @@ public class User  {
         return this.Email;
     }
 
-    public String getStudentID() {
-        return this.studentID;
-    }
-
-
     /* Setters */
-
 
     // purpose: sets username
     // input: the String to assign to user id

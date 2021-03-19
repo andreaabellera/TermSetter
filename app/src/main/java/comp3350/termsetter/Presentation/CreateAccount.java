@@ -85,6 +85,7 @@ public class CreateAccount extends AppCompatActivity {
             User user = new User(inputName, inputPassword, inputEmail, inputPhone, inputID);
             database.insertUser(user);
             Intent intent = new Intent(CreateAccount.this, LoginPage.class);
+
             startActivity(intent);
             Toast.makeText(CreateAccount.this, "Welcome " + inputName + "!", Toast.LENGTH_SHORT).show();
         }
