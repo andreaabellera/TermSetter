@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 public interface UserPersistence {
+
     void insertUser(User user) throws SQLException;
            
     User getUser(String sID) throws SQLException;
@@ -16,4 +17,6 @@ public interface UserPersistence {
     boolean updatePassword(String password);
 
     boolean updateEmail(String email);
+
+    void setCurrentUser(String inputID);
 }
