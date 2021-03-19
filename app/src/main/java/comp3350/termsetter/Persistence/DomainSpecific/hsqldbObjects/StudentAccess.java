@@ -105,6 +105,16 @@ public class StudentAccess implements UserPersistence {
         return resultSet.next();
     }
 
+    @Override
+    public boolean updatePassword(String password) {
+        return false;
+    }
+
+    @Override
+    public boolean updateEmail(String email) {
+        return false;
+    }
+
     public List<String> getAllStudents() throws SQLException {
         List<String> studentIDs= new ArrayList<>();
         // first connect

@@ -108,7 +108,7 @@ public class StubDatabase implements UserPersistence {
             int lookupIndex = findUserIndex(currentID);
             String emailKey = "email" + lookupIndex;
             editor.putString(emailKey, newEmail);
-            lookupIndex = 0;
+            editor.apply();
             return true;
         }
 
