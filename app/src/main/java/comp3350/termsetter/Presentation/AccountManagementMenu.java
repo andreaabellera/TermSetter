@@ -7,9 +7,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.termsetter.R;
-
-import comp3350.termsetter.Persistence.DomainSpecific.Database;
+import comp3350.termsetter.R;
 
 public class AccountManagementMenu extends AppCompatActivity {
 
@@ -25,20 +23,20 @@ public class AccountManagementMenu extends AppCompatActivity {
     }
 
     public void openUpdateEmail(View view) {
-        Intent intent = getIntent();
-        Database database = (Database) intent.getSerializableExtra("database");
-        Intent intentI = new Intent(this, comp3350.termsetter.Presentation.AccountUpdateEmail.class);
-        intentI.putExtra("database", database);
-        startActivity(intentI);
+        Intent intent = new Intent(this, comp3350.termsetter.Presentation.AccountUpdateEmail.class);
+        startActivity(intent);
     }
 
     public void openChangePassword(View view) {
-        Intent intent = getIntent();
-        Database database = (Database) intent.getSerializableExtra("database");
-        Intent intentI = new Intent(this, comp3350.termsetter.Presentation.AccountChangePassword.class);
-        intentI.putExtra("database", database);
-        startActivity(intentI);
+        Intent intent = new Intent(this, comp3350.termsetter.Presentation.AccountChangePassword.class);
+        startActivity(intent);
     }
+
+    public void returnToMainMenu(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
 
     public void openSettings(View view) {
         Intent intent = new Intent(this, comp3350.termsetter.Presentation.AccountSettings.class);

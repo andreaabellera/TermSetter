@@ -7,19 +7,31 @@
     <string name="title_activity_offered_classes_view">Offered Classes</string>
     <string name="title_activity_offered_classes_detail">Class Details</string>
 
+    <string name="txtbtn_back">Back to Menu</string>
+
+    <string name="header_main">Home</string>
+    <string name="btn_main_manage_account">Manage Account</string>
+    <string name="btn_main_view_my_courses">View My Courses</string>
+    <string name="btn_main_view_off_courses">Browse Course List</string>
+    <string name="btn_main_logout">Logout</string>
+
     <string name="header_account_management">Account Management</string>
     <string name="btn_account_management_manage_profile">Manage Profile</string>
     <string name="btn_account_management_update_email">Update Email</string>
     <string name="btn_account_management_change_password">Change Password</string>
-    <string name="btn_account_management_settings">Update Email</string>
+    <string name="btn_account_management_settings">Settings</string>
 
     <string name="header_manage_profile">Manage Profile</string>
-    <string name="txt_manage_profile_prompt1">Student number:</string>
-    <string name="txt_manage_profile_prompt2">Student name:</string>
-    <string name="txt_manage_profile_prompt3">UserId:</string>
+    <string name="txt_manage_profile_prompt1">Student Number:</string>
+    <string name="txt_manage_profile_prompt2">Name:</string>
+    <string name="txt_manage_profile_prompt3">ID:</string>
+    <string name="txt_manage_profile_prompt4">Email:</string>
+    <string name="txt_manage_profile_prompt5">Phone:</string>
     <string name="txt_manage_profile_student_number">[ ####### ]</string>
     <string name="txt_manage_profile_student_name">[ John Doe ]</string>
-    <string name="txt_manage_profile_user_id">[ UserID ]</string>
+    <string name="txt_manage_profile_student_id">[ Student ID ]</string>
+    <string name="txt_manage_profile_student_email">[ Email Address ]</string>
+    <string name="txt_manage_profile_student_phone">[ Phone Number ]</string>
 
     <string name="header_update_email">Update Email</string>
     <string name="txt_update_email_prompt1">Current email:</string>

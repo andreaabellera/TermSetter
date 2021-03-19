@@ -36,7 +36,13 @@ public class CourseSection implements Serializable {
         return instructor;
     }
 
-    protected void enroll() {
+    public int getOccupancy(){ return occupants; }
+
+    public void setMaxOccupancy(int max) {
+        maxOccupancy = max;
+    }
+
+    public void enroll() {
         if (courseAvailable())
             occupants++;
     }
@@ -45,15 +51,5 @@ public class CourseSection implements Serializable {
         return occupants < maxOccupancy;
     }
 
-    public void print() {
-        //for debugging
-
-        System.out.print(section + "\t");
-        System.out.print(days + "\t");
-        System.out.print(timeSlot + "\t");
-        System.out.print(instructor + "\t");
-        System.out.println("Current Capacity = " + occupants + "/" + maxOccupancy);
-
-    }
 }
 

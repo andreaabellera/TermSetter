@@ -4,15 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     android:padding="@dimen/box_inset_layout_padding"
     tools:context=".Presentation.OfferedClassesDetail">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/s1Time_txt"
@@ -21,7 +19,6 @@
             android:layout_marginStart="64dp"
             android:layout_marginTop="48dp"
             android:text="8:30am - 9:20am"
-            android:textColor="@color/foreground"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/sections_rgrp"
             app:layout_constraintTop_toBottomOf="@+id/selectedClassName_txt" />
@@ -33,7 +30,6 @@
             android:layout_marginStart="64dp"
             android:layout_marginTop="16dp"
             android:text="Dr. Json Nutella"
-            android:textColor="@color/foreground"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/sections_rgrp"
             app:layout_constraintTop_toBottomOf="@+id/s1Time_txt" />
@@ -45,20 +41,18 @@
             android:layout_marginStart="64dp"
             android:layout_marginTop="16dp"
             android:text="Prof. Sushi Android"
-            android:textColor="@color/foreground"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/sections_rgrp"
             app:layout_constraintTop_toBottomOf="@+id/s2Time_txt" />
 
         <TextView
             android:id="@+id/selectedClass_txt"
+            style="@style/CustomHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:text="COMP1010"
-            android:textColor="@color/foreground"
-            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,7 +63,6 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:text="Introductory Computer Science 1"
-            android:textColor="@color/foreground"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectedClass_txt" />
@@ -80,7 +73,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:text="3.00CR"
-            android:textColor="@color/accent_1"
             android:textSize="18sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/selectedClass_txt"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -92,7 +84,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="48dp"
             android:text="MWF"
-            android:textColor="@color/foreground"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/sections_rgrp"
             app:layout_constraintTop_toBottomOf="@+id/selectedClassName_txt" />
@@ -104,7 +95,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:text="TR"
-            android:textColor="@color/foreground"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/sections_rgrp"
             app:layout_constraintTop_toBottomOf="@+id/s1Prof_txt" />
@@ -126,7 +116,6 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:text="A01"
-                android:textColor="@color/foreground"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/selectedClassName_txt" />
@@ -138,7 +127,6 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:text="A02"
-                android:textColor="@color/foreground"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/s1Prof_txt" />
@@ -149,7 +137,6 @@
             android:id="@+id/enroll_btn"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            android:backgroundTint="@color/foreground"
             android:onClick="openCategories"
             android:text="ENROLL"
             android:textColor="@color/background"
@@ -164,7 +151,6 @@
             android:layout_marginStart="64dp"
             android:layout_marginTop="32dp"
             android:text="10:30am - 11:45am"
-            android:textColor="@color/foreground"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/sections_rgrp"
             app:layout_constraintTop_toBottomOf="@+id/s1Prof_txt" />

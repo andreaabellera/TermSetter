@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Pre-defined app colours -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -11,4 +12,35 @@
     <color name="foreground">#e1e1e1</color>
     <color name="accent_1">#7c8ded</color>
     <color name="accent_2">#52defe</color>
+
+    <!-- Custom theme colours -->
+    <color name="soft_white">#fafafa</color>
+    <color name="dark_cool_grey">#32363A</color>
+    <color name="faded_black">#383838</color>
+    <color name="dark_grey">#303030</color>
+    <color name="cool_grey">#cfd8dc</color>
+
+    <!-- seafloam -->
+    <color name="dusted_blueple">#8fb6ff</color>
+    <color name="dark_blueple">#5c87cc</color>
+    <color name="light_blueple">#c3e8ff</color>
+    <color name="fresh_turtle">#afe8e8</color>
+    <color name="aged_turtle">#7eb6b6</color>
+
+    <!-- horchacha -->
+    <color name="red_mocha">#773427</color>
+    <color name="milky_mocha">#a96050</color>
+    <color name="just_coffee">#470800</color>
+
+    <color name="fake_crab">#ff9e80</color>
+    <color name="dry_crab">#ffd0b0</color>
+    <color name="cooked_crab">#c96f53</color>
+
+    <!-- aquira -->
+    <color name="neo_purpyo">#423cb5</color>
+    <color name="neo_nightyo">#001757</color>
+
+    <color name="neo_aquayo">#91e7eb</color>
+    <color name="neo_greeyo">#b9f6ca</color>
+    <color name="neo_pinyo">#f9ddf3</color>
 </resources>

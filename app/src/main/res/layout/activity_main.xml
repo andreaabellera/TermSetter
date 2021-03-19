@@ -2,49 +2,78 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#32363A"
     android:paddingTop="?attr/actionBarSize">
 
+    <TextView
+        android:id="@+id/homeHeader"
+        style="@style/CustomHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/header_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/homeBtn1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/foreground"
-            android:onClick="onClickLogOutButton"
-            android:padding="16dp"
-            android:text="Log Out"
-            android:textColor="@color/background"
-            app:layout_constraintBottom_toTopOf="@+id/btn_navigation_links"
+            android:layout_marginTop="16dp"
+            android:onClick="openAccountManagementMenu"
+            android:text="@string/btn_main_manage_account"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btn_navigation_links"
+            android:id="@+id/homeBtn2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/foreground"
-            android:onClick="openNavigationLinks"
-            android:padding="16dp"
-            android:text="Navigation links"
-            android:textColor="#32363a"
+            android:layout_marginTop="32dp"
+            android:onClick="openEnrolledClassesView"
+            android:text="@string/btn_main_view_my_courses"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/homeBtn1" />
+
+        <Button
+            android:id="@+id/homeBtn3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:onClick="openOfferedClassesCategories"
+            android:text="@string/btn_main_view_off_courses"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/homeBtn2" />
+
+        <Button
+            android:id="@+id/homeBtn4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:onClick="onClickLogOutButton"
+            android:text="@string/btn_main_logout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintTop_toBottomOf="@+id/homeBtn3" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

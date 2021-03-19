@@ -4,6 +4,7 @@ package comp3350.termsetter.Tests;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import comp3350.termsetter.Persistence.*;
 import static org.junit.Assert.*;
@@ -77,6 +78,40 @@ public class ClassDatabaseTest {
     }
 
     @Test
+    public void testGetCourseByLevel() {
+        System.out.println("\nStarting testGetCourseByLevel: correct item returned\n");
+        Faculty f = new Faculty("Computer Science");
+        String code1 = "COMP1000";
+        String code2 = "COMP2000";
+        String code3 = "COMP3000";
+        String code4 = "COMP4000";
+        f.addCourses(new CourseOffering(code1, "Arbitrary", 2));
+        f.addCourses(new CourseOffering(code2, "Arbitrary", 3));
+        f.addCourses(new CourseOffering(code3, "Arbitrary", 2));
+        f.addCourses(new CourseOffering(code4, "Arbitrary", 3));
+        List<CourseOffering> lv2 = f.getCoursesByLevel(2);
+        assertEquals(lv2.get(0).getCourseCode(), code2);
+        System.out.println("\nEnd testGetCourseByLevel: correct item returned\n");
+    }
+
+    @Test
+    public void testGet3CharCourseByLevel() {
+        System.out.println("\nStarting testGet3CharCourseByLevel: correct item returned\n");
+        Faculty f = new Faculty("Computer Science");
+        String code1 = "MIS1000";
+        String code2 = "MIS2000";
+        String code3 = "MIS3000";
+        String code4 = "MIS4000";
+        f.addCourses(new CourseOffering(code1, "Arbitrary", 2));
+        f.addCourses(new CourseOffering(code2, "Arbitrary", 3));
+        f.addCourses(new CourseOffering(code3, "Arbitrary", 2));
+        f.addCourses(new CourseOffering(code4, "Arbitrary", 3));
+        List<CourseOffering> lv4 = f.getCoursesByLevel(4);
+        assertEquals(lv4.get(0).getCourseCode(), code4);
+        System.out.println("\nEnd testGet3CharCourseByLevel: correct item returned\n");
+    }
+
+    @Test
     public void testCreateCourseOffering() {
         System.out.println("\nStarting testCreateCourseOffering: object exists after creation\n");
         CourseOffering co = new CourseOffering("COU8888", "How to not fail as tester", 3);
@@ -89,7 +124,7 @@ public class ClassDatabaseTest {
         System.out.println("\nStarting testAddSection: correct object retrieved\n");
         CourseOffering co = new CourseOffering("COFF1000", "Drinking Coffee", 3);
         String prof = "A Coffee Mug";
-        co.addSection(new CourseSection("A01", "MW", "1:00am - 2:00am", prof));
+        co.addSection(new CourseSection("A01", "MW", "1:00-2:00", prof));
         CourseSection mySection = co.getCourse(0);
         assertEquals(mySection.getInstructor(), prof);
         System.out.println("\nEnd testAddSection: correct object retrieved\n");
@@ -101,8 +136,8 @@ public class ClassDatabaseTest {
         CourseOffering co = new CourseOffering("YES2021", "We're so Done", 3);
         String red = "Red Prof";
         String yellow = "Yellow Prof";
-        co.addSection(new CourseSection("A01", "Everyday", "3:30 - 9:20", red));
-        co.addSection(new CourseSection("A02", "M", "9:20 - 3:30", yellow));
+        co.addSection(new CourseSection("A01", "Everyday", "3:30-9:20", red));
+        co.addSection(new CourseSection("A02", "M", "9:20-3:30", yellow));
         ArrayList<CourseSection> s = (ArrayList<CourseSection>) co.getSections();
         assertEquals(s.get(0).getInstructor(), red);
         assertEquals(s.get(1).getInstructor(), yellow);
@@ -112,9 +147,73 @@ public class ClassDatabaseTest {
     @Test
     public void testCreateSection() {
         System.out.println("\nStarting testCreateSection: object exists after creation\n");
-        CourseSection s = new CourseSection("T01", "MTWRF", "8:30pm - 9:30pm", "Test Dr.");
+        CourseSection s = new CourseSection("T01", "MTWRF", "8:30-9:30", "Test Dr.");
         assertNotNull(s);
         System.out.println("\nEnd testCreateSection: object exists after creation\n");
     }
+
+    @Test
+    public void testGetSection() {
+        System.out.println("\nStarting testGetSection: value retrieved is correct\n");
+        String code = "T01";
+        CourseSection s = new CourseSection(code, "MTWRF", "8:30-9:30", "Test Dr.");
+        assertEquals(code, s.getSection());
+        System.out.println("\nEnd testGetSection: value retrieved is correct\n");
+    }
+
+    @Test
+    public void testGetDays() {
+        System.out.println("\nStarting testGetDays: value retrieved is correct\n");
+        String days = "MTWRF";
+        CourseSection s = new CourseSection("T01", days, "8:30-9:30", "Test Dr.");
+        assertEquals(days, s.getDays());
+        System.out.println("\nEnd testGetDays: value retrieved is correct\n");
+    }
+
+    @Test
+    public void testGetTime() {
+        System.out.println("\nStarting testGetTime: value retrieved is correct\n");
+        String time = "8:30-9:30";
+        CourseSection s = new CourseSection("T01", "MTWRF", time, "Test Dr.");
+        assertEquals(time, s.getTimeSlot());
+        System.out.println("\nEnd testGetTime: value retrieved is correct\n");
+    }
+
+    @Test
+    public void testGetPeriod() {
+        System.out.println("\nStarting testGetPeriod: value retrieved is correct\n");
+        String period = "2021/01/18-2021/04/18";
+        CourseSection s = new CourseSection("T01", "MTWRF", "8:30-9:30", period);
+        assertEquals(period, s.getInstructor());
+        System.out.println("\nEnd testGetPeriod: value retrieved is correct\n");
+    }
+
+    @Test
+    public void testCourseAvailable() {
+        System.out.println("\nStarting testCourseAvailable: value is true\n");
+        CourseSection s = new CourseSection("T01", "MTWRF", "8:30-9:30", "Test Dr.");
+        int maxOccupancy = 20;
+        int occupants = 19;
+        s.setMaxOccupancy(maxOccupancy);
+        for(int i = 0; i < occupants; i++){
+            s.enroll();
+        }
+        assertTrue(s.courseAvailable());
+        System.out.println("\nEnd testCourseAvailable: value is true\n");
+    }
+
+    @Test
+    public void testCourseNotAvailable() {
+        System.out.println("\nStarting testCourseNotAvailable: value is false\n");
+        CourseSection s = new CourseSection("T01", "MTWRF", "8:30-9:30", "Test Dr.");
+        int maxOccupancy = 20;
+        s.setMaxOccupancy(maxOccupancy);
+        for(int i = 0; i < maxOccupancy; i++){
+            s.enroll();
+        }
+        assertFalse(s.courseAvailable());
+        System.out.println("\nEnd testCourseNotAvailable: value is false\n");
+    }
+
 }
 
