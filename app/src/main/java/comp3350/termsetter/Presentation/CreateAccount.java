@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 
 import java.sql.SQLException;
 
+import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
 import comp3350.termsetter.Persistence.UserPersistence;
@@ -34,6 +35,8 @@ public class CreateAccount extends AppCompatActivity {
     private Button eCreate;
     private final int idCount = 0;
 
+    private AccessStudents accessStudents;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +44,9 @@ public class CreateAccount extends AppCompatActivity {
 
         mContext = getApplicationContext();
         //database = new StubDatabase(mContext,"test.db");
-        database = new StudentAccess("users.db");
+
+        accessStudents = new AccessStudents();
+        database = accessStudents.getStudentPersistence();
 
         eName = findViewById(R.id.loginEdtxt0);
         eStudentID = findViewById(R.id.loginEdtxt1);
@@ -49,6 +54,7 @@ public class CreateAccount extends AppCompatActivity {
         eConfirmPassword = findViewById(R.id.createAccountEdtxt3);
         eMail = findViewById(R.id.createAccountEdtxt4);
         ePhone = findViewById(R.id.createAccountEdtxt5);
+
     }
 
     public static boolean validate(String name, String id, String password, String confirmPassword, String email, String phone) {
@@ -104,8 +110,13 @@ public class CreateAccount extends AppCompatActivity {
         String inputPhone = ePhone.getText().toString();
 
         if (validate(inputName, inputID, inputPassword, inputConfirmPassword, inputEmail, inputPhone)) {
-            User user = new User(inputName, inputPassword, inputEmail, inputPhone, inputID);
-            database.insertUser(user);
+            User user = new User(inputID, inputName, inputPassword, inputEmail, inputPhone);
+            accessStudents.insertStudent(user);
+
+            User test = accessStudents.getStudent(inputID);
+
+            System.out.println(test.getStudentID());
+
             Intent intent = new Intent(CreateAccount.this, LoginPage.class);
 
             startActivity(intent);

@@ -19,7 +19,7 @@ public class StubDatabase implements UserPersistence {
         editor = preferences.edit();
     }
 
-    public void insertUser(User user){
+    public User insertUser(User user){
         String name = user.getName();
         String password = user.getPassword();
         String email = user.getEmailAddress();
@@ -40,6 +40,7 @@ public class StubDatabase implements UserPersistence {
         editor.apply();
 
         count += 1;
+        return user;
     }
 
     public void setCurrentUser(String sID) {

@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.SQLException;
 
+import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
 import comp3350.termsetter.Persistence.UserPersistence;
@@ -27,6 +28,8 @@ public class AccountUpdateEmail extends AppCompatActivity {
     private EditText newEmail;
     private EditText newEmailConfirm;
 
+    private AccessStudents accessStudents;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +37,10 @@ public class AccountUpdateEmail extends AppCompatActivity {
 
         mContext = getApplicationContext();
         //database = new StubDatabase(mContext,"test.db");
-        database = new StudentAccess("users.db");
+//        database = new StudentAccess("users.db");
+
+        accessStudents = new AccessStudents();
+        database = accessStudents.getStudentPersistence();
         try {
             displayProfile();
         } catch (SQLException throwables) {
