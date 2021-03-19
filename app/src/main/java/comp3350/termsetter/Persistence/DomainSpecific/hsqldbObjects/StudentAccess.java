@@ -115,6 +115,11 @@ public class StudentAccess implements UserPersistence {
         return false;
     }
 
+    @Override
+    public void setCurrentUser(String inputID) {
+
+    }
+
     public List<String> getAllStudents() throws SQLException {
         List<String> studentIDs= new ArrayList<>();
         // first connect
