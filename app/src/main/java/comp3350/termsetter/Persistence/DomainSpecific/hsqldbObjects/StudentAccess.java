@@ -44,7 +44,7 @@ public class StudentAccess implements UserPersistence {
 
 
         //query
-        PreparedStatement statement = connect.prepareStatement("INSERT INTO students VALUES (?,?, ?, ?, ?);");
+        PreparedStatement statement = connect.prepareStatement("INSERT INTO students VALUES (?,?,?,?,?);");
         statement.setString(1, user.getStudentID());
         statement.setString(2, user.getName());
         statement.setString(3, user.getPassword());

@@ -11,9 +11,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import comp3350.termsetter.Persistence.ConnectDB;
+import comp3350.termsetter.Persistence.DBImporter;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
 import comp3350.termsetter.Persistence.Main;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
@@ -33,17 +35,17 @@ public class LoginPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-
+        try {
+            DBImporter.copyDatabaseToDevice(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         mContext = getApplicationContext();
         //database = new StubDatabase(mContext,"test.db");
-        database = new StudentAccess("users.db");
+        database = new StudentAccess(Main.getDBPathName());
 
 
-        //try {
-        //    DBHelper.copyDatabaseToDevice(this);
-        //} catch (IOException e) {
-        //    e.printStackTrace();
-        //}
+
     }
 
     public void onClickLoginButton(View view) throws SQLException {
@@ -102,13 +104,18 @@ public class LoginPage extends AppCompatActivity {
         return result;
     }
 
-    public void onClickCreateAccountButton(View view) {
+    public void onClickCreateAccountButton(View view) throws SQLException {
         // Brief message
         // Shows create account page
         Toast.makeText(this, "Create Account Button pressed!", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, CreateAccount.class);
         startActivity(intent);
 
-        ConnectDB db = new ConnectDB(Main.getDBPathName());
+        //ConnectDB db = new ConnectDB(Main.getDBPathName());
+        /*StudentAccess db = new StudentAccess(Main.getDBPathName());
+
+        User eriq = db.getUser("hamptone");
+        System.out.println(eriq.getName());*/
+
     }
 }
