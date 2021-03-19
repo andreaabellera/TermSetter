@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.SQLException;
 
+import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Logic.AccountValidation;
 //import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
@@ -33,7 +34,7 @@ public class AccountChangePassword extends AppCompatActivity {
     private User user;
     private Button change;
 
-    //private AccessStudents accessStudents;
+    private AccessStudents accessStudents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +42,10 @@ public class AccountChangePassword extends AppCompatActivity {
         setContentView(R.layout.activity_account_change_password);
 
         mContext = getApplicationContext();
-        database = new StubDatabase(mContext,"test.db");
-       // database = new StudentAccess("users.db");
-        //accessStudents = new AccessStudents();
-        //database = accessStudents.getStudentPersistence();
+        //database = new StubDatabase(mContext,"test.db");
+        //database = new StudentAccess("users.db");
+        accessStudents = new AccessStudents();
+        database = accessStudents.getStudentPersistence();
     }
 
 

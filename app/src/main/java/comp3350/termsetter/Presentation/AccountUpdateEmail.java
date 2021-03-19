@@ -30,7 +30,7 @@ public class AccountUpdateEmail extends AppCompatActivity {
     private EditText newEmailConfirm;
     private AccountValidation accountValidation;
 
-    //private AccessStudents accessStudents;
+    private AccessStudents accessStudents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +38,11 @@ public class AccountUpdateEmail extends AppCompatActivity {
         setContentView(R.layout.activity_account_update_email);
 
         mContext = getApplicationContext();
-        database = new StubDatabase(mContext,"test.db");
+        //database = new StubDatabase(mContext,"test.db");
         //database = new StudentAccess("users.db");
 
-        //accessStudents = new AccessStudents();
-        //database = accessStudents.getStudentPersistence();
+        accessStudents = new AccessStudents();
+        database = accessStudents.getStudentPersistence();
         try {
             displayProfile();
         } catch (SQLException throwables) {

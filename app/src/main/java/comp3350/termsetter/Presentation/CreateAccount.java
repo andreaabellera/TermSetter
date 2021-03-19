@@ -36,7 +36,7 @@ public class CreateAccount extends AppCompatActivity {
     private Button eCreate;
     private final int idCount = 0;
 
-    //private AccessStudents accessStudents;
+    private AccessStudents accessStudents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +44,11 @@ public class CreateAccount extends AppCompatActivity {
         setContentView(R.layout.activity_create_account);
 
         mContext = getApplicationContext();
-        database = new StubDatabase(mContext,"test.db");
+        //database = new StubDatabase(mContext,"test.db");
         //database = new StudentAccess("users.db");
 
-//        accessStudents = new AccessStudents();
-//        database = accessStudents.getStudentPersistence();
+        accessStudents = new AccessStudents();
+        database = accessStudents.getStudentPersistence();
 
         eName = findViewById(R.id.loginEdtxt0);
         eStudentID = findViewById(R.id.loginEdtxt1);
@@ -158,22 +158,22 @@ public class CreateAccount extends AppCompatActivity {
         String inputPhone = ePhone.getText().toString();
 
         if (validate(inputName, inputID, inputPassword, inputConfirmPassword, inputEmail, inputPhone)) {
-            User user = new User(inputName, inputPassword, inputEmail, inputPhone,inputID);
-            database.insertUser(user);
-            Intent intent = new Intent(CreateAccount.this, LoginPage.class);
-            startActivity(intent);
-            Toast.makeText(CreateAccount.this, "Welcome " + inputName + "!", Toast.LENGTH_SHORT).show();
-
-//            accessStudents.insertStudent(user);
-//
-//            User test = accessStudents.getStudent(inputID);
-
-            //System.out.println(test.getStudentID());
-
+           User user = new User(inputName, inputPassword, inputEmail, inputPhone,inputID);
+            //database.insertUser(user);
 //            Intent intent = new Intent(CreateAccount.this, LoginPage.class);
-//
 //            startActivity(intent);
 //            Toast.makeText(CreateAccount.this, "Welcome " + inputName + "!", Toast.LENGTH_SHORT).show();
+
+            accessStudents.insertStudent(user);
+
+            User test = accessStudents.getStudent(inputID);
+
+            System.out.println(test.getStudentID());
+
+            Intent intent = new Intent(CreateAccount.this, LoginPage.class);
+
+            startActivity(intent);
+            Toast.makeText(CreateAccount.this, "Welcome " + inputName + "!", Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -17,7 +17,7 @@ import comp3350.termsetter.R;
 public class AccountManageProfile extends AppCompatActivity {
     private static Context mContext;
     private UserPersistence database;
-    //private AccessStudents accessStudents;
+    private AccessStudents accessStudents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +25,9 @@ public class AccountManageProfile extends AppCompatActivity {
         setContentView(R.layout.activity_account_manage_profile2);
 
         mContext = getApplicationContext();
-        database = new StubDatabase(mContext,"test.db");
-        //accessStudents = new AccessStudents();
-        //database = accessStudents.getStudentPersistence();
+       // database = new StubDatabase(mContext,"test.db");
+        accessStudents = new AccessStudents();
+        database = accessStudents.getStudentPersistence();
         try {
             displayProfile();
         } catch (SQLException throwables) {

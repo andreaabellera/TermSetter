@@ -33,23 +33,23 @@ public class LoginPage extends AppCompatActivity {
     private EditText ePassword;
     private Button eLogin;
     private AccountValidation accountValidation;
-    //private AccessStudents accessStudents;
+    private AccessStudents accessStudents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-//        try {
-//            DBImporter.copyDatabaseToDevice(this);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            DBImporter.copyDatabaseToDevice(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         mContext = getApplicationContext();
-        database = new StubDatabase(mContext,"test.db");
+       // database = new StubDatabase(mContext,"test.db");
         //database = new StudentAccess("users.db");
 
-//        accessStudents = new AccessStudents();
-//        database = accessStudents.getStudentPersistence();
+        accessStudents = new AccessStudents();
+        database = accessStudents.getStudentPersistence();
     }
 
     public void onClickLoginButton(View view) throws SQLException {
