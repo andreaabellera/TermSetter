@@ -37,8 +37,8 @@ public class LoginPage extends AppCompatActivity {
         setContentView(R.layout.activity_login_page);
 
         mContext = getApplicationContext();
-        //database = new StubDatabase(mContext,"test.db");
-        database = new StudentAccess("users.db");
+        database = new StubDatabase(mContext,"test.db");
+        //database = new StudentAccess("users.db");
 
 
         //try {

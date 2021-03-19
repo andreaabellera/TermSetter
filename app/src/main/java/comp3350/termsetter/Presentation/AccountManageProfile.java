@@ -24,6 +24,7 @@ public class AccountManageProfile extends AppCompatActivity {
 
         mContext = getApplicationContext();
         database = new StubDatabase(mContext,"test.db");
+
         try {
             displayProfile();
         } catch (SQLException throwables) {

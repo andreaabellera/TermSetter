@@ -35,8 +35,8 @@ public class AccountUpdateEmail extends AppCompatActivity {
         setContentView(R.layout.activity_account_update_email);
 
         mContext = getApplicationContext();
-        //database = new StubDatabase(mContext,"test.db");
-        database = new StudentAccess("users.db");
+        database = new StubDatabase(mContext,"test.db");
+        //database = new StudentAccess("users.db");
         try {
             displayProfile();
         } catch (SQLException throwables) {

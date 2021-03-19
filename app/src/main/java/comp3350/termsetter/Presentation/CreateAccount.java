@@ -42,7 +42,7 @@ public class CreateAccount extends AppCompatActivity {
 
         mContext = getApplicationContext();
         //database = new StubDatabase(mContext,"test.db");
-        database = new StudentAccess("users.db");
+        database = new StubDatabase(mContext, "test.db");
 
         eName = findViewById(R.id.loginEdtxt0);
         eStudentID = findViewById(R.id.loginEdtxt1);
@@ -59,18 +59,21 @@ public class CreateAccount extends AppCompatActivity {
         boolean validName = accountValidation.validName(name);
         if (!validName) {
             Toast.makeText(mContext, "The name consist of First name, 1 whitespace, and Last name.", Toast.LENGTH_SHORT).show();
+            return false;
         }
 
         // 2. Check ID (must start with a character, then some numbers)
         boolean validID = accountValidation.validID(id);
         if (!validID) {
             Toast.makeText(mContext, "Your student ID must begin with a character.", Toast.LENGTH_SHORT).show();
+            return false;
         }
 
         // 3. Check password
         boolean validPassword = accountValidation.validPassword(password);
         if (!validPassword) {
             Toast.makeText(mContext, "Password must be 10 characters long and contain both letter and number!", Toast.LENGTH_SHORT).show();
+            return false;
         }
 
         // 4. Check confirm password
@@ -84,6 +87,7 @@ public class CreateAccount extends AppCompatActivity {
         boolean validEmail = accountValidation.validEmail(email);
         if (!validEmail) {
             Toast.makeText(mContext, "Your email domain should contain @myumanitoba.ca and some strings in front.", Toast.LENGTH_SHORT).show();
+            return false;
         }
 
         // 6. Check phone number (guaranteed to be just number)

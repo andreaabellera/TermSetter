@@ -38,8 +38,8 @@ public class AccountChangePassword extends AppCompatActivity {
         setContentView(R.layout.activity_account_change_password);
 
         mContext = getApplicationContext();
-        //database = new StubDatabase(mContext,"test.db");
-        database = new StudentAccess("users.db");
+        database = new StubDatabase(mContext,"test.db");
+        //database = new StudentAccess("users.db");
     }
 
 

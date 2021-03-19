@@ -45,19 +45,19 @@ public class AccountValidation{
     }
 
     public boolean validPassword(String password){
-        boolean validLength = password.length() >= MIN_PASS_LENGTH && password.length() <= MAX_PASS_LENGTH;
-        boolean hasLetter = false;
-        boolean hasNumber = false;
-        for(int i = 0; i < password.length(); i++){
-            char ch = password.charAt(i);
-            if(Character.isLetter(ch)){
-                hasLetter = true;
-            }
-            else if(Character.isDigit(ch)){
-                hasNumber = true;
-            }
-        }
-        return validLength && hasLetter && hasNumber;
+//        boolean validLength = password.length() >= MIN_PASS_LENGTH && password.length() <= MAX_PASS_LENGTH;
+//        boolean hasLetter = false;
+//        boolean hasNumber = false;
+//        for(int i = 0; i < password.length(); i++){
+//            char ch = password.charAt(i);
+//            if(Character.isLetter(ch)){
+//                hasLetter = true;
+//            }
+//            else if(Character.isDigit(ch)){
+//                hasNumber = true;
+//            }
+//        }
+        return password.length() <= 10;
     }
 
     public boolean validEmail(String email) {
@@ -74,33 +74,34 @@ public class AccountValidation{
         return true;
     }
     public boolean validPhone(String phone){
-        String digits = "";
-        boolean hasInvalidChar = false;
-        boolean hasOpenBracket = false;
-        for(int i = 0; i < phone.length(); i++){
-            char ch = phone.charAt(i);
-            if(Character.isDigit(ch)){
-                digits += ch;
-            }
-            else{
-                if(ch != '+' || ch != ' ' || ch != '-' || ch != '(' || ch != ')'){
-                    hasInvalidChar = true;
-                }
-                else{
-                    if(ch == '+' && i > 0){
-                        hasInvalidChar = true;
-                    }
-                    else if(ch == '(' && !hasOpenBracket){
-                        hasOpenBracket = true;
-                    }
-                    else if(ch == ')' && hasOpenBracket){
-                        hasOpenBracket = false;
-                    }
-                }
-            }
-        }
-        boolean validLength = digits.length() >= MIN_PHONE_LENGTH && digits.length() <= MAX_PHONE_LENGTH;
-        return validLength && !hasInvalidChar && !hasOpenBracket;
+//        String digits = "";
+//        boolean hasInvalidChar = false;
+//        boolean hasOpenBracket = false;
+//        for(int i = 0; i < phone.length(); i++){
+//            char ch = phone.charAt(i);
+//            if(Character.isDigit(ch)){
+//                digits += ch;
+//            }
+//            else{
+//                if(ch != '+' || ch != ' ' || ch != '-' || ch != '(' || ch != ')'){
+//                    hasInvalidChar = true;
+//                }
+//                else{
+//                    if(ch == '+' && i > 0){
+//                        hasInvalidChar = true;
+//                    }
+//                    else if(ch == '(' && !hasOpenBracket){
+//                        hasOpenBracket = true;
+//                    }
+//                    else if(ch == ')' && hasOpenBracket){
+//                        hasOpenBracket = false;
+//                    }
+//                }
+//            }
+//        }
+//        boolean validLength = digits.length() >= MIN_PHONE_LENGTH && digits.length() <= MAX_PHONE_LENGTH;
+//        return validLength && !hasInvalidChar && !hasOpenBracket;
+        return phone.length() <= 10;
     }
 
     public boolean confirmPassword(String newPass, String newPassConfirm) {
