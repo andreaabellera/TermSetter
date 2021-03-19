@@ -11,7 +11,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.SQLException;
+
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
+import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
 import comp3350.termsetter.Persistence.UserPersistence;
 import comp3350.termsetter.R;
 
@@ -30,17 +33,22 @@ public class AccountUpdateEmail extends AppCompatActivity {
         setContentView(R.layout.activity_account_update_email);
 
         mContext = getApplicationContext();
-        database = new StubDatabase(mContext,"test.db");
-        displayProfile();
+        //database = new StubDatabase(mContext,"test.db");
+        database = new StudentAccess("users.db");
+        try {
+            displayProfile();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
-    private void displayProfile(){
+    private void displayProfile() throws SQLException {
         User user = database.getCurrentUser();
         TextView studentEmail = findViewById(R.id.updateEmailTxtStudent);
         studentEmail.setText(user.getEmailAddress());
     }
 
-    public void updateEmail(View view) {
+    public void updateEmail(View view) throws SQLException {
         User user;
 
         newEmail = findViewById(R.id.updateEmailEdtxt1);

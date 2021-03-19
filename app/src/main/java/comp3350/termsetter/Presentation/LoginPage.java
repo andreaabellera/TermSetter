@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.sql.SQLException;
 
 import comp3350.termsetter.Persistence.ConnectDB;
+import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
 import comp3350.termsetter.Persistence.Main;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.Persistence.UserPersistence;
@@ -34,7 +35,10 @@ public class LoginPage extends AppCompatActivity {
         setContentView(R.layout.activity_login_page);
 
         mContext = getApplicationContext();
-        database = new StubDatabase(mContext,"test.db");
+        //database = new StubDatabase(mContext,"test.db");
+        database = new StudentAccess("users.db");
+
+
         //try {
         //    DBHelper.copyDatabaseToDevice(this);
         //} catch (IOException e) {

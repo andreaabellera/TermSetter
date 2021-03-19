@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 import java.sql.SQLException;
 
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
+import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
 import comp3350.termsetter.Persistence.UserPersistence;
 import comp3350.termsetter.R;
 import comp3350.termsetter.Persistence.DomainSpecific.User;
@@ -39,7 +40,8 @@ public class CreateAccount extends AppCompatActivity {
         setContentView(R.layout.activity_create_account);
 
         mContext = getApplicationContext();
-        database = new StubDatabase(mContext,"test.db");
+        //database = new StubDatabase(mContext,"test.db");
+        database = new StudentAccess("users.db");
 
         eName = findViewById(R.id.loginEdtxt0);
         eStudentID = findViewById(R.id.loginEdtxt1);

@@ -6,13 +6,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.SQLException;
+
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.Persistence.DomainSpecific.User;
+import comp3350.termsetter.Persistence.UserPersistence;
 import comp3350.termsetter.R;
 
 public class AccountManageProfile extends AppCompatActivity {
     private static Context mContext;
-    private StubDatabase database;
+    private UserPersistence database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +24,14 @@ public class AccountManageProfile extends AppCompatActivity {
 
         mContext = getApplicationContext();
         database = new StubDatabase(mContext,"test.db");
-        displayProfile();
+        try {
+            displayProfile();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
-    private void displayProfile(){
+    private void displayProfile() throws SQLException {
         User user = database.getCurrentUser();
 
         TextView studentName = findViewById(R.id.manageProfileTxtStudent2);
