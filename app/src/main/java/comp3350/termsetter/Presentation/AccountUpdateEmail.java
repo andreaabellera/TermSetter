@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +30,13 @@ public class AccountUpdateEmail extends AppCompatActivity {
 
         mContext = getApplicationContext();
         database = new StubDatabase(mContext,"test.db");
+        displayProfile();
+    }
+
+    private void displayProfile(){
+        User user = database.getCurrentUser();
+        TextView studentEmail = findViewById(R.id.updateEmailTxtStudent);
+        studentEmail.setText(user.getEmailAddress());
     }
 
     public void updateEmail(View view) {
@@ -58,6 +66,7 @@ public class AccountUpdateEmail extends AppCompatActivity {
             }
         }
     }
+
 
     private boolean validate(String newEmail, String newEmailConfirm) {
         boolean result = false;
