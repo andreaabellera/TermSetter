@@ -55,16 +55,6 @@ public class StudentAccess implements UserPersistence {
         statement.executeUpdate();
     }
 
-    @Override
-    public void setCurrentUser(String sID) {
-        
-    }
-
-    @Override
-    public int findUserIndex(String sID) {
-        return 0;
-    }
-
     public User getUser(String student_id) throws SQLException {
         //will change this later
         connect = this.connection();
@@ -99,6 +89,20 @@ public class StudentAccess implements UserPersistence {
     @Override
     public User getCurrentUser() {
         return null;
+    }
+
+    @Override
+    public boolean isEmpty() throws SQLException {
+        List<String> studentIDs= new ArrayList<>();
+        // first connect
+        connect = this.connection();
+
+        //query
+        PreparedStatement statement = connect.prepareStatement("select * from students");
+
+        ResultSet resultSet = statement.executeQuery();
+
+        return resultSet.next();
     }
 
     public List<String> getAllStudents() throws SQLException {
