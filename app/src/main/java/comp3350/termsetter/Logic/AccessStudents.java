@@ -1,5 +1,7 @@
 package comp3350.termsetter.Logic;
 
+import android.content.Context;
+
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.Collections;
@@ -17,7 +19,13 @@ public class AccessStudents implements Serializable
 
     public AccessStudents()
     {
-        studentPersistence = Services.getStudentAccess();
+        studentPersistence = Services.getRealStudentAccess();
+        students = null;
+        student = null;
+        currentStudent = 0;
+    }
+    public AccessStudents(Context context){
+        studentPersistence = Services.getFakeStudentAccess(context);
         students = null;
         student = null;
         currentStudent = 0;

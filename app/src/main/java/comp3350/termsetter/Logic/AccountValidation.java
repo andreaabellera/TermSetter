@@ -1,7 +1,10 @@
 package comp3350.termsetter.Logic;
 
+import android.widget.Toast;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import comp3350.termsetter.Persistence.DomainSpecific.User;
+import comp3350.termsetter.Presentation.AccountChangePassword;
 
 public class AccountValidation{
 
@@ -11,24 +14,26 @@ public class AccountValidation{
     final int MAX_PASS_LENGTH = 10;
     final int MIN_PHONE_LENGTH = 10;
     final int MAX_PHONE_LENGTH = 12;
+    Pattern p;
+    Matcher m;
 
     public AccountValidation(){ }
 
     public boolean validAccount(String name, String id, String password, String email, String phone){
-        return validNewName(name) && validNewID(id) && validNewPassword(password) && validNewEmail(email) && validNewPhone(phone);
+        return validName(name) && validID(id) && validPassword(password) && validEmail(email) && validPhone(phone);
     }
 
-    public boolean validNewName(String name){
+    public boolean validName(String name){
         Pattern p = Pattern.compile("^[a-zA-Z]+\\s{1}[a-zA-z]+$");
         Matcher m = p.matcher(name);
         return m.matches() && name.length() >= MIN_NAME_LENGTH && name.length() <= MAX_NAME_LENGTH;
     }
 
-    public boolean validNewID(String name){
-        return name.length() >= MIN_NAME_LENGTH && name.length() <= MAX_NAME_LENGTH;
+    public boolean validID(String id){
+        return id.length() >= MIN_NAME_LENGTH && id.length() <= MAX_NAME_LENGTH;
     }
 
-    public boolean validNewPassword(String password){
+    public boolean validPassword(String password){
         boolean validLength = password.length() >= MIN_PASS_LENGTH && password.length() <= MAX_PASS_LENGTH;
         boolean hasLetter = false;
         boolean hasNumber = false;
@@ -42,20 +47,29 @@ public class AccountValidation{
             }
         }
         return validLength && hasLetter && hasNumber;
+//        System.out.println(password.length());
+//        return password.length() <= 10;
     }
 
-    public boolean validNewEmail(String email){
-        boolean validLength = false;
-        boolean validDomain = false;
-        if(email.contains("@")){
-            String[] tokens = email.split("@");
-            validLength = tokens[0].length() >= MIN_NAME_LENGTH && tokens[0].length() <= MAX_NAME_LENGTH;
-            validDomain = tokens[1].contains("myumanitoba.ca");
+    public boolean validEmail(String email){
+//        boolean validLength = false;
+//        boolean validDomain = false;
+//        if(email.contains("@")){
+//            String[] tokens = email.split("@");
+//            validLength = tokens[0].length() >= MIN_NAME_LENGTH && tokens[0].length() <= MAX_NAME_LENGTH;
+//            validDomain = tokens[1].contains("myumanitoba.ca");
+//        }
+//        return validLength && validDomain;
+        Pattern p = Pattern.compile("^[a-zA-Z]+[0-9]*@myumanitoba\\.ca$");
+        Matcher m = p.matcher(email);
+        if(!m.matches() || email.isEmpty() || !(email.contains("@myumanitoba.ca")) || !(email.length() > "@myumanitoba.ca".length())) {
+            return false;
         }
-        return validLength && validDomain;
+
+        return true;
     }
 
-    public boolean validNewPhone(String phone){
+    public boolean validPhone(String phone){
         String digits = "";
         boolean hasInvalidChar = false;
         boolean hasOpenBracket = false;
@@ -80,8 +94,30 @@ public class AccountValidation{
                     }
                 }
             }
-        }
+    }
         boolean validLength = digits.length() >= MIN_PHONE_LENGTH && digits.length() <= MAX_PHONE_LENGTH;
         return validLength && !hasInvalidChar && !hasOpenBracket;
+//        return phone.length() <= 10;
+    }
+
+    public boolean confirmPassword(String newPass, String newPassConfirm) {
+        if (newPass.equals(newPassConfirm)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean verifyCurrentPassword(String currentPassword, User currentUser) {
+        if (currentPassword.equals(currentUser.getPassword())) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean confirmEmail(String newEmail, String newEmailConfirm) {
+        if (newEmail.equals(newEmailConfirm)) {
+            return true;
+        }
+        return false;
     }
 }

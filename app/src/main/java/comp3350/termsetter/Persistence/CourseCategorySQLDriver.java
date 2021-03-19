@@ -3,47 +3,58 @@ package comp3350.termsetter.Persistence;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.CourseAccess;
+import comp3350.termsetter.Persistence.Faculty;
+import comp3350.termsetter.Persistence.CourseOffering;
+import comp3350.termsetter.Persistence.CourseSection;
 
 public class CourseCategorySQLDriver implements CourseCategoryPersistence{
 
     private CourseCategories categories;
+    private CourseAccess courseAccess = null;
 
-    public CourseCategorySQLDriver() throws SQLException {
+    public CourseCategorySQLDriver(CourseAccess courseAccess) throws SQLException {
+        this.courseAccess = courseAccess;
         init();
+        runQueries();
     }
 
     public List<Faculty> getFaculties(){
         return categories.getFaculties();
     }
 
-    private void init(){
-        // Connect to hsqldb
-        // Execute retrieval queries
-        // Result set items must be used as parameters to the create corresponding java course object
-        // Close hsqldb
-
+    private void init() {
         categories = new CourseCategories();
-        categories.addFaculty(new Faculty("Faculty of no sleep"));
-        /*
-        while (i != null) {
-            if (i.charAt(0) == '$') {
-                faculty = new Faculty(i.substring(1));
-                categories.addFaculty(faculty);
-            } else {
-                String[] p = i.split("@");
-                CourseOffering course = new CourseOffering(p[0], p[1], parseInt(p[2]));
-                faculty.addCourses(course);
+    }
 
-                // populate the Section Objects
-                for (int x = 0; x < MAX_VALUE; x++) {
-                    int randomDays = (int) (Math.random() * days.length);
-                    int randomTime = (int) (Math.random() * timeSlots.length);
-                    CourseSection section = new CourseSection(sectionArray[x], days[randomDays], timeSlots[randomTime], instructor);
-                    course.addSection(section);
+    private void runQueries() throws SQLException {
+        List<String> facultyResultSet = courseAccess.getAllFaculties();
+
+        for ( int i = 0; i < facultyResultSet.size(); i++ ){
+
+            String facultyName = facultyResultSet.get(i);
+            Faculty currFaculty = new Faculty(facultyName);
+
+            List<String> courseResultSet = courseAccess.getCourseByFaculty(facultyName);
+
+            for ( int j = 0; j < courseResultSet.size(); j+=3 ) {
+
+                String courseID = courseResultSet.get(j);
+                String courseName = courseResultSet.get(j+1);
+                String courseCred = courseResultSet.get(j+2);
+
+                CourseOffering currCourse = new CourseOffering(courseID, courseName, Integer.parseInt(courseCred));
+                List<String> sectionResultSet = courseAccess.getSectionByCourse(facultyName, courseID);
+
+                for ( int k = 0; k < sectionResultSet.size(); k+=4 ) {
+                    CourseSection currSection = new CourseSection(sectionResultSet.get(k), sectionResultSet.get(k+1), sectionResultSet.get(k+2), sectionResultSet.get(k+3));
+                    currCourse.addSection(currSection);
                 }
+
+                currFaculty.addCourses(currCourse);
             }
-            i = br.readLine();
+            categories.addFaculty(currFaculty);
         }
-        */
+
     }
 }

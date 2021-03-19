@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.sql.SQLException;
 
 import comp3350.termsetter.Logic.AccessStudents;
+import comp3350.termsetter.Logic.AccountValidation;
+//import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
 import comp3350.termsetter.Persistence.UserPersistence;
@@ -28,6 +30,7 @@ public class AccountChangePassword extends AppCompatActivity {
     private EditText oldPassword;
     private EditText newPassword;
     private EditText newPasswordConfirm;
+    private AccountValidation accountValidation;
     private User user;
     private Button change;
 
@@ -40,9 +43,7 @@ public class AccountChangePassword extends AppCompatActivity {
 
         mContext = getApplicationContext();
         //database = new StubDatabase(mContext,"test.db");
-
-//        database = new StudentAccess("users.db");
-
+        //database = new StudentAccess("users.db");
         accessStudents = new AccessStudents();
         database = accessStudents.getStudentPersistence();
     }
@@ -52,50 +53,37 @@ public class AccountChangePassword extends AppCompatActivity {
         oldPassword = findViewById(R.id.changePasswordEdtxt1);
         newPassword = findViewById(R.id.changePasswordEdtxt2);
         newPasswordConfirm = findViewById(R.id.changePasswordEdtxt3);
+        accountValidation = new AccountValidation();
 
         String inputOldPassword = oldPassword.getText().toString();
         String inputNewPassword = newPassword.getText().toString();
         String inputNewPasswordConfirm = newPasswordConfirm.getText().toString();
 
-        if (inputOldPassword.isEmpty() || inputNewPassword.isEmpty() || inputNewPasswordConfirm.isEmpty()) {
-            Toast.makeText(AccountChangePassword.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
+        if (!accountValidation.validPassword(inputOldPassword) || !accountValidation.validPassword(inputNewPassword) || !accountValidation.validPassword(inputNewPasswordConfirm)) {
+            Toast.makeText(AccountChangePassword.this, "Please enter valid password!", Toast.LENGTH_SHORT).show();
         } else {
-            if (validate(inputOldPassword, inputNewPassword, inputNewPasswordConfirm)) {
-                Toast.makeText(AccountChangePassword.this, "Old Password: " + inputOldPassword, Toast.LENGTH_SHORT).show();
-                Toast.makeText(AccountChangePassword.this, "New Password: " + inputNewPassword, Toast.LENGTH_SHORT).show();
-                Toast.makeText(AccountChangePassword.this, "Confirm Password: " + inputNewPasswordConfirm, Toast.LENGTH_SHORT).show();
+            if (accountValidation.verifyCurrentPassword(inputOldPassword, database.getCurrentUser())) {
+                if (accountValidation.confirmPassword(inputNewPassword, inputNewPasswordConfirm)) {
+                    Toast.makeText(AccountChangePassword.this, "Old Password: " + inputOldPassword, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountChangePassword.this, "New Password: " + inputNewPassword, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountChangePassword.this, "Confirm Password: " + inputNewPasswordConfirm, Toast.LENGTH_SHORT).show();
 
-                if (database.updatePassword(inputNewPassword)) {
-                    Toast.makeText(AccountChangePassword.this, "Password has been changed!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(AccountChangePassword.this, AccountManagementMenu.class);
-                    startActivity(intent);
+                    if (database.updatePassword(inputNewPassword)) {
+                        Toast.makeText(AccountChangePassword.this, "Password has been changed!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(AccountChangePassword.this, AccountManagementMenu.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        Toast.makeText(AccountChangePassword.this, "Update password is not working!", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else {
-                    Toast.makeText(AccountChangePassword.this, "Update password is not working!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountChangePassword.this, "Please verify the new passwords!", Toast.LENGTH_SHORT).show();
                 }
             }
             else {
-                Toast.makeText(AccountChangePassword.this, "Please try again!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountChangePassword.this, "Your current password is invalid!", Toast.LENGTH_SHORT).show();
             }
         }
-    }
-
-
-    private boolean validate(String oldPass, String newPass, String newPassConfirm) throws SQLException {
-        User user = database.getCurrentUser();
-        boolean result = false;
-
-        if (oldPass.equals(user.getPassword())) {
-            if (newPass.equals(newPassConfirm)) {
-                result = true;
-            }
-            else {
-                Toast.makeText(AccountChangePassword.this, "Please confirm your password again!", Toast.LENGTH_SHORT).show();
-            }
-        }
-        else {
-            Toast.makeText(AccountChangePassword.this, "Your old password is incorrect!", Toast.LENGTH_SHORT).show();
-        }
-        return result;
     }
 }
