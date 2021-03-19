@@ -112,4 +112,12 @@ public class StubDatabase {
 
         return false;
     }
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static String getCurrentID() {
+        return currentID;
+    }
 }
