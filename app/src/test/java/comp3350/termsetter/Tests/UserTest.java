@@ -13,11 +13,12 @@ public class UserTest {
     String validPasswd = "123pass";
     String validEmail = "mailme@myumanitoba.ca";
     String validPhone = "204";
+    String validID = "hohoho";
 
     @Test
     public void testUserCreate() {
         System.out.println("\nStarting testUserCreate: object exists after creation\n");
-        User user = new User(validName, validPasswd, validEmail, validPhone);
+        User user = new User(validName, validPasswd, validEmail, validPhone, validID);
         assertNotNull(user);
         System.out.println("End testUserCreate: object exists after creation\n");
     }
@@ -25,7 +26,7 @@ public class UserTest {
     @Test
     public void testSetName() {
         System.out.println("\nStarting testSetName: set and return correct value\n");
-        User user = new User(validName, validPasswd, validEmail, validPhone);
+        User user = new User(validName, validPasswd, validEmail, validPhone, validID);
         String newValidName = "barney the dinosaur";
         user.setUserName(newValidName);
         assertEquals(user.getName(), newValidName);
@@ -35,7 +36,7 @@ public class UserTest {
     @Test
     public void testSetPassword() {
         System.out.println("\nStarting testSetPassword: set and return correct value\n");
-        User user = new User(validName, validPasswd, validEmail, validPhone);
+        User user = new User(validName, validPasswd, validEmail, validPhone, validID);
         String newValidPasswd = "pass123";
         user.setPassword(newValidPasswd);
         assertEquals(user.getPassword(), newValidPasswd);
@@ -45,7 +46,7 @@ public class UserTest {
     @Test
     public void testSetEmail() {
         System.out.println("\nStarting testSetEmail: set and return correct value\n");
-        User user = new User(validName, validPasswd, validEmail, validPhone);
+        User user = new User(validName, validPasswd, validEmail, validPhone, validID);
         String newValidEmail = "barneyhasmail@myumanitoba.ca";
         user.setEmail(newValidEmail);
         assertEquals(user.getEmailAddress(), newValidEmail);
@@ -55,7 +56,7 @@ public class UserTest {
     @Test
     public void testGetPhone() {
         System.out.println("\nStarting testGetPhone: return correct value\n");
-        User user = new User(validName, validPasswd, validEmail, validPhone);
+        User user = new User(validName, validPasswd, validEmail, validPhone, validID);
         assertEquals(user.getPhoneNumber(), validPhone);
         System.out.println("End testSetPhone: return correct value\n");
     }
