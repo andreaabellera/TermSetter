@@ -45,8 +45,10 @@ public class LoginPage extends AppCompatActivity {
             e.printStackTrace();
         }
         mContext = getApplicationContext();
+
+        // Comment this database to switch to Real database
+        // Uncomment this database to switch to Stub database
         database = new StubDatabase(mContext,"test.db");
-       // database = new StudentAccess("users.db");
 
         // if DB is real
         if(!(database instanceof StubDatabase)) {
