@@ -45,10 +45,14 @@ public class StubDatabase {
     }
 
     public int findUserIndex(String sID) {
+        if (this.count <= 0){
+            return -1;
+        }
+
         int lookupIndex = 0;
         String id;
 
-        for (int i = 1; i < this.count - 1; i++) {
+        for (int i = 0; i < this.count; i++) {
             id = "id" + i;
             if (preferences.getString(id,"").equals(sID)) {
                 lookupIndex = i;
@@ -61,7 +65,7 @@ public class StubDatabase {
     public User getUser(String sID) {
         int lookupIndex = findUserIndex(sID);
 
-        if (lookupIndex != 0) {
+        if (lookupIndex != -1) {
             String nameKey = "name" + lookupIndex;
             String passwordKey = "password" + lookupIndex;
             String emailKey = "email" + lookupIndex;
@@ -73,6 +77,7 @@ public class StubDatabase {
             String email = preferences.getString(emailKey,"");
             String phoneNumber = preferences.getString(phoneKey,"");
             String studentID = preferences.getString(idKey,"");
+
             return new User(name, password, email, phoneNumber, studentID);
         }
         else {
@@ -89,12 +94,11 @@ public class StubDatabase {
             int lookupIndex = findUserIndex(currentID);
             String passwordKey = "password" + lookupIndex;
             editor.putString(passwordKey, newPassword);
-            lookupIndex = 0;
+            editor.apply();
             return true;
         }
-        else {
-            return false;
-        }
+
+        return false;
     }
 
     public boolean updateEmail(String newEmail) {
@@ -105,8 +109,7 @@ public class StubDatabase {
             lookupIndex = 0;
             return true;
         }
-        else {
-            return false;
-        }
+
+        return false;
     }
 }

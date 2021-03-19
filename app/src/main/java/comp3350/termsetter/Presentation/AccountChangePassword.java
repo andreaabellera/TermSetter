@@ -38,7 +38,6 @@ public class AccountChangePassword extends AppCompatActivity {
 
 
     public void onClickConfirmButton(View view) {
-
         oldPassword = findViewById(R.id.changePasswordEdtxt1);
         newPassword = findViewById(R.id.changePasswordEdtxt2);
         newPasswordConfirm = findViewById(R.id.changePasswordEdtxt3);
@@ -50,8 +49,11 @@ public class AccountChangePassword extends AppCompatActivity {
         if (inputOldPassword.isEmpty() || inputNewPassword.isEmpty() || inputNewPasswordConfirm.isEmpty()) {
             Toast.makeText(AccountChangePassword.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
         } else {
-            validate = validate(inputOldPassword, inputNewPassword, inputNewPasswordConfirm);
-            if (validate) {
+            if (validate(inputOldPassword, inputNewPassword, inputNewPasswordConfirm)) {
+                Toast.makeText(AccountChangePassword.this, "Old Password: " + inputOldPassword, Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountChangePassword.this, "New Password: " + inputNewPassword, Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountChangePassword.this, "Confirm Password: " + inputNewPasswordConfirm, Toast.LENGTH_SHORT).show();
+
                 if (database.updatePassword(inputNewPassword)) {
                     Toast.makeText(AccountChangePassword.this, "Password changes!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AccountChangePassword.this, AccountManagementMenu.class);
@@ -60,7 +62,8 @@ public class AccountChangePassword extends AppCompatActivity {
                 else {
                 Toast.makeText(AccountChangePassword.this, "Update PW is not working!", Toast.LENGTH_SHORT).show();
                 }
-            } else {
+            }
+            else {
                 Toast.makeText(AccountChangePassword.this, "Please try again!", Toast.LENGTH_SHORT).show();
             }
         }
@@ -74,10 +77,12 @@ public class AccountChangePassword extends AppCompatActivity {
         if (oldPass.equals(user.getPassword())) {
             if (newPass.equals(newPassConfirm)) {
                 result = true;
-            } else {
+            }
+            else {
                 Toast.makeText(AccountChangePassword.this, "Please confirm your password again!", Toast.LENGTH_SHORT).show();
             }
-        } else {
+        }
+        else {
             Toast.makeText(AccountChangePassword.this, "Your old password is incorrect!", Toast.LENGTH_SHORT).show();
         }
         return result;
