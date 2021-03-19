@@ -27,25 +27,10 @@ public class AccountValidation{
         Pattern p = Pattern.compile("^[a-zA-Z]+\\s{1}[a-zA-z]+$");
         Matcher m = p.matcher(name);
         return m.matches() && name.length() >= MIN_NAME_LENGTH && name.length() <= MAX_NAME_LENGTH;
-
-//        p = Pattern.compile("^[a-zA-Z]+\\s{1}[a-zA-z]+$");
-//        m = p.matcher(name);
-//
-//        if(!m.matches() || name.isEmpty() || !(name.length() <= 30)){
-//            return false;
-//        }
-//        return true;
     }
 
     public boolean validID(String id){
-        p = Pattern.compile("^[a-zA-Z]+[0-9]*$");
-        m = p.matcher(id);
-
-        if(!m.matches() || id.isEmpty() || !(id.length() <= 20)){
-            return false;
-        }
-        return true;
-        //return name.length() >= MIN_NAME_LENGTH && name.length() <= MAX_NAME_LENGTH;
+        return id.length() >= MIN_NAME_LENGTH && id.length() <= MAX_NAME_LENGTH;
     }
 
     public boolean validPassword(String password){
@@ -75,13 +60,6 @@ public class AccountValidation{
             validDomain = tokens[1].contains("myumanitoba.ca");
         }
         return validLength && validDomain;
-
-//        p = Pattern.compile("^[a-zA-Z]+[0-9]*@myumanitoba\\.ca$");
-//        m = p.matcher(email);
-//        if (!m.matches() || email.isEmpty() || !(email.contains("@myumanitoba.ca")) || !(email.length() > "@myumanitoba.ca".length())) {
-//            return false;
-//        }
-//        return true;
     }
 
     public boolean validPhone(String phone){
@@ -123,16 +101,6 @@ public class AccountValidation{
     }
 
     public boolean verifyCurrentPassword(String currentPassword, User currentUser) {
-
-        System.out.println("name = "+currentUser.getName());
-        System.out.println("pass = "+currentUser.getPassword());
-        System.out.println("email = "+currentUser.getEmailAddress());
-        System.out.println("num = "+currentUser.getPhoneNumber());
-        System.out.println("ID = "+currentUser.getStudentID());
-
-        System.out.println("test");
-        System.out.println(currentPassword);
-        System.out.println(currentUser.getPassword());
         if (currentPassword.equals(currentUser.getPassword())) {
             return true;
         }
