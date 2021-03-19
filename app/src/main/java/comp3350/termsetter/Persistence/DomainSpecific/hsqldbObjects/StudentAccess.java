@@ -17,6 +17,7 @@ public class StudentAccess implements UserPersistence {
 
     Connection connect = null;
     private final String dbPath;
+    private static String currentID = null;
 
     public StudentAccess(final String dbPath) {
         this.dbPath = dbPath;
@@ -64,11 +65,11 @@ public class StudentAccess implements UserPersistence {
 
         //query
         PreparedStatement statement = connect.prepareStatement("select * from students where student_id = ?");
-        statement.setString(1,  student_id);
+        statement.setString(1, student_id);
         ResultSet resultSet = statement.executeQuery();
 
         //collect the data from the query
-        while(resultSet.next()) {
+        while (resultSet.next()) {
 
             // Enter data into fields and create a new user
             final String studentID = resultSet.getString("student_id");
@@ -77,7 +78,7 @@ public class StudentAccess implements UserPersistence {
             final String phoneNumber = resultSet.getString("phoneNum");
             final String email = resultSet.getString("email");
 
-            user = new User(studentID,name,passID,phoneNumber,email);
+            user = new User(studentID, name, passID, phoneNumber, email);
 
 
         }
@@ -87,13 +88,8 @@ public class StudentAccess implements UserPersistence {
     }
 
     @Override
-    public User getCurrentUser() {
-        return null;
-    }
-
-    @Override
     public boolean isEmpty() throws SQLException {
-        List<String> studentIDs= new ArrayList<>();
+        List<String> studentIDs = new ArrayList<>();
         // first connect
         connect = this.connection();
 
@@ -105,23 +101,9 @@ public class StudentAccess implements UserPersistence {
         return resultSet.next();
     }
 
-    @Override
-    public boolean updatePassword(String password) {
-        return false;
-    }
-
-    @Override
-    public boolean updateEmail(String email) {
-        return false;
-    }
-
-    @Override
-    public void setCurrentUser(String inputID) {
-
-    }
 
     public List<String> getAllStudents() throws SQLException {
-        List<String> studentIDs= new ArrayList<>();
+        List<String> studentIDs = new ArrayList<>();
         // first connect
         connect = this.connection();
 
@@ -131,7 +113,7 @@ public class StudentAccess implements UserPersistence {
         ResultSet resultSet = statement.executeQuery();
 
         //collect
-        while(resultSet.next()) {
+        while (resultSet.next()) {
 
             //just get the ID's for now
             final String student_id = resultSet.getString("student_id");
@@ -140,5 +122,50 @@ public class StudentAccess implements UserPersistence {
             studentIDs.add(student_id);
         }
         return studentIDs;
+    }
+
+    public void setCurrentUser(String sID) {
+        this.currentID = sID;
+    }
+
+    @Override
+    public User getCurrentUser() throws SQLException {
+        return getUser(currentID);
+    }
+
+    @Override
+    public boolean updatePassword(String password) throws SQLException {
+        if ((currentID != null) && (getUser(currentID)) != null) {
+            User user = getUser(currentID);
+            connect = this.connection();
+
+            PreparedStatement statement = connect.prepareStatement("UPDATE students " +
+                    "SET password = ? WHERE student_id = ?");
+            statement.setString(1, password);
+            statement.setString(2, currentID);
+
+            statement.executeUpdate();
+
+
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateEmail(String email) throws SQLException {
+        if ((currentID != null) && (getUser(currentID)) != null) {
+            User user = getUser(currentID);
+            connect = this.connection();
+
+            PreparedStatement statement = connect.prepareStatement("UPDATE students " +
+                    "SET email = ? WHERE student_id = ?");
+            statement.setString(1, email);
+            statement.setString(2, currentID);
+
+            statement.executeUpdate();
+
+
+        }
+        return false;
     }
 }

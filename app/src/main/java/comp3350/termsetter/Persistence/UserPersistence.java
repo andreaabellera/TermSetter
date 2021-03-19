@@ -10,13 +10,13 @@ public interface UserPersistence {
            
     User getUser(String sID) throws SQLException;
 
-    User getCurrentUser();
+    User getCurrentUser() throws SQLException;
 
     boolean isEmpty() throws SQLException;
 
-    boolean updatePassword(String password);
+    boolean updatePassword(String password) throws SQLException;
 
-    boolean updateEmail(String email);
+    boolean updateEmail(String email) throws SQLException;
 
     void setCurrentUser(String inputID);
 }
