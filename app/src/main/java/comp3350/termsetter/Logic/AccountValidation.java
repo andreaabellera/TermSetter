@@ -123,16 +123,6 @@ public class AccountValidation{
     }
 
     public boolean verifyCurrentPassword(String currentPassword, User currentUser) {
-
-        System.out.println("name = "+currentUser.getName());
-        System.out.println("pass = "+currentUser.getPassword());
-        System.out.println("email = "+currentUser.getEmailAddress());
-        System.out.println("num = "+currentUser.getPhoneNumber());
-        System.out.println("ID = "+currentUser.getStudentID());
-
-        System.out.println("test");
-        System.out.println(currentPassword);
-        System.out.println(currentUser.getPassword());
         if (currentPassword.equals(currentUser.getPassword())) {
             return true;
         }
