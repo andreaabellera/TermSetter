@@ -53,35 +53,33 @@ Class that handles the enrolling of users into courses.
 
 ## Persistence Layer
 
-**Database**
-
-
 **DBImporter**
+Initializes hscodedb and copies database to device.
 
 **CourseCategories**
+The parent class faculty.
 
 **Faculty**
-A tool that allows the filtering of different CourseCategories items.
+Class the holds a list of offered classes in each faculty.
 
 **UserPersistence**
-Interface for storing user account information.
+Interface for handling user account information (updating information).
 
 ***HSQLDB Objects***
-
 - **CourseAccess**
-
+Responsible for connecting to hscodedb table called Courses retrieve courses in the database.
 - **EnrollAccess**
-
+Responsible for connecting to hscodedb table callled Enrollment, handling the enrollment of users in courses.
 - **StudentAccess**
-
+Connects to hscodedb table called Student, responsible for executing sql statements in hscodedb.
 
 ## Domain Specific Objects
 
-**Stub Database**
-A stub implementation of the 
+**StubDatabase**
+A stub implementation for storing Users (student).
 
 **User**
-User object
+The User (student) object.
 
 ## Iteration 1 Diagram
 
