@@ -7,7 +7,10 @@ import java.sql.SQLException;
 import java.util.List;
 import comp3350.termsetter.Persistence.CourseCategoryDriver;
 import comp3350.termsetter.Persistence.CourseCategorySQLDriver;
+import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.CourseAccess;
+import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.EnrollAccess;
 import comp3350.termsetter.Persistence.Faculty;
+import comp3350.termsetter.Persistence.Main;
 import comp3350.termsetter.R;
 
 public class OfferedClassLogic{
@@ -31,7 +34,10 @@ public class OfferedClassLogic{
 
     private void loadFromSQL(){
         try{
-            CourseCategorySQLDriver courseDatabase = new CourseCategorySQLDriver();
+            String path = new String(Main.getDBPathName());
+            CourseAccess courseAccess = new CourseAccess(path);
+            CourseCategorySQLDriver courseDatabase = new CourseCategorySQLDriver(courseAccess);
+
             courseData = courseDatabase.getFaculties();
         }
         catch(SQLException e){
