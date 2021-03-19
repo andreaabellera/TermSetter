@@ -45,11 +45,22 @@ public class LoginPage extends AppCompatActivity {
             e.printStackTrace();
         }
         mContext = getApplicationContext();
-       // database = new StubDatabase(mContext,"test.db");
-        //database = new StudentAccess("users.db");
+        database = new StubDatabase(mContext,"test.db");
+       // database = new StudentAccess("users.db");
 
-        accessStudents = new AccessStudents();
-        database = accessStudents.getStudentPersistence();
+        // if DB is real
+        if(!(database instanceof StubDatabase)) {
+            accessStudents = new AccessStudents();
+            database = accessStudents.getStudentPersistence();
+            Toast.makeText(LoginPage.this, "REAL DB", Toast.LENGTH_SHORT).show();
+
+        }
+        else
+        {
+            accessStudents = new AccessStudents(mContext);
+            database = accessStudents.getStudentPersistence();
+            Toast.makeText(LoginPage.this, "FakeDB", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void onClickLoginButton(View view) throws SQLException {
