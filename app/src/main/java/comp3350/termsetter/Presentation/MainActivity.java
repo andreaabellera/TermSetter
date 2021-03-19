@@ -8,9 +8,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import comp3350.termsetter.R;
+import org.hsqldb.Database;
 
-import comp3350.termsetter.Persistence.DomainSpecific.Database;
+import comp3350.termsetter.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,43 +20,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    /*public void openNavigationLinks(View view) {
-        Intent intent = getIntent();
-        Database database = (Database) intent.getSerializableExtra("database");
-        Intent intentI = new Intent(this, TempNavigationLinks.class);
-        intentI.putExtra("database", database);
-        startActivity(intentI);
-    }*/
-
-    public void openMyCourses(View view) {
+    public void openEnrolledClassesView(View view) {
         // code
         // (idk which class we want this to connect to)
+        Toast.makeText(this, "Opening my courses.", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, EnrolledClassesView.class);
+        startActivity(intent);
     }
 
     public void openOfferedClassesCategories(View view) {
+        Toast.makeText(this, "Opening offered classes.", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, OfferedClassesCategories.class);
         startActivity(intent);
     }
 
 
-
     public void openAccountManagementMenu(View view) {
-        Intent intent = getIntent();
-        Database database = (Database) intent.getSerializableExtra("database");
-        Intent intentI = new Intent(this, AccountManagementMenu.class);
-        intentI.putExtra("database", database);
-        startActivity(intentI);
+        Toast.makeText(this, "Opening my profile management.", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, AccountManagementMenu.class);
+        startActivity(intent);
     }
 
 
     public void onClickLogOutButton(View view) {
         // Brief message
         // Shows create account page
-        Intent intent = getIntent();
-        Database database = (Database) intent.getSerializableExtra("database");
         Toast.makeText(this, "See you again soon!", Toast.LENGTH_LONG).show();
-        Intent intentI = new Intent(this, LoginPage.class);
-        intentI.putExtra("database", database);
-        startActivity(intentI);
+        Intent intent = new Intent(this, LoginPage.class);
+        startActivity(intent);
     }
 }

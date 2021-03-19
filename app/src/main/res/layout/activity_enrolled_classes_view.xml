@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="backToMenu"
     android:padding="@dimen/box_inset_layout_padding"
     tools:context=".Presentation.OfferedClassesCategories">
 
@@ -19,17 +18,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
+            android:layout_marginBottom="16dp"
             android:layout_marginTop="32dp"
-            android:onClick="backToMenu"
-            android:text="Back to Menu"
+            android:text="Classes and Fees"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/faculties_rv"
+            android:id="@+id/enrolled_classes_rv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/total_txt"
+            android:textColor="@color/faded_black"
+            android:textSize="14dp"
+            android:gravity="right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="32dp"
+            android:text="Total fees:" />
 
 
     </LinearLayout>

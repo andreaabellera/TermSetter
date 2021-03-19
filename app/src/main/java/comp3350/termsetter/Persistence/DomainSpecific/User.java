@@ -9,7 +9,7 @@ public class User  {
     private final String studentID;
 
     // constructor
-    public User(String name, String password, String email, String phone, String studentID) {
+    public User(String studentID, String name, String password, String email, String phone) {
         this.Name = name;
         this.Password = password;
         this.Email = email;
@@ -18,6 +18,9 @@ public class User  {
     }
 
     /* Getters */
+    public String getStudentID() {
+        return this.studentID;
+    }
 
     public String getName() {
         return this.Name;
@@ -35,13 +38,7 @@ public class User  {
         return this.Email;
     }
 
-    public String getStudentID() {
-        return this.studentID;
-    }
-
-
     /* Setters */
-
 
     // purpose: sets username
     // input: the String to assign to user id
@@ -57,5 +54,4 @@ public class User  {
         this.Email = input;
     }
 
-    //public void setStudentNumber(String studentID){ this.StudentNumber = studentID}
 }

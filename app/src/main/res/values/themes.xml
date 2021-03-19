@@ -33,11 +33,11 @@
     <style name="CustomClickableText" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/neo_aquayo</item>
         <item name="android:textStyle">bold</item>
-
+        <item name="android:textAllCaps">true</item>
         <item name="android:textSize">16dp</item>
-        <item name="android:padding">24dp</item>
-        <item name="android:background">@drawable/custom_rounded_corners</item>
         <item name="android:letterSpacing">.15</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:background">@drawable/custom_rounded_corners</item>
     </style>
 
 
