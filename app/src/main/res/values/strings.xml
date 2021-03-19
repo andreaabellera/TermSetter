@@ -7,6 +7,8 @@
     <string name="title_activity_offered_classes_view">Offered Classes</string>
     <string name="title_activity_offered_classes_detail">Class Details</string>
 
+    <string name="txtbtn_back">Back to Menu</string>
+
     <string name="header_main">Home</string>
     <string name="btn_main_manage_account">Manage Account</string>
     <string name="btn_main_view_my_courses">View My Courses</string>

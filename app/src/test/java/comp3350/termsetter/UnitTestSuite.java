@@ -8,13 +8,15 @@ import comp3350.termsetter.Tests.AccountValidationTest;
 import comp3350.termsetter.Tests.ClassDatabaseTest;
 import comp3350.termsetter.Tests.UserDatabaseTest;
 import comp3350.termsetter.Tests.UserTest;
+import comp3350.termsetter.Tests.CourseCategoryIntegrationTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         UserTest.class,
         UserDatabaseTest.class,
         AccountValidationTest.class,
-        ClassDatabaseTest.class
+        ClassDatabaseTest.class,
+        CourseCategoryIntegrationTest.class
 })
 
 

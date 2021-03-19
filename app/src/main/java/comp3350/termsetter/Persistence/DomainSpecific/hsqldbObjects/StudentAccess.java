@@ -1,7 +1,5 @@
 package comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects;
 
-import android.content.Context;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -30,34 +28,32 @@ public class StudentAccess implements UserPersistence {
     }
 
 
-    public void insertUser(User user) throws SQLException {
+    public User insertUser(User user) throws SQLException {
 
         // first connect
-        connect = this.connection();
+        try{
+            connect = this.connection();
+            //query
+            PreparedStatement statement = connect.prepareStatement("INSERT INTO students VALUES (?,?,?,?,?);");
+            statement.setString(1, user.getStudentID());
+            statement.setString(2, user.getName());
+            statement.setString(3, user.getPassword());
+            statement.setString(4, user.getEmailAddress());
+            statement.setString(5, user.getPhoneNumber());
+            // ResultSet resultSet = statement.executeQuery();
 
-        //get Data from user
-        String name = user.getName();
-        String password = user.getPassword();
-        String email = user.getEmailAddress();
-        String phoneNumber = user.getPhoneNumber();
-        String studentID = user.getStudentID();
+            //Update DB
+            statement.executeUpdate();
+        }
+        catch (SQLException e){
 
+        }
 
-        //query
-        PreparedStatement statement = connect.prepareStatement("INSERT INTO students VALUES (?,?, ?, ?, ?);");
-        statement.setString(1, user.getStudentID());
-        statement.setString(2, user.getName());
-        statement.setString(3, user.getPassword());
-        statement.setString(4, user.getEmailAddress());
-        statement.setString(5, user.getPhoneNumber());
-        // ResultSet resultSet = statement.executeQuery();
-
-        //Update DB
-        statement.executeUpdate();
+        return user;
     }
 
     public User getUser(String student_id) throws SQLException {
-        //will change this later
+        // will change this later
         connect = this.connection();
 
         List<String> student = new ArrayList<>();
@@ -145,9 +141,9 @@ public class StudentAccess implements UserPersistence {
             statement.setString(2, currentID);
 
             statement.executeUpdate();
-
-
+            return true;
         }
+
         return false;
     }
 
@@ -163,9 +159,9 @@ public class StudentAccess implements UserPersistence {
             statement.setString(2, currentID);
 
             statement.executeUpdate();
-
-
+            return true;
         }
+
         return false;
     }
 }

@@ -19,22 +19,25 @@ public class AccountValidation{
 
     public AccountValidation(){ }
 
-    public boolean validAccount(String name, String password, String email, String phone){
-        return validName(name) && validPassword(password) && validEmail(email) && validPhone(phone);
+    public boolean validAccount(String name, String id, String password, String email, String phone){
+        return validNewName(name) && validNewID(id) && validNewPassword(password) && validNewEmail(email) && validNewPhone(phone);
     }
 
-    public boolean validName(String name){
-//        return name.length() >= MIN_NAME_LENGTH && name.length() <= MAX_NAME_LENGTH;
-        p = Pattern.compile("^[a-zA-Z]+\\s{1}[a-zA-z]+$");
-        m = p.matcher(name);
+    public boolean validNewName(String name){
+        Pattern p = Pattern.compile("^[a-zA-Z]+\\s{1}[a-zA-z]+$");
+        Matcher m = p.matcher(name);
+        return m.matches() && name.length() >= MIN_NAME_LENGTH && name.length() <= MAX_NAME_LENGTH;
 
-        if(!m.matches() || name.isEmpty() || !(name.length() <= 30)){
-            return false;
-        }
-        return true;
+//        p = Pattern.compile("^[a-zA-Z]+\\s{1}[a-zA-z]+$");
+//        m = p.matcher(name);
+//
+//        if(!m.matches() || name.isEmpty() || !(name.length() <= 30)){
+//            return false;
+//        }
+//        return true;
     }
 
-    public boolean validID(String id){
+    public boolean validNewID(String id){
         p = Pattern.compile("^[a-zA-Z]+[0-9]*$");
         m = p.matcher(id);
 
@@ -42,9 +45,10 @@ public class AccountValidation{
             return false;
         }
         return true;
+        //return name.length() >= MIN_NAME_LENGTH && name.length() <= MAX_NAME_LENGTH;
     }
 
-    public boolean validPassword(String password){
+    public boolean validNewPassword(String password){
 //        boolean validLength = password.length() >= MIN_PASS_LENGTH && password.length() <= MAX_PASS_LENGTH;
 //        boolean hasLetter = false;
 //        boolean hasNumber = false;
@@ -57,23 +61,29 @@ public class AccountValidation{
 //                hasNumber = true;
 //            }
 //        }
+//        return validLength && hasLetter && hasNumber;
         return password.length() <= 10;
     }
 
-    public boolean validEmail(String email) {
-//        String[] tokens = email.split("@");
-//        boolean validLength = tokens[1].length() >= MIN_NAME_LENGTH && tokens[1].length() <= MAX_NAME_LENGTH;
-//        boolean validDomain = tokens[2].contains("myumanitoba.ca");
-//        return validLength && validDomain;
-
-        p = Pattern.compile("^[a-zA-Z]+[0-9]*@myumanitoba\\.ca$");
-        m = p.matcher(email);
-        if (!m.matches() || email.isEmpty() || !(email.contains("@myumanitoba.ca")) || !(email.length() > "@myumanitoba.ca".length())) {
-            return false;
+    public boolean validNewEmail(String email){
+        boolean validLength = false;
+        boolean validDomain = false;
+        if(email.contains("@")){
+            String[] tokens = email.split("@");
+            validLength = tokens[0].length() >= MIN_NAME_LENGTH && tokens[0].length() <= MAX_NAME_LENGTH;
+            validDomain = tokens[1].contains("myumanitoba.ca");
         }
-        return true;
+        return validLength && validDomain;
+
+//        p = Pattern.compile("^[a-zA-Z]+[0-9]*@myumanitoba\\.ca$");
+//        m = p.matcher(email);
+//        if (!m.matches() || email.isEmpty() || !(email.contains("@myumanitoba.ca")) || !(email.length() > "@myumanitoba.ca".length())) {
+//            return false;
+//        }
+//        return true;
     }
-    public boolean validPhone(String phone){
+
+    public boolean validNewPhone(String phone){
 //        String digits = "";
 //        boolean hasInvalidChar = false;
 //        boolean hasOpenBracket = false;
@@ -83,7 +93,7 @@ public class AccountValidation{
 //                digits += ch;
 //            }
 //            else{
-//                if(ch != '+' || ch != ' ' || ch != '-' || ch != '(' || ch != ')'){
+//                if(ch != '+' && ch != ' ' && ch != '-' && ch != '(' && ch != ')'){
 //                    hasInvalidChar = true;
 //                }
 //                else{
@@ -98,9 +108,9 @@ public class AccountValidation{
 //                    }
 //                }
 //            }
-//        }
+//    }
 //        boolean validLength = digits.length() >= MIN_PHONE_LENGTH && digits.length() <= MAX_PHONE_LENGTH;
-//        return validLength && !hasInvalidChar && !hasOpenBracket;
+ //       return validLength && !hasInvalidChar && !hasOpenBracket;
         return phone.length() <= 10;
     }
 

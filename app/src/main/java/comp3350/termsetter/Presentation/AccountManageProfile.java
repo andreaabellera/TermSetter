@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.SQLException;
 
+import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.Persistence.DomainSpecific.User;
 import comp3350.termsetter.Persistence.UserPersistence;
@@ -16,6 +17,7 @@ import comp3350.termsetter.R;
 public class AccountManageProfile extends AppCompatActivity {
     private static Context mContext;
     private UserPersistence database;
+    //private AccessStudents accessStudents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,8 @@ public class AccountManageProfile extends AppCompatActivity {
 
         mContext = getApplicationContext();
         database = new StubDatabase(mContext,"test.db");
-
+        //accessStudents = new AccessStudents();
+        //database = accessStudents.getStudentPersistence();
         try {
             displayProfile();
         } catch (SQLException throwables) {
@@ -34,6 +37,7 @@ public class AccountManageProfile extends AppCompatActivity {
 
     private void displayProfile() throws SQLException {
         User user = database.getCurrentUser();
+        //User user = accessStudents.getStudent("asdf");
 
         TextView studentName = findViewById(R.id.manageProfileTxtStudent2);
         TextView studentID = findViewById(R.id.manageProfileTxtStudent3);

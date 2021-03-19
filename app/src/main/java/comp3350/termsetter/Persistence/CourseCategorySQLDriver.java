@@ -1,9 +1,10 @@
 package comp3350.termsetter.Persistence;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class CourseCategorySQLDriver{
+public class CourseCategorySQLDriver implements CourseCategoryPersistence{
 
     private CourseCategories categories;
 
@@ -21,6 +22,8 @@ public class CourseCategorySQLDriver{
         // Result set items must be used as parameters to the create corresponding java course object
         // Close hsqldb
 
+        categories = new CourseCategories();
+        categories.addFaculty(new Faculty("Faculty of no sleep"));
         /*
         while (i != null) {
             if (i.charAt(0) == '$') {

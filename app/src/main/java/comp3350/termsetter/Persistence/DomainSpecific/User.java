@@ -9,7 +9,7 @@ public class User  {
     private final String studentID;
 
     // constructor
-    public User(String name, String password, String email, String phone, String studentID) {
+    public User(String studentID, String name, String password, String email, String phone) {
         this.Name = name;
         this.Password = password;
         this.Email = email;
