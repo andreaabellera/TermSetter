@@ -45,34 +45,6 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void onClickLoginButton(View view) {
-        /*
-            eName = findViewById(R.id.loginEdtxt1);
-            ePassword = findViewById(R.id.loginEdtxt2);
-            eLogin = findViewById(R.id.loginBtn);
-
-            String inputID = eID.getText().toString();
-            String inputPassword = ePassword.getText().toString();
-
-            if (inputName.isEmpty() || inputPassword.isEmpty()) {
-                Toast.makeText(LoginPage.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                validate = validate(inputName, inputPassword);
-                if (validate) {
-                    Toast.makeText(LoginPage.this, "Welcome " + inputName + " !", Toast.LENGTH_SHORT).show();
-                    Intent intentI = new Intent(LoginPage.this, MainActivity.class);
-                    intentI.putExtra("database", database);
-                    startActivity(intentI);
-                } else {
-                    Toast.makeText(LoginPage.this, "Please try again!", Toast.LENGTH_SHORT).show();
-                }
-            }
-            
-        } else {
-            eName = findViewById(R.id.loginEdtxt1);
-            ePassword = findViewById(R.id.loginEdtxt2);
-        */
-
         if (database != null) {
             eID = findViewById(R.id.loginEdtxt1);
             ePassword = findViewById(R.id.loginEdtxt2);
@@ -102,11 +74,11 @@ public class LoginPage extends AppCompatActivity {
             eID = findViewById(R.id.loginEdtxt1);
             ePassword = findViewById(R.id.loginEdtxt2);
 
-            String inputName = eID.getText().toString();
+            String inputID = eID.getText().toString();
             String inputPassword = ePassword.getText().toString();
 
             // If either ID or Password is missing
-            if (inputName.isEmpty() || inputPassword.isEmpty()) {
+            if (inputID.isEmpty() || inputPassword.isEmpty()) {
                 Toast.makeText(LoginPage.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
             }
             // Invalid account
@@ -118,12 +90,10 @@ public class LoginPage extends AppCompatActivity {
 
     private boolean validateUser(String id, String password) {
         boolean result = false;
+        User user = database.getUser(id);
 
-        if (database.getUser(id) != null) {
-            Toast.makeText(this, "Insertion is working", Toast.LENGTH_SHORT).show();
-            User user = database.getUser(id);
+        if (user != null) {
             if (password.equals(user.getPassword())) {
-                Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
                 result = true;
             }
         }
@@ -131,13 +101,12 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void onClickCreateAccountButton(View view) {
-        Toast.makeText(this, "Create Account Button pressed!", Toast.LENGTH_LONG).show();
         // Brief message
         // Shows create account page
-        /* Toast.makeText(this, "Create Account Button pressed!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Create Account Button pressed!", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, CreateAccount.class);
-        startActivity(intent);*/
+        startActivity(intent);
 
-        //ConnectDB db = new ConnectDB(Main.getDBPathName());
+        ConnectDB db = new ConnectDB(Main.getDBPathName());
     }
 }

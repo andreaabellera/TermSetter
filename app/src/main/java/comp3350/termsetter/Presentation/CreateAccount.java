@@ -55,7 +55,7 @@ public class CreateAccount extends AppCompatActivity {
         ePassword = findViewById(R.id.loginEdtxt2);
         eConfirmPassword = findViewById(R.id.createAccountEdtxt3);
         ePhone = findViewById(R.id.createAccountEdtxt5);
-        eStudentID = findViewById(R.id.studenIDtext);
+        eStudentID = findViewById(R.id.loginEdtxt0);
     }
 
     public void onClickConfirmButton(View view) {

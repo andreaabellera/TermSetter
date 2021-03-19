@@ -35,14 +35,14 @@ public class EnrollAccess {
         // first connect
         connect = this.connection();
 
-        user.getStudentNumber();
+        user.getStudentID();
         //query (this wont look pretty)
         PreparedStatement statement = connect.prepareStatement("select enrollment.course_id , courses.course_name, enrollment.student_id, students.student_username " +
                 "from enrollment inner join courses " +
                 "inner join students " +
                 "on enrollment.course_id = courses.course_id AND students.student_id = enrollment.student_id " +
                 "where enrollment.student_id = ?;");
-        statement.setString(1, user.getStudentNumber);
+        statement.setString(1, user.getStudentID());
         ResultSet resultSet = statement.executeQuery();
 
         // collect
