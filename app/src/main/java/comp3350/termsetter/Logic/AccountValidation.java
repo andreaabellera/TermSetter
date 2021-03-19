@@ -34,63 +34,70 @@ public class AccountValidation{
     }
 
     public boolean validPassword(String password){
-//        boolean validLength = password.length() >= MIN_PASS_LENGTH && password.length() <= MAX_PASS_LENGTH;
-//        boolean hasLetter = false;
-//        boolean hasNumber = false;
-//        for(int i = 0; i < password.length(); i++){
-//            char ch = password.charAt(i);
-//            if(Character.isLetter(ch)){
-//                hasLetter = true;
-//            }
-//            else if(Character.isDigit(ch)){
-//                hasNumber = true;
-//            }
-//        }
-//        return validLength && hasLetter && hasNumber;
-        System.out.println(password.length());
-        return password.length() <= 10;
+        boolean validLength = password.length() >= MIN_PASS_LENGTH && password.length() <= MAX_PASS_LENGTH;
+        boolean hasLetter = false;
+        boolean hasNumber = false;
+        for(int i = 0; i < password.length(); i++){
+            char ch = password.charAt(i);
+            if(Character.isLetter(ch)){
+                hasLetter = true;
+            }
+            else if(Character.isDigit(ch)){
+                hasNumber = true;
+            }
+        }
+        return validLength && hasLetter && hasNumber;
+//        System.out.println(password.length());
+//        return password.length() <= 10;
     }
 
     public boolean validEmail(String email){
-        boolean validLength = false;
-        boolean validDomain = false;
-        if(email.contains("@")){
-            String[] tokens = email.split("@");
-            validLength = tokens[0].length() >= MIN_NAME_LENGTH && tokens[0].length() <= MAX_NAME_LENGTH;
-            validDomain = tokens[1].contains("myumanitoba.ca");
+//        boolean validLength = false;
+//        boolean validDomain = false;
+//        if(email.contains("@")){
+//            String[] tokens = email.split("@");
+//            validLength = tokens[0].length() >= MIN_NAME_LENGTH && tokens[0].length() <= MAX_NAME_LENGTH;
+//            validDomain = tokens[1].contains("myumanitoba.ca");
+//        }
+//        return validLength && validDomain;
+        Pattern p = Pattern.compile("^[a-zA-Z]+[0-9]*@myumanitoba\\.ca$");
+        Matcher m = p.matcher(email);
+        if(!m.matches() || email.isEmpty() || !(email.contains("@myumanitoba.ca")) || !(email.length() > "@myumanitoba.ca".length())) {
+            return false;
         }
-        return validLength && validDomain;
+
+        return true;
     }
 
     public boolean validPhone(String phone){
-//        String digits = "";
-//        boolean hasInvalidChar = false;
-//        boolean hasOpenBracket = false;
-//        for(int i = 0; i < phone.length(); i++){
-//            char ch = phone.charAt(i);
-//            if(Character.isDigit(ch)){
-//                digits += ch;
-//            }
-//            else{
-//                if(ch != '+' && ch != ' ' && ch != '-' && ch != '(' && ch != ')'){
-//                    hasInvalidChar = true;
-//                }
-//                else{
-//                    if(ch == '+' && i > 0){
-//                        hasInvalidChar = true;
-//                    }
-//                    else if(ch == '(' && !hasOpenBracket){
-//                        hasOpenBracket = true;
-//                    }
-//                    else if(ch == ')' && hasOpenBracket){
-//                        hasOpenBracket = false;
-//                    }
-//                }
-//            }
-//    }
-//        boolean validLength = digits.length() >= MIN_PHONE_LENGTH && digits.length() <= MAX_PHONE_LENGTH;
- //       return validLength && !hasInvalidChar && !hasOpenBracket;
-        return phone.length() <= 10;
+        String digits = "";
+        boolean hasInvalidChar = false;
+        boolean hasOpenBracket = false;
+        for(int i = 0; i < phone.length(); i++){
+            char ch = phone.charAt(i);
+            if(Character.isDigit(ch)){
+                digits += ch;
+            }
+            else{
+                if(ch != '+' && ch != ' ' && ch != '-' && ch != '(' && ch != ')'){
+                    hasInvalidChar = true;
+                }
+                else{
+                    if(ch == '+' && i > 0){
+                        hasInvalidChar = true;
+                    }
+                    else if(ch == '(' && !hasOpenBracket){
+                        hasOpenBracket = true;
+                    }
+                    else if(ch == ')' && hasOpenBracket){
+                        hasOpenBracket = false;
+                    }
+                }
+            }
+    }
+        boolean validLength = digits.length() >= MIN_PHONE_LENGTH && digits.length() <= MAX_PHONE_LENGTH;
+        return validLength && !hasInvalidChar && !hasOpenBracket;
+//        return phone.length() <= 10;
     }
 
     public boolean confirmPassword(String newPass, String newPassConfirm) {
