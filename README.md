@@ -13,8 +13,8 @@ In case any of the links below are not working, most of the documents (Vision st
 
 # Architecture (Iteration 2)
 
-- Please refer to [ARCHITECTURE_ITERATION2.md](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/ARCHITECTURE.md)
-- For the diagram, please refer to [ARCHITECTURE_DIAGRAM_ITERATION2.png](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/ARCHITECTURE_DIAGRAM_ITERATION2.png)
+- Please refer to [ARCHITECTURE_ITERATION2.md](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/ARCHITECTURE_ITERATION2.md)
+- For the diagram, please refer to [ARCHITECTURE_DIAGRAM_ITERATION2.png](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/ARCHITECTURE_DIAGRAM_ITERATION2.PNG)
  
 # Branching Strategy
 
