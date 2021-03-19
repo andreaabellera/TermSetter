@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.SQLException;
 
+import comp3350.termsetter.Logic.AccountValidation;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
 import comp3350.termsetter.Persistence.UserPersistence;
@@ -26,6 +27,7 @@ public class AccountUpdateEmail extends AppCompatActivity {
     private boolean validate;
     private EditText newEmail;
     private EditText newEmailConfirm;
+    private AccountValidation accountValidation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,7 @@ public class AccountUpdateEmail extends AppCompatActivity {
     }
 
     public void updateEmail(View view) throws SQLException {
-        User user;
+        accountValidation = new AccountValidation();
 
         newEmail = findViewById(R.id.updateEmailEdtxt1);
         newEmailConfirm = findViewById(R.id.updateEmailEdtxt2);
@@ -57,11 +59,8 @@ public class AccountUpdateEmail extends AppCompatActivity {
         String inputNewEmail = newEmail.getText().toString();
         String inputNewEmailConfirm = newEmailConfirm.getText().toString();
 
-        if (inputNewEmail.isEmpty() || inputNewEmailConfirm.isEmpty()) {
-            Toast.makeText(AccountUpdateEmail.this, "Too empty buddy, try again!", Toast.LENGTH_SHORT).show();
-        } else {
-            validate = validate(inputNewEmail, inputNewEmailConfirm);
-            if (validate) {
+        if (accountValidation.validEmail(inputNewEmail) || accountValidation.validEmail(inputNewEmailConfirm)) {
+            if (accountValidation.confirmEmail(inputNewEmail, inputNewEmailConfirm)) {
                 if (database.updateEmail(inputNewEmail)) {
                     Toast.makeText(AccountUpdateEmail.this, "Email changes!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AccountUpdateEmail.this, AccountManagementMenu.class);
@@ -70,18 +69,15 @@ public class AccountUpdateEmail extends AppCompatActivity {
                 else {
                     Toast.makeText(this, "Update Email is not working!", Toast.LENGTH_SHORT).show();
                 }
-            } else {
-                Toast.makeText(AccountUpdateEmail.this, "Please try again!", Toast.LENGTH_SHORT).show();
             }
+            else {
+                Toast.makeText(AccountUpdateEmail.this, "Please confirm your emails are similar!", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(AccountUpdateEmail.this, "Please ensure your emails are valid!", Toast.LENGTH_SHORT).show();
         }
     }
 
 
-    private boolean validate(String newEmail, String newEmailConfirm) {
-        boolean result = false;
-        if (newEmail.contains("@myumanitoba.ca") && newEmail.equals(newEmailConfirm)) {
-            result = true;
-        }
-        return result;
-    }
+
 }

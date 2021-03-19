@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 
 import java.sql.SQLException;
 
+import comp3350.termsetter.Logic.AccountValidation;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
 import comp3350.termsetter.Persistence.UserPersistence;
@@ -24,7 +25,7 @@ import comp3350.termsetter.Persistence.DomainSpecific.User;
 public class CreateAccount extends AppCompatActivity {
     private static Context mContext;
     private UserPersistence database;
-
+    private AccountValidation accountValidation;
     private EditText eName;
     private EditText eMail;
     private EditText ePassword;
@@ -51,27 +52,18 @@ public class CreateAccount extends AppCompatActivity {
         ePhone = findViewById(R.id.createAccountEdtxt5);
     }
 
-    public static boolean validate(String name, String id, String password, String confirmPassword, String email, String phone) {
-        Pattern p;
-        Matcher m;
+    public boolean validate(String name, String id, String password, String confirmPassword, String email, String phone) {
+        accountValidation = new AccountValidation();
 
         // 1. Check Name
-        p = Pattern.compile("^[a-zA-Z]+\\s{1}[a-zA-z]+$");
-        m = p.matcher(name);
-        if(!m.matches() || name.isEmpty() || !(name.length() <= 30)){
-            Toast.makeText(mContext, "The name consist of First name, 1 whitespace, and Last name.", Toast.LENGTH_SHORT).show();
-            return false;
-        }
+        boolean validName = accountValidation.validName(name);
+
         // 2. Check ID (must start with a character, then some numbers)
-        p = Pattern.compile("^[a-zA-Z]+[0-9]*$");
-        m = p.matcher(id);
-        if(!m.matches() || id.isEmpty() || !(id.length() <= 20)){
-            Toast.makeText(mContext, "Your student ID must begin with a character.", Toast.LENGTH_SHORT).show();
-            return false;
-        }
+        boolean validID = accountValidation.validID(id);
+
         // 3. Check password
         if(password.isEmpty()){
-            Toast.makeText(mContext, "Please check password again!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Password must be at least 10 characters and contain both letters and numbers!", Toast.LENGTH_SHORT).show();
             return false;
         }
         // 4. Check confirm password
