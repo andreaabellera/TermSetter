@@ -20,11 +20,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void openMyCourses(View view) {
+    public void openEnrolledClassesView(View view) {
         // code
         // (idk which class we want this to connect to)
         Toast.makeText(this, "Opening my courses.", Toast.LENGTH_LONG).show();
-
+        Intent intent = new Intent(this, EnrolledClassesView.class);
+        startActivity(intent);
     }
 
     public void openOfferedClassesCategories(View view) {
