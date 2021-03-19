@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 import static java.lang.Integer.parseInt;
 
-public class CourseCategoryDriver {
+public class CourseCategoryDriver implements CourseCategoryPersistence{
 
     private CourseCategories categories;
 
