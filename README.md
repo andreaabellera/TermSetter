@@ -37,6 +37,3 @@ Please refer to [branching_strategy.md](https://code.cs.umanitoba.ca/3350-winter
 
 Please refer to [coding_standards.md](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/coding_standards.md)
 
-
-
-
