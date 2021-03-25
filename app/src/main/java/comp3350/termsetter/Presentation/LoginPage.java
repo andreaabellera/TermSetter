@@ -16,15 +16,10 @@ import java.sql.SQLException;
 
 import comp3350.termsetter.Logic.AccountValidation;
 import comp3350.termsetter.Logic.AccessStudents;
-import comp3350.termsetter.Persistence.ConnectDB;
 import comp3350.termsetter.Persistence.DBImporter;
-import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
-import comp3350.termsetter.Persistence.Main;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.Persistence.UserPersistence;
 import comp3350.termsetter.R;
-
-import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 public class LoginPage extends AppCompatActivity {
     private static Context mContext;
@@ -66,9 +61,9 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void onClickLoginButton(View view) throws SQLException {
-        eID = findViewById(R.id.loginEdtxt1);
-        ePassword = findViewById(R.id.loginEdtxt2);
-        eLogin = findViewById(R.id.loginBtn);
+        eID = findViewById(R.id.editTextSetID);
+        ePassword = findViewById(R.id.editTextSetPassword);
+        eLogin = findViewById(R.id.buttonLogin);
         accountValidation = new AccountValidation();
 
         String inputID = eID.getText().toString();

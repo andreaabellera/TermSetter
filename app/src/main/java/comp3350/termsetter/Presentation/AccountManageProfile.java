@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.sql.SQLException;
 
 import comp3350.termsetter.Logic.AccessStudents;
-import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.Persistence.DomainSpecific.User;
 import comp3350.termsetter.Persistence.UserPersistence;
 import comp3350.termsetter.R;
@@ -39,10 +38,10 @@ public class AccountManageProfile extends AppCompatActivity {
         User user = database.getCurrentUser();
         //User user = accessStudents.getStudent("asdf");
 
-        TextView studentName = findViewById(R.id.manageProfileTxtStudent2);
-        TextView studentID = findViewById(R.id.manageProfileTxtStudent3);
-        TextView studentEmail = findViewById(R.id.manageProfileTxtStudent4);
-        TextView studentPhone = findViewById(R.id.manageProfileTxtStudent5);
+        TextView studentName = findViewById(R.id.userInfoName);
+        TextView studentID = findViewById(R.id.userInfoStudentID);
+        TextView studentEmail = findViewById(R.id.userInfoEmail);
+        TextView studentPhone = findViewById(R.id.userInfoPhone);
 
         studentName.setText(user.getName());
         studentID.setText(user.getStudentID());
