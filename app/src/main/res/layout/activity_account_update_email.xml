@@ -1,102 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Logic.AccountUpdateEmail">
+    tools:context=".Presentation.AccountUpdateEmail">
 
-    <TextView
-        android:id="@+id/updateEmailHeader"
-        style="@style/CustomHeader"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:id="@+id/contentUpdateEmail"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/header_update_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/updateEmailTxt1"
+            style="@style/CustomHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/txt_update_email_prompt1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/updateEmailTxtStudent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/txt_update_email_current_email"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateEmailTxt1" />
-
-        <TextView
-            android:id="@+id/updateEmailTxt2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="32dp"
-            android:text="@string/txt_update_email_prompt2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateEmailTxtStudent" />
+            android:text="@string/header_update_email" />
 
-        <EditText
-            android:id="@+id/updateEmailEdtxt1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="@string/txt_update_email_hint1"
-            android:inputType="textEmailAddress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateEmailTxt2" />
-
-        <TextView
-            android:id="@+id/updateEmailTxt3"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/txt_update_email_prompt3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateEmailEdtxt1" />
 
-        <EditText
-            android:id="@+id/updateEmailEdtxt2"
-            android:layout_width="0dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="64dp">
+
+            <TextView
+                android:id="@+id/promptCurrentEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="32dp"
+                android:text="@string/txt_update_email_prompt1" />
+
+            <TextView
+                android:id="@+id/userInfoCurrentEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/promptCurrentEmail"
+                android:layout_toRightOf="@id/promptCurrentEmail"
+                android:text="@string/txt_update_email_current_email" />
+
+            <TextView
+                android:id="@+id/promptNewEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/promptCurrentEmail"
+                android:layout_marginTop="32dp"
+                android:text="@string/txt_update_email_prompt2" />
+
+            <EditText
+                android:id="@+id/editTextNewEmail"
+                android:layout_width="@dimen/Termsetter.EditText.Width"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/promptNewEmail"
+                android:ems="10"
+                android:hint="@string/txt_update_email_hint1"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:id="@+id/promptConfirmEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextNewEmail"
+                android:layout_marginTop="16dp"
+                android:text="@string/txt_update_email_prompt3" />
+
+            <EditText
+                android:id="@+id/editTextConfirmEmail"
+                android:layout_width="@dimen/Termsetter.EditText.Width"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/promptConfirmEmail"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="@string/txt_update_email_hint1" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="@string/txt_update_email_hint2"
-            android:inputType="textEmailAddress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateEmailTxt3" />
+            android:layout_marginTop="16dp">
 
-        <Button
-            android:id="@+id/updateEmailBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:onClick="updateEmail"
-            android:text="@string/btn_update_email_confirm"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateEmailEdtxt2" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/buttonConfirmEmail"
+                android:text="Cancel"
+                android:textSize="16sp"
+                android:textColor="@color/fresh_turtle" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonConfirmEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="16dp"
+                android:onClick="updateEmail"
+                android:text="@string/btn_update_email_confirm" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>

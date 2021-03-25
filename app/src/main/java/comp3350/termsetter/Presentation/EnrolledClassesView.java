@@ -1,7 +1,6 @@
 package comp3350.termsetter.Presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,7 +42,7 @@ public class EnrolledClassesView extends AppCompatActivity {
     }
 
     private void initWidgets(){
-        RecyclerView classes = (RecyclerView)findViewById(R.id.enrolled_classes_rv);
+        RecyclerView classes = (RecyclerView)findViewById(R.id.recycleEnrolledClasses);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         classes.setLayoutManager(layoutManager);
         recyclerAdapter= new RecyclerCurrClassDataAdapter(enrolledCourses, enrolledSections);
@@ -52,7 +51,7 @@ public class EnrolledClassesView extends AppCompatActivity {
 
     private void updateTotal(){
         double total = 562.12 * recyclerAdapter.getItemCount();
-        TextView total_txt = (TextView) findViewById(R.id.total_txt);
+        TextView total_txt = (TextView) findViewById(R.id.textFeeTotal);
         total_txt.setText("Total Fees: " + Double.toString(total)+" CAD");
     }
 

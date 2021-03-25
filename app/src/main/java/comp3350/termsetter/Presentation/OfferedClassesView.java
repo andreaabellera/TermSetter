@@ -32,7 +32,7 @@ public class OfferedClassesView extends AppCompatActivity {
 
     private void initData(){
         faculty = (Faculty) getIntent().getSerializableExtra("faculty");
-        TextView selectedCategory = findViewById(R.id.selectedCategory_txt);
+        TextView selectedCategory = findViewById(R.id.headerDepartment);
         selectedCategory.setText(faculty.getName());
         lv1Courses = faculty.getCoursesByLevel(1);
         lv2Courses = faculty.getCoursesByLevel(2);
@@ -41,10 +41,10 @@ public class OfferedClassesView extends AppCompatActivity {
     }
 
     private void initWidgets() {
-        RecyclerView lv1 = (RecyclerView)findViewById(R.id.lv1_rv);
-        RecyclerView lv2 = (RecyclerView)findViewById(R.id.lv2_rv);
-        RecyclerView lv3 = (RecyclerView)findViewById(R.id.lv3_rv);
-        RecyclerView lv4 = (RecyclerView)findViewById(R.id.lv4_rv);
+        RecyclerView lv1 = (RecyclerView)findViewById(R.id.recycleViewLevel1);
+        RecyclerView lv2 = (RecyclerView)findViewById(R.id.recyleViewLevel2);
+        RecyclerView lv3 = (RecyclerView)findViewById(R.id.recyleViewLevel3);
+        RecyclerView lv4 = (RecyclerView)findViewById(R.id.recycleViewLevel4);
 
         GridLayoutManager layoutManager1 = new GridLayoutManager(this,1);
         layoutManager1.setOrientation(LinearLayoutManager.HORIZONTAL);

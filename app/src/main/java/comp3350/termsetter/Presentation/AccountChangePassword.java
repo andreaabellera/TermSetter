@@ -16,8 +16,6 @@ import java.sql.SQLException;
 import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Logic.AccountValidation;
 //import comp3350.termsetter.Logic.AccessStudents;
-import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
-import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
 import comp3350.termsetter.Persistence.UserPersistence;
 import comp3350.termsetter.R;
 
@@ -50,9 +48,9 @@ public class AccountChangePassword extends AppCompatActivity {
 
 
     public void onClickConfirmButton(View view) throws SQLException {
-        oldPassword = findViewById(R.id.changePasswordEdtxt1);
-        newPassword = findViewById(R.id.changePasswordEdtxt2);
-        newPasswordConfirm = findViewById(R.id.changePasswordEdtxt3);
+        oldPassword = findViewById(R.id.editTextCurrentPassword);
+        newPassword = findViewById(R.id.editTextNewPassword);
+        newPasswordConfirm = findViewById(R.id.editTexConfirmPassword);
         accountValidation = new AccountValidation();
 
         String inputOldPassword = oldPassword.getText().toString();

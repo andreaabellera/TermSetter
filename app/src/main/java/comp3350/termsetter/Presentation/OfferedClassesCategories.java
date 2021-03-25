@@ -39,7 +39,7 @@ public class OfferedClassesCategories extends AppCompatActivity {
     }
 
     private void initWidgets(){
-        RecyclerView faculties = (RecyclerView)findViewById(R.id.faculties_rv);
+        RecyclerView faculties = (RecyclerView)findViewById(R.id.recycleViewFaculties);
         GridLayoutManager layoutManager = new GridLayoutManager(this,2);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         faculties.setLayoutManager(layoutManager);

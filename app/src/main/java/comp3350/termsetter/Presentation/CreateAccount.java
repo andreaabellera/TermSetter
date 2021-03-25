@@ -10,15 +10,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import java.sql.SQLException;
 
 import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Logic.AccountValidation;
-import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
-import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
 import comp3350.termsetter.Persistence.UserPersistence;
 import comp3350.termsetter.R;
 import comp3350.termsetter.Persistence.DomainSpecific.User;
@@ -50,12 +45,12 @@ public class CreateAccount extends AppCompatActivity {
         accessStudents = new AccessStudents();
         database = accessStudents.getStudentPersistence();
 
-        eName = findViewById(R.id.loginEdtxt0);
-        eStudentID = findViewById(R.id.loginEdtxt1);
-        ePassword = findViewById(R.id.loginEdtxt2);
-        eConfirmPassword = findViewById(R.id.createAccountEdtxt3);
-        eMail = findViewById(R.id.createAccountEdtxt4);
-        ePhone = findViewById(R.id.createAccountEdtxt5);
+        eName = findViewById(R.id.editTextSetName);
+        eStudentID = findViewById(R.id.editTextSetID);
+        ePassword = findViewById(R.id.editTextSetPassword);
+        eConfirmPassword = findViewById(R.id.editTextConfirmAPassword);
+        eMail = findViewById(R.id.editTextEmail);
+        ePhone = findViewById(R.id.editTextPhone);
     }
 
     public boolean validate(String name, String id, String password, String confirmPassword, String email, String phone) {
