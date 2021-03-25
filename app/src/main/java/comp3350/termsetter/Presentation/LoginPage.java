@@ -61,8 +61,8 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void onClickLoginButton(View view) throws SQLException {
-        eID = findViewById(R.id.editTextSetID);
-        ePassword = findViewById(R.id.editTextSetPassword);
+        eID = findViewById(R.id.editTextUserID);
+        ePassword = findViewById(R.id.editTextPassword);
         eLogin = findViewById(R.id.buttonLogin);
         accountValidation = new AccountValidation();
 
