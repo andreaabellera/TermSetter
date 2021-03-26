@@ -36,31 +36,39 @@
             android:layout_marginTop="4dp"
             android:text="Termsetter"/>
 
-        <EditText
-            android:id="@+id/editTextUserID"
-            style="@style/CustomEditText"
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="@dimen/Termsetter.EditText.Width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="64dp"
-            android:editable="true"
-            android:drawableStart="@drawable/ic_baseline_person_24"
-            android:drawableLeft="@drawable/ic_baseline_person_24"
             android:hint="ID"
-            android:inputType="text" />
+            android:inputType="text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            app:startIconDrawable="@drawable/ic_baseline_person_24">
 
-        <EditText
-            android:id="@+id/editTextPassword"
-            style="@style/CustomEditText"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextUserID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="@dimen/Termsetter.EditText.Width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/custom_rounded_corners"
-            android:drawableStart="@drawable/ic_baseline_https_24"
-            android:drawableLeft="@drawable/ic_baseline_https_24"
+            android:layout_marginTop="8dp"
+            android:inputType="textPassword"
             android:hint="Password"
-            android:inputType="textPassword"/>
+            app:startIconDrawable="@drawable/ic_baseline_https_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/buttonLogin"
