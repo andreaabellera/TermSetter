@@ -2,9 +2,22 @@
 <resources>
     <color name="aqua_50">#D5F9F4</color>
     <color name="aqua_100">#94EEE1</color>
-    <color name="aqua_200">#80DEEA</color>
-    <color name="aqua_300">#4DD0E1</color>
+    <color name="STAND_IN">#FF3700B3</color>
 
+    <color name="tsPrimary">#FF3700B3</color>
+    <color name="tsSecondary">#FF3700B3</color>
+    <color name="tsBackground">@color/white</color>
+    <color name="tsError">#FF3700B3</color>
+
+    <!-- New MaterialComponents attributes. -->
+    <color name="tsPrimaryVariant">#FF3700B3</color>
+    <color name="tsSecondaryVariant">#FF3700B3</color>
+    <color name="tsSurface">#FF3700B3</color>
+    <color name="tsColorOnPrimary">#FF3700B3</color>
+    <color name="tsColorOnSecondary">#FF3700B3</color>
+    <color name="tsColorOnBackground">#FF3700B3</color>
+    <color name="tsColorOnError">#FF3700B3</color>
+    <color name="tsColorOnSurface">#FF3700B3</color>
 
 
     <!-- Pre-defined app colours -->
