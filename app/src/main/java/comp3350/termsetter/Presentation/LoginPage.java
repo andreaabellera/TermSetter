@@ -1,30 +1,19 @@
 package comp3350.termsetter.Presentation;
 
-
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.hsqldb.rights.User;
-
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
-
-import comp3350.termsetter.Logic.AccountValidation;
 import comp3350.termsetter.Logic.AccessStudents;
+import comp3350.termsetter.Logic.AccountValidation;
 import comp3350.termsetter.Persistence.DBImporter;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
-import comp3350.termsetter.Persistence.DomainSpecific.Student;
-import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.EnrollAccess;
-import comp3350.termsetter.Persistence.Main;
 import comp3350.termsetter.Persistence.StudentPersistence;
 import comp3350.termsetter.R;
 

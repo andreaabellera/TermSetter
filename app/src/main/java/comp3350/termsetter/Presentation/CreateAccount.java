@@ -7,16 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.sql.SQLException;
-
 import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Logic.AccountValidation;
-import comp3350.termsetter.Persistence.UserPersistence;
-import comp3350.termsetter.R;
 import comp3350.termsetter.Persistence.DomainSpecific.Student;
+import comp3350.termsetter.Persistence.StudentPersistence;
+import comp3350.termsetter.R;
 
 public class CreateAccount extends AppCompatActivity {
     private static Context mContext;

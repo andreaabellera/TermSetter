@@ -1,11 +1,9 @@
 package comp3350.termsetter.Logic;
 
 import android.content.Context;
-
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
-
 import comp3350.termsetter.Persistence.DomainSpecific.Student;
 import comp3350.termsetter.Persistence.StudentPersistence;
 

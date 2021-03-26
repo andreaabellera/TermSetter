@@ -1,7 +1,6 @@
 package comp3350.termsetter.Persistence;
 
 import java.sql.SQLException;
-
 import comp3350.termsetter.Persistence.DomainSpecific.Student;
 
 public interface StudentPersistence {

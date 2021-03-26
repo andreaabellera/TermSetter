@@ -1,7 +1,6 @@
 package comp3350.termsetter.Logic;
 
 import android.content.Context;
-
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
 import comp3350.termsetter.Persistence.Main;

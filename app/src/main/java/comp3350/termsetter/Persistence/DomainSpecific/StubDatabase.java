@@ -2,11 +2,9 @@ package comp3350.termsetter.Persistence.DomainSpecific;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
-
 import comp3350.termsetter.Persistence.StudentPersistence;
-
 import static android.content.Context.MODE_PRIVATE;
+
 
 public class StubDatabase implements StudentPersistence {
     private SharedPreferences preferences;

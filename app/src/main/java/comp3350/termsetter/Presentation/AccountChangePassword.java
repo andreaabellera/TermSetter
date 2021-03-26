@@ -1,6 +1,5 @@
 package comp3350.termsetter.Presentation;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,15 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.sql.SQLException;
-
 import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Logic.AccountValidation;
-//import comp3350.termsetter.Logic.AccessStudents;
-import comp3350.termsetter.Persistence.UserPersistence;
+import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
+import comp3350.termsetter.Persistence.StudentPersistence;
 import comp3350.termsetter.R;
 
 public class AccountChangePassword extends AppCompatActivity {
@@ -38,7 +35,7 @@ public class AccountChangePassword extends AppCompatActivity {
         setContentView(R.layout.activity_account_change_password);
 
         mContext = getApplicationContext();
-        //database = new StubDatabase(mContext,"test.db");
+        database = new StubDatabase(mContext,"test.db");
 
         accessStudents = new AccessStudents();
         database = accessStudents.getStudentPersistence();

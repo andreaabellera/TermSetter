@@ -2,7 +2,6 @@ package comp3350.termsetter.Logic;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import comp3350.termsetter.Persistence.DomainSpecific.Student;
 
 public class AccountValidation{

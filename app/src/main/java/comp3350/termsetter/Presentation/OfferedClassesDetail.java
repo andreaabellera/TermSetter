@@ -1,18 +1,14 @@
 package comp3350.termsetter.Presentation;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import comp3350.termsetter.R;
-
 import comp3350.termsetter.Persistence.CourseOffering;
+import comp3350.termsetter.R;
 
 public class OfferedClassesDetail extends AppCompatActivity {
 

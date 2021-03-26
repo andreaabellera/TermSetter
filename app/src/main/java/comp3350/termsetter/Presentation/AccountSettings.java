@@ -2,9 +2,7 @@ package comp3350.termsetter.Presentation;
 
 import android.os.Bundle;
 import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import comp3350.termsetter.R;
 
 public class AccountSettings extends AppCompatActivity {

@@ -1,6 +1,5 @@
 package comp3350.termsetter.Presentation;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,14 +7,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.sql.SQLException;
-
 import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Logic.AccountValidation;
-import comp3350.termsetter.Persistence.UserPersistence;
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
+import comp3350.termsetter.Persistence.StudentPersistence;
 import comp3350.termsetter.R;
 
 public class AccountUpdateEmail extends AppCompatActivity {
@@ -47,9 +44,9 @@ public class AccountUpdateEmail extends AppCompatActivity {
     }
 
     private void displayProfile() throws SQLException {
-        User user = database.getCurrentUser();
+        Student student = database.getCurrentStudentID();
         TextView studentEmail = findViewById(R.id.userInfoCurrentEmail);
-        studentEmail.setText(user.getEmailAddress());
+        studentEmail.setText(student.getEmailAddress());
     }
 
     public void updateEmail(View view) throws SQLException {
