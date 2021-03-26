@@ -5,14 +5,14 @@ import android.content.Context;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
 import comp3350.termsetter.Persistence.Main;
-import comp3350.termsetter.Persistence.UserPersistence;
+import comp3350.termsetter.Persistence.StudentPersistence;
 
 public class Services
 {
-    private static UserPersistence studentAccess = null;
+    private static StudentPersistence studentAccess = null;
     private static Context mContext;
 
-    public static synchronized UserPersistence getRealStudentAccess()
+    public static synchronized StudentPersistence getRealStudentAccess()
     {
         if (studentAccess == null)
         {
@@ -24,7 +24,7 @@ public class Services
 
         return studentAccess;
     }
-    public static synchronized UserPersistence getFakeStudentAccess(Context context)
+    public static synchronized StudentPersistence getFakeStudentAccess(Context context)
     {
         if (studentAccess == null)
         {

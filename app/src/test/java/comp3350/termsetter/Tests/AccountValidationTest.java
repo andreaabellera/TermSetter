@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import comp3350.termsetter.Logic.AccountValidation;
-import comp3350.termsetter.Persistence.DomainSpecific.User;
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
 
 import static org.junit.Assert.*;
 
@@ -44,7 +44,7 @@ public class AccountValidationTest {
     String confirmEmailTrue = "mailAndrea@myumanitoba.ca";
     String confirmEmailFalse = "mailTuan@myumanitoba.ca";
 
-    User currentUser = new User(validName, validPasswd, validEmail, validPhone, validID);
+    Student currentStudent = new Student(validName, validPasswd, validEmail, validPhone, validID);
 
 
     @Before
@@ -280,7 +280,7 @@ public class AccountValidationTest {
     @Test
     public void testVerifyPasswordTrue() {
         System.out.println("\nStarting testVerifyPasswordTrue: given 2 passwords are valid\n");
-        boolean result = validPasswd.equals(currentUser.getPassword());
+        boolean result = validPasswd.equals(currentStudent.getPassword());
         assertTrue(result);
         System.out.println("End testVerifyPasswordTrue: given 2 passwords are valid\n");
     }
@@ -288,7 +288,7 @@ public class AccountValidationTest {
     @Test
     public void testVerifyPasswordFalse() {
         System.out.println("\nStarting testVerifyPasswordFalse: given 2 passwords are invalid\n");
-        boolean result = newPass.equals(currentUser.getPassword());
+        boolean result = newPass.equals(currentStudent.getPassword());
         assertFalse(result);
         System.out.println("End testVerifyPasswordFalse: given 2 passwords are invalid\n");
     }

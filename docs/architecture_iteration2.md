@@ -5,10 +5,10 @@ Termsetter is designed with a 3-tier architecture, which consists of Presentatio
 ## Presentation Layer
 
 **LoginPageActivity**
-UI that facilitates user login.
+UI that facilitates student login.
 
 **CreateAccountActivity**
-UI that facilitates user account creation.
+UI that facilitates student account creation.
 
 **MainActivity**
 UI that facilitates primary navigation within the system.
@@ -17,15 +17,15 @@ UI that facilitates primary navigation within the system.
 UI that facilitates the enrollment into courses.
 
 ***AccountManagement activities***
-UIs that facilitate management of various user account elements. 
+UIs that facilitate management of various student account elements.
 - **AccountManagementMenuActivity**
 UI that provides navigation between account management activities.
 - **AccountManagementProfileActivity**
-UI that facilitates the viewing of user information.
+UI that facilitates the viewing of student information.
 - **AccountManagementChangePasswordActivity**
-UI that facilitates the changing of the user password.
+UI that facilitates the changing of the student password.
 - **AccountManagementUpdateEmailActivity**
-UI that facilitate the updating of the user email.
+UI that facilitate the updating of the student email.
 
 ***OfferedCourse activities***
 UIs that facilitate the viewing of offered courses.
@@ -37,7 +37,7 @@ UI that facilitates the viewing of available course categories.
 ## Logic Layer
 
 **AccountValidation**
-Class that handles the validation of user information upon creating an account.
+Class that handles the validation of student information upon creating an account.
 
 **OfferedClassesLogic**
 Class that supplies the OfferedClasses activities with information. 
@@ -63,7 +63,7 @@ The parent class faculty.
 Class the holds a list of offered classes in each faculty.
 
 **UserPersistence**
-Interface for handling user account information (updating information).
+Interface for handling student account information (updating information).
 
 ***HSQLDB Objects***
 - **CourseAccess**

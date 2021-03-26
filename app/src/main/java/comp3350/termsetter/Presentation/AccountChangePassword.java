@@ -16,22 +16,19 @@ import java.sql.SQLException;
 import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Logic.AccountValidation;
 //import comp3350.termsetter.Logic.AccessStudents;
-import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
-import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
-import comp3350.termsetter.Persistence.UserPersistence;
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
+import comp3350.termsetter.Persistence.StudentPersistence;
 import comp3350.termsetter.R;
-
-import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 public class AccountChangePassword extends AppCompatActivity {
     private static Context mContext;
-    private UserPersistence database;
+    private StudentPersistence database;
     private boolean validate;
     private EditText oldPassword;
     private EditText newPassword;
     private EditText newPasswordConfirm;
     private AccountValidation accountValidation;
-    private User user;
+    private Student student;
     private Button change;
 
     private AccessStudents accessStudents;
@@ -43,7 +40,7 @@ public class AccountChangePassword extends AppCompatActivity {
 
         mContext = getApplicationContext();
         //database = new StubDatabase(mContext,"test.db");
-        //database = new StudentAccess("users.db");
+
         accessStudents = new AccessStudents();
         database = accessStudents.getStudentPersistence();
     }
@@ -62,7 +59,7 @@ public class AccountChangePassword extends AppCompatActivity {
         if (!accountValidation.validPassword(inputOldPassword) || !accountValidation.validPassword(inputNewPassword) || !accountValidation.validPassword(inputNewPasswordConfirm)) {
             Toast.makeText(AccountChangePassword.this, "Please enter valid password!", Toast.LENGTH_SHORT).show();
         } else {
-            if (accountValidation.verifyCurrentPassword(inputOldPassword, database.getCurrentUser())) {
+            if (accountValidation.verifyCurrentPassword(inputOldPassword, database.getCurrentStudentID())) {
                 if (accountValidation.confirmPassword(inputNewPassword, inputNewPasswordConfirm)) {
                     Toast.makeText(AccountChangePassword.this, "Old Password: " + inputOldPassword, Toast.LENGTH_SHORT).show();
                     Toast.makeText(AccountChangePassword.this, "New Password: " + inputNewPassword, Toast.LENGTH_SHORT).show();
