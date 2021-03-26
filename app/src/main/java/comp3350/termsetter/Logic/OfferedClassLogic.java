@@ -9,7 +9,6 @@ import comp3350.termsetter.Persistence.CourseCategoryDriver;
 import comp3350.termsetter.Persistence.CourseCategoryPersistence;
 import comp3350.termsetter.Persistence.CourseCategorySQLDriver;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.CourseAccess;
-import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.EnrollAccess;
 import comp3350.termsetter.Persistence.Faculty;
 import comp3350.termsetter.Persistence.Main;
 import comp3350.termsetter.R;

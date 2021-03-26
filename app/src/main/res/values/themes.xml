@@ -1,8 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Custom parent theme presets from which all themes will inherit-->
-    <style name="TermsetterBase" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:buttonStyle">@style/CustomButton</item>
+    <style name="TermsetterBase" parent="Theme.AppCompat.Light.NoActionBar">
+
     </style>
 
     <!-- Custom parent button presets (all buttons will inherit-->

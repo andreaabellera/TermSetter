@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,73 +7,52 @@
     tools:context=".Presentation.LoginPage">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="300dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/loginHeader1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:editable="false"
+            android:layout_marginTop="80dp"
             android:text="University of Manitoba"
-            android:textSize="18dp"
-            android:textStyle="normal|bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="18sp" />
 
         <ImageView
-            android:id="@+id/loginImg"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="4dp"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/ts_icon_nolabel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginHeader1" />
+            android:src="@drawable/ts_icon_nolabel"/>
 
         <TextView
-            android:id="@+id/loginHeader2"
-            style="@style/CustomHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:text="Termsetter"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginImg" />
+            android:layout_marginTop="4dp"
+            android:text="Termsetter"/>
 
         <EditText
-            android:id="@+id/loginEdtxt1"
+            android:id="@+id/editTextUserID"
             style="@style/CustomEditText"
-            android:layout_width="280dp"
+            android:layout_width="@dimen/Termsetter.EditText.Width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="64dp"
+            android:editable="true"
             android:drawableStart="@drawable/ic_baseline_person_24"
             android:drawableLeft="@drawable/ic_baseline_person_24"
             android:hint="ID"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginHeader2" />
+            android:inputType="text" />
 
         <EditText
-            android:id="@+id/loginEdtxt2"
+            android:id="@+id/editTextPassword"
             style="@style/CustomEditText"
-            android:layout_width="280dp"
+            android:layout_width="@dimen/Termsetter.EditText.Width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
@@ -81,40 +60,26 @@
             android:drawableStart="@drawable/ic_baseline_https_24"
             android:drawableLeft="@drawable/ic_baseline_https_24"
             android:hint="Password"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginEdtxt1" />
+            android:inputType="textPassword"/>
 
         <Button
-            android:id="@+id/loginBtn"
-            android:layout_width="280dp"
+            android:id="@+id/buttonLogin"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="32dp"
+            android:layout_gravity="center"
             android:onClick="onClickLoginButton"
-            android:text="LOGIN"
-            android:textSize="20dp"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginEdtxt2" />
+            android:text="LOGIN"/>
 
         <TextView
-            android:id="@+id/loginTxtClickable"
-            style="@style/CustomClickableText"
+            android:id="@+id/buttonCreateAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
             android:onClick="onClickCreateAccountButton"
-            android:text="CREATE ACCOUNT"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:text="CREATE ACCOUNT"/>
+    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

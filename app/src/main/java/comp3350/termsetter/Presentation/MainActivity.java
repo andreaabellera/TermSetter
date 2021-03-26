@@ -1,15 +1,10 @@
 package comp3350.termsetter.Presentation;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.hsqldb.Database;
-
 import comp3350.termsetter.R;
 
 public class MainActivity extends AppCompatActivity {

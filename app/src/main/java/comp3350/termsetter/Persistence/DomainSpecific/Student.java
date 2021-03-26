@@ -1,15 +1,15 @@
 package comp3350.termsetter.Persistence.DomainSpecific;
 
-public class User  {
+public class Student {
 
     private String Name;
     private String Password;
-    private String Email;
     private final String Phone;
+    private String Email;
     private final String studentID;
 
     // constructor
-    public User(String name, String password, String email, String phone, String studentID) {
+    public Student(String name, String password, String email, String phone, String studentID) {
         this.Name = name;
         this.Password = password;
         this.Email = email;
@@ -42,7 +42,7 @@ public class User  {
 
     // purpose: sets username
     // input: the String to assign to user id
-    public void setUserName(String input) {
+    public void setStudentName(String input) {
         this.Name = input;
     }
 
