@@ -15,8 +15,7 @@ import java.sql.SQLException;
 
 import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Logic.AccountValidation;
-import comp3350.termsetter.Persistence.DomainSpecific.Student;
-import comp3350.termsetter.Persistence.StudentPersistence;
+import comp3350.termsetter.Persistence.UserPersistence;
 import comp3350.termsetter.R;
 
 public class AccountUpdateEmail extends AppCompatActivity {
@@ -48,16 +47,16 @@ public class AccountUpdateEmail extends AppCompatActivity {
     }
 
     private void displayProfile() throws SQLException {
-        Student student = database.getCurrentStudentID();
-        TextView studentEmail = findViewById(R.id.updateEmailTxtStudent);
-        studentEmail.setText(student.getEmailAddress());
+        User user = database.getCurrentUser();
+        TextView studentEmail = findViewById(R.id.userInfoCurrentEmail);
+        studentEmail.setText(user.getEmailAddress());
     }
 
     public void updateEmail(View view) throws SQLException {
         accountValidation = new AccountValidation();
 
-        newEmail = findViewById(R.id.updateEmailEdtxt1);
-        newEmailConfirm = findViewById(R.id.updateEmailEdtxt2);
+        newEmail = findViewById(R.id.editTextNewEmail);
+        newEmailConfirm = findViewById(R.id.editTextConfirmEmail);
 
         String inputNewEmail = newEmail.getText().toString();
         String inputNewEmailConfirm = newEmailConfirm.getText().toString();

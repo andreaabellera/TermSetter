@@ -72,11 +72,9 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void onClickLoginButton(View view) throws SQLException {
-//        SharedPreferences student= getApplicationContext().getSharedPreferences("currAccount", mContext.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = student.edit();
-        eID = findViewById(R.id.loginEdtxt1);
-        ePassword = findViewById(R.id.loginEdtxt2);
-        eLogin = findViewById(R.id.loginBtn);
+        eID = findViewById(R.id.editTextUserID);
+        ePassword = findViewById(R.id.editTextPassword);
+        eLogin = findViewById(R.id.buttonLogin);
         accountValidation = new AccountValidation();
 
         String inputID = eID.getText().toString();

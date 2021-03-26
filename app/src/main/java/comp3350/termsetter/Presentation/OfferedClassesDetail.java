@@ -27,18 +27,18 @@ public class OfferedClassesDetail extends AppCompatActivity {
 
     private void init() {
         course = (CourseOffering) getIntent().getSerializableExtra("course");
-        TextView selectedClass = findViewById(R.id.selectedClass_txt);
+        TextView selectedClass = findViewById(R.id.headerCourseCode);
         selectedClass.setText(course.getCourseCode());
-        TextView selectedClassName = findViewById(R.id.selectedClassName_txt);
+        TextView selectedClassName = findViewById(R.id.headerCourseName);
         selectedClassName.setText(course.getName());
-        TextView selectedClassCred = findViewById(R.id.selectedClassCred_txt);
+        TextView selectedClassCred = findViewById(R.id.textCourseCredits);
         selectedClassCred.setText(course.getCreditHours() + ".00CR");
     }
 
     public void openCategories(View view) {
         String section = "";
         int s1_id = getResources().getIdentifier("s1_rbtn", "id", getPackageName());
-        RadioGroup rg = findViewById(R.id.sections_rgrp);
+        RadioGroup rg = findViewById(R.id.radioGroupSections);
         if (rg.getCheckedRadioButtonId() == s1_id) {
             section = "A01";
         } else {

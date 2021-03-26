@@ -18,7 +18,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/selectedCategory_txt"
+                android:id="@+id/headerDepartment"
                 style="@style/CustomHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
                 android:text="Computer Science" />
 
             <TextView
-                android:id="@+id/lv1000_txt"
+                android:id="@+id/textLevel1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -36,13 +36,13 @@
                 android:textSize="18sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/lv1_rv"
+                android:id="@+id/recycleViewLevel1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" />
 
             <TextView
-                android:id="@+id/lv2000_txt"
+                android:id="@+id/textLevel2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -51,13 +51,13 @@
                 android:textSize="18sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/lv2_rv"
+                android:id="@+id/recyleViewLevel2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" />
 
             <TextView
-                android:id="@+id/lv3000_txt"
+                android:id="@+id/textLevel3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -66,13 +66,13 @@
                 android:textSize="18sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/lv3_rv"
+                android:id="@+id/recyleViewLevel3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" />
 
             <TextView
-                android:id="@+id/lv4000_txt"
+                android:id="@+id/textLevel4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -81,7 +81,7 @@
                 android:textSize="18sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/lv4_rv"
+                android:id="@+id/recycleViewLevel4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" />
