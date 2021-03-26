@@ -18,11 +18,9 @@ import comp3350.termsetter.Logic.AccountValidation;
 import comp3350.termsetter.Persistence.UserPersistence;
 import comp3350.termsetter.R;
 
-import comp3350.termsetter.Persistence.DomainSpecific.User;
-
 public class AccountUpdateEmail extends AppCompatActivity {
     private static Context mContext;
-    private UserPersistence database;
+    private StudentPersistence database;
     private boolean validate;
     private EditText newEmail;
     private EditText newEmailConfirm;

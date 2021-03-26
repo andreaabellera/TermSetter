@@ -1,8 +1,10 @@
 package comp3350.termsetter.Presentation;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,8 +17,10 @@ import comp3350.termsetter.R;
 
 public class AccountManageProfile extends AppCompatActivity {
     private static Context mContext;
-    private UserPersistence database;
+    private StudentPersistence database;
     private AccessStudents accessStudents;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +36,11 @@ public class AccountManageProfile extends AppCompatActivity {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
     }
 
     private void displayProfile() throws SQLException {
-        User user = database.getCurrentUser();
+        Student student = database.getCurrentStudentID();
         //User user = accessStudents.getStudent("asdf");
 
         TextView studentName = findViewById(R.id.userInfoName);
@@ -43,9 +48,10 @@ public class AccountManageProfile extends AppCompatActivity {
         TextView studentEmail = findViewById(R.id.userInfoEmail);
         TextView studentPhone = findViewById(R.id.userInfoPhone);
 
-        studentName.setText(user.getName());
-        studentID.setText(user.getStudentID());
-        studentEmail.setText(user.getEmailAddress());
-        studentPhone.setText(user.getPhoneNumber());
+        studentName.setText(student.getName());
+        studentID.setText(student.getStudentID());
+        studentEmail.setText(student.getEmailAddress());
+        studentPhone.setText(student.getPhoneNumber());
     }
 }
+

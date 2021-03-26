@@ -3,6 +3,7 @@ package comp3350.termsetter.Presentation;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,24 +12,32 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.hsqldb.rights.User;
+
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import comp3350.termsetter.Logic.AccountValidation;
 import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Persistence.DBImporter;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
-import comp3350.termsetter.Persistence.UserPersistence;
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
+import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.EnrollAccess;
+import comp3350.termsetter.Persistence.Main;
+import comp3350.termsetter.Persistence.StudentPersistence;
 import comp3350.termsetter.R;
 
 public class LoginPage extends AppCompatActivity {
     private static Context mContext;
-    private UserPersistence database;
+    private StudentPersistence database;
     private EditText eID;
     private EditText ePassword;
     private Button eLogin;
     private AccountValidation accountValidation;
     private AccessStudents accessStudents;
+    String currAccount = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +52,7 @@ public class LoginPage extends AppCompatActivity {
 
         // Comment this database to switch to Real database
         // Uncomment this database to switch to Stub database
-        database = new StubDatabase(mContext,"test.db");
+        //database = new StubDatabase(mContext,"test.db");
 
         // if DB is real
         if(!(database instanceof StubDatabase)) {
@@ -58,6 +67,8 @@ public class LoginPage extends AppCompatActivity {
             database = accessStudents.getStudentPersistence();
             Toast.makeText(LoginPage.this, "FakeDB", Toast.LENGTH_SHORT).show();
         }
+
+
     }
 
     public void onClickLoginButton(View view) throws SQLException {
@@ -70,8 +81,12 @@ public class LoginPage extends AppCompatActivity {
         String inputPassword = ePassword.getText().toString();
 
         if (accountValidation.validID(inputID)) {
-            if (accountValidation.validPassword(inputPassword)) {
-                database.setCurrentUser(inputID);
+            if (accountValidation.validPassword(inputPassword) && database.getStudent(inputID) != null) {
+                database.setCurrentStudentID(inputID);
+//                Student currStudent = database.getCurrentStudentID();
+//                editor.clear();
+//                editor.putString("currAccount", currStudent.getStudentID()); // could use inputID but more explicit
+
                 Toast.makeText(LoginPage.this, "Welcome " + inputID + " !", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(LoginPage.this, MainActivity.class);
                 startActivity(intent);
@@ -91,5 +106,6 @@ public class LoginPage extends AppCompatActivity {
         Toast.makeText(this, "Create Account Button pressed!", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, CreateAccount.class);
         startActivity(intent);
+
     }
 }

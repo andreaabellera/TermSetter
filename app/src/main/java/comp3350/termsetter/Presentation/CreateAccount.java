@@ -16,11 +16,11 @@ import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Logic.AccountValidation;
 import comp3350.termsetter.Persistence.UserPersistence;
 import comp3350.termsetter.R;
-import comp3350.termsetter.Persistence.DomainSpecific.User;
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
 
 public class CreateAccount extends AppCompatActivity {
     private static Context mContext;
-    private UserPersistence database;
+    private StudentPersistence database;
     private AccountValidation accountValidation;
     private EditText eName;
     private EditText eMail;
@@ -111,15 +111,15 @@ public class CreateAccount extends AppCompatActivity {
         String inputPhone = ePhone.getText().toString();
 
         if (validate(inputName, inputID, inputPassword, inputConfirmPassword, inputEmail, inputPhone)) {
-           User user = new User(inputName, inputPassword, inputEmail, inputPhone,inputID);
+           Student student = new Student(inputName, inputPassword, inputEmail, inputPhone,inputID);
             //database.insertUser(user);
 //            Intent intent = new Intent(CreateAccount.this, LoginPage.class);
 //            startActivity(intent);
 //            Toast.makeText(CreateAccount.this, "Welcome " + inputName + "!", Toast.LENGTH_SHORT).show();
 
-            accessStudents.insertStudent(user);
+            accessStudents.insertStudent(student);
 
-            User test = accessStudents.getStudent(inputID);
+            Student test = accessStudents.getStudent(inputID);
 
             System.out.println(test.getStudentID());
 

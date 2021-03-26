@@ -8,14 +8,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import comp3350.termsetter.Persistence.DomainSpecific.User;
-import comp3350.termsetter.Persistence.UserPersistence;
+import comp3350.termsetter.Logic.AccountValidation;
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
+import comp3350.termsetter.Persistence.StudentPersistence;
 
-public class StudentAccess implements UserPersistence {
+public class StudentAccess implements StudentPersistence {
 
     Connection connect = null;
     private final String dbPath;
     private static String currentID = null;
+    private AccountValidation accountValidation = new AccountValidation();
 
     public StudentAccess(final String dbPath) {
         this.dbPath = dbPath;
@@ -28,18 +30,18 @@ public class StudentAccess implements UserPersistence {
     }
 
 
-    public User insertUser(User user) throws SQLException {
+    public Student insertStudent(Student student) throws SQLException {
 
         // first connect
         try{
             connect = this.connection();
             //query
             PreparedStatement statement = connect.prepareStatement("INSERT INTO students VALUES (?,?,?,?,?);");
-            statement.setString(5, user.getStudentID());
-            statement.setString(1, user.getName());
-            statement.setString(2, user.getPassword());
-            statement.setString(3, user.getEmailAddress());
-            statement.setString(4, user.getPhoneNumber());
+            statement.setString(5, student.getStudentID());
+            statement.setString(1, student.getName());
+            statement.setString(2, student.getPassword());
+            statement.setString(3, student.getEmailAddress());
+            statement.setString(4, student.getPhoneNumber());
             // ResultSet resultSet = statement.executeQuery();
 
             //Update DB
@@ -49,15 +51,15 @@ public class StudentAccess implements UserPersistence {
 
         }
 
-        return user;
+
+        connect.close();
+        return student;
     }
 
-    public User getUser(String student_id) throws SQLException {
+    public Student getStudent(String student_id) throws SQLException {
         // will change this later
         connect = this.connection();
-
-        List<String> student = new ArrayList<>();
-        User user = null;
+        Student student = null;
 
         //query
         PreparedStatement statement = connect.prepareStatement("select * from students where student_id = ?");
@@ -67,20 +69,21 @@ public class StudentAccess implements UserPersistence {
         //collect the data from the query
         while (resultSet.next()) {
 
-            // Enter data into fields and create a new user
+            // Enter data into fields and create a new student
             final String studentID = resultSet.getString("student_id");
             final String name = resultSet.getString("name");
             final String passID = resultSet.getString("password");
             final String phoneNumber = resultSet.getString("phoneNum");
             final String email = resultSet.getString("email");
 
-            user = new User( name, passID, phoneNumber, email, studentID);
+            student = new Student( name, passID, email, phoneNumber, studentID);
 
 
         }
 
-        //whoever uses this method, check if the user is null or not.
-        return user;
+        //whoever uses this method, check if the student is null or not.
+        connect.close();
+        return student;
     }
 
     @Override
@@ -94,6 +97,7 @@ public class StudentAccess implements UserPersistence {
 
         ResultSet resultSet = statement.executeQuery();
 
+        connect.close();
         return resultSet.next();
     }
 
@@ -117,22 +121,23 @@ public class StudentAccess implements UserPersistence {
             //put them in a list for now
             studentIDs.add(student_id);
         }
+        connect.close();
         return studentIDs;
     }
 
-    public void setCurrentUser(String sID) {
+    public void setCurrentStudentID(String sID) {
         this.currentID = sID;
     }
 
     @Override
-    public User getCurrentUser() throws SQLException {
-        return getUser(currentID);
+    public Student getCurrentStudentID() throws SQLException {
+        return getStudent(currentID);
     }
 
     @Override
     public boolean updatePassword(String password) throws SQLException {
-        if ((currentID != null) && (getUser(currentID)) != null) {
-            User user = getUser(currentID);
+        if ((currentID != null) && (getStudent(currentID)) != null) {
+            Student student = getStudent(currentID);
             connect = this.connection();
 
             PreparedStatement statement = connect.prepareStatement("UPDATE students " +
@@ -141,6 +146,7 @@ public class StudentAccess implements UserPersistence {
             statement.setString(2, currentID);
 
             statement.executeUpdate();
+            connect.close();
             return true;
         }
 
@@ -149,8 +155,8 @@ public class StudentAccess implements UserPersistence {
 
     @Override
     public boolean updateEmail(String email) throws SQLException {
-        if ((currentID != null) && (getUser(currentID)) != null) {
-            User user = getUser(currentID);
+        if ((currentID != null) && (getStudent(currentID)) != null) {
+            Student student = getStudent(currentID);
             connect = this.connection();
 
             PreparedStatement statement = connect.prepareStatement("UPDATE students " +
@@ -159,9 +165,34 @@ public class StudentAccess implements UserPersistence {
             statement.setString(2, currentID);
 
             statement.executeUpdate();
+            connect.close();
             return true;
         }
 
         return false;
     }
+
+    /*
+    //checks if student exists (no longer needed)
+    public boolean validStudent(String sID, String password) throws SQLException {
+        boolean check = false;
+        // check if valid user exists
+        if((accountValidation.validID(sID) && accountValidation.validPassword(password)))
+        {
+            //valid account so check DB
+            connect = this.connection();
+
+            PreparedStatement statement = connect.prepareStatement("SELECT * FROM students WHERE" +
+                    " student_id = ? AND password = ?");
+            statement.setString(1, sID);
+            statement.setString(2, password);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            connect.close();
+            return resultSet.next(); //false if nothing, true if something!
+        }
+
+        return check; //false
+    }*/
 }

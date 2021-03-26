@@ -1,10 +1,9 @@
 package comp3350.termsetter.Logic;
 
-import android.widget.Toast;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import comp3350.termsetter.Persistence.DomainSpecific.User;
-import comp3350.termsetter.Presentation.AccountChangePassword;
+
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
 
 public class AccountValidation{
 
@@ -107,8 +106,8 @@ public class AccountValidation{
         return false;
     }
 
-    public boolean verifyCurrentPassword(String currentPassword, User currentUser) {
-        if (currentPassword.equals(currentUser.getPassword())) {
+    public boolean verifyCurrentPassword(String currentPassword, Student currentStudent) {
+        if (currentPassword.equals(currentStudent.getPassword())) {
             return true;
         }
         return false;
@@ -120,4 +119,7 @@ public class AccountValidation{
         }
         return false;
     }
+
+
+
 }
