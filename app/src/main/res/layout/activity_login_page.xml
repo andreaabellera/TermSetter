@@ -30,6 +30,7 @@
             android:src="@drawable/ts_icon_nolabel"/>
 
         <TextView
+            style="@style/TextAppearance.MaterialComponents.Headline4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -38,6 +39,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="@dimen/Termsetter.EditText.Width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -54,6 +56,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="@dimen/Termsetter.EditText.Width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -70,6 +73,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
+            style="@style/Widget.MaterialComponents.Button"
             android:id="@+id/buttonLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,14 +82,16 @@
             android:onClick="onClickLoginButton"
             android:text="LOGIN"/>
 
-        <TextView
+        <Button
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:id="@+id/buttonCreateAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:onClick="onClickCreateAccountButton"
-            android:text="CREATE ACCOUNT"/>
+            android:layout_marginTop="4dp"
+            android:text="CREATE ACCOUNT"
+            android:onClick="onClickCreateAccountButton"/>
+        
     </LinearLayout>
 
 

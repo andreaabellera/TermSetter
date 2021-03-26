@@ -4,20 +4,20 @@
     <color name="aqua_100">#94EEE1</color>
     <color name="STAND_IN">#FF3700B3</color>
 
-    <color name="tsPrimary">#FF3700B3</color>
-    <color name="tsSecondary">#FF3700B3</color>
+    <color name="tsPrimary">#FFBB86FC</color>
+    <color name="tsSecondary">@color/dark_blueple</color>
     <color name="tsBackground">@color/white</color>
     <color name="tsError">#FF3700B3</color>
 
     <!-- New MaterialComponents attributes. -->
-    <color name="tsPrimaryVariant">#FF3700B3</color>
+    <color name="tsPrimaryVariant">@color/neo_aquayo</color>
     <color name="tsSecondaryVariant">#FF3700B3</color>
-    <color name="tsSurface">#FF3700B3</color>
-    <color name="tsColorOnPrimary">#FF3700B3</color>
+    <color name="tsSurface">@color/milky_mocha</color>
+    <color name="tsColorOnPrimary">@color/white</color>
     <color name="tsColorOnSecondary">#FF3700B3</color>
     <color name="tsColorOnBackground">#FF3700B3</color>
     <color name="tsColorOnError">#FF3700B3</color>
-    <color name="tsColorOnSurface">#FF3700B3</color>
+    <color name="tsColorOnSurface">@color/just_coffee</color>
 
 
     <!-- Pre-defined app colours -->
