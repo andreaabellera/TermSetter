@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import java.sql.SQLException;
-import comp3350.termsetter.Logic.AccessStudents;
+
+import comp3350.termsetter.Logic.AccessManager;
 import comp3350.termsetter.Logic.AccountValidation;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
 import comp3350.termsetter.Persistence.DomainSpecific.Student;
@@ -27,7 +27,7 @@ public class AccountChangePassword extends AppCompatActivity {
     private Student student;
     private Button change;
 
-    private AccessStudents accessStudents;
+    private AccessManager accessManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +37,12 @@ public class AccountChangePassword extends AppCompatActivity {
         mContext = getApplicationContext();
         database = new StubDatabase(mContext,"test.db");
 
-        accessStudents = new AccessStudents();
-        database = accessStudents.getStudentPersistence();
+        accessManager = new AccessManager();
+        database = accessManager.getStudentPersistence();
     }
 
 
-    public void onClickConfirmButton(View view) throws SQLException {
+    public void onClickConfirmButton(View view) {
         oldPassword = findViewById(R.id.editTextCurrentPassword);
         newPassword = findViewById(R.id.editTextNewPassword);
         newPasswordConfirm = findViewById(R.id.editTexConfirmPassword);

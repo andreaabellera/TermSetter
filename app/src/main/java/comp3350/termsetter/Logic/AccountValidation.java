@@ -15,7 +15,7 @@ public class AccountValidation{
     final int MAX_PHONE_LENGTH = 12;
     Pattern p;
     Matcher m;
-    AccessStudents database = new AccessStudents();
+    AccessManager database = new AccessManager();
 
     public AccountValidation(){ }
 
@@ -94,7 +94,7 @@ public class AccountValidation{
                     }
                 }
             }
-    }
+        }
         boolean validLength = digits.length() >= MIN_PHONE_LENGTH && digits.length() <= MAX_PHONE_LENGTH;
         return validLength && !hasInvalidChar && !hasOpenBracket;
 //        return phone.length() <= 10;
@@ -122,17 +122,14 @@ public class AccountValidation{
     }
 
     public boolean verifyStudent(String sID, String password) {
-        try {
-            Student student = database.getStudent(sID);
+        Student student = database.getStudent(sID);
 
-            // check student exists, valid ID and password, then check if they match student record
-            if(student != null && validID(sID) && validPassword(password)) {
-                if(student.getStudentID().equals(sID) && student.getPassword().equals(password))
-                    return true;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        // check student exists, valid ID and password, then check if they match student record
+        if(student != null && validID(sID) && validPassword(password)) {
+            if(student.getStudentID().equals(sID) && student.getPassword().equals(password))
+                return true;
         }
+
         return false;
     }
 

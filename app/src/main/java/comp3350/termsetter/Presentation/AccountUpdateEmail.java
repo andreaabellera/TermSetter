@@ -8,8 +8,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import java.sql.SQLException;
-import comp3350.termsetter.Logic.AccessStudents;
+
+import comp3350.termsetter.Logic.AccessManager;
 import comp3350.termsetter.Logic.AccountValidation;
 import comp3350.termsetter.Persistence.DomainSpecific.Student;
 import comp3350.termsetter.Persistence.StudentPersistence;
@@ -23,7 +23,7 @@ public class AccountUpdateEmail extends AppCompatActivity {
     private EditText newEmailConfirm;
     private AccountValidation accountValidation;
 
-    private AccessStudents accessStudents;
+    private AccessManager accessManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,22 +34,19 @@ public class AccountUpdateEmail extends AppCompatActivity {
         //database = new StubDatabase(mContext,"test.db");
         //database = new StudentAccess("users.db");
 
-        accessStudents = new AccessStudents();
-        database = accessStudents.getStudentPersistence();
-        try {
-            displayProfile();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        accessManager = new AccessManager();
+        database = accessManager.getStudentPersistence();
+        displayProfile();
+
     }
 
-    private void displayProfile() throws SQLException {
+    private void displayProfile()  {
         Student student = database.getCurrentStudentID();
         TextView studentEmail = findViewById(R.id.userInfoCurrentEmail);
         studentEmail.setText(student.getEmailAddress());
     }
 
-    public void updateEmail(View view) throws SQLException {
+    public void updateEmail(View view) {
         accountValidation = new AccountValidation();
 
         newEmail = findViewById(R.id.editTextNewEmail);

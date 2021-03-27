@@ -34,6 +34,7 @@ public class StudentAccess implements StudentPersistence {
         // first connect
         try{
             connect = this.connection();
+
             //query
             PreparedStatement statement = connect.prepareStatement("INSERT INTO students VALUES (?,?,?,?,?);");
             statement.setString(5, student.getStudentID());
@@ -58,8 +59,6 @@ public class StudentAccess implements StudentPersistence {
         Student student = null;
         try {
             connect = this.connection();
-
-
 
             //query
             PreparedStatement statement = connect.prepareStatement("select * from students where student_id = ?");
@@ -99,36 +98,45 @@ public class StudentAccess implements StudentPersistence {
 
             //query
             PreparedStatement statement = connect.prepareStatement("select * from students");
-
             ResultSet resultSet = statement.executeQuery();
+
 
             connect.close();
             return resultSet.next();
         }
-        catch ()
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 
-    public List<String> getAllStudents() throws SQLException {
+    public List<String> getAllStudents() {
         List<String> studentIDs = new ArrayList<>();
+
         // first connect
-        connect = this.connection();
+        try {
+            connect = connection();
 
-        //query
-        PreparedStatement statement = connect.prepareStatement("select * from students");
+            //query
+            PreparedStatement statement = connect.prepareStatement("select * from students");
 
-        ResultSet resultSet = statement.executeQuery();
+            ResultSet resultSet = statement.executeQuery();
 
-        //collect
-        while (resultSet.next()) {
+            //collect
+            while (resultSet.next()) {
 
-            //just get the ID's for now
-            final String student_id = resultSet.getString("student_id");
+                //just get the ID's for now
+                final String student_id = resultSet.getString("student_id");
 
-            //put them in a list for now
-            studentIDs.add(student_id);
+                //put them in a list for now
+                studentIDs.add(student_id);
+            }
+            connect.close();
         }
-        connect.close();
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
         return studentIDs;
     }
 
@@ -137,45 +145,59 @@ public class StudentAccess implements StudentPersistence {
     }
 
     @Override
-    public Student getCurrentStudentID() throws SQLException {
+    public Student getCurrentStudentID() {
         return getStudent(currentID);
     }
 
     @Override
-    public boolean updatePassword(String password) throws SQLException {
+    public boolean updatePassword(String password) {
         if ((currentID != null) && (getStudent(currentID)) != null) {
             Student student = getStudent(currentID);
-            connect = this.connection();
 
-            PreparedStatement statement = connect.prepareStatement("UPDATE students " +
-                    "SET password = ? WHERE student_id = ?");
-            statement.setString(1, password);
-            statement.setString(2, currentID);
+            try {
+                connect = this.connection();
 
-            statement.executeUpdate();
-            connect.close();
-            return true;
+
+                PreparedStatement statement = connect.prepareStatement("UPDATE students " +
+                        "SET password = ? WHERE student_id = ?");
+                statement.setString(1, password);
+                statement.setString(2, currentID);
+
+                statement.executeUpdate();
+                statement.close();
+                connect.close();
+                return true;
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-
         return false;
     }
 
     @Override
-    public boolean updateEmail(String email) throws SQLException {
+    public boolean updateEmail(String email) {
         if ((currentID != null) && (getStudent(currentID)) != null) {
             Student student = getStudent(currentID);
-            connect = this.connection();
 
-            PreparedStatement statement = connect.prepareStatement("UPDATE students " +
-                    "SET email = ? WHERE student_id = ?");
-            statement.setString(1, email);
-            statement.setString(2, currentID);
+            try {
+                connect = this.connection();
 
-            statement.executeUpdate();
-            connect.close();
-            return true;
+
+                PreparedStatement statement = connect.prepareStatement("UPDATE students " +
+                        "SET email = ? WHERE student_id = ?");
+                statement.setString(1, email);
+                statement.setString(2, currentID);
+
+                statement.executeUpdate();
+                statement.close();
+                connect.close();
+                return true;
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-
         return false;
     }
 
