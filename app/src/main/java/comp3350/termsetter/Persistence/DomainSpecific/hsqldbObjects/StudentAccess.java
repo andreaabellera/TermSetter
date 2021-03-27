@@ -17,7 +17,6 @@ public class StudentAccess implements StudentPersistence {
     Connection connect = null;
     private final String dbPath;
     private static String currentID = null;
-    private AccountValidation accountValidation = new AccountValidation();
 
     public StudentAccess(final String dbPath) {
         this.dbPath = dbPath;
