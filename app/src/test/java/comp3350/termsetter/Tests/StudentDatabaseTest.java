@@ -6,12 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.junit.Test;
 
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
-import comp3350.termsetter.Persistence.DomainSpecific.User;
-import comp3350.termsetter.Persistence.UserPersistence;
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
+import comp3350.termsetter.Persistence.StudentPersistence;
 
 import static org.junit.Assert.*;
 
-public class UserDatabaseTest extends AppCompatActivity {
+public class StudentDatabaseTest extends AppCompatActivity {
 
 
     String validName = "name";
@@ -23,7 +23,7 @@ public class UserDatabaseTest extends AppCompatActivity {
     @Test
     public void testDatabaseCreate() {
         System.out.println("\nStarting testDatabaseCreate: object exists after creation\n");
-        UserPersistence db = new StubDatabase(this,"test.db");
+        StudentPersistence db = new StubDatabase(this,"test.db");
         assertNotNull(db);
         System.out.println("End testDatabaseCreate: object exists after creation\n");
     }
@@ -40,7 +40,7 @@ public class UserDatabaseTest extends AppCompatActivity {
     public void testDatabaseEmptyGet() {
         System.out.println("\nStarting testDatabaseEmptyGet: getUser on an empty list gives null\n");
         StubDatabase db = new StubDatabase(this,"test.db");
-        assertNull(db.getUser("1234567"));
+        assertNull(db.getStudent("1234567"));
         System.out.println("End testDatabaseEmptyGet: getUser on an empty list gives null\n");
     }
 
@@ -48,13 +48,13 @@ public class UserDatabaseTest extends AppCompatActivity {
     public void testDatabaseAdd() {
         System.out.println("\nStarting testDatabaseAdd: getUser maintains integrity of inputs in added object\n");
         StubDatabase db = new StubDatabase(this,"test.db");
-        db.insertUser(new User(validName, validPasswd, validEmail, validPhone, validID));
+        db.insertStudent(new Student(validName, validPasswd, validEmail, validPhone, validID));
 
         boolean sameValues = true;
-        sameValues = validName.equals(db.getUser(validID).getName());
-        sameValues = validPasswd.equals(db.getUser(validID).getPassword());
-        sameValues = validEmail.equals(db.getUser(validID).getEmailAddress());
-        sameValues = validPhone.equals(db.getUser(validID).getPhoneNumber());
+        sameValues = validName.equals(db.getStudent(validID).getName());
+        sameValues = validPasswd.equals(db.getStudent(validID).getPassword());
+        sameValues = validEmail.equals(db.getStudent(validID).getEmailAddress());
+        sameValues = validPhone.equals(db.getStudent(validID).getPhoneNumber());
 
         assertTrue(sameValues);
         System.out.println("End testDatabaseAdd: getUser maintains integrity of inputs in added object\n");
@@ -64,11 +64,11 @@ public class UserDatabaseTest extends AppCompatActivity {
     public void testDatabaseGetFirst() {
         System.out.println("\nStarting testDatabaseGetFirst: getUser only retrieves the first list element\n");
         StubDatabase db = new StubDatabase(this,"test.db");
-        db.insertUser(new User("first", validPasswd, validEmail, validPhone, validID));
-        db.insertUser(new User("second", validPasswd, validEmail, validPhone, validID));
-        db.insertUser(new User("third", validPasswd, validEmail, validPhone, validID));
+        db.insertStudent(new Student("first", validPasswd, validEmail, validPhone, validID));
+        db.insertStudent(new Student("second", validPasswd, validEmail, validPhone, validID));
+        db.insertStudent(new Student("third", validPasswd, validEmail, validPhone, validID));
 
-        assertEquals(db.getUser(validID).getName(), "first");
+        assertEquals(db.getStudent(validID).getName(), "first");
         System.out.println("End testDatabaseGetFirst: getUser only retrieves the first list element\n");
     }
 
@@ -76,11 +76,11 @@ public class UserDatabaseTest extends AppCompatActivity {
     public void testDatabaseUpdateUser() {
         System.out.println("\nStarting testDatabaseUpdateUser: new user overwrites the first user\n");
         StubDatabase db = new StubDatabase(this,"test.db");
-        db.insertUser(new User("first", validPasswd, validEmail, validPhone, validID));
+        db.insertStudent(new Student("first", validPasswd, validEmail, validPhone, validID));
         db.updatePassword("456pass");
-        assertEquals(db.getUser(validID).getPassword(), "456pass");
+        assertEquals(db.getStudent(validID).getPassword(), "456pass");
         db.updateEmail("haha@myumanitoba.ca");
-        assertEquals(db.getUser(validID).getEmailAddress(), "haha@myumanitoba.ca");
+        assertEquals(db.getStudent(validID).getEmailAddress(), "haha@myumanitoba.ca");
         System.out.println("End testDatabaseUpdateUser: new user overwrites the first user\n");
     }
 

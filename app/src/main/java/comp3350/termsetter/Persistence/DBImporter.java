@@ -2,7 +2,6 @@ package comp3350.termsetter.Persistence;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

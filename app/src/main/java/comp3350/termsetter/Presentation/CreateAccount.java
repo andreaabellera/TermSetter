@@ -7,25 +7,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import java.sql.SQLException;
-
 import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Logic.AccountValidation;
-import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
-import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
-import comp3350.termsetter.Persistence.UserPersistence;
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
+import comp3350.termsetter.Persistence.StudentPersistence;
 import comp3350.termsetter.R;
-import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 public class CreateAccount extends AppCompatActivity {
     private static Context mContext;
-    private UserPersistence database;
+    private StudentPersistence database;
     private AccountValidation accountValidation;
     private EditText eName;
     private EditText eMail;
@@ -50,12 +42,12 @@ public class CreateAccount extends AppCompatActivity {
         accessStudents = new AccessStudents();
         database = accessStudents.getStudentPersistence();
 
-        eName = findViewById(R.id.loginEdtxt0);
-        eStudentID = findViewById(R.id.loginEdtxt1);
-        ePassword = findViewById(R.id.loginEdtxt2);
-        eConfirmPassword = findViewById(R.id.createAccountEdtxt3);
-        eMail = findViewById(R.id.createAccountEdtxt4);
-        ePhone = findViewById(R.id.createAccountEdtxt5);
+        eName = findViewById(R.id.editTextSetName);
+        eStudentID = findViewById(R.id.editTextSetID);
+        ePassword = findViewById(R.id.editTextSetPassword);
+        eConfirmPassword = findViewById(R.id.editTextConfirmAPassword);
+        eMail = findViewById(R.id.editTextEmail);
+        ePhone = findViewById(R.id.editTextPhone);
     }
 
     public boolean validate(String name, String id, String password, String confirmPassword, String email, String phone) {
@@ -116,15 +108,15 @@ public class CreateAccount extends AppCompatActivity {
         String inputPhone = ePhone.getText().toString();
 
         if (validate(inputName, inputID, inputPassword, inputConfirmPassword, inputEmail, inputPhone)) {
-           User user = new User(inputName, inputPassword, inputEmail, inputPhone,inputID);
+           Student student = new Student(inputName, inputPassword, inputEmail, inputPhone,inputID);
             //database.insertUser(user);
 //            Intent intent = new Intent(CreateAccount.this, LoginPage.class);
 //            startActivity(intent);
 //            Toast.makeText(CreateAccount.this, "Welcome " + inputName + "!", Toast.LENGTH_SHORT).show();
 
-            accessStudents.insertStudent(user);
+            accessStudents.insertStudent(student);
 
-            User test = accessStudents.getStudent(inputID);
+            Student test = accessStudents.getStudent(inputID);
 
             System.out.println(test.getStudentID());
 

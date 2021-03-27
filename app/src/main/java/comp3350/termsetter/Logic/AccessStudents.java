@@ -1,52 +1,51 @@
 package comp3350.termsetter.Logic;
 
 import android.content.Context;
-
 import java.io.Serializable;
 import java.sql.SQLException;
-import java.util.Collections;
 import java.util.List;
-
-import comp3350.termsetter.Persistence.UserPersistence;
-import comp3350.termsetter.Persistence.DomainSpecific.User;
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
+import comp3350.termsetter.Persistence.StudentPersistence;
 
 public class AccessStudents implements Serializable
 {
-    private UserPersistence studentPersistence;
-    private List<User> students;
-    private User student;
+    private StudentPersistence studentPersistence;
+    private List<Student> students;
+    private Student student;
     private int currentStudent;
 
-    public AccessStudents()
-    {
+
+    public AccessStudents() {
         studentPersistence = Services.getRealStudentAccess();
         students = null;
         student = null;
         currentStudent = 0;
     }
-    public AccessStudents(Context context){
+
+
+    public AccessStudents(Context context) {
         studentPersistence = Services.getFakeStudentAccess(context);
         students = null;
         student = null;
         currentStudent = 0;
     }
 
-    public AccessStudents(final User student) throws SQLException {
+    public AccessStudents(final Student student) throws SQLException {
         this();
         this.insertStudent(student);
     }
 
-    public UserPersistence getStudentPersistence() {
+    public StudentPersistence getStudentPersistence() {
         return studentPersistence;
     }
 
-    public User insertStudent(User currentStudent) throws SQLException {
-        return studentPersistence.insertUser(currentStudent);
+    public Student insertStudent(Student currentStudent) throws SQLException {
+        return studentPersistence.insertStudent(currentStudent);
     }
 
-    public User getStudent(String student_id) throws SQLException
+    public Student getStudent(String student_id) throws SQLException
     {
-        return studentPersistence.getUser(student_id);
+        return studentPersistence.getStudent(student_id);
     }
 
 }

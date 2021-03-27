@@ -42,7 +42,7 @@ Database
 - Interface for Users
 
 User
-- Interface for storing user profiles (ID, password, Email and Phone number)
+- Interface for storing student profiles (ID, password, Email and Phone number)
 
 
 # Domain Specific Objects

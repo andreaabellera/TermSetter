@@ -1,12 +1,8 @@
 package comp3350.termsetter.Persistence;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.CourseAccess;
-import comp3350.termsetter.Persistence.Faculty;
-import comp3350.termsetter.Persistence.CourseOffering;
-import comp3350.termsetter.Persistence.CourseSection;
 
 public class CourseCategorySQLDriver implements CourseCategoryPersistence{
 

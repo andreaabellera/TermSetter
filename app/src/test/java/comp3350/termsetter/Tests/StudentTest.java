@@ -3,11 +3,11 @@ package comp3350.termsetter.Tests;
 
 import org.junit.Test;
 
-import comp3350.termsetter.Persistence.DomainSpecific.User;
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
 
 import static org.junit.Assert.*;
 
-public class UserTest {
+public class StudentTest {
 
     String validName = "name";
     String validPasswd = "123pass";
@@ -18,53 +18,53 @@ public class UserTest {
     @Test
     public void testUserCreate() {
         System.out.println("\nStarting testUserCreate: object exists after creation\n");
-        User user = new User(validName, validPasswd, validEmail, validPhone, validID);
-        assertNotNull(user);
+        Student student = new Student(validName, validPasswd, validEmail, validPhone, validID);
+        assertNotNull(student);
         System.out.println("End testUserCreate: object exists after creation\n");
     }
 
     @Test
     public void testSetName() {
         System.out.println("\nStarting testSetName: set and return correct value\n");
-        User user = new User(validName, validPasswd, validEmail, validPhone, validID);
+        Student student = new Student(validName, validPasswd, validEmail, validPhone, validID);
         String newValidName = "barney the dinosaur";
-        user.setUserName(newValidName);
-        assertEquals(user.getName(), newValidName);
+        student.setStudentName(newValidName);
+        assertEquals(student.getName(), newValidName);
         System.out.println("End testSetName: set and return correct value\n");
     }
 
     public void testID() {
         System.out.println("\nStarting testSetName: set and return correct value\n");
-        User user = new User(validName, validPasswd, validEmail, validPhone, validID);
-        assertEquals(user.getStudentID(), validID);
+        Student student = new Student(validName, validPasswd, validEmail, validPhone, validID);
+        assertEquals(student.getStudentID(), validID);
         System.out.println("End testID: return correct value\n");
     }
 
     @Test
     public void testSetPassword() {
         System.out.println("\nStarting testSetPassword: set and return correct value\n");
-        User user = new User(validName, validPasswd, validEmail, validPhone, validID);
+        Student student = new Student(validName, validPasswd, validEmail, validPhone, validID);
         String newValidPasswd = "pass123";
-        user.setPassword(newValidPasswd);
-        assertEquals(user.getPassword(), newValidPasswd);
+        student.setPassword(newValidPasswd);
+        assertEquals(student.getPassword(), newValidPasswd);
         System.out.println("End testSetPassword: set and return correct value\n");
     }
 
     @Test
     public void testSetEmail() {
         System.out.println("\nStarting testSetEmail: set and return correct value\n");
-        User user = new User(validName, validPasswd, validEmail, validPhone, validID);
+        Student student = new Student(validName, validPasswd, validEmail, validPhone, validID);
         String newValidEmail = "barneyhasmail@myumanitoba.ca";
-        user.setEmail(newValidEmail);
-        assertEquals(user.getEmailAddress(), newValidEmail);
+        student.setEmail(newValidEmail);
+        assertEquals(student.getEmailAddress(), newValidEmail);
         System.out.println("End testSetEmail: set and return correct value\n");
     }
 
     @Test
     public void testGetPhone() {
         System.out.println("\nStarting testGetPhone: return correct value\n");
-        User user = new User(validName, validPasswd, validEmail, validPhone, validID);
-        assertEquals(user.getPhoneNumber(), validPhone);
+        Student student = new Student(validName, validPasswd, validEmail, validPhone, validID);
+        assertEquals(student.getPhoneNumber(), validPhone);
         System.out.println("End testSetPhone: return correct value\n");
     }
 

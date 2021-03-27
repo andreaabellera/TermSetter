@@ -1,10 +1,9 @@
 package comp3350.termsetter.Logic;
 
-import android.widget.Toast;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import comp3350.termsetter.Persistence.DomainSpecific.User;
-import comp3350.termsetter.Presentation.AccountChangePassword;
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
 
 public class AccountValidation{
 
@@ -16,6 +15,7 @@ public class AccountValidation{
     final int MAX_PHONE_LENGTH = 12;
     Pattern p;
     Matcher m;
+    AccessStudents database = new AccessStudents();
 
     public AccountValidation(){ }
 
@@ -107,8 +107,8 @@ public class AccountValidation{
         return false;
     }
 
-    public boolean verifyCurrentPassword(String currentPassword, User currentUser) {
-        if (currentPassword.equals(currentUser.getPassword())) {
+    public boolean verifyCurrentPassword(String currentPassword, Student currentStudent) {
+        if (currentPassword.equals(currentStudent.getPassword())) {
             return true;
         }
         return false;
@@ -120,4 +120,20 @@ public class AccountValidation{
         }
         return false;
     }
+
+    public boolean verifyStudent(String sID, String password) {
+        try {
+            Student student = database.getStudent(sID);
+
+            // check student exists, valid ID and password, then check if they match student record
+            if(student != null && validID(sID) && validPassword(password)) {
+                if(student.getStudentID().equals(sID) && student.getPassword().equals(password))
+                    return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }
