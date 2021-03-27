@@ -5,17 +5,17 @@ import comp3350.termsetter.Persistence.DomainSpecific.Student;
 
 public interface StudentPersistence {
 
-    Student insertStudent(Student student) throws SQLException;
+    Student insertStudent(Student student);
            
-    Student getStudent(String sID) throws SQLException;
+    Student getStudent(String sID);
 
-    Student getCurrentStudentID() throws SQLException;
+    Student getCurrentStudentID();
 
-    boolean isEmpty() throws SQLException;
+    boolean isEmpty();
 
-    boolean updatePassword(String password) throws SQLException;
+    boolean updatePassword(String password);
 
-    boolean updateEmail(String email) throws SQLException;
+    boolean updateEmail(String email);
 
     void setCurrentStudentID(String inputID);
 }

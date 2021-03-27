@@ -1,7 +1,6 @@
 package comp3350.termsetter.Persistence;
 
-public class Main
-{
+public class Main {
     private static String dbName="termsetterDB";
 
     public static void setDBPathName(final String name) {
