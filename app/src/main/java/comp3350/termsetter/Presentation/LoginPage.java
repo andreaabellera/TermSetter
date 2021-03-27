@@ -70,7 +70,7 @@ public class LoginPage extends AppCompatActivity {
         String inputPassword = ePassword.getText().toString();
 
         if (accountValidation.validID(inputID)) {
-            if (accountValidation.validPassword(inputPassword) && database.getStudent(inputID) != null) {
+            if (accountValidation.verifyStudent(inputID, inputPassword)) {
                 database.setCurrentStudentID(inputID);
 //                Student currStudent = database.getCurrentStudentID();
 //                editor.clear();
