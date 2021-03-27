@@ -17,6 +17,7 @@ public class AccessStudents implements Serializable
 
     public AccessStudents() {
         studentPersistence = Services.getRealStudentAccess();
+
         students = null;
         student = null;
         currentStudent = 0;
