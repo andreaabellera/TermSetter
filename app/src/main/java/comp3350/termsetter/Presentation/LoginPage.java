@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import java.io.IOException;
-import java.sql.SQLException;
-import comp3350.termsetter.Logic.AccessStudents;
+
+import comp3350.termsetter.Logic.AccessManager;
 import comp3350.termsetter.Logic.AccountValidation;
 import comp3350.termsetter.Persistence.DBImporter;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
@@ -24,7 +24,7 @@ public class LoginPage extends AppCompatActivity {
     private EditText ePassword;
     private Button eLogin;
     private AccountValidation accountValidation;
-    private AccessStudents accessStudents;
+    private AccessManager accessManager;
     String currAccount = null;
 
 
@@ -45,22 +45,20 @@ public class LoginPage extends AppCompatActivity {
 
         // if DB is real
         if(!(database instanceof StubDatabase)) {
-            accessStudents = new AccessStudents();
-            database = accessStudents.getStudentPersistence();
+            accessManager = new AccessManager();
+            database = accessManager.getStudentPersistence();
             Toast.makeText(LoginPage.this, "REAL DB", Toast.LENGTH_SHORT).show();
 
         }
         else
         {
-            accessStudents = new AccessStudents(mContext);
-            database = accessStudents.getStudentPersistence();
+            accessManager = new AccessManager(mContext);
+            database = accessManager.getStudentPersistence();
             Toast.makeText(LoginPage.this, "FakeDB", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
-    public void onClickLoginButton(View view) throws SQLException {
+    public void onClickLoginButton(View view) {
         eID = findViewById(R.id.editTextUserID);
         ePassword = findViewById(R.id.editTextPassword);
         eLogin = findViewById(R.id.buttonLogin);
@@ -89,7 +87,7 @@ public class LoginPage extends AppCompatActivity {
             }
     }
 
-    public void onClickCreateAccountButton(View view) throws SQLException {
+    public void onClickCreateAccountButton(View view) {
         // Brief message
         // Shows create account page
         Toast.makeText(this, "Create Account Button pressed!", Toast.LENGTH_LONG).show();

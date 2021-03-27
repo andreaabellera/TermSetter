@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import java.sql.SQLException;
-import comp3350.termsetter.Logic.AccessStudents;
+
+import comp3350.termsetter.Logic.AccessManager;
 import comp3350.termsetter.Logic.AccountValidation;
 import comp3350.termsetter.Persistence.DomainSpecific.Student;
 import comp3350.termsetter.Persistence.StudentPersistence;
@@ -28,7 +28,7 @@ public class CreateAccount extends AppCompatActivity {
     private Button eCreate;
     private final int idCount = 0;
 
-    private AccessStudents accessStudents;
+    private AccessManager accessManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +39,8 @@ public class CreateAccount extends AppCompatActivity {
         //database = new StubDatabase(mContext,"test.db");
         //database = new StudentAccess("users.db");
 
-        accessStudents = new AccessStudents();
-        database = accessStudents.getStudentPersistence();
+        accessManager = new AccessManager();
+        database = accessManager.getStudentPersistence();
 
         eName = findViewById(R.id.editTextSetName);
         eStudentID = findViewById(R.id.editTextSetID);
@@ -99,7 +99,7 @@ public class CreateAccount extends AppCompatActivity {
         return true;
     }
 
-    public void onClickConfirmButton(View view) throws SQLException {
+    public void onClickConfirmButton(View view) {
         String inputName = eName.getText().toString();
         String inputID = eStudentID.getText().toString();
         String inputPassword = ePassword.getText().toString();
@@ -114,9 +114,9 @@ public class CreateAccount extends AppCompatActivity {
 //            startActivity(intent);
 //            Toast.makeText(CreateAccount.this, "Welcome " + inputName + "!", Toast.LENGTH_SHORT).show();
 
-            accessStudents.insertStudent(student);
+            accessManager.insertStudent(student);
 
-            Student test = accessStudents.getStudent(inputID);
+            Student test = accessManager.getStudent(inputID);
 
             System.out.println(test.getStudentID());
 
