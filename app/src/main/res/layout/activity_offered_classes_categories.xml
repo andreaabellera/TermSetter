@@ -14,8 +14,8 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/TextAppearance.MaterialComponents.Headline4"
             android:id="@+id/buttonBackToMenu"
-            style="@style/CustomHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"

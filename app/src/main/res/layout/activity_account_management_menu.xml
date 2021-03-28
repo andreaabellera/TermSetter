@@ -12,6 +12,7 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/TextAppearance.MaterialComponents.Headline4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -19,6 +20,7 @@
             android:text="@string/header_account_management"/>
 
         <Button
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:id="@+id/buttonManageProfile"
             android:layout_width="@dimen/Termsetter.MenuButton.Width"
             android:layout_height="wrap_content"
@@ -29,6 +31,7 @@
             tools:layout_editor_absoluteX="1dp" />
 
         <Button
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:id="@+id/buttonChangePassword"
             android:layout_width="@dimen/Termsetter.MenuButton.Width"
             android:layout_height="wrap_content"
@@ -39,6 +42,7 @@
             tools:layout_editor_absoluteX="20dp" />
 
         <Button
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:id="@+id/buttonUpdateEmail"
             android:layout_width="@dimen/Termsetter.MenuButton.Width"
             android:layout_height="wrap_content"
@@ -48,6 +52,7 @@
             android:text="@string/btn_account_management_update_email"/>
 
         <TextView
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:id="@+id/buttonReturn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
