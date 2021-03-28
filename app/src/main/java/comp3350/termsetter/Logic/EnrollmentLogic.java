@@ -2,45 +2,81 @@ package comp3350.termsetter.Logic;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import comp3350.termsetter.Persistence.CourseOffering;
 import comp3350.termsetter.Persistence.CourseSection;
-//import comp3350.termsetter.Persistence.DomainSpecific.User;
+import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.EnrollAccess;
+import comp3350.termsetter.Persistence.Main;
+import comp3350.termsetter.Persistence.StudentPersistence;
 
+/************************
+ * Andrea Notes (temporary)
+ *
+ * Hi Farjad, I got a good look at your branch and started to work on integration. I'll be off for the day and will continue working on this tomorrow evening (in Wpg).
+ * However, you can continue working while I am away if you have time today. It's nice to have our process streamlined.
+ *    > addCourse and addSection - No need to check against the list since all retrieved enrolled classes are guaranteed to have no dups/conflicts.
+ *                                 Check dups with the "courseCode" and check conflicts with the "selectedClass.getTimeSlot()" and "selectedClass.getDays()" instead.
+ *                                 I uncommented the constructor parameters and and also added a String parameter for studentID.
+ *    > I'm so sorry, I missed the mechanic of checking days. To know if there is a conflict, there have to be similar days as well as overlapping times.
+ *      For day conflicts, test string/char equality. Hopefully, it won't be so much work to add
+ *    > Good job with the unit tests, they're a nice bunch!
+ *      But with the above changes in mind, I have to make revisions so that they reflect the behavior of the methods we want to write. We'll know if our methods work as wanted if the unit tests pass
+ ************************/
 
 public class EnrollmentLogic
 {
-    private static List<CourseSection> currClasses;    //Sections for currClasses
-    private static List<CourseOffering> currCourseCodes;           //CourseCodes for currClasses
+    private List<CourseSection> currClasses;    //Sections for currClasses
+    private List<CourseOffering> currCourseCodes;           //CourseCodes for currClasses
 
-    //private String courseCode;
-    //private CourseSection selectedClass;
-    private static String message;
+    private String courseCode;
+    private CourseSection selectedClass;
+    private String message;
 
-    private static List<String> startTimes;    //startTimes of currClasses
-    private static List<String> endTimes;      //EndTimes of currClasses
+    private List<String> startTimes;    //startTimes of currClasses
+    private List<String> endTimes;      //EndTimes of currClasses
+    private EnrollAccess enrollAccess;
+    private AccessManager accessManager;
+    private StudentPersistence database;
+    private String studentID;
 
     //EnrollmentLogic Constructor
-    public EnrollmentLogic()
+    public EnrollmentLogic(String studentID, String courseCode, CourseSection selectedClass)
     {
-        //String courseCode, CourseSection selectedClass
-        //this.courseCode = courseCode;
-        //this.selectedClass = selectedClass;
+        this.courseCode = courseCode;
+        this.selectedClass = selectedClass;
+        this.studentID = studentID;
         currClasses = new ArrayList<>();
         currCourseCodes = new ArrayList<>();
         startTimes = new ArrayList<>();
         endTimes = new ArrayList<>();
         message = "";
-        //access = new EnrollmentAccess(user);
+        String path = new String(Main.getDBPathName());
+        enrollAccess = new EnrollAccess(path);
 
         loadClasses();
     }
 
     public void loadClasses()
     {
-        /* will replace access.getClasses() from database **/
+        /* SQL problems, Hold my phone
+        List<String> results = enrollAccess.getStudentEnrollment(studentID);
+        */
+        ArrayList<String> results = new ArrayList<String>();
 
-        //adding Course Sections to current classes
+        boolean success = true;
+        // adding enrollment results to currClasses
+        for(int i = 0; i < results.size() && success; i++){
+            String result = results.get(i);
+            String[] tokens = result.split("@");
+            CourseOffering currCourse = new CourseOffering(tokens[0], tokens[1], Integer.parseInt(tokens[2]));
+            success = addCourse(currCourse);
+            if(success){
+                CourseSection currClass = new CourseSection(tokens[3], tokens[4], tokens[5], tokens[6]);
+                success = addSection(currClass);
+            }
+        }
+
+
+        /*
         CourseSection cS1 = new CourseSection("A01","MWF", "10:30-11:30", "Mr.Awesome");
         currClasses.add(cS1);
         CourseSection cS2 = new CourseSection("A02","TR", "12:30-13:30", "Mr Insto");
@@ -59,10 +95,10 @@ public class EnrollmentLogic
         currCourseCodes.add(cO3);
         CourseOffering cO4 = new CourseOffering("PSYC3300", "Psy", 3);
         currCourseCodes.add(cO4);
-
+        */
     }
 
-    public static boolean addSection(CourseSection courseSection)
+    public boolean addSection(CourseSection courseSection)
     {
         boolean added = false;
 
@@ -73,13 +109,13 @@ public class EnrollmentLogic
         }
         else
         {
-            message = "Error: Failed to enrol due to a time conflict!";
+            message = "Error: Failed to enroll due to a time conflict!";
             System.out.println(message);
         }
         return added;
     }
 
-    public static boolean addCourse(CourseOffering courseOffering)
+    public boolean addCourse(CourseOffering courseOffering)
     {
         boolean added = false;
 
@@ -96,10 +132,16 @@ public class EnrollmentLogic
         return added;
     }
 
+    public String getMessage(){
+        return message;
+    }
 
+    private void confirmEnroll(){
+        enrollAccess.enroll(studentID, selectedClass.getSection(), courseCode);
+    }
 
     //Conflict check method
-    public static boolean checkConflict(CourseSection courseSection)
+    public boolean checkConflict(CourseSection courseSection)
     {
         boolean conflict = false;
 
@@ -154,7 +196,7 @@ public class EnrollmentLogic
     }
 
     //function to check code duplicates
-     public static boolean checkCodeDup (CourseOffering courseOffering)
+     public boolean checkCodeDup (CourseOffering courseOffering)
      {
          boolean conflict = false;
          String courseCode = courseOffering.getCourseCode();
@@ -171,7 +213,7 @@ public class EnrollmentLogic
 
 
     //function to add time slots for each class to start&endTimes arrays
-    public static void getClassTimes(List<CourseSection> currClasses)
+    public void getClassTimes(List<CourseSection> currClasses)
     {
         for (int i=0; i<currClasses.size(); i++)
         {
@@ -182,7 +224,7 @@ public class EnrollmentLogic
 
 
     //function to parse timeslots and add them to start and end time arrays
-    public static void parseTimeSlots(CourseSection courseSection)
+    public void parseTimeSlots(CourseSection courseSection)
     {
         String timeS = courseSection.getTimeSlot();
         String[] tSlots = timeS.split("-");

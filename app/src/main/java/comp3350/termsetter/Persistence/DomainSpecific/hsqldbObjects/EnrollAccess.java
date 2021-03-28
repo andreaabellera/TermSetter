@@ -26,7 +26,7 @@ public class EnrollAccess implements EnrollPersistence {
         return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "");
     }
 
-    public List<String> getStudentEnrollment(Student student) {
+    public List<String> getStudentEnrollment(String studentID) {
         List<String> currentCourses = new ArrayList<>();
 
         try {
@@ -37,16 +37,21 @@ public class EnrollAccess implements EnrollPersistence {
                     "courses.course_name, courses.section from enrollment INNER JOIN courses " +
                     "ON student_id = ? AND enrollment.course_id= courses.course_id");
 
-            statement.setString(1, student.getStudentID());
+            statement.setString(1, studentID);
             ResultSet resultSet = statement.executeQuery();
 
             // collect
             while (resultSet.next()) {
                 final String course_id = resultSet.getString("course_id");
                 final String course_name = resultSet.getString("course_name");
+                final String credit_hours = resultSet.getString("credit_hours");
+                final String section = resultSet.getString("section");
+                final String time = resultSet.getString("time");
+                final String days = resultSet.getString("days");
+                final String period = resultSet.getString("period");
 
                 // put them in a list for now
-                final String course = course_id + " " + course_name;
+                final String course = course_id + "@" + course_name + "@" + credit_hours + "@" + section + "@" + time + "@" + days + "@" + period;
                 currentCourses.add(course);
             }
             statement.close();
