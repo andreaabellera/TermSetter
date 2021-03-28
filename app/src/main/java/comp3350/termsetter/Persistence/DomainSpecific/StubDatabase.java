@@ -2,13 +2,11 @@ package comp3350.termsetter.Persistence.DomainSpecific;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
-
-import comp3350.termsetter.Persistence.UserPersistence;
-
+import comp3350.termsetter.Persistence.StudentPersistence;
 import static android.content.Context.MODE_PRIVATE;
 
-public class StubDatabase implements UserPersistence {
+
+public class StubDatabase implements StudentPersistence {
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
     private static int count = 0;
@@ -19,12 +17,12 @@ public class StubDatabase implements UserPersistence {
         editor = preferences.edit();
     }
 
-    public User insertUser(User user){
-        String name = user.getName();
-        String password = user.getPassword();
-        String email = user.getEmailAddress();
-        String phoneNumber = user.getPhoneNumber();
-        String studentID = user.getStudentID();
+    public Student insertStudent(Student student){
+        String name = student.getName();
+        String password = student.getPassword();
+        String email = student.getEmailAddress();
+        String phoneNumber = student.getPhoneNumber();
+        String studentID = student.getStudentID();
 
         String nameKey = "name" + count;
         String passwordKey = "password" + count;
@@ -40,14 +38,14 @@ public class StubDatabase implements UserPersistence {
         editor.apply();
 
         count += 1;
-        return user;
+        return student;
     }
 
-    public void setCurrentUser(String sID) {
+    public void setCurrentStudentID(String sID) {
         this.currentID = sID;
     }
 
-    public int findUserIndex(String sID) {
+    public int findStudentIndex(String sID) {
         if (this.count <= 0){
             return -1;
         }
@@ -65,8 +63,8 @@ public class StubDatabase implements UserPersistence {
         return lookupIndex;
     }
 
-    public User getUser(String sID) {
-        int lookupIndex = findUserIndex(sID);
+    public Student getStudent(String sID) {
+        int lookupIndex = findStudentIndex(sID);
 
         if (lookupIndex != -1) {
             String nameKey = "name" + lookupIndex;
@@ -81,20 +79,20 @@ public class StubDatabase implements UserPersistence {
             String phoneNumber = preferences.getString(phoneKey,"");
             String studentID = preferences.getString(idKey,"");
 
-            return new User(name, password, email, phoneNumber, studentID);
+            return new Student(name, password, email, phoneNumber, studentID);
         }
         else {
             return null;
         }
     }
 
-    public User getCurrentUser() {
-        return getUser(currentID);
+    public Student getCurrentStudentID() {
+        return getStudent(currentID);
     }
 
     public boolean updatePassword(String newPassword) {
         if (currentID != null) {
-            int lookupIndex = findUserIndex(currentID);
+            int lookupIndex = findStudentIndex(currentID);
             String passwordKey = "password" + lookupIndex;
             editor.putString(passwordKey, newPassword);
             editor.apply();
@@ -106,7 +104,7 @@ public class StubDatabase implements UserPersistence {
 
     public boolean updateEmail(String newEmail) {
         if (currentID != null) {
-            int lookupIndex = findUserIndex(currentID);
+            int lookupIndex = findStudentIndex(currentID);
             String emailKey = "email" + lookupIndex;
             editor.putString(emailKey, newEmail);
             editor.apply();

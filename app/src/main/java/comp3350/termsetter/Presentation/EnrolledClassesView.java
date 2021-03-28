@@ -1,15 +1,12 @@
 package comp3350.termsetter.Presentation;
 
+import android.os.Bundle;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import comp3350.termsetter.Persistence.CourseOffering;
 import comp3350.termsetter.Persistence.CourseSection;
 import comp3350.termsetter.R;

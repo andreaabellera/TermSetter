@@ -1,6 +1,5 @@
 package comp3350.termsetter.Presentation;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,31 +7,27 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.SQLException;
-
-import comp3350.termsetter.Logic.AccessStudents;
+import comp3350.termsetter.Logic.AccessManager;
 import comp3350.termsetter.Logic.AccountValidation;
-//import comp3350.termsetter.Logic.AccessStudents;
-import comp3350.termsetter.Persistence.UserPersistence;
+import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
+import comp3350.termsetter.Persistence.StudentPersistence;
 import comp3350.termsetter.R;
-
-import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 public class AccountChangePassword extends AppCompatActivity {
     private static Context mContext;
-    private UserPersistence database;
+    private StudentPersistence database;
     private boolean validate;
     private EditText oldPassword;
     private EditText newPassword;
     private EditText newPasswordConfirm;
     private AccountValidation accountValidation;
-    private User user;
+    private Student student;
     private Button change;
 
-    private AccessStudents accessStudents;
+    private AccessManager accessManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +35,14 @@ public class AccountChangePassword extends AppCompatActivity {
         setContentView(R.layout.activity_account_change_password);
 
         mContext = getApplicationContext();
-        //database = new StubDatabase(mContext,"test.db");
-        //database = new StudentAccess("users.db");
-        accessStudents = new AccessStudents();
-        database = accessStudents.getStudentPersistence();
+        database = new StubDatabase(mContext,"test.db");
+
+        accessManager = new AccessManager();
+        database = accessManager.getStudentPersistence();
     }
 
 
-    public void onClickConfirmButton(View view) throws SQLException {
+    public void onClickConfirmButton(View view) {
         oldPassword = findViewById(R.id.editTextCurrentPassword);
         newPassword = findViewById(R.id.editTextNewPassword);
         newPasswordConfirm = findViewById(R.id.editTexConfirmPassword);
@@ -60,7 +55,7 @@ public class AccountChangePassword extends AppCompatActivity {
         if (!accountValidation.validPassword(inputOldPassword) || !accountValidation.validPassword(inputNewPassword) || !accountValidation.validPassword(inputNewPasswordConfirm)) {
             Toast.makeText(AccountChangePassword.this, "Please enter valid password!", Toast.LENGTH_SHORT).show();
         } else {
-            if (accountValidation.verifyCurrentPassword(inputOldPassword, database.getCurrentUser())) {
+            if (accountValidation.verifyCurrentPassword(inputOldPassword, database.getCurrentStudentID())) {
                 if (accountValidation.confirmPassword(inputNewPassword, inputNewPasswordConfirm)) {
                     Toast.makeText(AccountChangePassword.this, "Old Password: " + inputOldPassword, Toast.LENGTH_SHORT).show();
                     Toast.makeText(AccountChangePassword.this, "New Password: " + inputNewPassword, Toast.LENGTH_SHORT).show();

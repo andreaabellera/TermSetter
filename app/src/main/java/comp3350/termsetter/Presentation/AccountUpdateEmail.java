@@ -1,6 +1,5 @@
 package comp3350.termsetter.Presentation;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,27 +7,23 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.SQLException;
-
-import comp3350.termsetter.Logic.AccessStudents;
+import comp3350.termsetter.Logic.AccessManager;
 import comp3350.termsetter.Logic.AccountValidation;
-import comp3350.termsetter.Persistence.UserPersistence;
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
+import comp3350.termsetter.Persistence.StudentPersistence;
 import comp3350.termsetter.R;
-
-import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 public class AccountUpdateEmail extends AppCompatActivity {
     private static Context mContext;
-    private UserPersistence database;
+    private StudentPersistence database;
     private boolean validate;
     private EditText newEmail;
     private EditText newEmailConfirm;
     private AccountValidation accountValidation;
 
-    private AccessStudents accessStudents;
+    private AccessManager accessManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,22 +34,19 @@ public class AccountUpdateEmail extends AppCompatActivity {
         //database = new StubDatabase(mContext,"test.db");
         //database = new StudentAccess("users.db");
 
-        accessStudents = new AccessStudents();
-        database = accessStudents.getStudentPersistence();
-        try {
-            displayProfile();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        accessManager = new AccessManager();
+        database = accessManager.getStudentPersistence();
+        displayProfile();
+
     }
 
-    private void displayProfile() throws SQLException {
-        User user = database.getCurrentUser();
+    private void displayProfile()  {
+        Student student = database.getCurrentStudentID();
         TextView studentEmail = findViewById(R.id.userInfoCurrentEmail);
-        studentEmail.setText(user.getEmailAddress());
+        studentEmail.setText(student.getEmailAddress());
     }
 
-    public void updateEmail(View view) throws SQLException {
+    public void updateEmail(View view) {
         accountValidation = new AccountValidation();
 
         newEmail = findViewById(R.id.editTextNewEmail);

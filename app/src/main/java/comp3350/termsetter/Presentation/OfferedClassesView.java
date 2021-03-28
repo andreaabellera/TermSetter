@@ -8,11 +8,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
-import comp3350.termsetter.UIadapters.RecyclerCourseDataAdapter;
 import comp3350.termsetter.Persistence.CourseOffering;
-import comp3350.termsetter.R;
 import comp3350.termsetter.Persistence.Faculty;
-
+import comp3350.termsetter.R;
 
 public class OfferedClassesView extends AppCompatActivity {
 
@@ -59,16 +57,16 @@ public class OfferedClassesView extends AppCompatActivity {
         layoutManager4.setOrientation(LinearLayoutManager.HORIZONTAL);
         lv4.setLayoutManager(layoutManager4);
 
-        RecyclerCourseDataAdapter recyclerAdapter1= new RecyclerCourseDataAdapter(lv1Courses,1);
+        comp3350.termsetter.UIadapters.RecyclerCourseDataAdapter recyclerAdapter1= new comp3350.termsetter.UIadapters.RecyclerCourseDataAdapter(lv1Courses,1);
         lv1.setAdapter(recyclerAdapter1);
         recyclerAdapter1.setOnClick(this::onItemClick1);
-        RecyclerCourseDataAdapter recyclerAdapter2= new RecyclerCourseDataAdapter(lv2Courses,2);
+        comp3350.termsetter.UIadapters.RecyclerCourseDataAdapter recyclerAdapter2= new comp3350.termsetter.UIadapters.RecyclerCourseDataAdapter(lv2Courses,2);
         lv2.setAdapter(recyclerAdapter2);
         recyclerAdapter2.setOnClick(this::onItemClick2);
-        RecyclerCourseDataAdapter recyclerAdapter3= new RecyclerCourseDataAdapter(lv3Courses,3);
+        comp3350.termsetter.UIadapters.RecyclerCourseDataAdapter recyclerAdapter3= new comp3350.termsetter.UIadapters.RecyclerCourseDataAdapter(lv3Courses,3);
         lv3.setAdapter(recyclerAdapter3);
         recyclerAdapter3.setOnClick(this::onItemClick3);
-        RecyclerCourseDataAdapter recyclerAdapter4= new RecyclerCourseDataAdapter(lv4Courses,4);
+        comp3350.termsetter.UIadapters.RecyclerCourseDataAdapter recyclerAdapter4= new comp3350.termsetter.UIadapters.RecyclerCourseDataAdapter(lv4Courses,4);
         lv4.setAdapter(recyclerAdapter4);
         recyclerAdapter4.setOnClick(this::onItemClick4);
 
