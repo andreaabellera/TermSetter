@@ -17,103 +17,89 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="32dp"
             android:text="@string/btn_account_management_manage_profile"/>
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp">
+            android:layout_gravity="center"
+            android:layout_marginTop="64dp"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/promptName"
+            <LinearLayout
+                android:id="@+id/contentProfilePrompts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="64dp"
-                android:text="@string/txt_manage_profile_prompt2" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/userInfoName"
+                <TextView
+                    android:id="@+id/promptName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_manage_profile_prompt2" />
+
+                <TextView
+                    android:id="@+id/promptStudentNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/txt_manage_profile_prompt3" />
+
+                <TextView
+                    android:id="@+id/promptEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/txt_manage_profile_prompt4" />
+
+                <TextView
+                    android:id="@+id/promptPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/txt_manage_profile_prompt5" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/contentProfileUserInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@id/promptName"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="64dp"
-                android:text="@string/txt_manage_profile_student_name"/>
+                android:layout_toEndOf="@id/contentProfilePrompts"
+                android:layout_marginStart="32dp"
+                android:gravity="right"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/userInfoName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_manage_profile_student_name"/>
+
+                <TextView
+                    android:id="@+id/userInfoStudentID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/txt_manage_profile_student_number"/>
+
+                <TextView
+                    android:id="@+id/userInfoEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/txt_manage_profile_student_email"/>
+
+                <TextView
+                    android:id="@+id/userInfoPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/txt_manage_profile_student_phone"/>
+
+            </LinearLayout>
 
         </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-            <TextView
-                android:id="@+id/promptStudentNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="64dp"
-                android:text="@string/txt_manage_profile_prompt3" />
-
-            <TextView
-                android:id="@+id/userInfoStudentID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="64dp"
-                android:text="@string/txt_manage_profile_student_id"/>
-
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-            <TextView
-                android:id="@+id/promptEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="64dp"
-                android:text="@string/txt_manage_profile_prompt4" />
-
-            <TextView
-                android:id="@+id/userInfoEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="64dp"
-                android:text="@string/txt_manage_profile_student_email"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-            <TextView
-                android:id="@+id/promptPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="64dp"
-                android:text="@string/txt_manage_profile_prompt5" />
-
-            <TextView
-                android:id="@+id/userInfoPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="64dp"
-                android:text="@string/txt_manage_profile_student_phone"/>
-
-        </RelativeLayout>
-
-
-
-
-
 
     </LinearLayout>
 </ScrollView>

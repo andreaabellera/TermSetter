@@ -14,32 +14,38 @@
         android:clipToPadding="false"
         android:orientation="vertical">
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="80dp"
-            android:text="University of Manitoba"
-            android:textSize="18sp" />
+            android:layout_marginTop="64dp"
+            android:text="University of Manitoba"/>
 
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="4dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ts_icon_nolabel"/>
-
-        <TextView
-            style="@style/TextAppearance.MaterialComponents.Headline4"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            android:text="Termsetter"/>
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ts_icon_nolabel"/>
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Headline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Termsetter"/>
+
+        </LinearLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="@dimen/Termsetter.EditText.Width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -52,11 +58,10 @@
                 android:id="@+id/editTextUserID"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="@dimen/Termsetter.EditText.Width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -91,7 +96,7 @@
             android:layout_marginTop="4dp"
             android:text="CREATE ACCOUNT"
             android:onClick="onClickCreateAccountButton"/>
-        
+
     </LinearLayout>
 
 

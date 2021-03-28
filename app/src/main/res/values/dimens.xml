@@ -2,7 +2,7 @@
     <!-- Termsetter custom widget dimensions -->
     <dimen name="Termsetter.MenuButton.Width">300dp</dimen>
     <dimen name="Termsetter.ConfirmButton.Width">200</dimen>
-    <dimen name="Termsetter.EditText.Width">400dp</dimen>
+    <dimen name="Termsetter.EditText.Width">350dp</dimen>
 
 
 

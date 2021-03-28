@@ -52,7 +52,7 @@
             android:text="@string/btn_account_management_update_email"/>
 
         <TextView
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:id="@+id/buttonReturn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

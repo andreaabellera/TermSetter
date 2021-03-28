@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Custom Termsetter colors -->
-    <color name="aqua50">#d7fdf5</color>
-    <color name="aqua100">#88f9e2</color>
-    <color name="aqua200">#38f6cf</color>
-    <color name="aqua300">#12B291</color>
-
     <!-- Termsetter brand colours -->
     <color name="tsBlue50">#dafaf8</color> <!-- Surface -->
     <color name="tsBlue100">#B5F5F1</color> <!-- Primary -->
     <color name="tsBlue200">#57e8df</color> <!-- Secondary -->
+    <color name="tsBlue300">#12B291</color>
 
     <!-- Termsetter complimentary colors -->
     <color name="tsComp50">#b5d9f5</color>
@@ -26,19 +21,19 @@
 
     <!-- MaterialComponents attributes -->
     <color name="tsPrimary">@color/tsBlue100</color>
-    <color name="tsSecondary">@color/tsBlue200</color>
+    <color name="tsSecondary">@color/tsComp50</color>
     <color name="tsBackground">@color/white</color>
     <color name="tsError">#FF3700B3</color>
 
     <!-- New MaterialComponents attributes. -->
     <color name="tsPrimaryVariant">@color/grey300</color>
     <color name="tsSecondaryVariant">#FF3700B3</color>
-    <color name="tsSurface">@color/aqua50</color>
-    <color name="tsColorOnPrimary">@color/white</color>
+    <color name="tsSurface">@color/tsBlue50</color>
+    <color name="tsColorOnPrimary">@color/grey200</color>
     <color name="tsColorOnSecondary">#FF3700B3</color>
     <color name="tsColorOnBackground">#FF3700B3</color>
     <color name="tsColorOnError">#FF3700B3</color>
-    <color name="tsColorOnSurface">@color/aqua50</color>
+    <color name="tsColorOnSurface">@color/tsBlue300</color>
 
 
     <!-- Pre-defined app colours -->
@@ -51,14 +46,6 @@
     <color name="foreground">#e1e1e1</color>
     <color name="accent_1">#7c8ded</color>
     <color name="accent_2">#52defe</color>
-
-    <!-- Custom theme colours -->
-    <color name="soft_white">#fafafa</color>
-    <color name="dark_cool_grey">#32363A</color>
-    <color name="faded_black">#383838</color>
-    <color name="dark_grey">#303030</color>
-    <color name="cool_grey">#cfd8dc</color>
-
 
     <!-- horchacha -->
     <color name="red_mocha">#773427</color>

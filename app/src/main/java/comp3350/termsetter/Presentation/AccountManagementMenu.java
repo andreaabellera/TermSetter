@@ -36,10 +36,4 @@ public class AccountManagementMenu extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
-
-    public void openSettings(View view) {
-        Intent intent = new Intent(this, comp3350.termsetter.Presentation.AccountSettings.class);
-        startActivity(intent);
-    }
 }
