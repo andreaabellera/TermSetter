@@ -66,14 +66,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
-            android:inputType="textPassword"
             android:hint="Password"
+            android:inputType="textPassword"
+            app:helperTextEnabled="true"
+            app:passwordToggleEnabled="true"
             app:startIconDrawable="@drawable/ic_baseline_https_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

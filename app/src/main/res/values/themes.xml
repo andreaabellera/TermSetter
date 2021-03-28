@@ -2,7 +2,12 @@
 
     <style name="ShapeAppearance.Termsetter.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">cut</item>
-        <item name="cornerSize">6dp</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Termsetter.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">12dp</item>
     </style>
 
     <!-- Custom parent theme presets from which all themes will inherit-->
@@ -10,6 +15,7 @@
 
         <!-- General design of components, eg. editTexts, buttons -->
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Termsetter.SmallComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Termsetter.LargeComponent</item>
 
         <!-- Original AppCompat attributes. -->
         <item name="colorPrimary">@color/tsPrimary</item>
