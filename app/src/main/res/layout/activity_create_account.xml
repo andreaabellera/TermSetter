@@ -61,7 +61,8 @@
             app:startIconDrawable="@drawable/ic_baseline_https_24"
             android:hint="Password"
             android:inputType="textPassword"
-            android:maxLength="20">
+            android:maxLength="20"
+            app:passwordToggleEnabled="true">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextSetPassword"
                 android:layout_width="match_parent"
@@ -77,7 +78,8 @@
             app:startIconDrawable="@drawable/ic_baseline_https_24"
             android:hint="Confirm Password"
             android:inputType="textPassword"
-            android:maxLength="20">
+            android:maxLength="20"
+            app:passwordToggleEnabled="true">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextConfirmAPassword"
                 android:layout_width="match_parent"
