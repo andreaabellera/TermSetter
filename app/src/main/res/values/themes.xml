@@ -1,7 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <style name="ShapeAppearance.Termsetter.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">6dp</item>
+    </style>
+
     <!-- Custom parent theme presets from which all themes will inherit-->
     <style name="TermsetterBase" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!-- General design of components, eg. editTexts, buttons -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Termsetter.SmallComponent</item>
 
         <!-- Original AppCompat attributes. -->
         <item name="colorPrimary">@color/tsPrimary</item>
@@ -29,6 +37,8 @@
         <item name="textAppearanceCaption">@style/TextAppearance.MaterialComponents.Caption</item>
         <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Button</item>
         <item name="textAppearanceOverline">@style/TextAppearance.MaterialComponents.Overline</item>
+
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
 
     <!-- Base application theme. -->

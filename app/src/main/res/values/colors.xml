@@ -26,7 +26,7 @@
     <color name="tsError">#FF3700B3</color>
 
     <!-- New MaterialComponents attributes. -->
-    <color name="tsPrimaryVariant">@color/grey300</color>
+    <color name="tsPrimaryVariant">@color/tsBlue300</color>
     <color name="tsSecondaryVariant">#FF3700B3</color>
     <color name="tsSurface">@color/tsBlue50</color>
     <color name="tsColorOnPrimary">@color/grey200</color>
