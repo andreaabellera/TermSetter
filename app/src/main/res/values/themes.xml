@@ -1,7 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <style name="ShapeAppearance.Termsetter.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Termsetter.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
     <!-- Custom parent theme presets from which all themes will inherit-->
     <style name="TermsetterBase" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!-- General design of components, eg. editTexts, buttons -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Termsetter.SmallComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Termsetter.LargeComponent</item>
 
         <!-- Original AppCompat attributes. -->
         <item name="colorPrimary">@color/tsPrimary</item>
@@ -29,18 +43,9 @@
         <item name="textAppearanceCaption">@style/TextAppearance.MaterialComponents.Caption</item>
         <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Button</item>
         <item name="textAppearanceOverline">@style/TextAppearance.MaterialComponents.Overline</item>
+
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
-
-    <!-- Custom parent button presets (all buttons will inherit-->
-    <style name="CustomButton" parent="Widget.AppCompat.Button">
-        <item name="android:textColor">@color/faded_black</item>
-
-        <item name="android:textSize">14sp</item>
-        <item name="android:padding">24dp</item>
-        <item name="android:background">@drawable/custom_rounded_corners</item>
-        <item name="android:letterSpacing">.15</item>
-    </style>
-
 
     <!-- Base application theme. -->
     <style name="Theme.MyApplication" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
