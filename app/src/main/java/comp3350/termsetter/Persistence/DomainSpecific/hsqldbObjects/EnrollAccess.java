@@ -26,68 +26,83 @@ public class EnrollAccess implements EnrollPersistence {
         return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "");
     }
 
-    public List<String> getStudentEnrollment(Student student) throws SQLException {
+    public List<String> getStudentEnrollment(Student student) {
         List<String> currentCourses = new ArrayList<>();
 
-        // connect
-        connect = this.connection();
+        try {
+            connect = connection();
 
-        // query
-        PreparedStatement statement = connect.prepareStatement("select enrollment.course_id, " +
-                "courses.course_name, courses.section from enrollment INNER JOIN courses " +
-                "ON student_id = ? AND enrollment.course_id= courses.course_id");
+            // query
+            PreparedStatement statement = connect.prepareStatement("select enrollment.course_id, " +
+                    "courses.course_name, courses.section from enrollment INNER JOIN courses " +
+                    "ON student_id = ? AND enrollment.course_id= courses.course_id");
 
-        statement.setString(1, student.getStudentID());
-        ResultSet resultSet = statement.executeQuery();
+            statement.setString(1, student.getStudentID());
+            ResultSet resultSet = statement.executeQuery();
 
-        // collect
-        while (resultSet.next()) {
-            final String course_id = resultSet.getString("course_id");
-            final String course_name = resultSet.getString("course_name");
+            // collect
+            while (resultSet.next()) {
+                final String course_id = resultSet.getString("course_id");
+                final String course_name = resultSet.getString("course_name");
 
-            // put them in a list for now
-            final String course = course_id + " " + course_name;
-            currentCourses.add(course);
+                // put them in a list for now
+                final String course = course_id + " " + course_name;
+                currentCourses.add(course);
+            }
+            statement.close();
+            resultSet.close();
+            connect.close();
         }
-
-        connect.close();
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
         return currentCourses;
     }
 
-    public void enroll(String sID, String section, String cID) throws SQLException {
+    public void enroll(String sID, String section, String cID) {
 
-            // assumes logic checked that user is valid
-            // first connect
-                connect = this.connection();
-                //query
-                PreparedStatement statement = connect.prepareStatement("INSERT INTO enrollment VALUES (?,?)");
-                statement.setString(1, sID);
-                statement.setString(2, cID);
-              //  statement.setString(3, section);
+        try {
+            connect = this.connection();
+
+            // query
+            PreparedStatement statement = connect.prepareStatement("INSERT INTO enrollment VALUES (?,?)");
+            statement.setString(1, sID);
+            statement.setString(2, cID);
+            //  statement.setString(3, section);
 
 
-                //Update DB
-                statement.executeUpdate();
-                connect.close();
+            //Update DB
+            statement.executeUpdate();
+            statement.close();
+            connect.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
-    public void unenroll(String sID, String section, String cID) throws SQLException {
+    public void unenroll(String sID, String section, String cID) {
 
-        // assumes logic checked that user is valid
-        // first connect
-        connect = this.connection();
-        //query
-        PreparedStatement statement = connect.prepareStatement("DELETE FROM enrollment " +
-                "where course_ID = ? AND student_id = ?");
-        statement.setString(1, cID);
-        statement.setString(2, sID);
-        //  statement.setString(3, section);
+        try {
+            connect = this.connection();
 
-        System.out.println(statement.toString());
-        //Update DB
-        statement.executeUpdate();
-        connect.close();
+            //query
+            PreparedStatement statement = connect.prepareStatement("DELETE FROM enrollment " +
+                    "where course_ID = ? AND student_id = ?");
+            statement.setString(1, cID);
+            statement.setString(2, sID);
+            //  statement.setString(3, section);
+
+            //Update DB
+            statement.executeUpdate();
+            statement.close();
+            connect.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

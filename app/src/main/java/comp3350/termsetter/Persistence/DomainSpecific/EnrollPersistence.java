@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface EnrollPersistence {
 
-    public List<String> getStudentEnrollment(Student student) throws SQLException;
-    void enroll(String sID, String section, String cID) throws SQLException;
-    void unenroll(String sID, String section, String cID) throws SQLException;
+    public List<String> getStudentEnrollment(Student student);
+    void enroll(String sID, String section, String cID);
+    void unenroll(String sID, String section, String cID);
 }

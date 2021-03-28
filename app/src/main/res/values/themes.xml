@@ -3,11 +3,36 @@
     <!-- Custom parent theme presets from which all themes will inherit-->
     <style name="TermsetterBase" parent="Theme.AppCompat.Light.NoActionBar">
 
+        <!-- Original AppCompat attributes. -->
+        <item name="colorPrimary">@color/tsPrimary</item>
+        <item name="colorSecondary">@color/tsSecondary</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="colorError">@color/tsError</item>
+
+        <!-- New MaterialComponents attributes. -->
+        <item name="colorPrimaryVariant">@color/tsPrimaryVariant</item>
+        <item name="colorSecondaryVariant">@color/tsSecondaryVariant</item>
+        <item name="colorSurface">@color/tsSurface</item>
+        <item name="colorOnPrimary">@color/tsColorOnPrimary</item>
+        <item name="colorOnSecondary">@color/tsColorOnSecondary</item>
+        <item name="colorOnBackground">@color/tsColorOnBackground</item>
+        <item name="colorOnError">@color/tsColorOnError</item>
+        <item name="colorOnSurface">@color/tsColorOnSurface</item>
+        <item name="scrimBackground">@color/mtrl_scrim_color</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.MaterialComponents.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.MaterialComponents.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.MaterialComponents.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.MaterialComponents.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.MaterialComponents.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.MaterialComponents.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.MaterialComponents.Body2</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.MaterialComponents.Caption</item>
+        <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Button</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.MaterialComponents.Overline</item>
     </style>
 
     <!-- Custom parent button presets (all buttons will inherit-->
     <style name="CustomButton" parent="Widget.AppCompat.Button">
-        <item name="android:backgroundTint">@color/neo_aquayo</item>
         <item name="android:textColor">@color/faded_black</item>
 
         <item name="android:textSize">14sp</item>
@@ -15,68 +40,6 @@
         <item name="android:background">@drawable/custom_rounded_corners</item>
         <item name="android:letterSpacing">.15</item>
     </style>
-
-    <style name="CustomHeader" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">24sp</item>
-        <item name="android:letterSpacing">.15</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textColor">@color/faded_black</item>
-
-    </style>
-
-    <style name="CustomEditText" parent="Widget.AppCompat.EditText">
-        <item name="android:padding">12dp</item>
-        <item name="android:background">@drawable/custom_rounded_corners</item>
-        <item name="android:backgroundTint">@color/cool_grey</item>
-    </style>
-
-    <style name="CustomClickableText" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/neo_aquayo</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textSize">16dp</item>
-        <item name="android:letterSpacing">.15</item>
-        <item name="android:padding">16dp</item>
-        <item name="android:background">@drawable/custom_rounded_corners</item>
-    </style>
-
-
-
-
-
-    <!-- Ignore everything -->
-
-
-
-    <!-- Aquira filled buttons -->
-    <style name="Aquira.Button.Primary" parent="CustomButton">
-    </style>
-
-    <!-- Aquira outlined buttons -->
-    <style name="Aquira.Button.Secondary" parent="CustomButton">
-        <item name="android:strokeWidth">2</item>
-    </style>
-
-    <!-- 'Aquira' dark theme -->
-    <style name="Aquira.Dark" parent="TermsetterBase">
-        <item name="android:colorBackground">@color/dark_cool_grey</item>
-        <item name="android:buttonStyle">@style/Aquira.Button.Primary</item>
-
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/neo_purpyo</item>
-        <item name="colorPrimaryVariant">@color/faded_black</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-
-        <!-- Status bar color (top, has clock) -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-    </style>
-
-
-
 
 
     <!-- Base application theme. -->
