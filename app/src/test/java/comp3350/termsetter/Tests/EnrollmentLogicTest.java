@@ -3,19 +3,29 @@ package comp3350.termsetter.Tests;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import comp3350.termsetter.Logic.EnrollmentLogic;
 import comp3350.termsetter.Persistence.*;
 import static org.junit.Assert.*;
 
 public class EnrollmentLogicTest
 {
-    String courseCode1;
-    String courseCode2;
+    CourseOffering courseO1;
+    CourseOffering courseO2;
     CourseSection cSection1;
     CourseSection cSection2;
+    EnrollmentLogic eL;
+
+    @Before
+    public void setContext()
+    {
+        eL = new EnrollmentLogic();
+
+        courseO1 = new CourseOffering("ENVR1000", "Env", 3); //no error
+        courseO2 = new CourseOffering("COMP3350", "SE", 3); //error
+
+        cSection1 = new CourseSection("A01","MWF", "11:30-12:30", "Dr.Hello"); //no error
+        cSection2 = new CourseSection("A03","TR", "14:31-15:31", "Mr.Awesome"); //error
+    }
 
 
     @Test
@@ -23,11 +33,8 @@ public class EnrollmentLogicTest
     {
         System.out.println("\nStarting testAddCourse: object exists after creation\n");
 
-        courseCode1 = "ENVR1000"; //no error
-        assertTrue(EnrollmentLogic.addCourse(courseCode1));
-
-        courseCode2 = "COMP3350"; //error
-        assertFalse(EnrollmentLogic.addCourse(courseCode2));
+        assertTrue(eL.addCourse(courseO1));
+        assertFalse(eL.addCourse(courseO2));
 
         System.out.println("\nEnding testAddCourse: object exists after creation\n");
     }
@@ -37,11 +44,8 @@ public class EnrollmentLogicTest
     {
         System.out.println("\nStarting testAddSection: object exists after creation\n");
 
-        cSection1 = new CourseSection("A01","MWF", "11:30-12:30", "Dr.Hello"); //no error
-        assertTrue(EnrollmentLogic.addSection(cSection1));
-
-        cSection2 = new CourseSection("A03","TR", "14:30-15:30", "Mr.Awesome"); //error
-        assertFalse(EnrollmentLogic.addSection(cSection2));
+        assertTrue(eL.addSection(cSection1));
+        assertFalse(eL.addSection(cSection2));
 
         System.out.println("\nEnding testAddSection: object exists after creation\n");
     }

@@ -3,6 +3,7 @@ package comp3350.termsetter.Logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import comp3350.termsetter.Persistence.CourseOffering;
 import comp3350.termsetter.Persistence.CourseSection;
 //import comp3350.termsetter.Persistence.DomainSpecific.User;
 
@@ -10,23 +11,25 @@ import comp3350.termsetter.Persistence.CourseSection;
 public class EnrollmentLogic
 {
     private static List<CourseSection> currClasses;    //Sections for currClasses
-    private static String[] currCourseCodes;           //CourseCodes for currClasses
+    private static List<CourseOffering> currCourseCodes;           //CourseCodes for currClasses
 
-    private String courseCode;
-    private CourseSection selectedClass;
+    //private String courseCode;
+    //private CourseSection selectedClass;
     private static String message;
 
-    private static String[] startTimes;    //startTimes of currClasses
-    private static String[] endTimes;      //EndTimes of currClasses
-
-    private static final int maxClasses = 6;             //maxNo.ofClassesAllowed
+    private static List<String> startTimes;    //startTimes of currClasses
+    private static List<String> endTimes;      //EndTimes of currClasses
 
     //EnrollmentLogic Constructor
-    public EnrollmentLogic(String courseCode, CourseSection selectedClass)
+    public EnrollmentLogic()
     {
-        this.courseCode = courseCode;
-        this.selectedClass = selectedClass;
+        //String courseCode, CourseSection selectedClass
+        //this.courseCode = courseCode;
+        //this.selectedClass = selectedClass;
         currClasses = new ArrayList<>();
+        currCourseCodes = new ArrayList<>();
+        startTimes = new ArrayList<>();
+        endTimes = new ArrayList<>();
         message = "";
         //access = new EnrollmentAccess(user);
 
@@ -48,10 +51,14 @@ public class EnrollmentLogic
         currClasses.add(cS4);
 
         //adding Course Codes to current courseCodes
-        currCourseCodes = addT(currCourseCodes, "COMP3350");
-        currCourseCodes = addT(currCourseCodes, "BUSS4350");
-        currCourseCodes = addT(currCourseCodes, "COMP3450");
-        currCourseCodes = addT(currCourseCodes, "PSYC3300");
+        CourseOffering cO1 = new CourseOffering("COMP3350", "SE", 3);
+        currCourseCodes.add(cO1);
+        CourseOffering cO2 = new CourseOffering("BUSS4350", "Bus", 3);
+        currCourseCodes.add(cO2);
+        CourseOffering cO3 = new CourseOffering("COMP3450", "OS", 3);
+        currCourseCodes.add(cO3);
+        CourseOffering cO4 = new CourseOffering("PSYC3300", "Psy", 3);
+        currCourseCodes.add(cO4);
 
     }
 
@@ -72,13 +79,13 @@ public class EnrollmentLogic
         return added;
     }
 
-    public static boolean addCourse(String courseCode)
+    public static boolean addCourse(CourseOffering courseOffering)
     {
         boolean added = false;
 
-        if (!checkCodeDup(courseCode))
+        if (!checkCodeDup(courseOffering))
         {
-            currCourseCodes = addT(currCourseCodes,courseCode);
+            currCourseCodes.add(courseOffering);
             added = true;
         }
         else
@@ -99,19 +106,32 @@ public class EnrollmentLogic
         //get timesSlots from currClasses
         getClassTimes(currClasses);
 
-        //add timeSlot of new class to start&endTime arrays
-        parseTimeSlots(courseSection);
+        //add timeSlot of new class to start&endTime lists
+        //parseTimeSlots(courseSection);
 
-        for (int i=0; i<maxClasses; i++)
+        String timeS = courseSection.getTimeSlot();
+        String[] tSlots = timeS.split("-");
+        int start = parseTime(tSlots[0]);
+        int end = parseTime(tSlots[1]);
+
+
+        for (int i=0; i<startTimes.size(); i++)
         {
-            int classStart = parseTime(startTimes[i]);
-            int classEnd = parseTime(endTimes[i]);
+            int classStart = parseTime(startTimes.get(i));
+            int classEnd = parseTime(endTimes.get(i));
 
+            if (end > classStart && end < classEnd)
+                conflict = true;
+
+            else if (start > classStart && start < classEnd)
+                conflict = true;
+
+            /**
             //end of each class checked with each starting time
-            for(int e=0; e<maxClasses; e++)
+            for(int e=0; e<endTimes.size(); e++)
             {
-                if (e==i) continue;
-                int end = parseTime(endTimes[e]);
+                //if (e==i) continue;
+                int end = parseTime(endTimes.get(e));
                 if (end > classStart && end < classEnd )
                 {
                     conflict = true;
@@ -119,32 +139,34 @@ public class EnrollmentLogic
             }
 
             //start of class between a time slot
-            for (int s=0; s<maxClasses; s++)
+            for (int s=0; s<startTimes.size(); s++)
             {
-                if (s == i) continue;
-                int start = parseTime(startTimes[s]);
+                //if (s == i) continue;
+                int start = parseTime(startTimes.get(s));
                 if (start > classStart && start < classEnd)
                 {
                     conflict = true;
                 }
-            }
+            } **/
         }
+
         return conflict;
     }
 
     //function to check code duplicates
-     public static boolean checkCodeDup (String courseCode)
+     public static boolean checkCodeDup (CourseOffering courseOffering)
      {
-        boolean conflict = false;
+         boolean conflict = false;
+         String courseCode = courseOffering.getCourseCode();
 
-         for (int i=0; i<currClasses.size(); i++)
+         for (int i=0; i<currCourseCodes.size(); i++)
          {
-             if (courseCode.equals(currCourseCodes[i]))
+             if (courseCode.equals(currCourseCodes.get(i).getCourseCode()))
              {
                 conflict = true;
-            }
+             }
          }
-        return conflict;
+         return conflict;
      }
 
 
@@ -164,8 +186,8 @@ public class EnrollmentLogic
     {
         String timeS = courseSection.getTimeSlot();
         String[] tSlots = timeS.split("-");
-        startTimes = addT(startTimes, tSlots[0]);              //add starting time to startTimes
-        endTimes = addT(endTimes, tSlots[1]);                //add ending time to endTimes
+        startTimes.add(tSlots[0]);              //add starting time to startTimes
+        endTimes.add(tSlots[1]);                //add ending time to endTimes
     }
 
     //function to parse time
@@ -183,19 +205,5 @@ public class EnrollmentLogic
     {
         return hour*60+minute;
     }
-
-    //adder method for arrays
-    private static String[] addT(String[] array, String item)
-    {
-        String[] newArray = new String[EnrollmentLogic.maxClasses +1];
-
-        for(int i = 0; i< EnrollmentLogic.maxClasses; i++)
-            newArray[i] = array[i];
-
-        newArray[EnrollmentLogic.maxClasses] = item;
-
-        return newArray;
-    }
-
 
 }
