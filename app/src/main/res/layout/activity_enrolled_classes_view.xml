@@ -31,7 +31,6 @@
 
         <TextView
             android:id="@+id/textFeeTotal"
-            android:textColor="@color/faded_black"
             android:textSize="14dp"
             android:gravity="right"
             android:layout_width="match_parent"
