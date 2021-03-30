@@ -2,7 +2,8 @@ package comp3350.termsetter.Persistence;
 
 import java.io.Serializable;
 
-public class CourseSection implements Serializable {
+public class CourseSection implements Serializable
+{
     private final String section;
     private final String days;
     private final String timeSlot;
@@ -11,7 +12,8 @@ public class CourseSection implements Serializable {
     private int maxOccupancy;
     //private boolean labRequired = false;          // TBD
 
-    public CourseSection(String section, String days, String timeSlot, String instructor) {
+    public CourseSection(String section, String days, String timeSlot, String instructor)
+    {
         this.section = section;
         this.days = days;
         this.timeSlot = timeSlot;
@@ -23,10 +25,7 @@ public class CourseSection implements Serializable {
         return section;
     }
 
-    public String getDays() {
-
-        return days;
-    }
+    public String getDays() { return days; }
 
     public String getTimeSlot() {
         return timeSlot;
@@ -42,7 +41,8 @@ public class CourseSection implements Serializable {
         maxOccupancy = max;
     }
 
-    public void enroll() {
+    public void enroll()
+    {
         if (courseAvailable())
             occupants++;
     }

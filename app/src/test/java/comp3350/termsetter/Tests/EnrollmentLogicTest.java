@@ -39,7 +39,7 @@ public class EnrollmentLogicTest
         CourseOffering failCourse = new CourseOffering("COMP3350", "SE", 3);
         assertFalse(eL.addCourse(failCourse));
 
-        System.out.println("\nEnding testAddCourseFail: course is not a duplicate\n");
+        System.out.println("\nEnding testAddCourseFail: course is a duplicate\n");
     }
 
     @Test
