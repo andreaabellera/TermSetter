@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface EnrollPersistence {
 
-    public List<String> getStudentEnrollment(Student student);
+    public List<String> getStudentEnrollment(String studentID);
     void enroll(String sID, String section, String cID);
     void unenroll(String sID, String section, String cID);
 }

@@ -1,4 +1,4 @@
-package comp3350.termsetter.UIadapters;
+package comp3350.termsetter.UIAdapters;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
