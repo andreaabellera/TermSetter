@@ -32,10 +32,10 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ts_icon_nolabel"/>
+                android:src="@drawable/ts_icon_nolabel_temp"/>
 
             <TextView
-                style="@style/TextAppearance.MaterialComponents.Headline4"
+                style="@style/TextAppearance.Termsetter.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
