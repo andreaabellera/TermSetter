@@ -14,9 +14,6 @@
         <activity android:name=".Presentation.EnrolledClassesView"></activity>
         <!-- The default activity is set to Login Page (if otherwise, please check your Edit configuration) -->
         <activity
-            android:name=".Presentation.AccountSettings"
-            android:label="Account Settings"></activity>
-        <activity
             android:name=".Presentation.AccountChangePassword"
             android:label="Change Password"></activity>
         <activity

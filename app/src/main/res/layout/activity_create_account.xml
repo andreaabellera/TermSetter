@@ -13,85 +13,112 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/TextAppearance.MaterialComponents.Headline4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:layout_gravity="center"
-            android:text="Registration"
-            android:textStyle="bold" />
+            android:text="Registration"/>
 
-        <EditText
-            android:id="@+id/editTextSetName"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="@dimen/Termsetter.EditText.Width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="64dp"
-            android:drawableStart="@drawable/ic_baseline_person_24"
-            android:drawableLeft="@drawable/ic_baseline_person_24"
+            app:startIconDrawable="@drawable/ic_baseline_person_24"
             android:hint="Your name"
             android:inputType="text"
-            android:maxLength="30"/>
+            android:maxLength="30">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextSetName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/editTextSetID"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="@dimen/Termsetter.EditText.Width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/ic_baseline_person_24"
-            android:drawableLeft="@drawable/ic_baseline_person_24"
-            android:hint="ID"
+            android:layout_marginTop="4dp"
+            app:startIconDrawable="@drawable/ic_baseline_person_24"
+            android:hint="Account ID"
             android:inputType="text"
-            android:maxLength="20"/>
+            android:maxLength="20">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextSetID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/editTextSetPassword"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="@dimen/Termsetter.EditText.Width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/ic_baseline_https_24"
-            android:drawableLeft="@drawable/ic_baseline_https_24"
+            android:layout_marginTop="4dp"
+            app:startIconDrawable="@drawable/ic_baseline_https_24"
             android:hint="Password"
             android:inputType="textPassword"
-            android:maxLength="20"/>
+            android:maxLength="20"
+            app:passwordToggleEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextSetPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/editTextConfirmAPassword"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="@dimen/Termsetter.EditText.Width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/ic_baseline_https_24"
-            android:drawableLeft="@drawable/ic_baseline_https_24"
+            android:layout_marginTop="4dp"
+            app:startIconDrawable="@drawable/ic_baseline_https_24"
             android:hint="Confirm Password"
             android:inputType="textPassword"
-            android:maxLength="20"/>
+            android:maxLength="20"
+            app:passwordToggleEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextConfirmAPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/editTextEmail"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="@dimen/Termsetter.EditText.Width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/ic_baseline_mail_outline_24"
-            android:drawableLeft="@drawable/ic_baseline_mail_outline_24"
+            android:layout_marginTop="4dp"
+            app:startIconDrawable="@drawable/ic_baseline_mail_outline_24"
             android:hint="Email"
-            android:maxLength="40"/>
+            android:maxLength="40">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/editTextPhone"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="@dimen/Termsetter.EditText.Width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/ic_baseline_phone_24"
-            android:drawableLeft="@drawable/ic_baseline_phone_24"
+            android:layout_marginTop="4dp"
+            app:startIconDrawable="@drawable/ic_baseline_phone_24"
             android:hint="Phone"
             android:inputType="number|phone"
-            android:maxLength="10"/>
+            android:maxLength="10">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
+            style="@style/Widget.MaterialComponents.Button"
             android:id="@+id/buttonConfirmAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

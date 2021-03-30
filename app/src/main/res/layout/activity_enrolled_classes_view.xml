@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/CustomHeader"
+            style="@style/TextAppearance.MaterialComponents.Headline4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -31,7 +31,6 @@
 
         <TextView
             android:id="@+id/textFeeTotal"
-            android:textColor="@color/faded_black"
             android:textSize="14dp"
             android:gravity="right"
             android:layout_width="match_parent"
