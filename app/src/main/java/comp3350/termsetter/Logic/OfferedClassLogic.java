@@ -35,7 +35,7 @@ public class OfferedClassLogic{
 
     private void loadFromSQL(){
         try{
-            String path = new String(Main.getDBPathName());
+            String path = Main.getDBPathName();
             CourseAccess courseAccess = new CourseAccess(path);
             CourseCategorySQLDriver courseDatabase = new CourseCategorySQLDriver(courseAccess);
             instance = courseDatabase;

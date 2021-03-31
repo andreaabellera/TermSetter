@@ -27,7 +27,7 @@ public class OfferedClassesCategories extends AppCompatActivity {
 
     private void initData(){
         try{
-            OfferedClassLogic dataRequester = new OfferedClassLogic(false, this);
+            OfferedClassLogic dataRequester = new OfferedClassLogic(true, this);
             courseData = dataRequester.getCourseData();
         }
         catch(Exception e){

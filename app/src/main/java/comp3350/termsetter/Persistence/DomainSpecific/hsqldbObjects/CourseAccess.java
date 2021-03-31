@@ -41,7 +41,6 @@ public class CourseAccess implements CoursePersistence {
             }
             statement.close();
             resultSet.close();
-            connect.close();
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -57,7 +56,7 @@ public class CourseAccess implements CoursePersistence {
             connect = connection();
 
             //query
-            PreparedStatement statement = connect.prepareStatement("select * from courses where faculty = ?;");
+            PreparedStatement statement = connect.prepareStatement("select * from courses where faculty_name = ?;");
             statement.setString(1, facultyName);
             ResultSet resultSet = statement.executeQuery();
 
@@ -73,7 +72,6 @@ public class CourseAccess implements CoursePersistence {
             }
             statement.close();
             resultSet.close();
-            connect.close();
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -89,7 +87,7 @@ public class CourseAccess implements CoursePersistence {
             connect = connection();
 
             //query
-            PreparedStatement statement = connect.prepareStatement("select * from courses where faculty = ? and course_id = ?;");
+            PreparedStatement statement = connect.prepareStatement("select * from courses where faculty_name = ? and course_id = ?;");
             statement.setString(1, facultyName);
             statement.setString(2, courseID);
             ResultSet resultSet = statement.executeQuery();
@@ -108,7 +106,6 @@ public class CourseAccess implements CoursePersistence {
             }
             statement.close();
             resultSet.close();
-            connect.close();
         }
         catch (SQLException e) {
             e.printStackTrace();

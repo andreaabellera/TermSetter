@@ -33,10 +33,11 @@ public class EnrollAccess implements EnrollPersistence {
             connect = connection();
 
             // query
-            PreparedStatement statement = connect.prepareStatement("select enrollment.course_id, " +
+            /*PreparedStatement statement = connect.prepareStatement("select enrollment.course_id, " +
                     "courses.course_name, courses.section from enrollment INNER JOIN courses " +
                     "ON student_id = ? AND enrollment.course_id= courses.course_id");
-
+            */
+            PreparedStatement statement = connect.prepareStatement("select * from enrollment natural join courses where student_id = ?");
             statement.setString(1, studentID);
             ResultSet resultSet = statement.executeQuery();
 
@@ -56,7 +57,6 @@ public class EnrollAccess implements EnrollPersistence {
             }
             statement.close();
             resultSet.close();
-            connect.close();
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -79,7 +79,6 @@ public class EnrollAccess implements EnrollPersistence {
             //Update DB
             statement.executeUpdate();
             statement.close();
-            connect.close();
         }
         catch (SQLException e) {
             e.printStackTrace();

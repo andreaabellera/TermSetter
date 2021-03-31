@@ -24,8 +24,7 @@ public class StudentAccess implements StudentPersistence {
 
     private Connection connection() throws SQLException {
 
-        return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath
-                + ";shutdown=true", "SA", "");
+        return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "");
     }
 
 

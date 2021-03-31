@@ -26,7 +26,7 @@ public class EnrollmentLogic
         this.selectedClass = selectedClass;
         this.studentID = studentID;
         message = "";
-        String path = new String(Main.getDBPathName());
+        String path = Main.getDBPathName();
         enrollAccess = new EnrollAccess(path);
 
         loadClasses();
@@ -34,10 +34,10 @@ public class EnrollmentLogic
 
     public void loadClasses()
     {
-        /* SQL problems, Hold my phone
+
         List<String> results = enrollAccess.getStudentEnrollment(studentID);
-        */
-        ArrayList<String> results = new ArrayList<>();
+
+        //ArrayList<String> results = new ArrayList<>();
 
         boolean success = true;
         // adding enrollment results to currClasses

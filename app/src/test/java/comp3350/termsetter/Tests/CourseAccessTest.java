@@ -21,7 +21,7 @@ public class CourseAccessTest {
 
     @Before
     public void setup(){
-        String path = new String(Main.getDBPathName());
+        String path = Main.getDBPathName();
         ca = new CourseAccess(path);
     }
 
