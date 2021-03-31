@@ -15,10 +15,10 @@ import comp3350.termsetter.R;
 public class OfferedClassesView extends AppCompatActivity {
 
     Faculty faculty;
-    List<CourseOffering> lv1Courses;
-    List<CourseOffering> lv2Courses;
-    List<CourseOffering> lv3Courses;
-    List<CourseOffering> lv4Courses;
+    List<CourseOffering> firstYearCourses;
+    List<CourseOffering> secondYearCourses;
+    List<CourseOffering> thirdYearCourses;
+    List<CourseOffering> fourthYearCourses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,67 +32,71 @@ public class OfferedClassesView extends AppCompatActivity {
         faculty = (Faculty) getIntent().getSerializableExtra("faculty");
         TextView selectedCategory = findViewById(R.id.headerDepartment);
         selectedCategory.setText(faculty.getName());
-        lv1Courses = faculty.getCoursesByLevel(1);
-        lv2Courses = faculty.getCoursesByLevel(2);
-        lv3Courses = faculty.getCoursesByLevel(3);
-        lv4Courses = faculty.getCoursesByLevel(4);
+        firstYearCourses = faculty.getCoursesByLevel(1);
+        secondYearCourses = faculty.getCoursesByLevel(2);
+        thirdYearCourses = faculty.getCoursesByLevel(3);
+        fourthYearCourses = faculty.getCoursesByLevel(4);
     }
 
     private void initWidgets() {
-        RecyclerView lv1 = (RecyclerView)findViewById(R.id.recycleViewLevel1);
-        RecyclerView lv2 = (RecyclerView)findViewById(R.id.recyleViewLevel2);
-        RecyclerView lv3 = (RecyclerView)findViewById(R.id.recyleViewLevel3);
-        RecyclerView lv4 = (RecyclerView)findViewById(R.id.recycleViewLevel4);
+        RecyclerView firstYearLayout = (RecyclerView)findViewById(R.id.recycleViewYear1);
+        RecyclerView secondYearLayout = (RecyclerView)findViewById(R.id.recyleViewYear2);
+        RecyclerView thirdYearLayout = (RecyclerView)findViewById(R.id.recyleViewYear3);
+        RecyclerView fourthYearLayout = (RecyclerView)findViewById(R.id.recycleViewYear4);
 
-        GridLayoutManager layoutManager1 = new GridLayoutManager(this,1);
-        layoutManager1.setOrientation(LinearLayoutManager.HORIZONTAL);
-        lv1.setLayoutManager(layoutManager1);
-        GridLayoutManager layoutManager2 = new GridLayoutManager(this,1);
-        layoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
-        lv2.setLayoutManager(layoutManager2);
-        GridLayoutManager layoutManager3 = new GridLayoutManager(this,1);
-        layoutManager3.setOrientation(LinearLayoutManager.HORIZONTAL);
-        lv3.setLayoutManager(layoutManager3);
-        GridLayoutManager layoutManager4 = new GridLayoutManager(this,1);
-        layoutManager4.setOrientation(LinearLayoutManager.HORIZONTAL);
-        lv4.setLayoutManager(layoutManager4);
+        GridLayoutManager firstYearLayoutManager = new GridLayoutManager(this,1);
+        firstYearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        firstYearLayout.setLayoutManager(firstYearLayoutManager);
 
-        comp3350.termsetter.UIAdapters.RecyclerCourseDataAdapter recyclerAdapter1= new comp3350.termsetter.UIAdapters.RecyclerCourseDataAdapter(lv1Courses,1);
-        lv1.setAdapter(recyclerAdapter1);
-        recyclerAdapter1.setOnClick(this::onItemClick1);
-        comp3350.termsetter.UIAdapters.RecyclerCourseDataAdapter recyclerAdapter2= new comp3350.termsetter.UIAdapters.RecyclerCourseDataAdapter(lv2Courses,2);
-        lv2.setAdapter(recyclerAdapter2);
-        recyclerAdapter2.setOnClick(this::onItemClick2);
-        comp3350.termsetter.UIAdapters.RecyclerCourseDataAdapter recyclerAdapter3= new comp3350.termsetter.UIAdapters.RecyclerCourseDataAdapter(lv3Courses,3);
-        lv3.setAdapter(recyclerAdapter3);
-        recyclerAdapter3.setOnClick(this::onItemClick3);
-        comp3350.termsetter.UIAdapters.RecyclerCourseDataAdapter recyclerAdapter4= new comp3350.termsetter.UIAdapters.RecyclerCourseDataAdapter(lv4Courses,4);
-        lv4.setAdapter(recyclerAdapter4);
-        recyclerAdapter4.setOnClick(this::onItemClick4);
+        GridLayoutManager secondYearLayoutManager = new GridLayoutManager(this,1);
+        secondYearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        secondYearLayout.setLayoutManager(secondYearLayoutManager);
+
+        GridLayoutManager thirdYearLayoutManager = new GridLayoutManager(this,1);
+        thirdYearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        thirdYearLayout.setLayoutManager(thirdYearLayoutManager);
+
+        GridLayoutManager fourthYearLayoutManager = new GridLayoutManager(this,1);
+        fourthYearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        fourthYearLayout.setLayoutManager(fourthYearLayoutManager);
+
+        comp3350.termsetter.UIAdapters.RecyclerCourseDataAdapter firstYearAdapter= new comp3350.termsetter.UIAdapters.RecyclerCourseDataAdapter(firstYearCourses, getResources().getColor(R.color.cardBackground1));
+        firstYearLayout.setAdapter(firstYearAdapter);
+        firstYearAdapter.setOnClick(this::firstYearClicked);
+
+        comp3350.termsetter.UIAdapters.RecyclerCourseDataAdapter secondYearAdapter= new comp3350.termsetter.UIAdapters.RecyclerCourseDataAdapter(secondYearCourses, getResources().getColor(R.color.cardBackground2));
+        secondYearLayout.setAdapter(secondYearAdapter);
+        secondYearAdapter.setOnClick(this::secondYearClicked);
+        comp3350.termsetter.UIAdapters.RecyclerCourseDataAdapter thirdYearAdapter= new comp3350.termsetter.UIAdapters.RecyclerCourseDataAdapter(thirdYearCourses, getResources().getColor(R.color.cardBackground3));
+        thirdYearLayout.setAdapter(thirdYearAdapter);
+        thirdYearAdapter.setOnClick(this::thirdYearClicked);
+        comp3350.termsetter.UIAdapters.RecyclerCourseDataAdapter fourthYearAdapter= new comp3350.termsetter.UIAdapters.RecyclerCourseDataAdapter(fourthYearCourses, getResources().getColor(R.color.cardBackground4));
+        fourthYearLayout.setAdapter(fourthYearAdapter);
+        fourthYearAdapter.setOnClick(this::fourthYearClicked);
 
     }
 
-    public void onItemClick1(int position) {
+    public void firstYearClicked(int position) {
         Intent intent = new Intent(this, OfferedClassesDetail.class);
-        intent.putExtra("course", lv1Courses.get(position));
+        intent.putExtra("course", firstYearCourses.get(position));
         startActivity(intent);
     }
 
-    public void onItemClick2(int position) {
+    public void secondYearClicked(int position) {
         Intent intent = new Intent(this, OfferedClassesDetail.class);
-        intent.putExtra("course", lv2Courses.get(position));
+        intent.putExtra("course", secondYearCourses.get(position));
         startActivity(intent);
     }
 
-    public void onItemClick3(int position) {
+    public void thirdYearClicked(int position) {
         Intent intent = new Intent(this, OfferedClassesDetail.class);
-        intent.putExtra("course", lv3Courses.get(position));
+        intent.putExtra("course", thirdYearCourses.get(position));
         startActivity(intent);
     }
 
-    public void onItemClick4(int position) {
+    public void fourthYearClicked(int position) {
         Intent intent = new Intent(this, OfferedClassesDetail.class);
-        intent.putExtra("course", lv4Courses.get(position));
+        intent.putExtra("course", fourthYearCourses.get(position));
         startActivity(intent);
     }
 
