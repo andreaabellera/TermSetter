@@ -23,6 +23,7 @@
     <color name="grey200">#3f3f3f</color>
     <color name="grey300">#242424</color> <!-- Text -->
     <color name="black">#000000</color>
+    <color name="faded_black">#383838</color>
 
     <!-- MaterialComponents attributes -->
     <color name="tsPrimary">@color/tsBlue100</color>
