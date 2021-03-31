@@ -75,4 +75,86 @@ public class EnrollmentLogicTest
         System.out.println("\nEnding testAddSectionFail: section has a conflict\n");
     }
 
+    @Test
+    public void testHasNoTimeConflict()
+    {
+        System.out.println("\nStarting testHasNoTimeConflict: section has no conflict\n");
+
+        String conflictingDays = "MWF";
+        String notConflictingTime = "8:30-9:20";
+        assertFalse(eL.checkConflict(conflictingDays, notConflictingTime));
+
+        System.out.println("\nEnding testHasNoTimeConflict: section has no conflict\n");
+    }
+
+    @Test
+    public void testHasNoDayConflict()
+    {
+        System.out.println("\nStarting testHasNoDayConflict: section has no conflict\n");
+
+        String notConflictingDays = "TR";
+        String conflictingTime = "11:30-12:00";
+        assertFalse(eL.checkConflict(notConflictingDays, conflictingTime));
+
+        System.out.println("\nEnding testHasNoDayConflict: section has no conflict\n");
+    }
+
+    @Test
+    public void testHasConflict()
+    {
+        System.out.println("\nStarting testHasConflict: section has conflict\n");
+
+        String conflictingDays = "MWF";
+        String conflictingTime = "11:30-12:00";
+        assertTrue(eL.checkConflict(conflictingDays, conflictingTime));
+
+        System.out.println("\nEnding testHasConflict: section has conflict\n");
+    }
+
+    @Test
+    public void testHasNoDuplicate()
+    {
+        System.out.println("\nStarting testHasNoDuplicate: course has no duplicate\n");
+
+        String notDuplicateCourse = "COMP2080";
+        assertFalse(eL.checkCodeDup(notDuplicateCourse));
+
+        System.out.println("\nEnding testHasConflict: course has no duplicate\n");
+    }
+
+    @Test
+    public void testHasDuplicate()
+    {
+        System.out.println("\nStarting testHasDuplicate: course has duplicate\n");
+
+        String duplicateCourse = "COMP3350";
+        assertTrue(eL.checkCodeDup(duplicateCourse));
+
+        System.out.println("\nEnding testHasDuplicate: course has duplicate\n");
+    }
+
+    @Test
+    public void testParseTime()
+    {
+        System.out.println("\nStarting testParseTime: expected return\n");
+
+        String time = "0:0";
+        assertEquals(eL.parseTime(time), 0);
+
+        System.out.println("\nEnding testParseTime: expected return\n");
+    }
+
+    @Test
+    public void testCalculateMinutes()
+    {
+        System.out.println("\nStarting testCalculateMinutes: expected return\n");
+
+        int hours = 2;
+        int minutes = 10;
+        int totalMinutes = hours * 60 + minutes;
+        assertEquals(eL.calculateMinutes(hours, minutes), totalMinutes);
+
+        System.out.println("\nEnding testCalculateMinutes: expected return\n");
+    }
+
 }

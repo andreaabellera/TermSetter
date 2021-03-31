@@ -51,6 +51,18 @@ public class EnrollmentLogic
             {
                 CourseSection currClass = new CourseSection(tokens[3], tokens[4], tokens[5], tokens[6]);
                 success = addSection(currClass);
+                if(success){
+                    message = "Successfully enrolled in " + tokens[0] + " " + tokens[3] + ".";
+                    confirmEnroll();
+                }
+                else
+                {
+                    message = "Error: Failed to enroll due to a time conflict with " + tokens[0] + " (" + tokens[4] + ")";
+                }
+            }
+            else
+            {
+                message = "Error: Already enrolled in this course!";
             }
         }
     }
@@ -64,11 +76,6 @@ public class EnrollmentLogic
         if (!checkConflict(days, timeSlot))
             added = true;
 
-        else
-        {
-            message = "Error: Failed to enroll due to a time conflict!";
-            System.out.println(message);
-        }
         return added;
     }
 
@@ -80,11 +87,6 @@ public class EnrollmentLogic
         if (!checkCodeDup(cCode))
             added = true;
 
-        else
-        {
-            message = "Error: Already enrolled in this course! ";
-            System.out.println(message);
-        }
         return added;
     }
 

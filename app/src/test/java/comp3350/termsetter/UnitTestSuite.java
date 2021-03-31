@@ -10,6 +10,8 @@ import comp3350.termsetter.Tests.StudentDatabaseTest;
 import comp3350.termsetter.Tests.StudentTest;
 import comp3350.termsetter.Tests.CourseCategoryIntegrationTest;
 import comp3350.termsetter.Tests.CourseAccessTest;
+import comp3350.termsetter.Tests.EnrollmentLogicTest;
+import comp3350.termsetter.Tests.EnrollmentIntegrationTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
@@ -18,7 +20,9 @@ import comp3350.termsetter.Tests.CourseAccessTest;
         AccountValidationTest.class,
         ClassDatabaseTest.class,
         CourseCategoryIntegrationTest.class,
-        CourseAccessTest.class
+        CourseAccessTest.class,
+        EnrollmentLogicTest.class,
+        EnrollmentIntegrationTest.class
 })
 
 

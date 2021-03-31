@@ -31,7 +31,6 @@ public class OfferedClassesCategories extends AppCompatActivity {
             courseData = dataRequester.getCourseData();
         }
         catch(Exception e){
-            System.out.println("Database load failed.");
             e.printStackTrace();
         }
     }
