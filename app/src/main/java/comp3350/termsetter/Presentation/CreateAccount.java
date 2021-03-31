@@ -50,14 +50,14 @@ public class CreateAccount extends AppCompatActivity {
         ePhone = findViewById(R.id.editTextPhone);
     }
 
-    public boolean validate(String name, String id, String password, String confirmPassword, String email, String phone) {
+    public boolean isValidAccount(String name, String id, String password, String confirmPassword, String email, String phone) {
 
         accountValidation = new AccountValidation();
 
         // 1. Check Name
         boolean validName = accountValidation.validName(name);
         if (!validName) {
-            Toast.makeText(mContext, "The name consist of First name, 1 whitespace, and Last name.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "The name should consist of Uppercase or lowercase characters only.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -71,18 +71,18 @@ public class CreateAccount extends AppCompatActivity {
         // 3. Check password
         boolean validPassword = accountValidation.validPassword(password);
         if (!validPassword) {
-            Toast.makeText(mContext, "Password must be 10 characters long and contain both letter and number!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Password should have minimum length of 6 and consist of at least one letter and number!", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         // 4. Check confirm password
         boolean validConfirmPassword = accountValidation.validPassword(confirmPassword);
-        if(!validPassword || !(accountValidation.confirmPassword(password, confirmPassword))){
+        if(!validConfirmPassword){
             Toast.makeText(mContext, "Please check confirm password again!", Toast.LENGTH_SHORT).show();
             return false;
         }
-        // 5. Check email
 
+        // 5. Check email
         boolean validEmail = accountValidation.validEmail(email);
         if (!validEmail) {
             Toast.makeText(mContext, "Your email domain should contain @myumanitoba.ca and some strings in front.", Toast.LENGTH_SHORT).show();
@@ -92,7 +92,7 @@ public class CreateAccount extends AppCompatActivity {
         // 6. Check phone number (guaranteed to be just number)
         boolean validPhone = accountValidation.validPhone(phone);
         if(!validPhone){
-            Toast.makeText(mContext, "Your phone number has to be exactly 10 numbers.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Please provide phone number as XXX-YYY-ZZZZ format.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -107,7 +107,7 @@ public class CreateAccount extends AppCompatActivity {
         String inputEmail = eMail.getText().toString();
         String inputPhone = ePhone.getText().toString();
 
-        if (validate(inputName, inputID, inputPassword, inputConfirmPassword, inputEmail, inputPhone)) {
+        if (isValidAccount(inputName, inputID, inputPassword, inputConfirmPassword, inputEmail, inputPhone)) {
            Student student = new Student(inputName, inputPassword, inputEmail, inputPhone,inputID);
             //database.insertUser(user);
 //            Intent intent = new Intent(CreateAccount.this, LoginPage.class);

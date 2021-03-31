@@ -13,118 +13,81 @@ public class AccountValidation{
     final int MAX_PASS_LENGTH = 10;
     final int MIN_PHONE_LENGTH = 10;
     final int MAX_PHONE_LENGTH = 12;
-    Pattern p;
-    Matcher m;
     AccessManager database = new AccessManager();
 
-    public AccountValidation(){ }
+    public AccountValidation(){
+        // Nothing to initialize
+    }
 
     public boolean validAccount(String name, String id, String password, String email, String phone){
         return validName(name) && validID(id) && validPassword(password) && validEmail(email) && validPhone(phone);
     }
 
     public boolean validName(String name){
-        Pattern p = Pattern.compile("^[a-zA-Z]+\\s{1}[a-zA-z]+$");
+        Pattern p = Pattern.compile("^[a-zA-Z ]{1,20}$");
         Matcher m = p.matcher(name);
-        return m.matches() && name.length() >= MIN_NAME_LENGTH && name.length() <= MAX_NAME_LENGTH;
+
+        return m.matches();
     }
 
     public boolean validID(String id){
-        return id.length() >= MIN_NAME_LENGTH && id.length() <= MAX_NAME_LENGTH;
+        Pattern p = Pattern.compile("^([a-zA-Z]+[0-9]*){1,20}$");
+        Matcher m = p.matcher(id);
+
+        return m.matches();
     }
 
     public boolean validPassword(String password){
-        boolean validLength = password.length() >= MIN_PASS_LENGTH && password.length() <= MAX_PASS_LENGTH;
-        boolean hasLetter = false;
-        boolean hasNumber = false;
-        for(int i = 0; i < password.length(); i++){
-            char ch = password.charAt(i);
-            if(Character.isLetter(ch)){
-                hasLetter = true;
-            }
-            else if(Character.isDigit(ch)){
-                hasNumber = true;
-            }
-        }
-        return validLength && hasLetter && hasNumber;
-//        System.out.println(password.length());
-//        return password.length() <= 10;
+        // Minimum length of , at least 1 letter and 1 number each
+//        Pattern p = Pattern.compile("^([a-zA-Z]+[0-9]+){6,10}$");
+        Pattern p = Pattern.compile("^(?=.*?[a-zA-Z])(?=.*?[0-9]).{6,}$");
+        Matcher m = p.matcher(password);
+
+        return m.matches();
     }
 
     public boolean validEmail(String email){
-//        boolean validLength = false;
-//        boolean validDomain = false;
-//        if(email.contains("@")){
-//            String[] tokens = email.split("@");
-//            validLength = tokens[0].length() >= MIN_NAME_LENGTH && tokens[0].length() <= MAX_NAME_LENGTH;
-//            validDomain = tokens[1].contains("myumanitoba.ca");
-//        }
-//        return validLength && validDomain;
+        /*
+        At least one letter (number is optional) then @myumanitoba.ca
+        */
         Pattern p = Pattern.compile("^[a-zA-Z]+[0-9]*@myumanitoba\\.ca$");
         Matcher m = p.matcher(email);
-        if(!m.matches() || email.isEmpty() || !(email.contains("@myumanitoba.ca")) || !(email.length() > "@myumanitoba.ca".length())) {
-            return false;
-        }
 
-        return true;
+        return m.matches();
     }
 
     public boolean validPhone(String phone){
-        String digits = "";
-        boolean hasInvalidChar = false;
-        boolean hasOpenBracket = false;
-        for(int i = 0; i < phone.length(); i++){
-            char ch = phone.charAt(i);
-            if(Character.isDigit(ch)){
-                digits += ch;
-            }
-            else{
-                if(ch != '+' && ch != ' ' && ch != '-' && ch != '(' && ch != ')'){
-                    hasInvalidChar = true;
-                }
-                else{
-                    if(ch == '+' && i > 0){
-                        hasInvalidChar = true;
-                    }
-                    else if(ch == '(' && !hasOpenBracket){
-                        hasOpenBracket = true;
-                    }
-                    else if(ch == ')' && hasOpenBracket){
-                        hasOpenBracket = false;
-                    }
-                }
-            }
-        }
-        boolean validLength = digits.length() >= MIN_PHONE_LENGTH && digits.length() <= MAX_PHONE_LENGTH;
-        return validLength && !hasInvalidChar && !hasOpenBracket;
-//        return phone.length() <= 10;
+        /*
+        Following phone number formats will match:
+            1. 123-456-7890
+            2. (123) 456-7890
+            3. 123 456 7890
+            4. 123.456.7890
+            5. +91 (123) 456-7890
+        */
+        Pattern p = Pattern.compile("^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$");
+        Matcher m = p.matcher(phone);
+
+        return m.matches();
     }
 
     public boolean confirmPassword(String newPass, String newPassConfirm) {
-        if (newPass.equals(newPassConfirm)) {
-            return true;
-        }
-        return false;
+        return newPass.equals(newPassConfirm);
     }
 
     public boolean verifyCurrentPassword(String currentPassword, Student currentStudent) {
-        if (currentPassword.equals(currentStudent.getPassword())) {
-            return true;
-        }
-        return false;
+        return currentPassword.equals(currentStudent.getPassword());
     }
 
     public boolean confirmEmail(String newEmail, String newEmailConfirm) {
-        if (newEmail.equals(newEmailConfirm)) {
-            return true;
-        }
-        return false;
+        return newEmail.equals(newEmailConfirm);
     }
 
     public boolean verifyStudent(String sID, String password) {
         Student student = database.getStudent(sID);
 
-        // check student exists, valid ID and password, then check if they match student record
+        // check if a student exists, and has valid ID and password
+        // then check if the student record matches
         if(student != null && validID(sID) && validPassword(password)) {
             if(student.getStudentID().equals(sID) && student.getPassword().equals(password))
                 return true;
