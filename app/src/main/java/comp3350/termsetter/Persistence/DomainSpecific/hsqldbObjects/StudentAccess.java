@@ -74,10 +74,9 @@ public class StudentAccess implements StudentPersistence {
                 final String email = resultSet.getString("email");
 
                 student = new Student(name, passID, email, phoneNumber, studentID);
-
-
-                //whoever uses this method, check if the student is null or not.
             }
+            //whoever uses this method, check if the student is null or not.
+            connect.close();
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -113,10 +112,7 @@ public class StudentAccess implements StudentPersistence {
         // first connect
         try {
             connect = connection();
-
-            //query
             PreparedStatement statement = connect.prepareStatement("select * from students");
-
             ResultSet resultSet = statement.executeQuery();
 
             //collect
@@ -151,8 +147,6 @@ public class StudentAccess implements StudentPersistence {
 
             try {
                 connect = this.connection();
-
-
                 PreparedStatement statement = connect.prepareStatement("UPDATE students " +
                         "SET password = ? WHERE student_id = ?");
                 statement.setString(1, password);
@@ -193,28 +187,4 @@ public class StudentAccess implements StudentPersistence {
         }
         return false;
     }
-
-    /*
-    //checks if student exists (no longer needed)
-    public boolean validStudent(String sID, String password) throws SQLException {
-        boolean check = false;
-        // check if valid user exists
-        if((accountValidation.validID(sID) && accountValidation.validPassword(password)))
-        {
-            //valid account so check DB
-            connect = this.connection();
-
-            PreparedStatement statement = connect.prepareStatement("SELECT * FROM students WHERE" +
-                    " student_id = ? AND password = ?");
-            statement.setString(1, sID);
-            statement.setString(2, password);
-
-            ResultSet resultSet = statement.executeQuery();
-
-            connect.close();
-            return resultSet.next(); //false if nothing, true if something!
-        }
-
-        return check; //false
-    }*/
 }
