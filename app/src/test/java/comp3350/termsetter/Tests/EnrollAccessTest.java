@@ -42,4 +42,14 @@ public class EnrollAccessTest {
         System.out.println("End testGetEnrollments: objects are retrieved\n");
     }
 
+    @Test
+    public void testGetEnrollmentsResultSetComplete() throws SQLException {
+        System.out.println("\nStarting testGetEnrollmentsResultSetComplete: objects are retrieved\n");
+        String testStudent = "test1";
+        List<String> enrollments = ea.getStudentEnrollment(testStudent);
+        String[] resultSet = enrollments.get(0).split("@");
+        assertEquals(resultSet.length, 7);
+        System.out.println("End testGetEnrollmentsResultSetComplete: objects are retrieved\n");
+    }
+
 }
