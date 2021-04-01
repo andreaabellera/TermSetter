@@ -1,27 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="ShapeAppearance.Termsetter.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
-        <item name="boxStrokeWidth">4dp</item>
-        <item name="cornerFamily">cut</item>
-        <item name="cornerSize">12dp</item>
-    </style>
-
-    <style name="ShapeAppearance.Termsetter.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
-        <item name="cornerFamily">cut</item>
-        <item name="cornerSize">12dp</item>
-    </style>
-
-    <style name="TextAppearance.Termsetter.Title" parent="TextAppearance.MaterialComponents.Headline4">
-        <item name="android:letterSpacing">.15</item>
-        <item name="android:textAllCaps">true</item>
-    </style>
-
     <!-- Custom parent theme presets from which all themes will inherit-->
     <style name="TermsetterBase" parent="Theme.AppCompat.Light.NoActionBar">
 
         <!-- General design of components, eg. editTexts, buttons -->
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Termsetter.SmallComponent</item>
-        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Termsetter.LargeComponent</item>
 
         <!-- Original AppCompat attributes. -->
         <item name="colorPrimary">@color/tsPrimary</item>
@@ -53,18 +36,17 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
 
-    <!-- Base application theme. -->
-    <style name="Theme.MyApplication" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+    <style name="ShapeAppearance.Termsetter.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="TextAppearance.Termsetter.Title" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:letterSpacing">.15</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="Widget.Termsetter.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor"></item>
     </style>
 </resources>

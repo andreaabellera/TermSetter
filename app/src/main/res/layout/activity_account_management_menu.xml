@@ -9,6 +9,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:padding="24dp"
         android:orientation="vertical">
 
         <TextView
@@ -19,10 +22,10 @@
             android:layout_marginTop="32dp"
             android:text="@string/header_account_management"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:id="@+id/buttonManageProfile"
-            android:layout_width="@dimen/Termsetter.MenuButton.Width"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="64dp"
@@ -30,10 +33,10 @@
             android:text="@string/btn_account_management_manage_profile"
             tools:layout_editor_absoluteX="1dp" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:id="@+id/buttonChangePassword"
-            android:layout_width="@dimen/Termsetter.MenuButton.Width"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="32dp"
@@ -41,17 +44,17 @@
             android:text="@string/btn_account_management_change_password"
             tools:layout_editor_absoluteX="20dp" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:id="@+id/buttonUpdateEmail"
-            android:layout_width="@dimen/Termsetter.MenuButton.Width"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="32dp"
             android:onClick="openUpdateEmail"
             android:text="@string/btn_account_management_update_email"/>
 
-        <TextView
+        <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:id="@+id/buttonReturn"
             android:layout_width="wrap_content"

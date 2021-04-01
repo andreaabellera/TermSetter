@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:clipChildren="false"
         android:clipToPadding="false"
+        android:padding="24dp"
         android:orientation="vertical">
 
 
@@ -23,7 +24,7 @@
             android:text="University of Manitoba"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center">
@@ -46,7 +47,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="@dimen/Termsetter.EditText.Width"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="64dp"
@@ -62,7 +63,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="@dimen/Termsetter.EditText.Width"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
@@ -79,7 +80,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button"
             android:id="@+id/buttonLogin"
             android:layout_width="wrap_content"
@@ -89,7 +90,7 @@
             android:onClick="onClickLoginButton"
             android:text="LOGIN"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:id="@+id/buttonCreateAccount"
             android:layout_width="wrap_content"

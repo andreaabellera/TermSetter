@@ -8,6 +8,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:padding="24dp"
         android:orientation="vertical">
 
         <TextView
@@ -18,40 +21,40 @@
             android:layout_marginTop="32dp"
             android:text="@string/header_main"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button"
             android:id="@+id/homeBtn1"
-            android:layout_width="@dimen/Termsetter.MenuButton.Width"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="64dp"
             android:onClick="openAccountManagementMenu"
             android:text="@string/btn_main_manage_account"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button"
             android:id="@+id/homeBtn2"
-            android:layout_width="@dimen/Termsetter.MenuButton.Width"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="32dp"
             android:onClick="openEnrolledClassesView"
             android:text="@string/btn_main_view_my_courses"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button"
             android:id="@+id/homeBtn3"
-            android:layout_width="@dimen/Termsetter.MenuButton.Width"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="32dp"
             android:onClick="openOfferedClassesCategories"
             android:text="@string/btn_main_view_off_courses"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button"
             android:id="@+id/homeBtn4"
-            android:layout_width="@dimen/Termsetter.MenuButton.Width"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="32dp"
