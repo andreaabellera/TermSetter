@@ -70,7 +70,7 @@ public class EnrollAccess implements EnrollPersistence {
             connect = this.connection();
 
             // query
-            PreparedStatement statement = connect.prepareStatement("INSERT INTO enrollment VALUES (?,?)");
+            PreparedStatement statement = connect.prepareStatement("INSERT INTO enrollment VALUES (?,?,?)");
             statement.setString(1, sID);
             statement.setString(2, cID);
             //  statement.setString(3, section);
@@ -94,10 +94,10 @@ public class EnrollAccess implements EnrollPersistence {
 
             //query
             PreparedStatement statement = connect.prepareStatement("DELETE FROM enrollment " +
-                    "where course_ID = ? AND student_id = ?");
+                    "where course_ID = ? AND student_id = ? AND section = ?");
             statement.setString(1, cID);
             statement.setString(2, sID);
-            //  statement.setString(3, section);
+            statement.setString(3, section);
 
             //Update DB
             statement.executeUpdate();
