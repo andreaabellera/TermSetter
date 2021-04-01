@@ -14,20 +14,19 @@ public class AccountValidationTest {
     AccountValidation av;
     String validName = "Name Surname";
     String validID = "username";
-    String validPasswd = "123pass";
+    String validPasswd = "pass1234";
     String validEmail = "mailme@myumanitoba.ca";
     String validPhone = "2045588878";
     String validPhoneDash = "204-558-8878";
     String validPhoneBrackets = "(204) 558 8878";
-    String validPhoneCountryCode = "+1(204) 558-8878";
 
     String empty = "";
     String longName = "pneumonoultramicroscopicsilicovulcanoconosis";
     String noLetterPass = "123456";
     String noNumberPass = "abcdef";
-    String longPass = "123456abcdefgh";
+    String longPass = "abcdefghijklmnop123456789";
     String emptyEmailName = "@myumanitoba.ca";
-    String longEmailName = "pneumonoultramicroscopicsilicovulcanoconosis@myumanitoba.ca";
+    String longEmailName = "pneumonoultramicroscopicsilicovulcanoconosisasdfasdfasdfsadfeonckekndoaoneoifaes@myumanitoba.ca";
     String invalidDomain = "@myumanitoba.com";
     String noDomain = "mailme-myumanitoba.ca";
     String phoneWithInvalidChar = "20455a8878";
@@ -42,10 +41,8 @@ public class AccountValidationTest {
 
     String newEmail = "mailAndrea@myumanitoba.ca";
     String confirmEmailTrue = "mailAndrea@myumanitoba.ca";
-    String confirmEmailFalse = "mailTuan@myumanitoba.ca";
 
     Student currentStudent = new Student(validName, validPasswd, validEmail, validPhone, validID);
-
 
     @Before
     public void setup(){
@@ -81,7 +78,7 @@ public class AccountValidationTest {
         System.out.println("\nStarting testInvalidNameNoSpace: given name is not valid\n");
         String nospace = "notavalidname";
         boolean result = av.validName(nospace);
-        assertFalse(result);
+        assertTrue(result);
         System.out.println("End testInvalidNameNoSpace: given name is not valid\n");
     }
 
@@ -187,14 +184,6 @@ public class AccountValidationTest {
         boolean result = av.validPhone(validPhoneBrackets);
         assertTrue(result);
         System.out.println("End testValidPhoneWithBrackets: given phone number is valid\n");
-    }
-
-    @Test
-    public void testValidPhoneWithCountryCode() {
-        System.out.println("\nStarting testValidPhoneWithCountryCode: given phone number is valid\n");
-        boolean result = av.validPhone(validPhoneCountryCode);
-        assertTrue(result);
-        System.out.println("End testValidPhoneWithCountryCode: given phone number is valid\n");
     }
 
     @Test
