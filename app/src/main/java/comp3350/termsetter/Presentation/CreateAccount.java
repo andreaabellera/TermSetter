@@ -71,7 +71,7 @@ public class CreateAccount extends AppCompatActivity {
         // 3. Check password
         boolean validPassword = accountValidation.validPassword(password);
         if (!validPassword) {
-            Toast.makeText(mContext, "Password should have minimum length of 6 and consist of at least one letter and number!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Password should have minimum length of 6, starts with a letter, and consist of at least one letter and number!", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -92,7 +92,7 @@ public class CreateAccount extends AppCompatActivity {
         // 6. Check phone number (guaranteed to be just number)
         boolean validPhone = accountValidation.validPhone(phone);
         if(!validPhone){
-            Toast.makeText(mContext, "Please provide phone number as XXX-YYY-ZZZZ format.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Please provide phone number (without dashes) as XXXYYYZZZZ format.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -109,19 +109,12 @@ public class CreateAccount extends AppCompatActivity {
 
         if (isValidAccount(inputName, inputID, inputPassword, inputConfirmPassword, inputEmail, inputPhone)) {
            Student student = new Student(inputName, inputPassword, inputEmail, inputPhone,inputID);
-            //database.insertUser(user);
-//            Intent intent = new Intent(CreateAccount.this, LoginPage.class);
-//            startActivity(intent);
-//            Toast.makeText(CreateAccount.this, "Welcome " + inputName + "!", Toast.LENGTH_SHORT).show();
-
             accessManager.insertStudent(student);
-
             Student test = accessManager.getStudent(inputID);
 
             System.out.println(test.getStudentID());
 
             Intent intent = new Intent(CreateAccount.this, LoginPage.class);
-
             startActivity(intent);
             Toast.makeText(CreateAccount.this, "Welcome " + inputName + "!", Toast.LENGTH_SHORT).show();
         }
