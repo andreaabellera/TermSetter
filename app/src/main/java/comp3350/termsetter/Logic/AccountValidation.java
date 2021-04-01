@@ -81,11 +81,9 @@ public class AccountValidation{
         // then check if the student record matches
         Student student = database.getStudent(sID);
 
-        if(student != null){
-            if(student.getPassword().equals(password))
+        if(student != null && student.getPassword().equals(password))
                 return true;
-        }
-
+        
         return false;
     }
 
