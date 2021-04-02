@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:layout_marginTop="48dp"
-            android:text="8:30am - 9:20am"
+            android:text="8:30-9:20"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/radioGroupSections"
             app:layout_constraintTop_toBottomOf="@+id/headerCourseName" />
@@ -127,7 +127,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:layout_marginTop="32dp"
-            android:text="10:30am - 11:45am"
+            android:text="10:30-11:45"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/radioGroupSections"
             app:layout_constraintTop_toBottomOf="@+id/textS1Instructor" />

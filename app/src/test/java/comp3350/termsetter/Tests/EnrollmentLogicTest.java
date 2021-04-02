@@ -112,6 +112,18 @@ public class EnrollmentLogicTest
     }
 
     @Test
+    public void testHasConflictOverlap()
+    {
+        System.out.println("\nStarting testHasConflictOverlap: section has conflict\n");
+
+        String conflictingDay = "M";
+        String conflictingTime = "11:30-12:00";
+        assertTrue(eL.checkConflict(conflictingDay, conflictingTime));
+
+        System.out.println("\nEnding testHasConflictOverlap: section has conflict\n");
+    }
+
+    @Test
     public void testHasNoDuplicate()
     {
         System.out.println("\nStarting testHasNoDuplicate: course has no duplicate\n");

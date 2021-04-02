@@ -51,7 +51,7 @@ public class OfferedClassesDetail extends AppCompatActivity {
         String timeSlot = "";
         String days = "";
         String period = "";
-        int s1_id = getResources().getIdentifier("s1_rbtn", "id", getPackageName());
+        int s1_id = getResources().getIdentifier("radioButtonS1", "id", getPackageName());
         RadioGroup rg = findViewById(R.id.radioGroupSections);
         if (rg.getCheckedRadioButtonId() == s1_id) {
             TextView sectionTxt = findViewById(R.id.radioButtonS1);
@@ -73,11 +73,10 @@ public class OfferedClassesDetail extends AppCompatActivity {
             period = (String) periodTxt.getText();
         }
 
-        CourseSection theSection = new CourseSection(section, timeSlot, days, period);
+        CourseSection theSection = new CourseSection(section, days, timeSlot, period);
         eL = new EnrollmentLogic(student.getStudentID(), course.getCourseCode(), theSection);
         String message = eL.getMessage();
 
-        //Toast.makeText(this, "Successfully enrolled in " + course.getCourseCode() + " " + section, Toast.LENGTH_LONG).show();
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, OfferedClassesCategories.class);
         startActivity(intent);
