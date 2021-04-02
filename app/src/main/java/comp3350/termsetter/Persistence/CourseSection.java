@@ -7,17 +7,16 @@ public class CourseSection implements Serializable
     private final String section;
     private final String days;
     private final String timeSlot;
-    private final String instructor;
+    private final String period;
     private int occupants;
     private int maxOccupancy;
-    //private boolean labRequired = false;          // TBD
 
-    public CourseSection(String section, String days, String timeSlot, String instructor)
+    public CourseSection(String section, String days, String timeSlot, String period)
     {
         this.section = section;
         this.days = days;
         this.timeSlot = timeSlot;
-        this.instructor = instructor;
+        this.period = period;
         this.occupants = 0;
     }
 
@@ -31,8 +30,8 @@ public class CourseSection implements Serializable
         return timeSlot;
     }
 
-    public String getInstructor() {
-        return instructor;
+    public String getPeriod() {
+        return period;
     }
 
     public int getOccupancy(){ return occupants; }

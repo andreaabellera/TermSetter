@@ -37,8 +37,6 @@ public class EnrollmentLogic
 
         List<String> results = enrollAccess.getStudentEnrollment(studentID);
 
-        //ArrayList<String> results = new ArrayList<>();
-
         boolean success = true;
         // adding enrollment results to currClasses
         for(int i = 0; i < results.size() && success; i++)
