@@ -108,13 +108,13 @@ public class EnrollmentLogic
         int start = parseTime(tSlot2[0]);
         int end = parseTime(tSlot2[1]);
 
-        if (selectedClassDays.equals(days) && end > startS && end < endS)
+        if (daysOverlap(selectedClassDays, days) && end > startS && end < endS)
             conflict = true;
 
-        else if (selectedClassDays.equals(days) && start > startS && start < endS)
+        else if (daysOverlap(selectedClassDays, days) && start > startS && start < endS)
             conflict = true;
 
-        else if (selectedClassDays.equals(days) && start == startS && end == endS)
+        else if (daysOverlap(selectedClassDays, days) && start == startS && end == endS)
             conflict = true;
 
         return conflict;
@@ -130,6 +130,21 @@ public class EnrollmentLogic
 
          return conflict;
      }
+
+     //function to check day overlap
+    public static boolean daysOverlap(String daySet1, String daySet2)
+    {
+        boolean conflict = false;
+
+        if (daySet1.contains(daySet2))
+            conflict = true;
+        else if (daySet2.contains(daySet1))
+            conflict = true;
+        else if (daySet1.equals(daySet2))
+            conflict = true;
+
+        return conflict;
+    }
 
     //function to parse time
     public static int parseTime(String time)

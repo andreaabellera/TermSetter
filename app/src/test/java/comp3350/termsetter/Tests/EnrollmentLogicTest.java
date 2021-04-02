@@ -134,6 +134,18 @@ public class EnrollmentLogicTest
     }
 
     @Test
+    public void testDayOverlap()
+    {
+        System.out.println("\nStarting testDayOverlap: days are overlapping\n");
+
+        String day1 = "M";
+        String day2 = "MWF";
+        assertTrue(eL.daysOverlap(day1,day2));
+
+        System.out.println("\nEnding testDayOverlap: days are overlapping\n");
+    }
+
+    @Test
     public void testParseTime()
     {
         System.out.println("\nStarting testParseTime: expected return\n");
