@@ -76,7 +76,6 @@ public class StudentAccess implements StudentPersistence {
                 student = new Student(name, passID, email, phoneNumber, studentID);
             }
             //whoever uses this method, check if the student is null or not.
-            connect.close();
         }
         catch (SQLException e) {
             e.printStackTrace();

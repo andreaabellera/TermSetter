@@ -3,16 +3,20 @@ package comp3350.termsetter.Tests;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import comp3350.termsetter.Logic.OfferedClassLogic;
 import comp3350.termsetter.Persistence.CourseCategoryPersistence;
 import comp3350.termsetter.Persistence.CourseOffering;
 import comp3350.termsetter.Persistence.CourseSection;
+import comp3350.termsetter.Persistence.DBImporter;
 import comp3350.termsetter.Persistence.Faculty;
 import comp3350.termsetter.Presentation.OfferedClassesCategories;
+import comp3350.termsetter.Presentation.OfferedClassesView;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 public class CourseCategoryIntegrationTest {
 
@@ -20,8 +24,9 @@ public class CourseCategoryIntegrationTest {
     OfferedClassesCategories act;
 
     @Before
-    public void setContext(){
-        act = new OfferedClassesCategories();
+    public void setContext() throws IOException {
+        OfferedClassesCategories act = mock(OfferedClassesCategories.class);
+        DBImporter.copyDatabaseToDevice(act);
     }
 
     @Test
