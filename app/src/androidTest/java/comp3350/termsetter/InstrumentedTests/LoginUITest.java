@@ -21,8 +21,7 @@ public class LoginUITest {
     private String validPasswd;
 
     @Rule
-    public ActivityScenarioRule<LoginPage> activityRule
-            = new ActivityScenarioRule<>(LoginPage.class);
+    public ActivityScenarioRule<LoginPage> activityRule = new ActivityScenarioRule<>(LoginPage.class);
 
     @Before
     public void initValidString() {
@@ -32,15 +31,11 @@ public class LoginUITest {
 
     @Test
     public void changeText() {
-        onView(withId(R.id.editTextSetID))
-                .perform(typeText(validUser), closeSoftKeyboard());
-        onView(withId(R.id.editTextSetPassword))
-                .perform(typeText(validPasswd), closeSoftKeyboard());
-        onView(withId(R.id.loginButtonLogin)).perform(click());
+        onView(withId(R.id.editTextSetID)).perform(typeText(validUser), closeSoftKeyboard());
+        onView(withId(R.id.editTextSetPassword)).perform(typeText(validPasswd), closeSoftKeyboard());
+        onView(withId(R.id.buttonLogin)).perform(click());
 
-        onView(withId(R.id.editTextSetID))
-                .check(matches(withText(validUser)));
-        onView(withId(R.id.editTextSetPassword))
-                .check(matches(withText(validPasswd)));
+        onView(withId(R.id.editTextSetID)).check(matches(withText(validUser)));
+        onView(withId(R.id.editTextSetPassword)).check(matches(withText(validPasswd)));
     }
 }
