@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <uses-feature android:name="android.hardware.type.watch" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ts_icon"
@@ -11,24 +13,11 @@
         android:roundIcon="@drawable/ts_icon"
         android:supportsRtl="true"
         android:theme="@style/TermsetterBase">
-        <activity android:name=".Presentation.EnrolledClassesView"></activity>
-        <!-- The default activity is set to Login Page (if otherwise, please check your Edit configuration) -->
-        <activity
-            android:name=".Presentation.AccountChangePassword"
-            android:label="Change Password"></activity>
-        <activity
-            android:name=".Presentation.AccountUpdateEmail"
-            android:label="Update Email"></activity>
-        <activity
-            android:name=".Presentation.AccountManageProfile"
-            android:label="Manage Profile"></activity>
-        <activity
-            android:name=".Presentation.AccountManagementMenu"
-            android:label="Account Management"></activity>
+        <activity android:name=".Presentation.Unenrollment"></activity>
 
         <uses-library
             android:name="com.google.android.wearable"
-            android:required="false" />
+            android:required="true" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
@@ -37,6 +26,28 @@
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
+        <activity
+            android:name=".Presentation.Timetable"
+            android:label="@string/title_activity_timetable">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Presentation.Transcript" /> <!-- The default activity is set to Login Page (if otherwise, please check your Edit configuration) -->
+        <activity
+            android:name=".Presentation.AccountChangePassword"
+            android:label="Change Password" />
+        <activity
+            android:name=".Presentation.AccountUpdateEmail"
+            android:label="Update Email" />
+        <activity
+            android:name=".Presentation.AccountManageProfile"
+            android:label="Manage Profile" />
+        <activity
+            android:name=".Presentation.AccountManagementMenu"
+            android:label="Account Management" />
         <activity
             android:name=".Presentation.LoginPage"
             android:label="@string/title_activity_login_page">
@@ -48,16 +59,16 @@
         </activity>
         <activity
             android:name=".Presentation.CreateAccount"
-            android:label="Create Account"></activity>
+            android:label="Create Account" />
         <activity
             android:name=".Presentation.OfferedClassesDetail"
-            android:label="@string/title_activity_offered_classes_detail"></activity>
+            android:label="@string/title_activity_offered_classes_detail" />
         <activity
             android:name=".Presentation.OfferedClassesView"
-            android:label="@string/title_activity_offered_classes_view"></activity>
+            android:label="@string/title_activity_offered_classes_view" />
         <activity
             android:name=".Presentation.OfferedClassesCategories"
-            android:label="Categories"></activity>
+            android:label="Categories" />
         <activity
             android:name=".Presentation.MainActivity"
             android:label="@string/app_name">

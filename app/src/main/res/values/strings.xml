@@ -59,5 +59,6 @@
     -->
     <string name="hello_world">Hello Square World!</string>
     <string name="categories">Categories</string>
+    <string name="title_activity_timetable">Timetable</string>
 
 </resources>
