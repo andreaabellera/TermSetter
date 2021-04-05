@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/TextAppearance.MaterialComponents.Headline4"
+            style="@style/TextAppearance.Termsetter.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -22,7 +22,7 @@
             android:text="@string/header_main"/>
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button"
+            style="@style/Widget.Termsetter.MenuButton"
             android:id="@+id/homeBtn1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,32 +32,32 @@
             android:text="@string/btn_main_manage_account"/>
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button"
+            style="@style/Widget.Termsetter.MenuButton"
             android:id="@+id/homeBtn2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:onClick="openEnrolledClassesView"
             android:text="@string/btn_main_view_my_courses"/>
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button"
+            style="@style/Widget.Termsetter.MenuButton"
             android:id="@+id/homeBtn3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:onClick="openOfferedClassesCategories"
             android:text="@string/btn_main_view_off_courses"/>
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button"
+            style="@style/Widget.Termsetter.MenuButton"
             android:id="@+id/homeBtn4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:onClick="onClickLogOutButton"
             android:text="@string/btn_main_logout"/>
     </LinearLayout>

@@ -20,11 +20,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="24dp"
             android:text="University of Manitoba"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center">
@@ -46,11 +46,11 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.Termsetter.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="32dp"
             android:hint="ID"
             android:inputType="text"
             app:startIconDrawable="@drawable/ic_baseline_person_24">
@@ -62,7 +62,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.Termsetter.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -81,25 +81,33 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button"
-            android:id="@+id/buttonLogin"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="32dp"
-            android:layout_gravity="center"
-            android:onClick="onClickLoginButton"
-            android:text="LOGIN"/>
+            android:orientation="horizontal">
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:id="@+id/buttonCreateAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            android:text="CREATE ACCOUNT"
-            android:onClick="onClickCreateAccountButton"/>
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:id="@+id/buttonCreateAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_alignBaseline="@id/buttonLogin"
+                android:text="CREATE ACCOUNT"
+                android:onClick="onClickCreateAccountButton"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Termsetter.ConfirmButton"
+                android:id="@+id/buttonLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_toEndOf="@id/buttonCreateAccount"
+                android:onClick="onClickLoginButton"
+                android:text="LOGIN"/>
+        </RelativeLayout>
 
     </LinearLayout>
 

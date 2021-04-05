@@ -7,14 +7,14 @@
     <color name="cardBackground4">#7D8CEB</color>
 
     <!-- Termsetter brand colours -->
-    <color name="tsBlue50">#dafaf8</color> <!-- Surface -->
-    <color name="tsBlue100">#B5F5F1</color> <!-- Primary -->
-    <color name="tsBlue200">#57e8df</color> <!-- Secondary -->
-    <color name="tsBlue300">#12B291</color>
+    <color name="tsEmerald50">#b8f8eb</color>
+    <color name="tsEmerald100">#69E5CC</color>
+    <color name="tsEmerald200">#12B291</color>
+    <color name="tsRed">#b21233</color>
 
-    <!-- Termsetter complimentary colors -->
-    <color name="tsComp50">#b5d9f5</color>
-    <color name="tsComp100">#b5b9f5</color>
+    <color name="textColorPrimary">#442C2E</color>
+    <color name="textInputOutlineColor">#FBB8AC</color>
+
 
     <!-- Greyscale colors -->
     <color name="white">#ffffff</color>
@@ -24,6 +24,18 @@
     <color name="grey300">#242424</color> <!-- Text -->
     <color name="black">#000000</color>
     <color name="faded_black">#383838</color>
+
+    <!-- IGNORE BELOW -->
+
+    <color name="tsBlue50">#dafaf8</color> <!-- Surface -->
+    <color name="tsBlue100">#B5F5F1</color> <!-- Primary -->
+    <color name="tsBlue200">#57e8df</color> <!-- Secondary -->
+    <color name="tsBlue300">#12B291</color>
+
+    <!-- Termsetter complimentary colors -->
+    <color name="tsComp50">#b5d9f5</color>
+    <color name="tsComp100">#b5b9f5</color>
+
 
     <!-- MaterialComponents attributes -->
     <color name="tsPrimary">@color/tsBlue100</color>
