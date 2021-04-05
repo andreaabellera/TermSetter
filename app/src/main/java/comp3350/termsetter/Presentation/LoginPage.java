@@ -14,6 +14,7 @@ import comp3350.termsetter.Logic.AccessManager;
 import comp3350.termsetter.Logic.AccountValidation;
 import comp3350.termsetter.Persistence.DBImporter;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
+import comp3350.termsetter.Persistence.Main;
 import comp3350.termsetter.Persistence.StudentPersistence;
 import comp3350.termsetter.R;
 
@@ -32,10 +33,12 @@ public class LoginPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-        try {
-            DBImporter.copyDatabaseToDevice(this);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(!Main.databaseIsImported()){
+            try {
+                DBImporter.copyDatabaseToDevice(this);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         mContext = getApplicationContext();
 

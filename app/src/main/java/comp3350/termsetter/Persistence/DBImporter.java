@@ -24,6 +24,7 @@ public class DBImporter {
             }
             copyAssetsToDirectory(context, assetNames, dataDirectory);
             Main.setDBPathName(dataDirectory.toString() + "/" + Main.getDBPathName());
+            Main.confirmImport();
 
         } catch (final IOException ioe) {
             throw new IOException("Unable to access application data: " + ioe.getMessage());

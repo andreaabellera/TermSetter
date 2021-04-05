@@ -113,4 +113,8 @@ public class CourseAccess implements CoursePersistence {
 
         return sectionDetails;
     }
+
+    public void closeConnection() throws SQLException {
+        connect.close();
+    }
 }

@@ -45,6 +45,7 @@ public class StudentAccess implements StudentPersistence {
 
             //Update DB
             statement.executeUpdate();
+            connect.close();
         }
         catch (SQLException e){
 
@@ -76,6 +77,7 @@ public class StudentAccess implements StudentPersistence {
                 student = new Student(name, passID, email, phoneNumber, studentID);
             }
             //whoever uses this method, check if the student is null or not.
+            connect.close();
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -95,7 +97,7 @@ public class StudentAccess implements StudentPersistence {
             PreparedStatement statement = connect.prepareStatement("select * from students");
             ResultSet resultSet = statement.executeQuery();
 
-
+            connect.close();
             return resultSet.next();
         }
         catch (SQLException e) {
@@ -123,6 +125,7 @@ public class StudentAccess implements StudentPersistence {
                 //put them in a list for now
                 studentIDs.add(student_id);
             }
+            connect.close();
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -153,6 +156,7 @@ public class StudentAccess implements StudentPersistence {
 
                 statement.executeUpdate();
                 statement.close();
+                connect.close();
                 return true;
             }
             catch (SQLException e) {
@@ -178,6 +182,7 @@ public class StudentAccess implements StudentPersistence {
 
                 statement.executeUpdate();
                 statement.close();
+                connect.close();
                 return true;
             }
             catch (SQLException e) {
