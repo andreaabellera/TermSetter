@@ -8,18 +8,13 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import comp3350.termsetter.Logic.OfferedClassLogic;
-import comp3350.termsetter.Persistence.CourseCategoryPersistence;
 import comp3350.termsetter.Persistence.CourseCategorySQLDriver;
 import comp3350.termsetter.Persistence.CourseOffering;
 import comp3350.termsetter.Persistence.CourseSection;
-import comp3350.termsetter.Persistence.DBImporter;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.CourseAccess;
 import comp3350.termsetter.Persistence.Faculty;
-import comp3350.termsetter.Presentation.OfferedClassesCategories;
 import comp3350.termsetter.utils.TestUtils;
-
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
 
 public class CourseCategoryIntegrationTest {
 

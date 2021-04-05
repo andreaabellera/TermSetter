@@ -16,7 +16,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.*;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class LoginUITest {
+public class LoginTest {
     private String validUser;
     private String validPasswd;
 

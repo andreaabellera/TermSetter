@@ -4,33 +4,24 @@ import android.app.Application;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-import comp3350.termsetter.Logic.OfferedClassLogic;
-import comp3350.termsetter.Persistence.CourseCategoryPersistence;
-import comp3350.termsetter.Persistence.CourseOffering;
-import comp3350.termsetter.Persistence.CourseSection;
-import comp3350.termsetter.Persistence.DBImporter;
-import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.CourseAccess;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.EnrollAccess;
-import comp3350.termsetter.Persistence.Faculty;
-import comp3350.termsetter.Persistence.Main;
-import comp3350.termsetter.Presentation.OfferedClassesCategories;
-import comp3350.termsetter.Presentation.OfferedClassesView;;
+import comp3350.termsetter.utils.TestUtils;;
 
 public class EnrollAccessTest {
 
     EnrollAccess ea;
+    private File tempDB;
 
     @Before
     public void setup() throws IOException {
-        OfferedClassesView act = mock(OfferedClassesView.class);
-        DBImporter.copyDatabaseToDevice(act);
-        String path = Main.getDBPathName();
-        ea = new EnrollAccess(path);
+        this.tempDB = TestUtils.copyDB();
+        ea = new EnrollAccess(this.tempDB.getAbsolutePath().replace(".script", ""));
     }
 
     @Test
