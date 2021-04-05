@@ -34,7 +34,6 @@ public class EnrollmentLogic
 
     public void loadClasses()
     {
-
         List<String> results = enrollAccess.getStudentEnrollment(studentID);
 
         boolean success = true;
@@ -49,20 +48,21 @@ public class EnrollmentLogic
             {
                 CourseSection currClass = new CourseSection(tokens[3], tokens[4], tokens[5], tokens[6]);
                 success = addSection(currClass);
-                if(success){
+                if(success)
+                {
                     message = "Successfully enrolled in " + courseCode + " " + selectedClass.getSection() + ".";
-                    confirmEnroll();
                 }
                 else
                 {
                     message = "Error: Failed to enroll due to a time conflict with " + tokens[0] + " (" + tokens[4] + ": "+ tokens[5] + ")";
                 }
             }
-            else
-            {
+            else {
                 message = "Error: Already enrolled in this course!";
             }
         }
+        if(success)
+            confirmEnroll();
     }
 
     public boolean addSection(CourseSection courseSection)
