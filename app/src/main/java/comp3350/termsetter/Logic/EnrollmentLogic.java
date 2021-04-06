@@ -8,31 +8,12 @@ import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.EnrollAccess
 import comp3350.termsetter.Persistence.Main;
 import comp3350.termsetter.Persistence.StudentPersistence;
 
-/************************
- * Andrea Notes (temporary)
- *
- * Hi Farjad, I got a good look at your branch and started to work on integration. I'll be off for the day and will continue working on this tomorrow evening (in Wpg).
- * However, you can continue working while I am away if you have time today. It's nice to have our process streamlined.
- *    > addCourse and addSection - No need to check against the list since all retrieved enrolled classes are guaranteed to have no dups/conflicts.
- *                                 Check dups with the "courseCode" and check conflicts with the "selectedClass.getTimeSlot()" and "selectedClass.getDays()" instead.
- *                                 I uncommented the constructor parameters and and also added a String parameter for studentID.
- *    > I'm so sorry, I missed the mechanic of checking days. To know if there is a conflict, there have to be similar days as well as overlapping times.
- *      For day conflicts, test string/char equality. Hopefully, it won't be so much work to add
- *    > Good job with the unit tests, they're a nice bunch!
- *      But with the above changes in mind, I have to make revisions so that they reflect the behavior of the methods we want to write. We'll know if our methods work as wanted if the unit tests pass
- ************************/
 
 public class EnrollmentLogic
 {
-    private List<CourseSection> currClasses;    //Sections for currClasses
-    private List<CourseOffering> currCourseCodes;           //CourseCodes for currClasses
-
     private String courseCode;
     private CourseSection selectedClass;
     private String message;
-
-    private List<String> startTimes;    //startTimes of currClasses
-    private List<String> endTimes;      //EndTimes of currClasses
     private EnrollAccess enrollAccess;
     private AccessManager accessManager;
     private StudentPersistence database;
@@ -44,12 +25,8 @@ public class EnrollmentLogic
         this.courseCode = courseCode;
         this.selectedClass = selectedClass;
         this.studentID = studentID;
-        currClasses = new ArrayList<>();
-        currCourseCodes = new ArrayList<>();
-        startTimes = new ArrayList<>();
-        endTimes = new ArrayList<>();
         message = "";
-        String path = new String(Main.getDBPathName());
+        String path = Main.getDBPathName();
         enrollAccess = new EnrollAccess(path);
 
         loadClasses();
@@ -57,179 +34,114 @@ public class EnrollmentLogic
 
     public void loadClasses()
     {
-        /* SQL problems, Hold my phone
         List<String> results = enrollAccess.getStudentEnrollment(studentID);
-        */
-        ArrayList<String> results = new ArrayList<String>();
 
         boolean success = true;
         // adding enrollment results to currClasses
-        for(int i = 0; i < results.size() && success; i++){
+        for(int i = 0; i < results.size() && success; i++)
+        {
             String result = results.get(i);
             String[] tokens = result.split("@");
             CourseOffering currCourse = new CourseOffering(tokens[0], tokens[1], Integer.parseInt(tokens[2]));
             success = addCourse(currCourse);
-            if(success){
+            if(success)
+            {
                 CourseSection currClass = new CourseSection(tokens[3], tokens[4], tokens[5], tokens[6]);
                 success = addSection(currClass);
+                if(success)
+                {
+                    message = "Successfully enrolled in " + courseCode + " " + selectedClass.getSection() + ".";
+                }
+                else
+                {
+                    message = "Error: Failed to enroll due to a time conflict with " + tokens[0] + " (" + tokens[4] + ": "+ tokens[5] + ")";
+                }
+            }
+            else {
+                message = "Error: Already enrolled in this course!";
             }
         }
-
-
-        /*
-        CourseSection cS1 = new CourseSection("A01","MWF", "10:30-11:30", "Mr.Awesome");
-        currClasses.add(cS1);
-        CourseSection cS2 = new CourseSection("A02","TR", "12:30-13:30", "Mr Insto");
-        currClasses.add(cS2);
-        CourseSection cS3 = new CourseSection("A01","MWF", "13:30-14:15", "Mr yellow");
-        currClasses.add(cS3);
-        CourseSection cS4 = new CourseSection("A03","TR", "14:30-15:30", "Mr.Awesome");
-        currClasses.add(cS4);
-
-        //adding Course Codes to current courseCodes
-        CourseOffering cO1 = new CourseOffering("COMP3350", "SE", 3);
-        currCourseCodes.add(cO1);
-        CourseOffering cO2 = new CourseOffering("BUSS4350", "Bus", 3);
-        currCourseCodes.add(cO2);
-        CourseOffering cO3 = new CourseOffering("COMP3450", "OS", 3);
-        currCourseCodes.add(cO3);
-        CourseOffering cO4 = new CourseOffering("PSYC3300", "Psy", 3);
-        currCourseCodes.add(cO4);
-        */
+        if(success)
+            confirmEnroll();
     }
 
     public boolean addSection(CourseSection courseSection)
     {
         boolean added = false;
+        String days = courseSection.getDays();
+        String timeSlot = courseSection.getTimeSlot();
 
-        if (!checkConflict(courseSection))
-        {
-            currClasses.add(courseSection);
+        if (!checkConflict(days, timeSlot))
             added = true;
-        }
-        else
-        {
-            message = "Error: Failed to enroll due to a time conflict!";
-            System.out.println(message);
-        }
+
         return added;
     }
 
     public boolean addCourse(CourseOffering courseOffering)
     {
         boolean added = false;
+        String cCode = courseOffering.getCourseCode();
 
-        if (!checkCodeDup(courseOffering))
-        {
-            currCourseCodes.add(courseOffering);
+        if (!checkCodeDup(cCode))
             added = true;
-        }
-        else
-        {
-            message = "Error: Already enrolled in this course! ";
-            System.out.println(message);
-        }
+
         return added;
     }
 
-    public String getMessage(){
-        return message;
-    }
-
-    private void confirmEnroll(){
-        enrollAccess.enroll(studentID, selectedClass.getSection(), courseCode);
-    }
-
     //Conflict check method
-    public boolean checkConflict(CourseSection courseSection)
+    public boolean checkConflict(String days, String timeSlot)
     {
         boolean conflict = false;
 
-        //get timesSlots from currClasses
-        getClassTimes(currClasses);
+        String selectedClassDays = selectedClass.getDays();
 
-        //add timeSlot of new class to start&endTime lists
-        //parseTimeSlots(courseSection);
+        //get and parse timesSlot from selectedClass
+        String timeS = selectedClass.getTimeSlot();
+        String[] tSlot1 = timeS.split("-");
+        int startS = parseTime(tSlot1[0]);
+        int endS = parseTime(tSlot1[1]);
 
-        String timeS = courseSection.getTimeSlot();
-        String[] tSlots = timeS.split("-");
-        int start = parseTime(tSlots[0]);
-        int end = parseTime(tSlots[1]);
+        //parse timeSlot
+        String[] tSlot2 = timeSlot.split("-");
+        int start = parseTime(tSlot2[0]);
+        int end = parseTime(tSlot2[1]);
 
+        if (daysOverlap(selectedClassDays, days) && end > startS && end < endS)
+            conflict = true;
 
-        for (int i=0; i<startTimes.size(); i++)
-        {
-            int classStart = parseTime(startTimes.get(i));
-            int classEnd = parseTime(endTimes.get(i));
+        else if (daysOverlap(selectedClassDays, days) && start > startS && start < endS)
+            conflict = true;
 
-            if (end > classStart && end < classEnd)
-                conflict = true;
-
-            else if (start > classStart && start < classEnd)
-                conflict = true;
-
-            /**
-            //end of each class checked with each starting time
-            for(int e=0; e<endTimes.size(); e++)
-            {
-                //if (e==i) continue;
-                int end = parseTime(endTimes.get(e));
-                if (end > classStart && end < classEnd )
-                {
-                    conflict = true;
-                }
-            }
-
-            //start of class between a time slot
-            for (int s=0; s<startTimes.size(); s++)
-            {
-                //if (s == i) continue;
-                int start = parseTime(startTimes.get(s));
-                if (start > classStart && start < classEnd)
-                {
-                    conflict = true;
-                }
-            } **/
-        }
+        else if (daysOverlap(selectedClassDays, days) && start == startS && end == endS)
+            conflict = true;
 
         return conflict;
     }
 
     //function to check code duplicates
-     public boolean checkCodeDup (CourseOffering courseOffering)
+     public boolean checkCodeDup (String cCode)
      {
          boolean conflict = false;
-         String courseCode = courseOffering.getCourseCode();
 
-         for (int i=0; i<currCourseCodes.size(); i++)
-         {
-             if (courseCode.equals(currCourseCodes.get(i).getCourseCode()))
-             {
-                conflict = true;
-             }
-         }
+         if (courseCode.equals(cCode))
+             conflict = true;
+
          return conflict;
      }
 
-
-    //function to add time slots for each class to start&endTimes arrays
-    public void getClassTimes(List<CourseSection> currClasses)
+     //function to check day overlap
+    public static boolean daysOverlap(String daySet1, String daySet2)
     {
-        for (int i=0; i<currClasses.size(); i++)
-        {
-            CourseSection cs = currClasses.get(i);
-            parseTimeSlots(cs);
-        }
-    }
+        boolean conflict = false;
 
+        if (daySet1.contains(daySet2))
+            conflict = true;
+        else if (daySet2.contains(daySet1))
+            conflict = true;
+        else if (daySet1.equals(daySet2))
+            conflict = true;
 
-    //function to parse timeslots and add them to start and end time arrays
-    public void parseTimeSlots(CourseSection courseSection)
-    {
-        String timeS = courseSection.getTimeSlot();
-        String[] tSlots = timeS.split("-");
-        startTimes.add(tSlots[0]);              //add starting time to startTimes
-        endTimes.add(tSlots[1]);                //add ending time to endTimes
+        return conflict;
     }
 
     //function to parse time
@@ -243,9 +155,14 @@ public class EnrollmentLogic
     }
 
     //helper for changing time into minutes
-    public static int calculateMinutes(int hour, int minute)
+    public static int calculateMinutes(int hour, int minute) { return hour*60+minute; }
+
+    public String getMessage(){ return message; }
+
+    private void confirmEnroll()
     {
-        return hour*60+minute;
+        enrollAccess.enroll(studentID, courseCode, selectedClass.getSection());
     }
+
 
 }

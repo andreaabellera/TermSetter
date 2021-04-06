@@ -15,7 +15,6 @@ import comp3350.termsetter.R;
 
 public class OfferedClassLogic{
 
-    List<Faculty> courseData;
     Context context;
     CourseCategoryPersistence instance;
 
@@ -30,16 +29,17 @@ public class OfferedClassLogic{
     }
 
     public List<Faculty> getCourseData(){
+        List<Faculty> courseData = instance.getFaculties();
         return courseData;
     }
 
     private void loadFromSQL(){
         try{
-            String path = new String(Main.getDBPathName());
+            String path = Main.getDBPathName();
             CourseAccess courseAccess = new CourseAccess(path);
             CourseCategorySQLDriver courseDatabase = new CourseCategorySQLDriver(courseAccess);
             instance = courseDatabase;
-            courseData = courseDatabase.getFaculties();
+
         }
         catch(SQLException e){
             System.out.println("CourseCategorySQLDriver failed loading the course data.");
@@ -52,16 +52,11 @@ public class OfferedClassLogic{
             InputStream is = context.getResources().openRawResource(R.raw.classdatabase);
             CourseCategoryDriver courseDatabase = new CourseCategoryDriver(is);
             instance = courseDatabase;
-            courseData = courseDatabase.getFaculties();
         }
         catch(IOException e){
-            System.out.println("Database source file 'classdatabase.txt' is missing from res/assets.");
+            System.out.println("Database source file 'classdatabase.txt' is missing from res/raw.");
             e.printStackTrace();
         }
-    }
-
-    public CourseCategoryPersistence getPersistenceInstance(){
-        return instance;
     }
 
 }

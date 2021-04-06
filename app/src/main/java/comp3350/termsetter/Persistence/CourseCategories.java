@@ -5,12 +5,11 @@ import java.util.List;
 
 import comp3350.termsetter.Persistence.Faculty;
 
-public class CourseCategories {
+public class CourseCategories
+{
     private final List<Faculty> faculties;
 
-    public CourseCategories() {
-        faculties = new ArrayList<Faculty>();
-    }
+    public CourseCategories() { faculties = new ArrayList<>(); }
 
     public List<Faculty> getFaculties() {
         return faculties;
