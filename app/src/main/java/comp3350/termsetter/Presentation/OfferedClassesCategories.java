@@ -3,6 +3,8 @@ package comp3350.termsetter.Presentation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,11 +29,10 @@ public class OfferedClassesCategories extends AppCompatActivity {
 
     private void initData(){
         try{
-            OfferedClassLogic dataRequester = new OfferedClassLogic(false, this);
+            OfferedClassLogic dataRequester = new OfferedClassLogic(true, this);
             courseData = dataRequester.getCourseData();
         }
         catch(Exception e){
-            System.out.println("Database load failed.");
             e.printStackTrace();
         }
     }

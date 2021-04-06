@@ -13,9 +13,7 @@ import comp3350.termsetter.Persistence.DomainSpecific.Student;
 
 public class EnrollAccess implements EnrollPersistence {
 
-
     Connection connect = null;
-
     private final String dbPath;
 
     public EnrollAccess(final String dbPath) {
@@ -32,11 +30,7 @@ public class EnrollAccess implements EnrollPersistence {
         try {
             connect = connection();
 
-            // query
-            PreparedStatement statement = connect.prepareStatement("select enrollment.course_id, " +
-                    "courses.course_name, courses.section from enrollment INNER JOIN courses " +
-                    "ON student_id = ? AND enrollment.course_id= courses.course_id");
-
+            PreparedStatement statement = connect.prepareStatement("select * from enrollment natural join courses where student_id = ?;");
             statement.setString(1, studentID);
             ResultSet resultSet = statement.executeQuery();
 
@@ -46,12 +40,12 @@ public class EnrollAccess implements EnrollPersistence {
                 final String course_name = resultSet.getString("course_name");
                 final String credit_hours = resultSet.getString("credit_hours");
                 final String section = resultSet.getString("section");
-                final String time = resultSet.getString("time");
                 final String days = resultSet.getString("days");
+                final String time = resultSet.getString("time");
                 final String period = resultSet.getString("period");
 
                 // put them in a list for now
-                final String course = course_id + "@" + course_name + "@" + credit_hours + "@" + section + "@" + time + "@" + days + "@" + period;
+                final String course = course_id + "@" + course_name + "@" + credit_hours + "@" + section + "@" + days + "@" + time + "@" + period;
                 currentCourses.add(course);
             }
             statement.close();
@@ -64,7 +58,7 @@ public class EnrollAccess implements EnrollPersistence {
         return currentCourses;
     }
 
-    public void enroll(String sID, String section, String cID) {
+    public void enroll(String sID, String cID, String section) {
 
         try {
             connect = this.connection();
@@ -73,7 +67,7 @@ public class EnrollAccess implements EnrollPersistence {
             PreparedStatement statement = connect.prepareStatement("INSERT INTO enrollment VALUES (?,?,?)");
             statement.setString(1, sID);
             statement.setString(2, cID);
-            //  statement.setString(3, section);
+            statement.setString(3, section);
 
 
             //Update DB

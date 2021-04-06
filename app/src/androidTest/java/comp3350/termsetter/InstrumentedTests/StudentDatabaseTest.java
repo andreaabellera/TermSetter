@@ -1,4 +1,4 @@
-package comp3350.termsetter.Tests;
+package comp3350.termsetter.InstrumentedTests;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,9 +15,9 @@ public class StudentDatabaseTest extends AppCompatActivity {
 
 
     String validName = "name";
-    String validPasswd = "123pass";
+    String validPasswd = "pass123";
     String validEmail = "mailme@myumanitoba.ca";
-    String validPhone = "204";
+    String validPhone = "2045583887";
     String validID = "hohoho";
 
     @Test
@@ -77,8 +77,8 @@ public class StudentDatabaseTest extends AppCompatActivity {
         System.out.println("\nStarting testDatabaseUpdateUser: new user overwrites the first user\n");
         StubDatabase db = new StubDatabase(this,"test.db");
         db.insertStudent(new Student("first", validPasswd, validEmail, validPhone, validID));
-        db.updatePassword("456pass");
-        assertEquals(db.getStudent(validID).getPassword(), "456pass");
+        db.updatePassword("pass456");
+        assertEquals(db.getStudent(validID).getPassword(), "pass456");
         db.updateEmail("haha@myumanitoba.ca");
         assertEquals(db.getStudent(validID).getEmailAddress(), "haha@myumanitoba.ca");
         System.out.println("End testDatabaseUpdateUser: new user overwrites the first user\n");

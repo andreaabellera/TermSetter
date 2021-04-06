@@ -52,5 +52,7 @@ public class CourseCategorySQLDriver implements CourseCategoryPersistence{
             categories.addFaculty(currFaculty);
         }
 
+        courseAccess.closeConnection();
+
     }
 }

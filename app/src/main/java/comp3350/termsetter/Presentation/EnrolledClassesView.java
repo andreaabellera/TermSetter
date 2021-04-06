@@ -7,8 +7,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
+
+import comp3350.termsetter.Logic.AccessManager;
 import comp3350.termsetter.Persistence.CourseOffering;
 import comp3350.termsetter.Persistence.CourseSection;
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
+import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.EnrollAccess;
+import comp3350.termsetter.Persistence.Main;
+import comp3350.termsetter.Persistence.StudentPersistence;
 import comp3350.termsetter.R;
 import comp3350.termsetter.UIAdapters.RecyclerCurrClassDataAdapter;
 
@@ -16,6 +22,8 @@ public class EnrolledClassesView extends AppCompatActivity {
 
     List<CourseOffering> enrolledCourses;
     List<CourseSection> enrolledSections;
+    EnrollAccess enrollAccess;
+    Student student;
     RecyclerCurrClassDataAdapter recyclerAdapter;
 
     @Override
@@ -31,11 +39,24 @@ public class EnrolledClassesView extends AppCompatActivity {
         enrolledCourses = new ArrayList<>();
         enrolledSections = new ArrayList<>();
 
-        enrolledCourses.add(new CourseOffering("COMP3010", "Distributed Computing", 3));
-        enrolledSections.add(new CourseSection("A01", "MWF", "11:30-12:20","2021/01/18-2021/04/18"));
+        AccessManager accessManager = new AccessManager();
+        StudentPersistence database = accessManager.getStudentPersistence();
+        student = database.getCurrentStudentID();
 
-        enrolledCourses.add(new CourseOffering("MUSC1180", "Ensemble", 2));
-        enrolledSections.add(new CourseSection("A02", "TR", "10:30-11:45","2021/01/18-2021/04/18"));
+        String path = Main.getDBPathName();
+        enrollAccess = new EnrollAccess(path);
+
+        List<String> results = enrollAccess.getStudentEnrollment(student.getStudentID());
+
+        for(int i = 0; i < results.size(); i++)
+        {
+            String result = results.get(i);
+            String[] tokens = result.split("@");
+            CourseOffering currCourse = new CourseOffering(tokens[0], tokens[1], Integer.parseInt(tokens[2]));
+            enrolledCourses.add(currCourse);
+            CourseSection currClass = new CourseSection(tokens[3], tokens[4], tokens[5], tokens[6]);
+            enrolledSections.add(currClass);
+        }
     }
 
     private void initWidgets(){
@@ -48,6 +69,7 @@ public class EnrolledClassesView extends AppCompatActivity {
 
     private void updateTotal(){
         double total = 562.12 * recyclerAdapter.getItemCount();
+        total = Math.round(total * 100.0) / 100.0;  // reduces to 2 decimal places
         TextView total_txt = (TextView) findViewById(R.id.textFeeTotal);
         total_txt.setText("Total Fees: " + Double.toString(total)+" CAD");
     }
