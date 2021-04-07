@@ -42,3 +42,39 @@ Please refer to [branching_strategy.md](https://code.cs.umanitoba.ca/3350-winter
 
 Please refer to [coding_standards.md](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/coding_standards.md)
 
+# How to open a static website
+
+1. Open terminal
+2. Change directory to **aurora-but-better-a02-group6/website**
+3. Run the following command (once done, you can skip to the step 4 whenever you want to launch the website)
+    ```
+    bundle install
+    ```
+4. Run the following command
+    ```
+    bundle exec jekyll serve
+    ```
+    
+    Below is a snapshot of what you should see on successful run of the above command.
+    ```
+    $ bundle exec jekyll serve
+    Configuration file: E:/Github/comp3350/aurora-but-better-a02-group-6/website/_config.yml
+                Source: E:/Github/comp3350/aurora-but-better-a02-group-6/website
+        Destination: E:/Github/comp3350/aurora-but-better-a02-group-6/website/_site
+    Incremental build: disabled. Enable with --incremental
+        Generating...
+        Jekyll Feed: Generating feed for posts
+                        done in 0.168 seconds.
+    Please add the following to your Gemfile to avoid polling for changes:
+        gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+    Auto-regeneration: enabled for 'E:/Github/comp3350/aurora-but-better-a02-group-6/website'
+        Server address: http://127.0.0.1:4000/ubuild-jekyll/
+    Server running... press ctrl-c to stop.
+    
+    ```
+5. Access the static website by using either of one the following links
+    ```
+    http://127.0.0.1:4000/ubuild-jekyll/
+    http://localhost:4000/ubuild-jekyll/
+    ```
+6. Should you have any issues, let us know!
