@@ -28,7 +28,6 @@ public class CourseAccess implements CoursePersistence {
 
         try {
             connect= connection();
-
             //query
             PreparedStatement statement = connect.prepareStatement("select * from faculty;");
             ResultSet resultSet = statement.executeQuery();
@@ -114,6 +113,9 @@ public class CourseAccess implements CoursePersistence {
         return sectionDetails;
     }
 
+    /* Why does the DB have responsibility of opening(connecting) the DB but closing goes to the logic layer?
+    // Is there a way we can do both in the logic layer? -Eriq
+    // Maybe toggle connection here or there? Its not broken so idc but let me know your preference*/
     public void closeConnection() throws SQLException {
         connect.close();
     }

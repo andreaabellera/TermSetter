@@ -50,14 +50,14 @@ public class LoginPage extends AppCompatActivity {
         if(!(database instanceof StubDatabase)) {
             accessManager = new AccessManager();
             database = accessManager.getStudentPersistence();
-            Toast.makeText(LoginPage.this, "REAL DB", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(LoginPage.this, "REAL DB", Toast.LENGTH_SHORT).show();
 
         }
         else
         {
             accessManager = new AccessManager(mContext);
             database = accessManager.getStudentPersistence();
-            Toast.makeText(LoginPage.this, "FakeDB", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(LoginPage.this, "Fake DB", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -70,30 +70,26 @@ public class LoginPage extends AppCompatActivity {
         String inputID = eID.getText().toString();
         String inputPassword = ePassword.getText().toString();
 
+        // else is not needed will discuss (valid inputID was checked during account creation) -Eriq
         if (accountValidation.validID(inputID)) {
             if (accountValidation.verifyStudent(inputID, inputPassword)) {
                 database.setCurrentStudentID(inputID);
-//                Student currStudent = database.getCurrentStudentID();
-//                editor.clear();
-//                editor.putString("currAccount", currStudent.getStudentID()); // could use inputID but more explicit
-
                 Toast.makeText(LoginPage.this, "Welcome " + inputID + " !", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(LoginPage.this, MainActivity.class);
                 startActivity(intent);
             }
             else {
-                Toast.makeText(LoginPage.this, "Check your password again!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginPage.this, "The username or password is incorrect", Toast.LENGTH_SHORT).show();
             }
         }
-            else {
-            Toast.makeText(LoginPage.this, "Check your ID again!", Toast.LENGTH_SHORT).show();
-            }
+        else {
+            Toast.makeText(LoginPage.this, "The username or password is incorrect", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void onClickCreateAccountButton(View view) {
-        // Brief message
+
         // Shows create account page
-        Toast.makeText(this, "Create Account Button pressed!", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, CreateAccount.class);
         startActivity(intent);
 
