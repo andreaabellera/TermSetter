@@ -26,11 +26,15 @@ public class LoginTest {
 
     @Test
     public void performLogin() {
+        System.out.println("\nStarting LoginTest: test user is able to log in\n");
+
         // Verify login with preset credentials work
         onView(withId(R.id.editTextUserID)).perform(typeText(testStudentID), closeSoftKeyboard());
         onView(withId(R.id.editTextPassword)).perform(typeText(testPassword), closeSoftKeyboard());
         onView(withId(R.id.editTextUserID)).check(matches(withText(testStudentID)));
         onView(withId(R.id.editTextPassword)).check(matches(withText(testPassword)));
         onView(withId(R.id.buttonLogin)).perform(click());
+
+        System.out.println("\nEnd LoginTest: test user is able to log in\n");
     }
 }

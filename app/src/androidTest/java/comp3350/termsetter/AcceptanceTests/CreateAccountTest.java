@@ -32,6 +32,8 @@ public class CreateAccountTest {
 
     @Test
     public void performCreateAccount() {
+        System.out.println("\nStarting CreateAccountTest: student account creation successful\n");
+
         // Create new student account
         onView(withId(R.id.buttonCreateAccount)).perform(click());
         onView(withId(R.id.editTextSetName)).perform(typeText(newStudentName), closeSoftKeyboard());
@@ -58,6 +60,8 @@ public class CreateAccountTest {
         onView(withId(R.id.userInfoStudentID)).check(matches(withText(newStudentID)));
         onView(withId(R.id.userInfoEmail)).check(matches(withText(newEmail)));
         onView(withId(R.id.userInfoPhone)).check(matches(withText(newPhone)));
+
+        System.out.println("\nEnd CreateAccountTest: student account creation successful\n");
     }
 
 }
