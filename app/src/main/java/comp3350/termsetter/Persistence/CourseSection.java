@@ -32,7 +32,7 @@ public class CourseSection implements Serializable {
         return timeSlot;
     }
 
-    public String getInstructor() {
+    public String getPeriod() {
         return instructor;
     }
 
