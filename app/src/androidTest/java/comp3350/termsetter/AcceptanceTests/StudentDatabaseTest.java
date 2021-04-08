@@ -1,4 +1,4 @@
-package comp3350.termsetter.InstrumentedTests;
+package comp3350.termsetter.AcceptanceTests;
 
 
 import androidx.appcompat.app.AppCompatActivity;
