@@ -56,7 +56,7 @@ public class CourseAccess implements CoursePersistence {
             connect = connection();
 
             //query
-            PreparedStatement statement = connect.prepareStatement("select * from courses where faculty_name = ?;");
+            PreparedStatement statement = connect.prepareStatement("select distinct course_id, course_name, CREDIT_HOURS from courses where faculty_name = ?;");
             statement.setString(1, facultyName);
             ResultSet resultSet = statement.executeQuery();
 
