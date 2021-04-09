@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">@color/tsBlue100</color>
+    <color name="colorPrimaryDark">@color/tsBlue200</color>
+    <color name="textInputOutline">@color/tsBlue100</color>
+    <color name="textInputTextColor">@color/grey200</color>
+    <color name="colorError">@color/tsRed</color>
+    <color name="colorBackground">@color/white</color>
+
+    <color name="tsBlue50">#dafaf8</color>
+    <color name="tsBlue100">#a1ecec</color>
+    <color name="tsBlue200">#26BDBD</color>
+    <color name="tsRed">#b21233</color>
+
+
+
     <!-- (Andrea) Recycle view resources -->
     <color name="cardBackground1">#7DB4AF</color>
     <color name="cardBackground2">#AFA0C3</color>
@@ -10,7 +24,6 @@
     <color name="tsEmerald50">#b8f8eb</color>
     <color name="tsEmerald100">#69E5CC</color>
     <color name="tsEmerald200">#12B291</color>
-    <color name="tsRed">#b21233</color>
 
     <color name="textColorPrimary">#442C2E</color>
     <color name="textInputOutlineColor">#FBB8AC</color>
@@ -27,11 +40,6 @@
 
     <!-- IGNORE BELOW -->
 
-    <color name="tsBlue50">#dafaf8</color> <!-- Surface -->
-    <color name="tsBlue100">#B5F5F1</color> <!-- Primary -->
-    <color name="tsBlue200">#57e8df</color> <!-- Secondary -->
-    <color name="tsBlue300">#12B291</color>
-
     <!-- Termsetter complimentary colors -->
     <color name="tsComp50">#b5d9f5</color>
     <color name="tsComp100">#b5b9f5</color>
@@ -41,17 +49,17 @@
     <color name="tsPrimary">@color/tsBlue100</color>
     <color name="tsSecondary">@color/tsComp50</color>
     <color name="tsBackground">@color/white</color>
-    <color name="tsError">#FF3700B3</color>
+    <color name="temp">#FF3700B3</color>
 
     <!-- New MaterialComponents attributes. -->
-    <color name="tsPrimaryVariant">@color/tsBlue300</color>
+    <color name="tsPrimaryVariant">@color/temp</color>
     <color name="tsSecondaryVariant">#FF3700B3</color>
     <color name="tsSurface">@color/tsBlue50</color>
     <color name="tsColorOnPrimary">@color/grey200</color>
     <color name="tsColorOnSecondary">#FF3700B3</color>
     <color name="tsColorOnBackground">#FF3700B3</color>
     <color name="tsColorOnError">#FF3700B3</color>
-    <color name="tsColorOnSurface">@color/tsBlue300</color>
+    <color name="tsColorOnSurface">@color/temp</color>
 
 
     <!-- Pre-defined app colours -->

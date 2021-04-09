@@ -5,10 +5,11 @@
 
 
         <!-- Original AppCompat attributes. -->
-        <item name="colorPrimary">@color/tsEmerald100</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorSecondary">@color/tsSecondary</item>
         <item name="android:colorBackground">@color/white</item>
-        <item name="colorError">@color/tsError</item>
+        <item name="colorError">@color/colorError</item>
 
 
         <!-- New MaterialComponents attributes. -->
@@ -31,7 +32,7 @@
         <item name="textAppearanceCaption">@style/TextAppearance.MaterialComponents.Caption</item>
         <item name="textAppearanceButton">@style/TextAppearance.Termsetter.Button</item>
 
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryDark</item>
 
     </style>
 
