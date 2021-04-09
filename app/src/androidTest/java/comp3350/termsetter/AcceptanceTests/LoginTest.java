@@ -1,4 +1,4 @@
-package comp3350.termsetter.InstrumentedTests;
+package comp3350.termsetter.AcceptanceTests;
 import comp3350.termsetter.R;
 import comp3350.termsetter.Presentation.LoginPage;
 import org.junit.Before;
@@ -17,25 +17,24 @@ import static androidx.test.espresso.assertion.ViewAssertions.*;
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class LoginTest {
-    private String validUser;
-    private String validPasswd;
+
+    private String testStudentID = "test1";
+    private String testPassword = "test11";
 
     @Rule
     public ActivityScenarioRule<LoginPage> activityRule = new ActivityScenarioRule<>(LoginPage.class);
 
-    @Before
-    public void initValidString() {
-        validUser = "annabelle";
-        validPasswd = "anna123";
-    }
-
     @Test
-    public void changeText() {
-        onView(withId(R.id.editTextSetID)).perform(typeText(validUser), closeSoftKeyboard());
-        onView(withId(R.id.editTextSetPassword)).perform(typeText(validPasswd), closeSoftKeyboard());
+    public void performLogin() {
+        System.out.println("\nStarting LoginTest: test user is able to log in\n");
+
+        // Verify login with preset credentials work
+        onView(withId(R.id.editTextUserID)).perform(typeText(testStudentID), closeSoftKeyboard());
+        onView(withId(R.id.editTextPassword)).perform(typeText(testPassword), closeSoftKeyboard());
+        onView(withId(R.id.editTextUserID)).check(matches(withText(testStudentID)));
+        onView(withId(R.id.editTextPassword)).check(matches(withText(testPassword)));
         onView(withId(R.id.buttonLogin)).perform(click());
 
-        onView(withId(R.id.editTextSetID)).check(matches(withText(validUser)));
-        onView(withId(R.id.editTextSetPassword)).check(matches(withText(validPasswd)));
+        System.out.println("\nEnd LoginTest: test user is able to log in\n");
     }
 }
