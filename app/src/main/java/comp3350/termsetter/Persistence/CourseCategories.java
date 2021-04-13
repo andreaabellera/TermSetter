@@ -1,15 +1,15 @@
 package comp3350.termsetter.Persistence;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseCategories {
+import comp3350.termsetter.Persistence.Faculty;
+
+public class CourseCategories
+{
     private final List<Faculty> faculties;
 
-    public CourseCategories() {
-        faculties = new ArrayList<Faculty>();
-    }
+    public CourseCategories() { faculties = new ArrayList<>(); }
 
     public List<Faculty> getFaculties() {
         return faculties;

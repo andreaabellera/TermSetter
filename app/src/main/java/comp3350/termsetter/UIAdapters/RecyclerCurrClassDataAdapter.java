@@ -56,7 +56,7 @@ public class RecyclerCurrClassDataAdapter extends RecyclerView.Adapter<RecyclerC
 
             if(courseItem != null && sectionItem != null) {
                 holder.course_id_txt.setText(courseItem.getCourseCode() + " - " + courseItem.getName());
-                holder.course_section_txt.setText(sectionItem.getSection() + " | " + sectionItem.getDays() + "  " + sectionItem.getTimeSlot() + " | " + sectionItem.getInstructor());
+                holder.course_section_txt.setText(sectionItem.getSection() + " | " + sectionItem.getDays() + "  " + sectionItem.getTimeSlot() + " | " + sectionItem.getPeriod());
                 holder.cardView.setCardBackgroundColor(Color.rgb(125,140,235));
             }
         }

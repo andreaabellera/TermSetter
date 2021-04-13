@@ -8,13 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import comp3350.termsetter.Persistence.DomainSpecific.User;
+import comp3350.termsetter.Persistence.DomainSpecific.EnrollPersistence;
+import comp3350.termsetter.Persistence.DomainSpecific.Student;
 
-public class EnrollAccess {
-
+public class EnrollAccess implements EnrollPersistence {
 
     Connection connect = null;
-
     private final String dbPath;
 
     public EnrollAccess(final String dbPath) {
@@ -25,57 +24,85 @@ public class EnrollAccess {
         return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "");
     }
 
-
-    /*// need the userID of the user!
-    public List<String> getEnrollment(User user) throws SQLException {
+    public List<String> getStudentEnrollment(String studentID) {
         List<String> currentCourses = new ArrayList<>();
-        // first connect
-        connect = this.connection();
 
-        user.getStudentID();
-        //query (this wont look pretty)
-        PreparedStatement statement = connect.prepareStatement("select enrollment.course_id , courses.course_name, enrollment.student_id, students.student_username " +
-                "from enrollment inner join courses " +
-                "inner join students " +
-                "on enrollment.course_id = courses.course_id AND students.student_id = enrollment.student_id " +
-                "where enrollment.student_id = ?;");
-        statement.setString(1, user.getStudentID());
+        try {
+            connect = connection();
 
-        ResultSet resultSet = statement.executeQuery();
+            PreparedStatement statement = connect.prepareStatement("select * from enrollment natural join courses where student_id = ?;");
+            statement.setString(1, studentID);
+            ResultSet resultSet = statement.executeQuery();
 
-        // collect
-        while (resultSet.next()) {
-            final String course_id = resultSet.getString("course_id");
-            final String course_name = resultSet.getString("course_name");
+            // collect
+            while (resultSet.next()) {
+                final String course_id = resultSet.getString("course_id");
+                final String course_name = resultSet.getString("course_name");
+                final String credit_hours = resultSet.getString("credit_hours");
+                final String section = resultSet.getString("section");
+                final String days = resultSet.getString("days");
+                final String time = resultSet.getString("time");
+                final String period = resultSet.getString("period");
 
-            //put them in a list for now
-            final String course = course_id + " " + course_name;
-            currentCourses.add(course);
+                // put them in a list for now
+                final String course = course_id + "@" + course_name + "@" + credit_hours + "@" + section + "@" + days + "@" + time + "@" + period;
+                currentCourses.add(course);
+            }
+            statement.close();
+            resultSet.close();
+            connect.close();
         }
-
-        //I hope this works
-        return currentCourses;
-    }*/
-
-
-    public List<String> getEnrollment(User user) throws SQLException {
-        List<String> currentCourses = new ArrayList<>();
-
-        connect = this.connection();
-
-        //query
-        PreparedStatement statement = connect.prepareStatement("select course_id, course_name from enrollment where student_id = ?");
-        ResultSet resultSet = statement.executeQuery();
-
-        //collect
-        while (resultSet.next()) {
-            final String course_id = resultSet.getString("course_id");
-            final String course_name = resultSet.getString("course_name");
-
-            //put them in a list for now
-            final String course = course_id + " " + course_name;
-            currentCourses.add(course);
+        catch (SQLException e) {
+            e.printStackTrace();
         }
         return currentCourses;
     }
+
+    public void enroll(String sID, String cID, String section) {
+
+        try {
+            connect = this.connection();
+
+            // query
+            PreparedStatement statement = connect.prepareStatement("INSERT INTO enrollment VALUES (?,?,?)");
+            statement.setString(1, sID);
+            statement.setString(2, cID);
+            statement.setString(3, section);
+
+
+            //Update DB
+            statement.executeUpdate();
+            statement.close();
+            connect.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void unenroll(String sID, String section, String cID) {
+
+        try {
+            connect = this.connection();
+
+            //query
+            PreparedStatement statement = connect.prepareStatement("DELETE FROM enrollment " +
+                    "where course_ID = ? AND student_id = ? AND section = ?");
+            statement.setString(1, cID);
+            statement.setString(2, sID);
+            statement.setString(3, section);
+
+            //Update DB
+            statement.executeUpdate();
+            statement.close();
+            connect.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 }
