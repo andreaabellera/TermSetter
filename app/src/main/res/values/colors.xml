@@ -2,10 +2,13 @@
 <resources>
     <color name="colorPrimary">@color/tsBlue100</color>
     <color name="colorPrimaryDark">@color/tsBlue200</color>
-    <color name="textInputOutline">@color/tsBlue100</color>
-    <color name="textInputTextColor">@color/grey200</color>
-    <color name="colorError">@color/tsRed</color>
+    <color name="colorSurface">@color/tsBlue50</color>
     <color name="colorBackground">@color/white</color>
+    <color name="textColorPrimary">@color/grey300</color>
+    <color name="textInputOutlineColor">@color/tsBlue100</color>
+    <color name="textInputTextColor">@color/grey200</color>
+    <color name="textInputHintColor">@color/grey100</color>
+    <color name="colorError">@color/tsRed</color>
 
     <color name="tsBlue50">#dafaf8</color>
     <color name="tsBlue100">#a1ecec</color>
@@ -24,10 +27,6 @@
     <color name="tsEmerald50">#b8f8eb</color>
     <color name="tsEmerald100">#69E5CC</color>
     <color name="tsEmerald200">#12B291</color>
-
-    <color name="textColorPrimary">#442C2E</color>
-    <color name="textInputOutlineColor">#FBB8AC</color>
-
 
     <!-- Greyscale colors -->
     <color name="white">#ffffff</color>
@@ -73,13 +72,5 @@
     <color name="accent_1">#7c8ded</color>
     <color name="accent_2">#52defe</color>
 
-    <!-- horchacha -->
-    <color name="red_mocha">#773427</color>
-    <color name="milky_mocha">#a96050</color>
-    <color name="just_coffee">#470800</color>
-
-    <color name="fake_crab">#ff9e80</color>
-    <color name="dry_crab">#ffd0b0</color>
-    <color name="cooked_crab">#c96f53</color>
 
 </resources>

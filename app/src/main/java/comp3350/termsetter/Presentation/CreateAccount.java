@@ -57,42 +57,48 @@ public class CreateAccount extends AppCompatActivity {
         // 1. Check Name
         boolean validName = accountValidation.validName(name);
         if (!validName) {
-            Toast.makeText(mContext, "The name should consist of Uppercase or lowercase characters only.", Toast.LENGTH_SHORT).show();
+            eName.setError("Name is blank, or contains invalid symbols.",null);
+            //Toast.makeText(mContext, "The name should consist of Uppercase or lowercase characters only.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         // 2. Check ID (must start with a character, then some numbers)
         boolean validID = accountValidation.validID(id);
         if (!validID) {
-            Toast.makeText(mContext, "Your student ID must begin with a character.", Toast.LENGTH_SHORT).show();
+            eStudentID.setError("ID must begin with a letter.",null);
+            //Toast.makeText(mContext, "Your student ID must begin with a character.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         // 3. Check password
         boolean validPassword = accountValidation.validPassword(password);
         if (!validPassword) {
-            Toast.makeText(mContext, "Password should have minimum length of 6, starts with a letter, and consist of at least one letter and number!", Toast.LENGTH_SHORT).show();
+            ePassword.setError("Password invalid");
+            //Toast.makeText(mContext, "Password should have minimum length of 6, starts with a letter, and consist of at least one letter and number!", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         // 4. Check confirm password
         boolean validConfirmPassword = accountValidation.validPassword(confirmPassword);
         if(!validConfirmPassword){
-            Toast.makeText(mContext, "Please check confirm password again!", Toast.LENGTH_SHORT).show();
+            eConfirmPassword.setError("Entry does not match password.");
+            //Toast.makeText(mContext, "Please check confirm password again!", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         // 5. Check email
         boolean validEmail = accountValidation.validEmail(email);
         if (!validEmail) {
-            Toast.makeText(mContext, "Your email domain should contain @myumanitoba.ca and some strings in front.", Toast.LENGTH_SHORT).show();
+            eMail.setError("Invalid email.");
+            //Toast.makeText(mContext, "Your email domain should contain @myumanitoba.ca and some strings in front.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         // 6. Check phone number (guaranteed to be just number)
         boolean validPhone = accountValidation.validPhone(phone);
         if(!validPhone){
-            Toast.makeText(mContext, "Please provide phone number (without dashes) as XXXYYYZZZZ format.", Toast.LENGTH_SHORT).show();
+            ePhone.setError("Invalid phone number");
+            //Toast.makeText(mContext, "Please provide phone number (without dashes) as XXXYYYZZZZ format.", Toast.LENGTH_SHORT).show();
             return false;
         }
 

@@ -9,7 +9,6 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorSecondary">@color/tsSecondary</item>
         <item name="android:colorBackground">@color/white</item>
-        <item name="colorError">@color/colorError</item>
 
 
         <!-- New MaterialComponents attributes. -->
@@ -19,7 +18,6 @@
         <item name="colorOnPrimary">@color/tsColorOnPrimary</item>
         <item name="colorOnSecondary">@color/tsColorOnSecondary</item>
         <item name="colorOnBackground">@color/tsColorOnBackground</item>
-        <item name="colorOnError">@color/tsColorOnError</item>
         <item name="colorOnSurface">@color/grey100</item> <!-- box outline -->
         <item name="scrimBackground">@color/mtrl_scrim_color</item>
         <item name="textAppearanceHeadline4">@style/TextAppearance.MaterialComponents.Headline4</item>
@@ -41,14 +39,10 @@
         <item name="cornerSize">16dp</item>
     </style>
 
-    <!-- EditTexts -->
-
     <style name="Widget.Termsetter.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeWidth">3dp</item>
         <item name="shapeAppearance">@style/ShapeAppearance.Termsetter.SmallComponent</item>
     </style>
-
-    <!-- Buttons -->
 
     <style name="Widget.Termsetter.Button" parent="Widget.MaterialComponents.Button">
         <item name="shapeAppearance">@style/ShapeAppearance.Termsetter.SmallComponent</item>
@@ -67,8 +61,6 @@
         <item name="android:padding">12dp</item>
     </style>
 
-
-    <!-- Text views -->
 
     <style name="TextAppearance.Termsetter.Title" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="textAllCaps">true</item>

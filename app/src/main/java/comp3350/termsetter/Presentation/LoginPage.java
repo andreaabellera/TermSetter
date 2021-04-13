@@ -3,6 +3,8 @@ package comp3350.termsetter.Presentation;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -82,12 +84,14 @@ public class LoginPage extends AppCompatActivity {
                 startActivity(intent);
             }
             else {
-                Toast.makeText(LoginPage.this, "Check your password again!", Toast.LENGTH_SHORT).show();
+                ePassword.setError("Password incorrect", null);
+                Toast.makeText(LoginPage.this, "Please check password", Toast.LENGTH_SHORT).show();
             }
         }
-            else {
-            Toast.makeText(LoginPage.this, "Check your ID again!", Toast.LENGTH_SHORT).show();
-            }
+        else {
+            eID.setError("Invalid ID", null);
+            Toast.makeText(LoginPage.this, "No account associated with that ID", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void onClickCreateAccountButton(View view) {
