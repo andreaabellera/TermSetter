@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import comp3350.termsetter.Logic.AccessManager;
+import comp3350.termsetter.Logic.TimetableLogic;
 import comp3350.termsetter.Persistence.CourseOffering;
 import comp3350.termsetter.Persistence.CourseSection;
 import comp3350.termsetter.Persistence.DomainSpecific.Student;
@@ -32,6 +33,7 @@ public class Timetable extends AppCompatActivity implements OnItemSelectedListen
     EnrollAccess enrollAccess;
     Student student;
     RecyclerTimetableDataAdapter recyclerAdapter;
+    TimetableLogic display;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
