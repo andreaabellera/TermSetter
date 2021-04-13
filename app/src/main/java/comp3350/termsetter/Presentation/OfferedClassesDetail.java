@@ -78,6 +78,7 @@ public class OfferedClassesDetail extends AppCompatActivity {
         String days = "";
         String period = "";
         int s1_id = getResources().getIdentifier("radioButtonS1", "id", getPackageName());
+        int s2_id = getResources().getIdentifier("radioButtonS2", "id", getPackageName());
         RadioGroup rg = findViewById(R.id.radioGroupSections);
         if (rg.getCheckedRadioButtonId() == s1_id) {
             TextView sectionTxt = findViewById(R.id.radioButtonS1);
@@ -88,7 +89,8 @@ public class OfferedClassesDetail extends AppCompatActivity {
             days = (String) daysTxt.getText();
             TextView periodTxt = findViewById(R.id.textS1Period);
             period = (String) periodTxt.getText();
-        } else {
+        }
+        else if (rg.getCheckedRadioButtonId() == s2_id) {
             TextView sectionTxt = findViewById(R.id.radioButtonS2);
             section = (String) sectionTxt.getText();
             TextView timeSlotTxt = findViewById(R.id.textS2Time);
@@ -96,6 +98,16 @@ public class OfferedClassesDetail extends AppCompatActivity {
             TextView daysTxt = findViewById(R.id.textS2Days);
             days = (String) daysTxt.getText();
             TextView periodTxt = findViewById(R.id.textS2Period);
+            period = (String) periodTxt.getText();
+        }
+        else {
+            TextView sectionTxt = findViewById(R.id.radioButtonS3);
+            section = (String) sectionTxt.getText();
+            TextView timeSlotTxt = findViewById(R.id.textS3Time);
+            timeSlot = (String) timeSlotTxt.getText();
+            TextView daysTxt = findViewById(R.id.textS3Days);
+            days = (String) daysTxt.getText();
+            TextView periodTxt = findViewById(R.id.textS3Period);
             period = (String) periodTxt.getText();
         }
 
