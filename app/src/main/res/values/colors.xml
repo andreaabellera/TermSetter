@@ -2,8 +2,10 @@
 <resources>
     <color name="colorPrimary">@color/tsBlue100</color>
     <color name="colorPrimaryDark">@color/tsBlue200</color>
-    <color name="colorSurface">@color/tsBlue50</color>
+    <color name="colorOnSurface">@color/grey200</color> <!-- outlines -->
     <color name="colorBackground">@color/white</color>
+
+    <color name="outlineButtonStrokeColor">@color/tsBlue200</color>
     <color name="textColorPrimary">@color/grey300</color>
     <color name="textInputOutlineColor">@color/tsBlue100</color>
     <color name="textInputTextColor">@color/grey200</color>

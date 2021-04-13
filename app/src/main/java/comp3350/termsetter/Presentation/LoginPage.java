@@ -44,6 +44,8 @@ public class LoginPage extends AppCompatActivity {
         }
         mContext = getApplicationContext();
 
+        initUIComponents();
+
         // Comment this database to switch to Real database
         // Uncomment this database to switch to Stub database
         //database = new StubDatabase(mContext,"test.db");
@@ -63,10 +65,13 @@ public class LoginPage extends AppCompatActivity {
         }
     }
 
-    public void onClickLoginButton(View view) {
+    private void initUIComponents(){
         eID = findViewById(R.id.editTextUserID);
         ePassword = findViewById(R.id.editTextPassword);
         eLogin = findViewById(R.id.buttonLogin);
+    }
+
+    public void onClickLoginButton(View view) {
         accountValidation = new AccountValidation();
 
         String inputID = eID.getText().toString();
@@ -85,7 +90,7 @@ public class LoginPage extends AppCompatActivity {
             }
             else {
                 ePassword.setError("Password incorrect", null);
-                Toast.makeText(LoginPage.this, "Please check password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginPage.this, "Password incorrect", Toast.LENGTH_SHORT).show();
             }
         }
         else {
@@ -95,11 +100,8 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void onClickCreateAccountButton(View view) {
-        // Brief message
-        // Shows create account page
-        Toast.makeText(this, "Create Account Button pressed!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Loading Account Registration...", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, CreateAccount.class);
         startActivity(intent);
-
     }
 }
