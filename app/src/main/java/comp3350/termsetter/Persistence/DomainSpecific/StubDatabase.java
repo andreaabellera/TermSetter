@@ -91,27 +91,29 @@ public class StubDatabase implements StudentPersistence {
     }
 
     public boolean updatePassword(String newPassword) {
+        boolean check = false;
         if (currentID != null) {
             int lookupIndex = findStudentIndex(currentID);
             String passwordKey = "password" + lookupIndex;
             editor.putString(passwordKey, newPassword);
             editor.apply();
-            return true;
+            check = true;
         }
 
-        return false;
+        return check;
     }
 
     public boolean updateEmail(String newEmail) {
+        boolean check = false;
         if (currentID != null) {
             int lookupIndex = findStudentIndex(currentID);
             String emailKey = "email" + lookupIndex;
             editor.putString(emailKey, newEmail);
             editor.apply();
-            return true;
+            check = true;
         }
 
-        return false;
+        return check;
     }
 
     public boolean isEmpty() {

@@ -54,14 +54,14 @@ public class LoginPage extends AppCompatActivity {
         if(!(database instanceof StubDatabase)) {
             accessManager = new AccessManager();
             database = accessManager.getStudentPersistence();
-            Toast.makeText(LoginPage.this, "REAL DB", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(LoginPage.this, "REAL DB", Toast.LENGTH_SHORT).show();
 
         }
         else
         {
             accessManager = new AccessManager(mContext);
             database = accessManager.getStudentPersistence();
-            Toast.makeText(LoginPage.this, "FakeDB", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(LoginPage.this, "Fake DB", Toast.LENGTH_SHORT).show();
         }
     }
 

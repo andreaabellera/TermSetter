@@ -63,11 +63,12 @@ public class AccountUpdateEmail extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else {
+                    // same issue. Now the user knows that thi isnt working.. now what? Should this do nothing? Or just be an If
                     Toast.makeText(this, "Update Email is not working!", Toast.LENGTH_SHORT).show();
                 }
             }
             else {
-                Toast.makeText(AccountUpdateEmail.this, "Please confirm your emails are similar!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountUpdateEmail.this, "Please confirm your emails match!", Toast.LENGTH_SHORT).show();
             }
         } else {
             Toast.makeText(AccountUpdateEmail.this, "Please ensure your emails are valid!", Toast.LENGTH_SHORT).show();
