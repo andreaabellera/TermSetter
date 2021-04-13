@@ -55,6 +55,16 @@
     <string name="title_activity_login_page">Login Page</string>
     <string name="title_activity_create_account">Create Account</string>
 
+    <string name="spinner_title">Select Day</string>
+    <string-array name="days_array">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+    </string-array>
+
+
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
