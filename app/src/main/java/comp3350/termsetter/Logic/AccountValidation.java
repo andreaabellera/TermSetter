@@ -77,14 +77,8 @@ public class AccountValidation{
     }
 
     public boolean verifyStudent(String sID, String password) {
-        // check if a student exists, and has valid ID and password
-        // then check if the student record matches
         Student student = database.getStudent(sID);
-
-        if(student != null && student.getPassword().equals(password))
-                return true;
-        
-        return false;
+        return student != null && student.getPassword().equals(password);
     }
 
 }
