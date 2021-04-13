@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import comp3350.termsetter.Logic.AccountValidation;
-import comp3350.termsetter.Persistence.DomainSpecific.Student;
+import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 import static org.junit.Assert.*;
 
@@ -14,19 +14,20 @@ public class AccountValidationTest {
     AccountValidation av;
     String validName = "Name Surname";
     String validID = "username";
-    String validPasswd = "pass1234";
+    String validPasswd = "123pass";
     String validEmail = "mailme@myumanitoba.ca";
     String validPhone = "2045588878";
     String validPhoneDash = "204-558-8878";
     String validPhoneBrackets = "(204) 558 8878";
+    String validPhoneCountryCode = "+1(204) 558-8878";
 
     String empty = "";
     String longName = "pneumonoultramicroscopicsilicovulcanoconosis";
     String noLetterPass = "123456";
     String noNumberPass = "abcdef";
-    String longPass = "abcdefghijklmnop123456789";
+    String longPass = "123456abcdefgh";
     String emptyEmailName = "@myumanitoba.ca";
-    String longEmailName = "pneumonoultramicroscopicsilicovulcanoconosisasdfasdfasdfsadfeonckekndoaoneoifaes@myumanitoba.ca";
+    String longEmailName = "pneumonoultramicroscopicsilicovulcanoconosis@myumanitoba.ca";
     String invalidDomain = "@myumanitoba.com";
     String noDomain = "mailme-myumanitoba.ca";
     String phoneWithInvalidChar = "20455a8878";
@@ -41,8 +42,10 @@ public class AccountValidationTest {
 
     String newEmail = "mailAndrea@myumanitoba.ca";
     String confirmEmailTrue = "mailAndrea@myumanitoba.ca";
+    String confirmEmailFalse = "mailTuan@myumanitoba.ca";
 
-    Student currentStudent = new Student(validName, validPasswd, validEmail, validPhone, validID);
+    User currentUser = new User(validName, validPasswd, validEmail, validPhone, validID);
+
 
     @Before
     public void setup(){
@@ -78,7 +81,7 @@ public class AccountValidationTest {
         System.out.println("\nStarting testInvalidNameNoSpace: given name is not valid\n");
         String nospace = "notavalidname";
         boolean result = av.validName(nospace);
-        assertTrue(result);
+        assertFalse(result);
         System.out.println("End testInvalidNameNoSpace: given name is not valid\n");
     }
 
@@ -187,6 +190,14 @@ public class AccountValidationTest {
     }
 
     @Test
+    public void testValidPhoneWithCountryCode() {
+        System.out.println("\nStarting testValidPhoneWithCountryCode: given phone number is valid\n");
+        boolean result = av.validPhone(validPhoneCountryCode);
+        assertTrue(result);
+        System.out.println("End testValidPhoneWithCountryCode: given phone number is valid\n");
+    }
+
+    @Test
     public void testInvalidPhoneEmpty() {
         System.out.println("\nStarting testInvalidPhoneEmpty: given phone number is not valid\n");
         boolean result = av.validPhone(empty);
@@ -269,7 +280,7 @@ public class AccountValidationTest {
     @Test
     public void testVerifyPasswordTrue() {
         System.out.println("\nStarting testVerifyPasswordTrue: given 2 passwords are valid\n");
-        boolean result = validPasswd.equals(currentStudent.getPassword());
+        boolean result = validPasswd.equals(currentUser.getPassword());
         assertTrue(result);
         System.out.println("End testVerifyPasswordTrue: given 2 passwords are valid\n");
     }
@@ -277,7 +288,7 @@ public class AccountValidationTest {
     @Test
     public void testVerifyPasswordFalse() {
         System.out.println("\nStarting testVerifyPasswordFalse: given 2 passwords are invalid\n");
-        boolean result = newPass.equals(currentStudent.getPassword());
+        boolean result = newPass.equals(currentUser.getPassword());
         assertFalse(result);
         System.out.println("End testVerifyPasswordFalse: given 2 passwords are invalid\n");
     }

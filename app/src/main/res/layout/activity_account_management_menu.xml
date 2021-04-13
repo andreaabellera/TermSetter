@@ -1,70 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Presentation.AccountManagementMenu">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/accountManagementHeader"
+        style="@style/CustomHeader"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:padding="24dp"
-        android:orientation="vertical">
+        android:layout_marginTop="32dp"
+        android:text="@string/header_account_management"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            style="@style/TextAppearance.Termsetter.Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_gravity="center"
-            android:text="@string/header_account_management"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.Termsetter.OutlinedButton"
-            android:id="@+id/buttonManageProfile"
+        <Button
+            android:id="@+id/accountManagementBtn1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
             android:onClick="openManageProfile"
             android:text="@string/btn_account_management_manage_profile"
-            app:icon="@drawable/ic_baseline_person_24"
+            app:layout_constraintBottom_toTopOf="@+id/accountManagementBtn2"
+            app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="1dp" />
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.Termsetter.OutlinedButton"
-            android:id="@+id/buttonChangePassword"
+        <Button
+            android:id="@+id/accountManagementBtn2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
             android:onClick="openChangePassword"
             android:text="@string/btn_account_management_change_password"
-            app:icon="@drawable/ic_baseline_https_24"
+            app:layout_constraintBottom_toTopOf="@+id/accountManagementBtn3"
+            app:layout_constraintTop_toBottomOf="@+id/accountManagementBtn1"
             tools:layout_editor_absoluteX="20dp" />
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.Termsetter.OutlinedButton"
-            android:id="@+id/buttonUpdateEmail"
+        <Button
+            android:id="@+id/accountManagementBtn3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="32dp"
             android:onClick="openUpdateEmail"
             android:text="@string/btn_account_management_update_email"
-            app:icon="@drawable/ic_baseline_mail_outline_24"/>
+            app:layout_constraintBottom_toTopOf="@+id/accountManagementTxt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/accountManagementBtn2" />
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:id="@+id/buttonReturn"
+        <TextView
+            android:id="@+id/accountManagementTxt"
+            style="@style/CustomClickableText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
             android:onClick="returnToMainMenu"
-            android:text="@string/txtbtn_back"/>
-    </LinearLayout>
+            android:text="@string/txtbtn_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/accountManagementBtn3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,23 +3,26 @@ package comp3350.termsetter.Tests;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import static org.junit.Assert.*;
+import comp3350.termsetter.Logic.OfferedClassLogic;
+import comp3350.termsetter.Persistence.CourseCategoryPersistence;
+import comp3350.termsetter.Persistence.CourseOffering;
+import comp3350.termsetter.Persistence.CourseSection;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.CourseAccess;
-import comp3350.termsetter.utils.TestUtils;
+import comp3350.termsetter.Persistence.Faculty;
+import comp3350.termsetter.Persistence.Main;
+import comp3350.termsetter.Presentation.OfferedClassesCategories;
 
 public class CourseAccessTest {
 
     CourseAccess ca;
-    private File tempDB;
 
     @Before
-    public void setup() throws IOException {
-        this.tempDB = TestUtils.copyDB();
-        ca = new CourseAccess(this.tempDB.getAbsolutePath().replace(".script", ""));
+    public void setup(){
+        String path = new String(Main.getDBPathName());
+        ca = new CourseAccess(path);
     }
 
     @Test

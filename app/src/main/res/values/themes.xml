@@ -1,88 +1,96 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Custom parent theme presets from which all themes will inherit-->
-    <style name="TermsetterBase" parent="Theme.AppCompat.Light.NoActionBar">
-
-
-        <!-- Original AppCompat attributes. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorSecondary">@color/tsSecondary</item>
-        <item name="colorOnSurface">@color/colorOnSurface</item>
-        <item name="android:colorBackground">@color/white</item>
-
-
-        <!-- New MaterialComponents attributes. -->
-        <item name="colorPrimaryVariant">@color/tsPrimaryVariant</item>
-        <item name="colorSecondaryVariant">@color/tsSecondaryVariant</item>
-        <item name="colorOnPrimary">@color/tsColorOnPrimary</item>
-        <item name="colorOnSecondary">@color/tsColorOnSecondary</item>
-        <item name="colorOnBackground">@color/tsColorOnBackground</item>
-        <item name="scrimBackground">@color/mtrl_scrim_color</item>
-        <item name="textAppearanceHeadline4">@style/TextAppearance.MaterialComponents.Headline4</item>
-        <item name="textAppearanceHeadline5">@style/TextAppearance.MaterialComponents.Headline5</item>
-        <item name="textAppearanceHeadline6">@style/TextAppearance.MaterialComponents.Headline6</item>
-        <item name="textAppearanceSubtitle1">@style/TextAppearance.MaterialComponents.Subtitle1</item>
-        <item name="textAppearanceSubtitle2">@style/TextAppearance.MaterialComponents.Subtitle2</item>
-        <item name="textAppearanceBody1">@style/TextAppearance.MaterialComponents.Body1</item>
-        <item name="textAppearanceBody2">@style/TextAppearance.MaterialComponents.Body2</item>
-        <item name="textAppearanceCaption">@style/TextAppearance.MaterialComponents.Caption</item>
-        <item name="textAppearanceButton">@style/TextAppearance.Termsetter.Button</item>
-
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryDark</item>
+    <style name="TermsetterBase" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:buttonStyle">@style/CustomButton</item>
     </style>
 
-    <style name="ShapeAppearance.Termsetter.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">16dp</item>
-    </style>
+    <!-- Custom parent button presets (all buttons will inherit-->
+    <style name="CustomButton" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">@color/neo_aquayo</item>
+        <item name="android:textColor">@color/faded_black</item>
 
-    <style name="Widget.Termsetter.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeWidth">3dp</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.Termsetter.SmallComponent</item>
-    </style>
-
-    <!-- -->
-
-    <style name="Widget.Termsetter.Button" parent="Widget.MaterialComponents.Button">
-        <item name="shapeAppearance">@style/ShapeAppearance.Termsetter.SmallComponent</item>
-    </style>
-
-    <style name="Widget.Termsetter.MenuButton" parent="Widget.Termsetter.Button">
+        <item name="android:textSize">14sp</item>
         <item name="android:padding">24dp</item>
-        <item name="textAppearanceButton">@style/TextAppearance.Termsetter.MenuButton</item>
+        <item name="android:background">@drawable/custom_rounded_corners</item>
+        <item name="android:letterSpacing">.15</item>
     </style>
 
-    <style name="Widget.Termsetter.ConfirmButton" parent="Widget.Termsetter.Button">
-        <item name="android:padding">12dp</item>
-    </style>
-
-    <!-- -->
-
-    <style name="Widget.Termsetter.OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:strokeColor">@color/outlineButtonStrokeColor</item>
-        <item name="android:strokeWidth">5</item>
-        <item name="android:padding">24dp</item>
-        <item name="textAppearanceButton">@style/TextAppearance.Termsetter.MenuButton</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.Termsetter.SmallComponent</item>
-    </style>
-
-    <style name="TextAppearance.Termsetter.MenuButton" parent="TextAppearance.MaterialComponents.Button">
+    <style name="CustomHeader" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">24sp</item>
+        <item name="android:letterSpacing">.15</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/faded_black</item>
 
     </style>
 
-    <!-- -->
-
-    <style name="TextAppearance.Termsetter.Title" parent="TextAppearance.MaterialComponents.Headline5">
-        <item name="textAllCaps">true</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:letterSpacing">.1</item>
+    <style name="CustomEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:padding">12dp</item>
+        <item name="android:background">@drawable/custom_rounded_corners</item>
+        <item name="android:backgroundTint">@color/cool_grey</item>
     </style>
 
-    <style name="TextAppearance.Termsetter.Button" parent="TextAppearance.MaterialComponents.Button">
-        <item name="android:textSize">16sp</item>
+    <style name="CustomClickableText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/neo_aquayo</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:letterSpacing">.15</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:background">@drawable/custom_rounded_corners</item>
+    </style>
+
+
+
+
+
+    <!-- Ignore everything -->
+
+
+
+    <!-- Aquira filled buttons -->
+    <style name="Aquira.Button.Primary" parent="CustomButton">
+    </style>
+
+    <!-- Aquira outlined buttons -->
+    <style name="Aquira.Button.Secondary" parent="CustomButton">
+        <item name="android:strokeWidth">2</item>
+    </style>
+
+    <!-- 'Aquira' dark theme -->
+    <style name="Aquira.Dark" parent="TermsetterBase">
+        <item name="android:colorBackground">@color/dark_cool_grey</item>
+        <item name="android:buttonStyle">@style/Aquira.Button.Primary</item>
+
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/neo_purpyo</item>
+        <item name="colorPrimaryVariant">@color/faded_black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Status bar color (top, has clock) -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    </style>
+
+
+
+
+
+    <!-- Base application theme. -->
+    <style name="Theme.MyApplication" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
     </style>
 </resources>

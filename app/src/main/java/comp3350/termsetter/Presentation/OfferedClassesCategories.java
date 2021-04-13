@@ -3,17 +3,17 @@ package comp3350.termsetter.Presentation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.List;
 import comp3350.termsetter.Logic.OfferedClassLogic;
+import comp3350.termsetter.UIAdapters.RecyclerFacultyDataAdapter;
 import comp3350.termsetter.Persistence.Faculty;
 import comp3350.termsetter.R;
-import comp3350.termsetter.UIAdapters.RecyclerFacultyDataAdapter;
+import java.util.List;
+
+
 
 public class OfferedClassesCategories extends AppCompatActivity {
 
@@ -29,16 +29,17 @@ public class OfferedClassesCategories extends AppCompatActivity {
 
     private void initData(){
         try{
-            OfferedClassLogic dataRequester = new OfferedClassLogic(true, this);
+            OfferedClassLogic dataRequester = new OfferedClassLogic(false, this);
             courseData = dataRequester.getCourseData();
         }
         catch(Exception e){
+            System.out.println("Database load failed.");
             e.printStackTrace();
         }
     }
 
     private void initWidgets(){
-        RecyclerView faculties = (RecyclerView)findViewById(R.id.recycleViewFaculties);
+        RecyclerView faculties = (RecyclerView)findViewById(R.id.faculties_rv);
         GridLayoutManager layoutManager = new GridLayoutManager(this,2);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         faculties.setLayoutManager(layoutManager);

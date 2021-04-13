@@ -8,11 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import comp3350.termsetter.Logic.AccountValidation;
-import comp3350.termsetter.Persistence.DomainSpecific.Student;
-import comp3350.termsetter.Persistence.StudentPersistence;
+import comp3350.termsetter.Persistence.DomainSpecific.User;
+import comp3350.termsetter.Persistence.UserPersistence;
 
-public class StudentAccess implements StudentPersistence {
+public class StudentAccess implements UserPersistence {
 
     Connection connect = null;
     private final String dbPath;
@@ -24,171 +23,145 @@ public class StudentAccess implements StudentPersistence {
 
     private Connection connection() throws SQLException {
 
-        return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "");
+        return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath
+                + ";shutdown=true", "SA", "");
     }
 
 
-    public Student insertStudent(Student student) {
+    public User insertUser(User user) throws SQLException {
 
         // first connect
         try{
             connect = this.connection();
-
             //query
             PreparedStatement statement = connect.prepareStatement("INSERT INTO students VALUES (?,?,?,?,?);");
-            statement.setString(5, student.getStudentID());
-            statement.setString(1, student.getName());
-            statement.setString(2, student.getPassword());
-            statement.setString(3, student.getEmailAddress());
-            statement.setString(4, student.getPhoneNumber());
+            statement.setString(5, user.getStudentID());
+            statement.setString(1, user.getName());
+            statement.setString(2, user.getPassword());
+            statement.setString(3, user.getEmailAddress());
+            statement.setString(4, user.getPhoneNumber());
             // ResultSet resultSet = statement.executeQuery();
 
             //Update DB
             statement.executeUpdate();
-            connect.close();
         }
         catch (SQLException e){
 
         }
-        return student;
+
+        return user;
     }
 
-    public Student getStudent(String student_id) {
+    public User getUser(String student_id) throws SQLException {
         // will change this later
-        Student student = null;
-        try {
-            connect = this.connection();
+        connect = this.connection();
 
-            //query
-            PreparedStatement statement = connect.prepareStatement("select * from students where student_id = ?");
-            statement.setString(1, student_id);
-            ResultSet resultSet = statement.executeQuery();
+        List<String> student = new ArrayList<>();
+        User user = null;
 
-            //collect the data from the query
-            while (resultSet.next()) {
+        //query
+        PreparedStatement statement = connect.prepareStatement("select * from students where student_id = ?");
+        statement.setString(1, student_id);
+        ResultSet resultSet = statement.executeQuery();
 
-                // Enter data into fields and create a new student
-                final String studentID = resultSet.getString("student_id");
-                final String name = resultSet.getString("name");
-                final String passID = resultSet.getString("password");
-                final String phoneNumber = resultSet.getString("phoneNum");
-                final String email = resultSet.getString("email");
+        //collect the data from the query
+        while (resultSet.next()) {
 
-                student = new Student(name, passID, email, phoneNumber, studentID);
-            }
-            //whoever uses this method, check if the student is null or not.
-            connect.close();
+            // Enter data into fields and create a new user
+            final String studentID = resultSet.getString("student_id");
+            final String name = resultSet.getString("name");
+            final String passID = resultSet.getString("password");
+            final String phoneNumber = resultSet.getString("phoneNum");
+            final String email = resultSet.getString("email");
+
+            user = new User( name, passID, phoneNumber, email, studentID);
+
+
         }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return student;
+
+        //whoever uses this method, check if the user is null or not.
+        return user;
     }
 
     @Override
-    public boolean isEmpty() {
+    public boolean isEmpty() throws SQLException {
         List<String> studentIDs = new ArrayList<>();
+        // first connect
+        connect = this.connection();
 
-        try {
-            // first connect
-            connect = this.connection();
+        //query
+        PreparedStatement statement = connect.prepareStatement("select * from students");
 
-            //query
-            PreparedStatement statement = connect.prepareStatement("select * from students");
-            ResultSet resultSet = statement.executeQuery();
+        ResultSet resultSet = statement.executeQuery();
 
-            connect.close();
-            return resultSet.next();
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
+        return resultSet.next();
     }
 
 
-    public List<String> getAllStudents() {
+    public List<String> getAllStudents() throws SQLException {
         List<String> studentIDs = new ArrayList<>();
-
         // first connect
-        try {
-            connect = connection();
-            PreparedStatement statement = connect.prepareStatement("select * from students");
-            ResultSet resultSet = statement.executeQuery();
+        connect = this.connection();
 
-            //collect
-            while (resultSet.next()) {
+        //query
+        PreparedStatement statement = connect.prepareStatement("select * from students");
 
-                //just get the ID's for now
-                final String student_id = resultSet.getString("student_id");
+        ResultSet resultSet = statement.executeQuery();
 
-                //put them in a list for now
-                studentIDs.add(student_id);
-            }
-            connect.close();
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
+        //collect
+        while (resultSet.next()) {
+
+            //just get the ID's for now
+            final String student_id = resultSet.getString("student_id");
+
+            //put them in a list for now
+            studentIDs.add(student_id);
         }
         return studentIDs;
     }
 
-    public void setCurrentStudentID(String sID) {
+    public void setCurrentUser(String sID) {
         this.currentID = sID;
     }
 
     @Override
-    public Student getCurrentStudentID() {
-        return getStudent(currentID);
+    public User getCurrentUser() throws SQLException {
+        return getUser(currentID);
     }
 
     @Override
-    public boolean updatePassword(String password) {
-        if ((currentID != null) && (getStudent(currentID)) != null) {
-            Student student = getStudent(currentID);
+    public boolean updatePassword(String password) throws SQLException {
+        if ((currentID != null) && (getUser(currentID)) != null) {
+            User user = getUser(currentID);
+            connect = this.connection();
 
-            try {
-                connect = this.connection();
-                PreparedStatement statement = connect.prepareStatement("UPDATE students " +
-                        "SET password = ? WHERE student_id = ?");
-                statement.setString(1, password);
-                statement.setString(2, currentID);
+            PreparedStatement statement = connect.prepareStatement("UPDATE students " +
+                    "SET password = ? WHERE student_id = ?");
+            statement.setString(1, password);
+            statement.setString(2, currentID);
 
-                statement.executeUpdate();
-                statement.close();
-                connect.close();
-                return true;
-            }
-            catch (SQLException e) {
-                e.printStackTrace();
-            }
+            statement.executeUpdate();
+            return true;
         }
+
         return false;
     }
 
     @Override
-    public boolean updateEmail(String email) {
-        if ((currentID != null) && (getStudent(currentID)) != null) {
-            Student student = getStudent(currentID);
+    public boolean updateEmail(String email) throws SQLException {
+        if ((currentID != null) && (getUser(currentID)) != null) {
+            User user = getUser(currentID);
+            connect = this.connection();
 
-            try {
-                connect = this.connection();
+            PreparedStatement statement = connect.prepareStatement("UPDATE students " +
+                    "SET email = ? WHERE student_id = ?");
+            statement.setString(1, email);
+            statement.setString(2, currentID);
 
-
-                PreparedStatement statement = connect.prepareStatement("UPDATE students " +
-                        "SET email = ? WHERE student_id = ?");
-                statement.setString(1, email);
-                statement.setString(2, currentID);
-
-                statement.executeUpdate();
-                statement.close();
-                connect.close();
-                return true;
-            }
-            catch (SQLException e) {
-                e.printStackTrace();
-            }
+            statement.executeUpdate();
+            return true;
         }
+
         return false;
     }
 }

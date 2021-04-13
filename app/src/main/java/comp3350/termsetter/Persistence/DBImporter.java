@@ -2,6 +2,7 @@ package comp3350.termsetter.Persistence;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,7 +25,6 @@ public class DBImporter {
             }
             copyAssetsToDirectory(context, assetNames, dataDirectory);
             Main.setDBPathName(dataDirectory.toString() + "/" + Main.getDBPathName());
-            Main.confirmImport();
 
         } catch (final IOException ioe) {
             throw new IOException("Unable to access application data: " + ioe.getMessage());

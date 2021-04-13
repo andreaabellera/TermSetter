@@ -1,5 +1,6 @@
 package comp3350.termsetter.Presentation;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,23 +8,29 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import comp3350.termsetter.Logic.AccessManager;
+import java.sql.SQLException;
+
+import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Logic.AccountValidation;
-import comp3350.termsetter.Persistence.DomainSpecific.Student;
-import comp3350.termsetter.Persistence.StudentPersistence;
+import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
+import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
+import comp3350.termsetter.Persistence.UserPersistence;
 import comp3350.termsetter.R;
+
+import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 public class AccountUpdateEmail extends AppCompatActivity {
     private static Context mContext;
-    private StudentPersistence database;
+    private UserPersistence database;
     private boolean validate;
     private EditText newEmail;
     private EditText newEmailConfirm;
     private AccountValidation accountValidation;
 
-    private AccessManager accessManager;
+    private AccessStudents accessStudents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,23 +39,28 @@ public class AccountUpdateEmail extends AppCompatActivity {
 
         mContext = getApplicationContext();
         //database = new StubDatabase(mContext,"test.db");
-        accessManager = new AccessManager();
-        database = accessManager.getStudentPersistence();
-        displayProfile();
+        //database = new StudentAccess("users.db");
 
+        accessStudents = new AccessStudents();
+        database = accessStudents.getStudentPersistence();
+        try {
+            displayProfile();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
-    private void displayProfile()  {
-        Student student = database.getCurrentStudentID();
-        TextView studentEmail = findViewById(R.id.userInfoCurrentEmail);
-        studentEmail.setText(student.getEmailAddress());
+    private void displayProfile() throws SQLException {
+        User user = database.getCurrentUser();
+        TextView studentEmail = findViewById(R.id.updateEmailTxtStudent);
+        studentEmail.setText(user.getEmailAddress());
     }
 
-    public void updateEmail(View view) {
+    public void updateEmail(View view) throws SQLException {
         accountValidation = new AccountValidation();
 
-        newEmail = findViewById(R.id.editTextNewEmail);
-        newEmailConfirm = findViewById(R.id.editTextConfirmEmail);
+        newEmail = findViewById(R.id.updateEmailEdtxt1);
+        newEmailConfirm = findViewById(R.id.updateEmailEdtxt2);
 
         String inputNewEmail = newEmail.getText().toString();
         String inputNewEmailConfirm = newEmailConfirm.getText().toString();
@@ -60,9 +72,12 @@ public class AccountUpdateEmail extends AppCompatActivity {
                     Intent intent = new Intent(AccountUpdateEmail.this, AccountManagementMenu.class);
                     startActivity(intent);
                 }
+                else {
+                    Toast.makeText(this, "Update Email is not working!", Toast.LENGTH_SHORT).show();
+                }
             }
             else {
-                Toast.makeText(AccountUpdateEmail.this, "Please confirm your emails match!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountUpdateEmail.this, "Please confirm your emails are similar!", Toast.LENGTH_SHORT).show();
             }
         } else {
             Toast.makeText(AccountUpdateEmail.this, "Please ensure your emails are valid!", Toast.LENGTH_SHORT).show();
