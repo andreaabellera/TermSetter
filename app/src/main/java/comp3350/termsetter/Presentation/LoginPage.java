@@ -3,6 +3,8 @@ package comp3350.termsetter.Presentation;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +44,8 @@ public class LoginPage extends AppCompatActivity {
         }
         mContext = getApplicationContext();
 
+        initUIComponents();
+
         // Comment this database to switch to Real database
         // Uncomment this database to switch to Stub database
         //database = new StubDatabase(mContext,"test.db");
@@ -61,10 +65,13 @@ public class LoginPage extends AppCompatActivity {
         }
     }
 
-    public void onClickLoginButton(View view) {
+    private void initUIComponents(){
         eID = findViewById(R.id.editTextUserID);
         ePassword = findViewById(R.id.editTextPassword);
         eLogin = findViewById(R.id.buttonLogin);
+    }
+
+    public void onClickLoginButton(View view) {
         accountValidation = new AccountValidation();
 
         String inputID = eID.getText().toString();
@@ -82,20 +89,19 @@ public class LoginPage extends AppCompatActivity {
                 startActivity(intent);
             }
             else {
-                Toast.makeText(LoginPage.this, "Check your password again!", Toast.LENGTH_SHORT).show();
+                ePassword.setError("Password incorrect", null);
+                Toast.makeText(LoginPage.this, "Password incorrect", Toast.LENGTH_SHORT).show();
             }
         }
-            else {
-            Toast.makeText(LoginPage.this, "Check your ID again!", Toast.LENGTH_SHORT).show();
-            }
+        else {
+            eID.setError("Invalid ID", null);
+            Toast.makeText(LoginPage.this, "No account associated with that ID", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void onClickCreateAccountButton(View view) {
-        // Brief message
-        // Shows create account page
-        Toast.makeText(this, "Create Account Button pressed!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Loading Account Registration...", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, CreateAccount.class);
         startActivity(intent);
-
     }
 }

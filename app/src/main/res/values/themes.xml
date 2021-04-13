@@ -1,37 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="ShapeAppearance.Termsetter.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
-        <item name="cornerFamily">cut</item>
-        <item name="cornerSize">12dp</item>
-    </style>
-
-    <style name="ShapeAppearance.Termsetter.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
-        <item name="cornerFamily">cut</item>
-        <item name="cornerSize">12dp</item>
-    </style>
-
     <!-- Custom parent theme presets from which all themes will inherit-->
     <style name="TermsetterBase" parent="Theme.AppCompat.Light.NoActionBar">
 
-        <!-- General design of components, eg. editTexts, buttons -->
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Termsetter.SmallComponent</item>
-        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Termsetter.LargeComponent</item>
 
         <!-- Original AppCompat attributes. -->
-        <item name="colorPrimary">@color/tsPrimary</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorSecondary">@color/tsSecondary</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
         <item name="android:colorBackground">@color/white</item>
-        <item name="colorError">@color/tsError</item>
+
 
         <!-- New MaterialComponents attributes. -->
         <item name="colorPrimaryVariant">@color/tsPrimaryVariant</item>
         <item name="colorSecondaryVariant">@color/tsSecondaryVariant</item>
-        <item name="colorSurface">@color/tsSurface</item>
         <item name="colorOnPrimary">@color/tsColorOnPrimary</item>
         <item name="colorOnSecondary">@color/tsColorOnSecondary</item>
         <item name="colorOnBackground">@color/tsColorOnBackground</item>
-        <item name="colorOnError">@color/tsColorOnError</item>
-        <item name="colorOnSurface">@color/tsColorOnSurface</item>
         <item name="scrimBackground">@color/mtrl_scrim_color</item>
         <item name="textAppearanceHeadline4">@style/TextAppearance.MaterialComponents.Headline4</item>
         <item name="textAppearanceHeadline5">@style/TextAppearance.MaterialComponents.Headline5</item>
@@ -41,24 +27,62 @@
         <item name="textAppearanceBody1">@style/TextAppearance.MaterialComponents.Body1</item>
         <item name="textAppearanceBody2">@style/TextAppearance.MaterialComponents.Body2</item>
         <item name="textAppearanceCaption">@style/TextAppearance.MaterialComponents.Caption</item>
-        <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Button</item>
-        <item name="textAppearanceOverline">@style/TextAppearance.MaterialComponents.Overline</item>
+        <item name="textAppearanceButton">@style/TextAppearance.Termsetter.Button</item>
 
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryDark</item>
     </style>
 
-    <!-- Base application theme. -->
-    <style name="Theme.MyApplication" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+    <style name="ShapeAppearance.Termsetter.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="Widget.Termsetter.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeWidth">3dp</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Termsetter.SmallComponent</item>
+    </style>
+
+    <!-- -->
+
+    <style name="Widget.Termsetter.Button" parent="Widget.MaterialComponents.Button">
+        <item name="shapeAppearance">@style/ShapeAppearance.Termsetter.SmallComponent</item>
+    </style>
+
+    <style name="Widget.Termsetter.MenuButton" parent="Widget.Termsetter.Button">
+        <item name="android:padding">24dp</item>
+        <item name="textAppearanceButton">@style/TextAppearance.Termsetter.MenuButton</item>
+    </style>
+
+    <style name="Widget.Termsetter.ConfirmButton" parent="Widget.Termsetter.Button">
+        <item name="android:padding">12dp</item>
+    </style>
+
+    <!-- -->
+
+    <style name="Widget.Termsetter.OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:strokeColor">@color/outlineButtonStrokeColor</item>
+        <item name="android:strokeWidth">5</item>
+        <item name="android:padding">24dp</item>
+        <item name="textAppearanceButton">@style/TextAppearance.Termsetter.MenuButton</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Termsetter.SmallComponent</item>
+    </style>
+
+    <style name="TextAppearance.Termsetter.MenuButton" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+    <!-- -->
+
+    <style name="TextAppearance.Termsetter.Title" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">.1</item>
+    </style>
+
+    <style name="TextAppearance.Termsetter.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textSize">16sp</item>
     </style>
 </resources>

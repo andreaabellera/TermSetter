@@ -11,21 +11,23 @@
         android:id="@+id/contentUpdateEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="true"
+        android:padding="24dp"
         android:orientation="vertical">
 
         <TextView
-            style="@style/TextAppearance.MaterialComponents.Headline4"
+            style="@style/TextAppearance.Termsetter.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="8dp"
             android:text="@string/header_update_email" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="24dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -56,12 +58,15 @@
                 android:text="@string/txt_update_email_prompt2" />
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="@dimen/Termsetter.EditText.Width"
+                style="@style/Widget.Termsetter.TextInputLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:hint="@string/txt_update_email_hint1"
-                android:inputType="textEmailAddress">
+                android:inputType="textEmailAddress"
+                app:helperTextEnabled="true"
+                app:helperText="Must be a @myumanitoba.ca email address"
+                app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextNewEmail"
@@ -73,15 +78,16 @@
                 android:id="@+id/promptConfirmEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/txt_update_email_prompt3"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="@dimen/Termsetter.EditText.Width"
+                style="@style/Widget.Termsetter.TextInputLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/txt_update_email_hint1"
-                android:inputType="textEmailAddress">
+                android:inputType="textEmailAddress"
+                app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextConfirmEmail"
@@ -102,7 +108,7 @@
                     android:text="Cancel"/>
 
                 <Button
-                    style="@style/Widget.MaterialComponents.Button"
+                    style="@style/Widget.Termsetter.ConfirmButton"
                     android:id="@+id/buttonConfirmEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
