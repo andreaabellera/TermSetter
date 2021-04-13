@@ -1,12 +1,7 @@
 package comp3350.termsetter.AcceptanceTests;
-import comp3350.termsetter.Presentation.AccountManageProfile;
-import comp3350.termsetter.Presentation.CreateAccount;
-import comp3350.termsetter.Presentation.MainActivity;
 import comp3350.termsetter.R;
 import comp3350.termsetter.Presentation.LoginPage;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,7 +35,7 @@ public class ChangePasswordTest {
         onView(withId(R.id.buttonLogin)).perform(click());
 
         // Navigate to account change password activity
-        onView(withId(R.id.homeBtn1)).perform(click());
+        onView(withId(R.id.homeManageAccountBtn)).perform(click());
         onView(withId(R.id.buttonChangePassword)).perform(click());
 
         // Change password
@@ -54,7 +49,7 @@ public class ChangePasswordTest {
 
         // Log out
         onView(withId(R.id.buttonReturn)).perform(click());
-        onView(withId(R.id.homeBtn4)).perform(click());
+        onView(withId(R.id.homeLogoutBtn)).perform(click());
 
         // Log in with new password
         onView(withId(R.id.editTextUserID)).perform(typeText(studentID), closeSoftKeyboard());
@@ -65,7 +60,7 @@ public class ChangePasswordTest {
         System.out.println("\nReverting to old password...\n");
 
         // Revert password
-        onView(withId(R.id.homeBtn1)).perform(click());
+        onView(withId(R.id.homeManageAccountBtn)).perform(click());
         onView(withId(R.id.buttonChangePassword)).perform(click());
         onView(withId(R.id.editTextCurrentPassword)).perform(typeText(newPassword), closeSoftKeyboard());
         onView(withId(R.id.editTextNewPassword)).perform(typeText(password), closeSoftKeyboard());

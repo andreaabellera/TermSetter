@@ -19,9 +19,7 @@ public class CourseCategorySQLDriver implements CourseCategoryPersistence{
         return categories.getFaculties();
     }
 
-    private void init() {
-        categories = new CourseCategories();
-    }
+    private void init() { categories = new CourseCategories(); }
 
     private void runQueries() throws SQLException {
         List<String> facultyResultSet = courseAccess.getAllFaculties();

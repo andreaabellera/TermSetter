@@ -6,20 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Presentation.LoginPage">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipChildren="false"
         android:clipToPadding="false"
+        android:padding="24dp"
         android:orientation="vertical">
-
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="32dp"
             android:text="University of Manitoba"/>
 
         <LinearLayout
@@ -32,10 +31,10 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ts_icon_nolabel"/>
+                android:src="@drawable/ts_icon_nolabel_temp"/>
 
             <TextView
-                style="@style/TextAppearance.MaterialComponents.Headline4"
+                style="@style/TextAppearance.Termsetter.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -45,29 +44,31 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="@dimen/Termsetter.EditText.Width"
+            style="@style/Widget.Termsetter.TextInputLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="32dp"
             android:hint="ID"
-            android:inputType="text"
+            app:errorEnabled="true"
             app:startIconDrawable="@drawable/ic_baseline_person_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextUserID"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="@dimen/Termsetter.EditText.Width"
+            style="@style/Widget.Termsetter.TextInputLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:hint="Password"
             android:inputType="textPassword"
+            app:errorEnabled="true"
             app:helperTextEnabled="true"
             app:passwordToggleEnabled="true"
             app:startIconDrawable="@drawable/ic_baseline_https_24">
@@ -80,25 +81,33 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            style="@style/Widget.MaterialComponents.Button"
-            android:id="@+id/buttonLogin"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="32dp"
-            android:layout_gravity="center"
-            android:onClick="onClickLoginButton"
-            android:text="LOGIN"/>
+            android:orientation="horizontal">
 
-        <Button
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:id="@+id/buttonCreateAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            android:text="CREATE ACCOUNT"
-            android:onClick="onClickCreateAccountButton"/>
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:id="@+id/buttonCreateAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_alignBaseline="@id/buttonLogin"
+                android:text="CREATE ACCOUNT"
+                android:onClick="onClickCreateAccountButton"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Termsetter.ConfirmButton"
+                android:id="@+id/buttonLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_toEndOf="@id/buttonCreateAccount"
+                android:onClick="onClickLoginButton"
+                android:text="LOGIN"/>
+        </RelativeLayout>
 
     </LinearLayout>
 
