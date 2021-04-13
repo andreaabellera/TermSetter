@@ -16,10 +16,22 @@
 
         <TextView
             style="@style/TextAppearance.Termsetter.Title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="My Timetable" />
+
+        <Spinner
+            android:id="@+id/daySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:prompt="@string/spinner_title"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleEnrolledClasses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
 
     </LinearLayout>
 </ScrollView>
