@@ -3,55 +3,51 @@ package comp3350.termsetter.Tests;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import comp3350.termsetter.Logic.OfferedClassLogic;
-import comp3350.termsetter.Persistence.CourseCategoryPersistence;
+import comp3350.termsetter.Persistence.CourseCategorySQLDriver;
 import comp3350.termsetter.Persistence.CourseOffering;
 import comp3350.termsetter.Persistence.CourseSection;
+import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.CourseAccess;
 import comp3350.termsetter.Persistence.Faculty;
-import comp3350.termsetter.Presentation.OfferedClassesCategories;
-
+import comp3350.termsetter.utils.TestUtils;
 import static org.junit.Assert.*;
 
 public class CourseCategoryIntegrationTest {
 
-    OfferedClassLogic sql;
-    OfferedClassesCategories act;
+    OfferedClassLogic classLogic;
+    CourseCategorySQLDriver sql;
+    private File tempDB;
 
     @Before
-    public void setContext(){
-        act = new OfferedClassesCategories();
+    public void setup() throws IOException, SQLException {
+        this.tempDB = TestUtils.copyDB();
+        CourseAccess courseAccess = new CourseAccess(this.tempDB.getAbsolutePath().replace(".script", ""));
+        sql = new CourseCategorySQLDriver(courseAccess);
     }
 
     @Test
     public void testLogicMediatorCreate() throws SQLException {
         System.out.println("\nStarting testLogicMediatorCreate: object exists after creation\n");
-        sql = new OfferedClassLogic(true, act);
-        assertNotNull(sql);
+        classLogic = new OfferedClassLogic(true, null);
+        assertNotNull(classLogic);
         System.out.println("End testLogicMediatorCreate: object exists after creation\n");
     }
 
     @Test
-    public void testInstanceExists(){
-        System.out.println("\nStarting TestInstanceExists: retrieved objects exist\n");
-        CourseCategoryPersistence p = sql.getPersistenceInstance();
-        assertNotNull(p);
-        System.out.println("End TestInstanceExists: retrieved objects exist\n");
-    }
-
-    @Test
-    public void testInstanceHasList(){
-        System.out.println("\nStarting TestInstanceHasList: retrieved objects exist\n");
-        CourseCategoryPersistence p = sql.getPersistenceInstance();
-        assertNotNull(p.getFaculties());
-        System.out.println("End TestInstanceHasList: retrieved objects exist\n");
+    public void testSQLDriverExists(){
+        System.out.println("\nStarting TestSQLDriverExists: object exists after creation\n");
+        assertNotNull(sql);
+        System.out.println("End TestSQLDriverExists: object exists after creation\n");
     }
 
     @Test
     public void testCategoriesinHierarchy() throws SQLException {
         System.out.println("\nStarting testCategoriesInHierarchy: object is retrieved\n");
-        List<Faculty> faculties = sql.getCourseData();
+        List<Faculty> faculties = sql.getFaculties();
         assertNotNull(faculties);
         System.out.println("End testCategoriesInHierarchy: object is retrieved\n");
     }
@@ -59,7 +55,7 @@ public class CourseCategoryIntegrationTest {
     @Test
     public void testFacultiesinHierarchy() throws SQLException {
         System.out.println("\nStarting testFacultiesInHierarchy: retrieved objects exist\n");
-        List<Faculty> faculties = sql.getCourseData();
+        List<Faculty> faculties = sql.getFaculties();
         for(int i = 0; i < faculties.size(); i++){
             assertNotNull(faculties.get(i));
         }
@@ -69,7 +65,7 @@ public class CourseCategoryIntegrationTest {
     @Test
     public void testCoursesinHierarchy() throws SQLException {
         System.out.println("\nStarting testCoursesInHierarchy: retrieved objects exist\n");
-        List<Faculty> faculties = sql.getCourseData();
+        List<Faculty> faculties = sql.getFaculties();
         for(int i = 0; i < faculties.size(); i++){
             List<CourseOffering> courses = faculties.get(i).getCourses();
             for(int j = 0; j < courses.size(); j++){
@@ -82,7 +78,7 @@ public class CourseCategoryIntegrationTest {
     @Test
     public void testSectionsinHierarchy() throws SQLException {
         System.out.println("\nStarting testSectionsInHierarchy: retrieved objects exist\n");
-        List<Faculty> faculties = sql.getCourseData();
+        List<Faculty> faculties = sql.getFaculties();
         for(int i = 0; i < faculties.size(); i++){
             List<CourseOffering> courses = faculties.get(i).getCourses();
             for(int j = 0; j < courses.size(); j++){

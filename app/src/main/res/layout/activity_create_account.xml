@@ -1,160 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:padding="0dp"
     tools:context=".Presentation.CreateAccount">
 
-    <TextView
-        android:id="@+id/createAccountHeader"
-        style="@style/CustomHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Registration"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:padding="24dp"
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/loginEdtxt0"
-            style="@style/CustomEditText"
-            android:layout_width="0dp"
+        <TextView
+            style="@style/TextAppearance.Termsetter.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Registration"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Termsetter.TextInputLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/ic_baseline_person_24"
-            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:layout_marginTop="32dp"
             android:hint="Your name"
-            android:inputType="text"
-            android:maxLength="30"
-            app:layout_constraintBottom_toTopOf="@+id/loginEdtxt1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:errorEnabled="false"
+            app:helperTextEnabled="true"
+            app:helperText="Must only contain uppercase and lowercase letters"
+            app:startIconDrawable="@drawable/ic_baseline_person_24">
 
-        <EditText
-            android:id="@+id/loginEdtxt1"
-            style="@style/CustomEditText"
-            android:layout_width="0dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextSetName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLength="30"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Termsetter.TextInputLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/ic_baseline_person_24"
-            android:drawableLeft="@drawable/ic_baseline_person_24"
-            android:hint="ID"
-            android:inputType="text"
-            android:maxLength="20"
-            app:layout_constraintBottom_toTopOf="@+id/loginEdtxt2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginEdtxt0" />
+            android:layout_marginTop="4dp"
+            android:hint="Account ID"
+            app:errorEnabled="true"
+            app:helperTextEnabled="false"
+            app:helperText="Must begin with a letter"
+            app:startIconDrawable="@drawable/ic_baseline_person_24">
 
-        <EditText
-            android:id="@+id/loginEdtxt2"
-            style="@style/CustomEditText"
-            android:layout_width="0dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextSetID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLength="30"
+                android:maxLines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Termsetter.TextInputLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/ic_baseline_https_24"
-            android:drawableLeft="@drawable/ic_baseline_https_24"
+            android:layout_marginTop="4dp"
             android:hint="Password"
-            android:inputType="textPassword"
-            android:maxLength="20"
-            android:padding="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/createAccountEdtxt3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginEdtxt1" />
+            app:errorEnabled="true"
+            app:helperTextEnabled="false"
+            app:helperText="Min. 6 characters, includes letters and at least 1 number"
+            app:passwordToggleEnabled="true"
+            app:startIconDrawable="@drawable/ic_baseline_https_24">
 
-        <EditText
-            android:id="@+id/createAccountEdtxt3"
-            style="@style/CustomEditText"
-            android:layout_width="280dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextSetPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:maxLines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Termsetter.TextInputLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/ic_baseline_https_24"
-            android:drawableLeft="@drawable/ic_baseline_https_24"
+            android:layout_marginTop="4dp"
+            android:inputType="textPassword"
             android:hint="Confirm Password"
-            android:inputType="textPassword"
-            android:maxLength="20"
-            android:padding="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/createAccountEdtxt4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginEdtxt2" />
+            app:errorEnabled="true"
+            app:helperTextEnabled="false"
+            app:helperText="Must match password"
+            app:passwordToggleEnabled="true"
+            app:startIconDrawable="@drawable/ic_baseline_https_24">
 
-        <EditText
-            android:id="@+id/createAccountEdtxt4"
-            style="@style/CustomEditText"
-            android:layout_width="280dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextConfirmAPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="20"
+                android:maxLines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Termsetter.TextInputLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/ic_baseline_mail_outline_24"
-            android:drawableLeft="@drawable/ic_baseline_mail_outline_24"
+            android:layout_marginTop="4dp"
             android:hint="Email"
-            android:maxLength="40"
-            android:padding="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/createAccountEdtxt5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createAccountEdtxt3" />
+            app:errorEnabled="true"
+            app:helperTextEnabled="false"
+            app:helperText="Must be a @myumanitoba.ca email address"
+            app:startIconDrawable="@drawable/ic_baseline_mail_outline_24">
 
-        <EditText
-            android:id="@+id/createAccountEdtxt5"
-            style="@style/CustomEditText"
-            android:layout_width="280dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="40"
+                android:maxLines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Termsetter.TextInputLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/ic_baseline_phone_24"
-            android:drawableLeft="@drawable/ic_baseline_phone_24"
+            android:layout_marginTop="4dp"
             android:hint="Phone"
-            android:inputType="number|phone"
-            android:maxLength="10"
-            android:padding="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/createAccountBtn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createAccountEdtxt4" />
+            app:errorEnabled="true"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperTextEnabled="false"
+            app:helperText="Must be of format XXXYYYZZZZ"
+            app:startIconDrawable="@drawable/ic_baseline_phone_24">
 
-        <Button
-            android:id="@+id/createAccountBtn"
-            android:layout_width="0dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:maxLines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Termsetter.ConfirmButton"
+            android:id="@+id/buttonConfirmAccount"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="end"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:onClick="onClickConfirmButton"
             android:text="CREATE ACCOUNT"
-            android:textSize="20dp"
-            android:textStyle="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createAccountEdtxt5" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:textStyle="normal"/>
+    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,17 +1,18 @@
 package comp3350.termsetter.Persistence;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseOffering implements Serializable {
+public class CourseOffering implements Serializable
+{
     private final String courseCode;
     private final String name;
     private final int creditHours;
     private final List<CourseSection> sections;
 
-    public CourseOffering(String courseCode, String name, int creditHours) {
+    public CourseOffering(String courseCode, String name, int creditHours)
+    {
         this.courseCode = courseCode;
         this.name = name;
         this.creditHours = creditHours;

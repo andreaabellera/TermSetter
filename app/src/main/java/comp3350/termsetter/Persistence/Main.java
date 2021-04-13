@@ -1,8 +1,8 @@
 package comp3350.termsetter.Persistence;
 
-public class Main
-{
-    private static String dbName="termsetterDB1";
+public class Main {
+    private static String dbName="termsetterDB";
+    private static boolean dbImported = false;
 
     public static void setDBPathName(final String name) {
         try {
@@ -20,4 +20,8 @@ public class Main
     public static String getDBPathName() {
         return dbName;
     }
+
+    public static void confirmImport() { dbImported = true; }
+
+    public static boolean databaseIsImported() { return dbImported; }
 }
