@@ -126,7 +126,7 @@ public class ClassDatabaseTest {
         String prof = "A Coffee Mug";
         co.addSection(new CourseSection("A01", "MW", "1:00-2:00", prof));
         CourseSection mySection = co.getCourse(0);
-        assertEquals(mySection.getPeriod(), prof);
+        assertEquals(mySection.getInstructor(), prof);
         System.out.println("\nEnd testAddSection: correct object retrieved\n");
     }
 
@@ -139,8 +139,8 @@ public class ClassDatabaseTest {
         co.addSection(new CourseSection("A01", "Everyday", "3:30-9:20", red));
         co.addSection(new CourseSection("A02", "M", "9:20-3:30", yellow));
         ArrayList<CourseSection> s = (ArrayList<CourseSection>) co.getSections();
-        assertEquals(s.get(0).getPeriod(), red);
-        assertEquals(s.get(1).getPeriod(), yellow);
+        assertEquals(s.get(0).getInstructor(), red);
+        assertEquals(s.get(1).getInstructor(), yellow);
         System.out.println("\nEnd testGetSectionArray: retrieving a list\n");
     }
 
@@ -184,7 +184,7 @@ public class ClassDatabaseTest {
         System.out.println("\nStarting testGetPeriod: value retrieved is correct\n");
         String period = "2021/01/18-2021/04/18";
         CourseSection s = new CourseSection("T01", "MTWRF", "8:30-9:30", period);
-        assertEquals(period, s.getPeriod());
+        assertEquals(period, s.getInstructor());
         System.out.println("\nEnd testGetPeriod: value retrieved is correct\n");
     }
 

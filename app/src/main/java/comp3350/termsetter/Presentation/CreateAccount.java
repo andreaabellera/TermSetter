@@ -7,17 +7,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import comp3350.termsetter.Logic.AccessManager;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import java.sql.SQLException;
+
+import comp3350.termsetter.Logic.AccessStudents;
 import comp3350.termsetter.Logic.AccountValidation;
-import comp3350.termsetter.Persistence.DomainSpecific.Student;
-import comp3350.termsetter.Persistence.StudentPersistence;
+import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
+import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
+import comp3350.termsetter.Persistence.UserPersistence;
 import comp3350.termsetter.R;
+import comp3350.termsetter.Persistence.DomainSpecific.User;
 
 public class CreateAccount extends AppCompatActivity {
     private static Context mContext;
-    private StudentPersistence database;
+    private UserPersistence database;
     private AccountValidation accountValidation;
     private EditText eName;
     private EditText eMail;
@@ -28,7 +36,7 @@ public class CreateAccount extends AppCompatActivity {
     private Button eCreate;
     private final int idCount = 0;
 
-    private AccessManager accessManager;
+    private AccessStudents accessStudents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,74 +45,69 @@ public class CreateAccount extends AppCompatActivity {
 
         mContext = getApplicationContext();
         //database = new StubDatabase(mContext,"test.db");
+        //database = new StudentAccess("users.db");
 
-        accessManager = new AccessManager();
-        database = accessManager.getStudentPersistence();
+        accessStudents = new AccessStudents();
+        database = accessStudents.getStudentPersistence();
 
-        eName = findViewById(R.id.editTextSetName);
-        eStudentID = findViewById(R.id.editTextSetID);
-        ePassword = findViewById(R.id.editTextSetPassword);
-        eConfirmPassword = findViewById(R.id.editTextConfirmAPassword);
-        eMail = findViewById(R.id.editTextEmail);
-        ePhone = findViewById(R.id.editTextPhone);
+        eName = findViewById(R.id.loginEdtxt0);
+        eStudentID = findViewById(R.id.loginEdtxt1);
+        ePassword = findViewById(R.id.loginEdtxt2);
+        eConfirmPassword = findViewById(R.id.createAccountEdtxt3);
+        eMail = findViewById(R.id.createAccountEdtxt4);
+        ePhone = findViewById(R.id.createAccountEdtxt5);
     }
 
-    public boolean isValidAccount(String name, String id, String password, String confirmPassword, String email, String phone) {
+    public boolean validate(String name, String id, String password, String confirmPassword, String email, String phone) {
 
         accountValidation = new AccountValidation();
 
         // 1. Check Name
         boolean validName = accountValidation.validName(name);
         if (!validName) {
-            eName.setError("Name is blank, or contains invalid symbols.",null);
-            //Toast.makeText(mContext, "The name should consist of Uppercase or lowercase characters only.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "The name consist of First name, 1 whitespace, and Last name.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         // 2. Check ID (must start with a character, then some numbers)
         boolean validID = accountValidation.validID(id);
         if (!validID) {
-            eStudentID.setError("ID must begin with a letter.",null);
-            //Toast.makeText(mContext, "Your student ID must begin with a character.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Your student ID must begin with a character.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         // 3. Check password
         boolean validPassword = accountValidation.validPassword(password);
         if (!validPassword) {
-            ePassword.setError("Password invalid");
-            //Toast.makeText(mContext, "Password should have minimum length of 6, starts with a letter, and consist of at least one letter and number!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Password must be 10 characters long and contain both letter and number!", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         // 4. Check confirm password
         boolean validConfirmPassword = accountValidation.validPassword(confirmPassword);
-        if(!validConfirmPassword){
-            eConfirmPassword.setError("Entry does not match password.");
-            //Toast.makeText(mContext, "Please check confirm password again!", Toast.LENGTH_SHORT).show();
+        if(!validPassword || !(accountValidation.confirmPassword(password, confirmPassword))){
+            Toast.makeText(mContext, "Please check confirm password again!", Toast.LENGTH_SHORT).show();
             return false;
         }
-
         // 5. Check email
+
         boolean validEmail = accountValidation.validEmail(email);
         if (!validEmail) {
-            eMail.setError("Invalid email.");
-            //Toast.makeText(mContext, "Your email domain should contain @myumanitoba.ca and some strings in front.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Your email domain should contain @myumanitoba.ca and some strings in front.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         // 6. Check phone number (guaranteed to be just number)
         boolean validPhone = accountValidation.validPhone(phone);
         if(!validPhone){
-            ePhone.setError("Invalid phone number");
-            //Toast.makeText(mContext, "Please provide phone number (without dashes) as XXXYYYZZZZ format.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Your phone number has to be exactly 10 numbers.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         return true;
     }
 
-    public void onClickConfirmButton(View view) {
+    public void onClickConfirmButton(View view) throws SQLException {
         String inputName = eName.getText().toString();
         String inputID = eStudentID.getText().toString();
         String inputPassword = ePassword.getText().toString();
@@ -112,14 +115,21 @@ public class CreateAccount extends AppCompatActivity {
         String inputEmail = eMail.getText().toString();
         String inputPhone = ePhone.getText().toString();
 
-        if (isValidAccount(inputName, inputID, inputPassword, inputConfirmPassword, inputEmail, inputPhone)) {
-           Student student = new Student(inputName, inputPassword, inputEmail, inputPhone,inputID);
-            accessManager.insertStudent(student);
-            Student test = accessManager.getStudent(inputID);
+        if (validate(inputName, inputID, inputPassword, inputConfirmPassword, inputEmail, inputPhone)) {
+           User user = new User(inputName, inputPassword, inputEmail, inputPhone,inputID);
+            //database.insertUser(user);
+//            Intent intent = new Intent(CreateAccount.this, LoginPage.class);
+//            startActivity(intent);
+//            Toast.makeText(CreateAccount.this, "Welcome " + inputName + "!", Toast.LENGTH_SHORT).show();
+
+            accessStudents.insertStudent(user);
+
+            User test = accessStudents.getStudent(inputID);
 
             System.out.println(test.getStudentID());
 
             Intent intent = new Intent(CreateAccount.this, LoginPage.class);
+
             startActivity(intent);
             Toast.makeText(CreateAccount.this, "Welcome " + inputName + "!", Toast.LENGTH_SHORT).show();
         }

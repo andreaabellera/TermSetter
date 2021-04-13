@@ -1,13 +1,17 @@
-package comp3350.termsetter.UIAdapters;
+package comp3350.termsetter.UIadapters;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import java.util.List;
+
 import comp3350.termsetter.Persistence.CourseOffering;
+import comp3350.termsetter.Persistence.Faculty;
 import comp3350.termsetter.R;
 
 public class RecyclerCourseDataAdapter extends RecyclerView.Adapter<RecyclerCourseDataAdapter.ViewHolder> {
@@ -60,7 +64,20 @@ public class RecyclerCourseDataAdapter extends RecyclerView.Adapter<RecyclerCour
 
             if(viewItem != null) {
                 holder.textView.setText(viewItem.getCourseCode());
-                holder.cardView.setCardBackgroundColor(color);
+
+                if(color == 1){
+                    holder.cardView.setCardBackgroundColor(Color.rgb(125,180,175));
+                }
+                else if(color == 2){
+                    holder.cardView.setCardBackgroundColor(Color.rgb(175,160,195));
+                }
+                else if(color == 3){
+                    holder.cardView.setCardBackgroundColor(Color.rgb(75,200,235));
+                }
+                else if(color == 4){
+                    holder.cardView.setCardBackgroundColor(Color.rgb(125,140,235));
+                }
+
                 holder.textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

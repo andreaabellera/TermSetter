@@ -2,64 +2,37 @@ package comp3350.termsetter.Logic;
 
 import android.content.Context;
 
-import comp3350.termsetter.Persistence.DomainSpecific.CoursePersistence;
-import comp3350.termsetter.Persistence.DomainSpecific.EnrollPersistence;
 import comp3350.termsetter.Persistence.DomainSpecific.StubDatabase;
-import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.CourseAccess;
-import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.EnrollAccess;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAccess;
 import comp3350.termsetter.Persistence.Main;
-import comp3350.termsetter.Persistence.StudentPersistence;
+import comp3350.termsetter.Persistence.UserPersistence;
 
 public class Services
 {
-    private static StudentPersistence studentAccess = null;
-    private static CoursePersistence coursePersistence = null;
-    private static EnrollPersistence enrollPersistence = null;
+    private static UserPersistence studentAccess = null;
     private static Context mContext;
 
-    public static synchronized StudentPersistence getRealStudentAccess()
+    public static synchronized UserPersistence getRealStudentAccess()
     {
         if (studentAccess == null)
         {
 
-
+            // database = new StubDatabase(mContext,"test.db");
+            //studentAccess = StubDatabase("test.db")
             studentAccess = new StudentAccess(Main.getDBPathName());
         }
 
         return studentAccess;
     }
-    public static synchronized StudentPersistence getFakeStudentAccess(Context context)
+    public static synchronized UserPersistence getFakeStudentAccess(Context context)
     {
         if (studentAccess == null)
         {
             studentAccess = new StubDatabase(context,"test.db");
-
+            //studentAccess = new StudentAccess(Main.getDBPathName());
         }
 
         return studentAccess;
-    }
-
-    public static synchronized CoursePersistence getCoursePersistence()
-    {
-        if (coursePersistence == null)
-        {
-            // stub here?
-            coursePersistence = new CourseAccess(Main.getDBPathName()) {
-            };
-        }
-
-        return coursePersistence;
-    }
-
-    public static synchronized EnrollPersistence getEnrollPersistence() {
-        if (enrollPersistence == null) {
-
-            // stub here?
-            enrollPersistence = new EnrollAccess(Main.getDBPathName());
-        }
-
-        return enrollPersistence;
     }
 
 }
