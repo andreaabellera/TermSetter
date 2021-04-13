@@ -26,9 +26,11 @@ public class TimetableLogic {
             CourseSection section = studentSections.get(i);
             if (section.getDays().contains(day)) {
                 courses.add(course);
+                sections.add(section);
             }
         }
-        return courses;
+        List<CourseOffering> result = sort(courses, sections);
+        return result;
     }
 
     public List<CourseSection> getSection(String day) {
@@ -40,6 +42,60 @@ public class TimetableLogic {
                 sections.add(section);
             }
         }
-        return sections;
+        List<CourseSection> result = sort(sections);
+        return result;
     }
+
+    public List<CourseSection> sort(List<CourseSection> studentSections) {
+        for (int i = 1; i < coursesNum; ++i) {
+            int j = i - 1;
+            CourseSection sectionKey = studentSections.get(i);
+            int keyTime = parseTime(studentSections.get(i).getTimeSlot());
+            int iterativeTime;
+
+            while (j >= 0) {
+                iterativeTime = parseTime(studentSections.get(j).getTimeSlot());
+                if (iterativeTime > keyTime) {
+                    studentSections.set(j+1, studentSections.get(j));
+                    j = j - 1;
+                }
+            }
+            studentSections.set(j+1, sectionKey);
+        }
+        return studentSections;
+    }
+
+    public List<CourseOffering> sort(List<CourseOffering> studentCourses, List<CourseSection> studentSections) {
+        for (int i = 1; i < coursesNum; ++i) {
+            int j = i - 1;
+            CourseSection sectionKey = studentSections.get(i);
+            CourseOffering courseKey = studentCourses.get(i);
+            int keyTime = parseTime(studentSections.get(i).getTimeSlot());
+            int iterativeTime;
+
+            while (j >= 0) {
+                iterativeTime = parseTime(studentSections.get(j).getTimeSlot());
+                if (iterativeTime > keyTime) {
+                    studentCourses.set(j+1, studentCourses.get(j));
+                    studentSections.set(j+1, studentSections.get(j));
+                    j = j - 1;
+                }
+            }
+            studentCourses.set(j+1, courseKey);
+            studentSections.set(j+1, sectionKey);
+        }
+        return studentCourses;
+    }
+
+    public static int parseTime(String time)
+    {
+        String[] timeParts = time.split(":");
+        int hour = Integer.parseInt(timeParts[0].trim());
+        int mins = Integer.parseInt(timeParts[1].trim());
+        return calculateMinutes(hour,mins);
+    }
+
+    //helper for changing time into minutes
+    public static int calculateMinutes(int hour, int minute) {
+        return hour*60+minute; }
 }
