@@ -1,10 +1,17 @@
 package comp3350.termsetter.Presentation;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Spinner;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,26 +23,25 @@ import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.EnrollAccess
 import comp3350.termsetter.Persistence.Main;
 import comp3350.termsetter.Persistence.StudentPersistence;
 import comp3350.termsetter.R;
-import comp3350.termsetter.UIAdapters.RecyclerCurrClassDataAdapter;
+import comp3350.termsetter.UIAdapters.RecyclerTimetableDataAdapter;
 
-public class EnrolledClassesView extends AppCompatActivity {
+public class Timetable extends AppCompatActivity implements OnItemSelectedListener {
 
     List<CourseOffering> enrolledCourses;
     List<CourseSection> enrolledSections;
     EnrollAccess enrollAccess;
     Student student;
-    RecyclerCurrClassDataAdapter recyclerAdapter;
+    RecyclerTimetableDataAdapter recyclerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enrolled_classes_view);
+        setContentView(R.layout.activity_timetable);
         initData();
         initWidgets();
-        updateTotal();
     }
 
-    private void initData(){
+    private void initData() {
         enrolledCourses = new ArrayList<>();
         enrolledSections = new ArrayList<>();
 
@@ -59,21 +65,42 @@ public class EnrolledClassesView extends AppCompatActivity {
         }
     }
 
-    private void initWidgets(){
+    private void initWidgets() {
+        // Spinner element
+        Spinner spinner = (Spinner) findViewById(R.id.daySpinner);
+
+        // Spinner click listener
+        spinner.setOnItemSelectedListener(this);
+
+        // Creating adapter for spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.days_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        //Recycler element
         RecyclerView classes = (RecyclerView)findViewById(R.id.recycleEnrolledClasses);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         classes.setLayoutManager(layoutManager);
-        recyclerAdapter= new RecyclerCurrClassDataAdapter(enrolledCourses, enrolledSections);
+        recyclerAdapter= new RecyclerTimetableDataAdapter(enrolledCourses, enrolledSections, getResources().getColor(R.color.cardBackground1));
         classes.setAdapter(recyclerAdapter);
     }
 
-    private void updateTotal(){
-        double total = 562.12 * recyclerAdapter.getItemCount();
-        total = Math.round(total * 100.0) / 100.0;  // reduces to 2 decimal places
-        TextView total_txt = (TextView) findViewById(R.id.textFeeTotal);
-        total_txt.setText("Total Fees: " + Double.toString(total)+" CAD");
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        String item = parent.getItemAtPosition(position).toString();
+
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+    //public void onNothingSelected(AdapterView<?> arg0) {}
+
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
     }
 
-
-
+    public void returnToMenu() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

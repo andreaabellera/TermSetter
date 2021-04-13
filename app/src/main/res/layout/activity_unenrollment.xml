@@ -4,33 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="backToMenu"
     android:padding="@dimen/box_inset_layout_padding"
-    tools:context=".Presentation.OfferedClassesCategories">
+    tools:context=".Presentation.Unenrollment">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/unenrollmentHeader"
             style="@style/TextAppearance.Termsetter.Title"
-            android:id="@+id/buttonBackToMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
-            android:onClick="backToMenu"
-            android:text="Back to Menu"
+            android:layout_marginBottom="16dp"
+            android:text="Class Unenrollment"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycleViewFaculties"
+            android:id="@+id/recycleEnrolledClasses"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/unenrollmentHeader"
+            android:layout_above="@+id/unenrollButton"
+            android:gravity="center"
             android:layout_gravity="center" />
 
+        <Button
+            android:id="@+id/unenrollButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/foreground"
+            android:gravity="center"
+            android:onClick="returnToMenu"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="UNENROLL"
+            android:textColor="@color/background"
+            android:textSize="18sp" />
 
-    </LinearLayout>
+    </RelativeLayout>
 </FrameLayout>

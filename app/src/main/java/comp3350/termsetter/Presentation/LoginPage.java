@@ -3,6 +3,8 @@ package comp3350.termsetter.Presentation;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +44,8 @@ public class LoginPage extends AppCompatActivity {
         }
         mContext = getApplicationContext();
 
+        initUIComponents();
+
         // Comment this database to switch to Real database
         // Uncomment this database to switch to Stub database
         //database = new StubDatabase(mContext,"test.db");
@@ -61,37 +65,33 @@ public class LoginPage extends AppCompatActivity {
         }
     }
 
-    public void onClickLoginButton(View view) {
+    private void initUIComponents(){
         eID = findViewById(R.id.editTextUserID);
         ePassword = findViewById(R.id.editTextPassword);
         eLogin = findViewById(R.id.buttonLogin);
+    }
+
+    public void onClickLoginButton(View view) {
         accountValidation = new AccountValidation();
 
         String inputID = eID.getText().toString();
         String inputPassword = ePassword.getText().toString();
 
-        // else is not needed will discuss (valid inputID was checked during account creation) -Eriq
-        if (accountValidation.validID(inputID)) {
-            if (accountValidation.verifyStudent(inputID, inputPassword)) {
-                database.setCurrentStudentID(inputID);
-                Toast.makeText(LoginPage.this, "Welcome " + inputID + " !", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LoginPage.this, MainActivity.class);
-                startActivity(intent);
-            }
-            else {
-                Toast.makeText(LoginPage.this, "The username or password is incorrect", Toast.LENGTH_SHORT).show();
-            }
+        if (accountValidation.verifyStudent(inputID, inputPassword)) {
+            database.setCurrentStudentID(inputID);
+
+            Toast.makeText(LoginPage.this, "Welcome " + inputID + " !", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LoginPage.this, MainActivity.class);
+            startActivity(intent);
         }
         else {
-            Toast.makeText(LoginPage.this, "The username or password is incorrect", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginPage.this, "ID or password is incorrect!", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void onClickCreateAccountButton(View view) {
-
-        // Shows create account page
+        Toast.makeText(this, "Loading Account Registration...", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, CreateAccount.class);
         startActivity(intent);
-
     }
 }

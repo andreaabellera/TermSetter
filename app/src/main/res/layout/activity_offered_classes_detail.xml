@@ -46,7 +46,7 @@
         <RadioGroup
             android:id="@+id/radioGroupSections"
             android:layout_width="96dp"
-            android:layout_height="189dp"
+            android:layout_height="300dp"
             android:checkedButton="@id/radioButtonS1"
             app:layout_constraintEnd_toStartOf="@+id/textS1Days"
             app:layout_constraintHorizontal_bias="0.0"
@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="48dp"
                 android:text="A01"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -69,11 +69,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="48dp"
                 android:text="A02"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textS1Period" />
+
+            <RadioButton
+                android:id="@+id/radioButtonS3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="48dp"
+                android:text="A03"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textS2Period" />
 
         </RadioGroup>
 
@@ -122,6 +133,17 @@
             app:layout_constraintTop_toBottomOf="@+id/textS1Period" />
 
         <TextView
+            android:id="@+id/textS3Days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:text="MWF"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/radioGroupSections"
+            app:layout_constraintTop_toBottomOf="@+id/textS2Period" />
+
+        <TextView
             android:id="@+id/textS2Time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -133,6 +155,17 @@
             app:layout_constraintTop_toBottomOf="@+id/textS1Period" />
 
         <TextView
+            android:id="@+id/textS3Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="32dp"
+            android:text="10:30-11:45"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/radioGroupSections"
+            app:layout_constraintTop_toBottomOf="@+id/textS2Period" />
+
+        <TextView
             android:id="@+id/textS2Period"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -142,6 +175,17 @@
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/radioGroupSections"
             app:layout_constraintTop_toBottomOf="@+id/textS2Time" />
+
+        <TextView
+            android:id="@+id/textS3Period"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="16dp"
+            android:text="2021/01/18-2021/04/18"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/radioGroupSections"
+            app:layout_constraintTop_toBottomOf="@+id/textS3Time" />
 
         <Button
             android:id="@+id/buttonEnroll"
