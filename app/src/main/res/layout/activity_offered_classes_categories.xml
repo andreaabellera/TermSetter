@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/TextAppearance.MaterialComponents.Headline4"
+            style="@style/TextAppearance.Termsetter.Title"
             android:id="@+id/buttonBackToMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

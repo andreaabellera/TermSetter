@@ -18,7 +18,7 @@ import comp3350.termsetter.Persistence.StudentPersistence;
 import comp3350.termsetter.R;
 import comp3350.termsetter.UIAdapters.RecyclerCurrClassDataAdapter;
 
-public class EnrolledClassesView extends AppCompatActivity {
+public class Transcript extends AppCompatActivity {
 
     List<CourseOffering> enrolledCourses;
     List<CourseSection> enrolledSections;
