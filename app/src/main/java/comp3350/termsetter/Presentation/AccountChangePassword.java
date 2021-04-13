@@ -52,21 +52,16 @@ public class AccountChangePassword extends AppCompatActivity {
         String inputNewPassword = newPassword.getText().toString();
         String inputNewPasswordConfirm = newPasswordConfirm.getText().toString();
 
-        // once again valid input for passwords were checked at account creation. Checking if the old password was valid seems redundant right? -Eriq
-        // from marker "New passwords should definitely be validated, but what if you change your validation standards, how will users with old passwords actually login to change them?"
-        if (!accountValidation.validPassword(inputOldPassword) || !accountValidation.validPassword(inputNewPassword) || !accountValidation.validPassword(inputNewPasswordConfirm)) {
+        if (!accountValidation.validPassword(inputNewPassword) || !accountValidation.validPassword(inputNewPasswordConfirm)) {
             Toast.makeText(AccountChangePassword.this, "Please enter valid password!", Toast.LENGTH_SHORT).show();
-        } else {
+        }
+        else {
             if (accountValidation.verifyCurrentPassword(inputOldPassword, database.getCurrentStudentID())) {
                 if (accountValidation.confirmPassword(inputNewPassword, inputNewPasswordConfirm)) {
                     if (database.updatePassword(inputNewPassword)) {
                         Toast.makeText(AccountChangePassword.this, "Password has been changed!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(AccountChangePassword.this, AccountManagementMenu.class);
                         startActivity(intent);
-                    }
-                    else {
-                        //what should this else really do? Nothing? The user knows they can't update their password now what?
-                        Toast.makeText(AccountChangePassword.this, "Update password is not working!", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {
