@@ -31,7 +31,6 @@ public class AccountManageProfile extends AppCompatActivity {
 
     private void displayProfile() {
         Student student = database.getCurrentStudentID();
-        //User user = accessManager.getStudent("asdf");
 
         TextView studentName = findViewById(R.id.userInfoName);
         TextView studentID = findViewById(R.id.userInfoStudentID);

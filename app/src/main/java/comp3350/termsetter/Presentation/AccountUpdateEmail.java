@@ -32,8 +32,6 @@ public class AccountUpdateEmail extends AppCompatActivity {
 
         mContext = getApplicationContext();
         //database = new StubDatabase(mContext,"test.db");
-        //database = new StudentAccess("users.db");
-
         accessManager = new AccessManager();
         database = accessManager.getStudentPersistence();
         displayProfile();
@@ -61,10 +59,6 @@ public class AccountUpdateEmail extends AppCompatActivity {
                     Toast.makeText(AccountUpdateEmail.this, "Email changes!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AccountUpdateEmail.this, AccountManagementMenu.class);
                     startActivity(intent);
-                }
-                else {
-                    // same issue. Now the user knows that thi isnt working.. now what? Should this do nothing? Or just be an If
-                    Toast.makeText(this, "Update Email is not working!", Toast.LENGTH_SHORT).show();
                 }
             }
             else {

@@ -37,7 +37,6 @@ public class CreateAccount extends AppCompatActivity {
 
         mContext = getApplicationContext();
         //database = new StubDatabase(mContext,"test.db");
-        //database = new StudentAccess("users.db");
 
         accessManager = new AccessManager();
         database = accessManager.getStudentPersistence();
