@@ -77,25 +77,15 @@ public class LoginPage extends AppCompatActivity {
         String inputID = eID.getText().toString();
         String inputPassword = ePassword.getText().toString();
 
-        if (accountValidation.validID(inputID)) {
-            if (accountValidation.verifyStudent(inputID, inputPassword)) {
-                database.setCurrentStudentID(inputID);
-//                Student currStudent = database.getCurrentStudentID();
-//                editor.clear();
-//                editor.putString("currAccount", currStudent.getStudentID()); // could use inputID but more explicit
+        if (accountValidation.verifyStudent(inputID, inputPassword)) {
+            database.setCurrentStudentID(inputID);
 
-                Toast.makeText(LoginPage.this, "Welcome " + inputID + " !", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LoginPage.this, MainActivity.class);
-                startActivity(intent);
-            }
-            else {
-                ePassword.setError("Password incorrect", null);
-                Toast.makeText(LoginPage.this, "Password incorrect", Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(LoginPage.this, "Welcome " + inputID + " !", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LoginPage.this, MainActivity.class);
+            startActivity(intent);
         }
         else {
-            eID.setError("Invalid ID", null);
-            Toast.makeText(LoginPage.this, "No account associated with that ID", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginPage.this, "ID or password is incorrect!", Toast.LENGTH_SHORT).show();
         }
     }
 
