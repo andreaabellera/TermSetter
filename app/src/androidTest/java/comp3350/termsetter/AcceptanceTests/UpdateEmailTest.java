@@ -1,10 +1,7 @@
 package comp3350.termsetter.AcceptanceTests;
-import comp3350.termsetter.Presentation.AccountManageProfile;
-import comp3350.termsetter.Presentation.CreateAccount;
-import comp3350.termsetter.Presentation.MainActivity;
 import comp3350.termsetter.R;
 import comp3350.termsetter.Presentation.LoginPage;
-import org.junit.Before;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,7 +35,7 @@ public class UpdateEmailTest {
         onView(withId(R.id.buttonLogin)).perform(click());
 
         // Navigate to account change password activity
-        onView(withId(R.id.homeBtn1)).perform(click());
+        onView(withId(R.id.homeManageAccountBtn)).perform(click());
         onView(withId(R.id.buttonUpdateEmail)).perform(click());
 
         // Change email

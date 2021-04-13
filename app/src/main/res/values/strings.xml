@@ -11,8 +11,10 @@
 
     <string name="header_main">Home</string>
     <string name="btn_main_manage_account">Manage Account</string>
-    <string name="btn_main_view_my_courses">View My Courses</string>
+    <string name="btn_main_view_my_schedule">View My Schedule</string>
+    <string name="btn_main_view_my_courses">View My Classes</string>
     <string name="btn_main_view_off_courses">Browse Course List</string>
+    <string name="btn_main_unenroll">Drop A Class</string>
     <string name="btn_main_logout">Logout</string>
 
     <string name="header_account_management">Account Management</string>

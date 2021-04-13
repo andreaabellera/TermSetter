@@ -1,10 +1,7 @@
 package comp3350.termsetter.AcceptanceTests;
-import comp3350.termsetter.Presentation.AccountManageProfile;
-import comp3350.termsetter.Presentation.CreateAccount;
-import comp3350.termsetter.Presentation.MainActivity;
 import comp3350.termsetter.R;
 import comp3350.termsetter.Presentation.LoginPage;
-import org.junit.Before;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,14 +37,14 @@ public class EnrollTest {
         onView(withId(R.id.buttonLogin)).perform(click());
 
         // Select and enroll in a class
-        onView(withId(R.id.homeBtn3)).perform(click());
+        onView(withId(R.id.homeOfferedClassesBtn)).perform(click());
         onView(withText(courseCategory)).perform(click());
         onView(withText(courseCode)).perform(click());
         onView(withId(R.id.buttonEnroll)).perform(click());
 
         // Navigate to view my classes
         onView(withId(R.id.buttonBackToMenu)).perform(click());
-        onView(withId(R.id.homeBtn2)).perform(click());
+        onView(withId(R.id.homeScheduleBtn)).perform(click());
 
         // Verify enrolled class is present
         onView(withId(R.id.course_id)).check(matches(withText(course)));

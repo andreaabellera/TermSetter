@@ -15,9 +15,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void openAccountManagementMenu(View view) {
+        Toast.makeText(this, "Opening my profile management.", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, AccountManagementMenu.class);
+        startActivity(intent);
+    }
+
+    public void openTimetableView(View view) {
+        Toast.makeText(this, "Opening timetable.", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, Timetable.class);
+        startActivity(intent);
+    }
+
     public void openEnrolledClassesView(View view) {
-        // code
-        // (idk which class we want this to connect to)
         Toast.makeText(this, "Opening my courses.", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, Transcript.class);
         startActivity(intent);
@@ -29,17 +39,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    public void openAccountManagementMenu(View view) {
-        Toast.makeText(this, "Opening my profile management.", Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, AccountManagementMenu.class);
+    public void openUnenrollmentView(View view) {
+        Toast.makeText(this, "Opening unenrollment.", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, Unenrollment.class);
         startActivity(intent);
     }
 
-
     public void onClickLogOutButton(View view) {
-        // Brief message
-        // Shows create account page
         Toast.makeText(this, "See you again soon!", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, LoginPage.class);
         startActivity(intent);

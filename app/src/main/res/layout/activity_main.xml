@@ -23,7 +23,7 @@
 
         <com.google.android.material.button.MaterialButton
             style="@style/Widget.Termsetter.MenuButton"
-            android:id="@+id/homeBtn1"
+            android:id="@+id/homeManageAccountBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -32,28 +32,48 @@
             android:text="@string/btn_main_manage_account"/>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/homeScheduleBtn"
             style="@style/Widget.Termsetter.MenuButton"
-            android:id="@+id/homeBtn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:onClick="openTimetableView"
+            android:text="@string/btn_main_view_my_schedule" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/homeEnrolledClassesBtn"
+            style="@style/Widget.Termsetter.MenuButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="24dp"
             android:onClick="openEnrolledClassesView"
-            android:text="@string/btn_main_view_my_courses"/>
+            android:text="@string/btn_main_view_my_courses" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/homeOfferedClassesBtn"
             style="@style/Widget.Termsetter.MenuButton"
-            android:id="@+id/homeBtn3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="24dp"
             android:onClick="openOfferedClassesCategories"
-            android:text="@string/btn_main_view_off_courses"/>
+            android:text="@string/btn_main_view_off_courses" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/homeUnenrollBtn"
+            style="@style/Widget.Termsetter.MenuButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:onClick="openUnenrollmentView"
+            android:text="@string/btn_main_unenroll" />
 
         <com.google.android.material.button.MaterialButton
             style="@style/Widget.Termsetter.MenuButton"
-            android:id="@+id/homeBtn4"
+            android:id="@+id/homeLogoutBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
