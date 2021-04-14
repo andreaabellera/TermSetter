@@ -82,24 +82,28 @@ public class OfferedClassesView extends AppCompatActivity {
     public void firstYearClicked(int position) {
         Intent intent = new Intent(this, OfferedClassesDetail.class);
         intent.putExtra("course", firstYearCourses.get(position));
+        intent.putExtra("faculty", faculty);
         startActivity(intent);
     }
 
     public void secondYearClicked(int position) {
         Intent intent = new Intent(this, OfferedClassesDetail.class);
         intent.putExtra("course", secondYearCourses.get(position));
+        intent.putExtra("faculty", faculty);
         startActivity(intent);
     }
 
     public void thirdYearClicked(int position) {
         Intent intent = new Intent(this, OfferedClassesDetail.class);
         intent.putExtra("course", thirdYearCourses.get(position));
+        intent.putExtra("faculty", faculty);
         startActivity(intent);
     }
 
     public void fourthYearClicked(int position) {
         Intent intent = new Intent(this, OfferedClassesDetail.class);
         intent.putExtra("course", fourthYearCourses.get(position));
+        intent.putExtra("faculty", faculty);
         startActivity(intent);
     }
 

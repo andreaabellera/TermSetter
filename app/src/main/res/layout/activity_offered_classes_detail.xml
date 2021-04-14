@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@id/buttonEnroll"
                 android:onClick="detailBackToView"
-                android:text="◀ Offered classes"/>
+                android:text="◀ Offered classes" />
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.Termsetter.ConfirmButton"
