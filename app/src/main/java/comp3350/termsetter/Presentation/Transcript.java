@@ -1,10 +1,13 @@
 package comp3350.termsetter.Presentation;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +32,7 @@ public class Transcript extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enrolled_classes_view);
+        setContentView(R.layout.activity_transcript);
         initData();
         initWidgets();
         updateTotal();
@@ -74,6 +77,8 @@ public class Transcript extends AppCompatActivity {
         total_txt.setText("Total Fees: " + Double.toString(total)+" CAD");
     }
 
-
-
+    public void transcriptBackToMainMenu(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }
