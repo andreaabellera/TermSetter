@@ -89,7 +89,8 @@ public class TimetableLogic {
 
     public static int parseTime(String time)
     {
-        String[] timeParts = time.split(":");
+        String[] timeSlot = time.split("-");
+        String[] timeParts = timeSlot[0].split(":");
         int hour = Integer.parseInt(timeParts[0].trim());
         int mins = Integer.parseInt(timeParts[1].trim());
         return calculateMinutes(hour,mins);
