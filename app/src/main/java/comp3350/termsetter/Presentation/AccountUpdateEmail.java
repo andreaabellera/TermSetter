@@ -32,8 +32,6 @@ public class AccountUpdateEmail extends AppCompatActivity {
 
         mContext = getApplicationContext();
         //database = new StubDatabase(mContext,"test.db");
-        //database = new StudentAccess("users.db");
-
         accessManager = new AccessManager();
         database = accessManager.getStudentPersistence();
         displayProfile();
@@ -62,12 +60,9 @@ public class AccountUpdateEmail extends AppCompatActivity {
                     Intent intent = new Intent(AccountUpdateEmail.this, AccountManagementMenu.class);
                     startActivity(intent);
                 }
-                else {
-                    Toast.makeText(this, "Update Email is not working!", Toast.LENGTH_SHORT).show();
-                }
             }
             else {
-                Toast.makeText(AccountUpdateEmail.this, "Please confirm your emails are similar!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountUpdateEmail.this, "Please confirm your emails match!", Toast.LENGTH_SHORT).show();
             }
         } else {
             Toast.makeText(AccountUpdateEmail.this, "Please ensure your emails are valid!", Toast.LENGTH_SHORT).show();

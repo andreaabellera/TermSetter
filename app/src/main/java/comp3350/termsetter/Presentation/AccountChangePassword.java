@@ -52,26 +52,20 @@ public class AccountChangePassword extends AppCompatActivity {
         String inputNewPassword = newPassword.getText().toString();
         String inputNewPasswordConfirm = newPasswordConfirm.getText().toString();
 
-        if (!accountValidation.validPassword(inputOldPassword) || !accountValidation.validPassword(inputNewPassword) || !accountValidation.validPassword(inputNewPasswordConfirm)) {
+        if (!accountValidation.validPassword(inputNewPassword) || !accountValidation.validPassword(inputNewPasswordConfirm)) {
             Toast.makeText(AccountChangePassword.this, "Please enter valid password!", Toast.LENGTH_SHORT).show();
-        } else {
+        }
+        else {
             if (accountValidation.verifyCurrentPassword(inputOldPassword, database.getCurrentStudentID())) {
                 if (accountValidation.confirmPassword(inputNewPassword, inputNewPasswordConfirm)) {
-                    Toast.makeText(AccountChangePassword.this, "Old Password: " + inputOldPassword, Toast.LENGTH_SHORT).show();
-                    Toast.makeText(AccountChangePassword.this, "New Password: " + inputNewPassword, Toast.LENGTH_SHORT).show();
-                    Toast.makeText(AccountChangePassword.this, "Confirm Password: " + inputNewPasswordConfirm, Toast.LENGTH_SHORT).show();
-
                     if (database.updatePassword(inputNewPassword)) {
                         Toast.makeText(AccountChangePassword.this, "Password has been changed!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(AccountChangePassword.this, AccountManagementMenu.class);
                         startActivity(intent);
                     }
-                    else {
-                        Toast.makeText(AccountChangePassword.this, "Update password is not working!", Toast.LENGTH_SHORT).show();
-                    }
                 }
                 else {
-                    Toast.makeText(AccountChangePassword.this, "Please verify the new passwords!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountChangePassword.this, "Please verify that the passwords match!", Toast.LENGTH_SHORT).show();
                 }
             }
             else {
