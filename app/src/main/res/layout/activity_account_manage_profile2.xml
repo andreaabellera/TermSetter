@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="24dp"
     tools:context=".Presentation.AccountManageProfile">
 
     <LinearLayout
@@ -11,22 +12,19 @@
         android:layout_height="wrap_content"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:padding="24dp"
-        android:orientation="vertical"
-        android:layout_marginTop="32dp">
+        android:orientation="vertical">
 
         <TextView
             style="@style/TextAppearance.Termsetter.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:text="@string/btn_account_management_manage_profile"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="32dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -69,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/contentProfilePrompts"
-                android:layout_marginStart="32dp"
+                android:paddingStart="32dp"
                 android:gravity="right"
                 android:orientation="vertical">
 
@@ -103,6 +101,14 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Termsetter.TextButton.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:onClick="backToAccountMenu"
+            android:text="◀ Account Menu"/>
 
     </LinearLayout>
 </ScrollView>
