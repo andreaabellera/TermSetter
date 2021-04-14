@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/TextAppearance.Termsetter.Title"
+            style="@style/TextAppearance.MaterialComponents.Headline4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Classes and Fees"/>
@@ -22,20 +22,35 @@
             android:id="@+id/recycleEnrolledClasses"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:gravity="center"
             android:layout_gravity="center" />
 
-        <TextView
-            android:id="@+id/textFeeTotal"
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_gravity="end"
-            android:background="@color/tsBackground"
-            android:gravity="right"
-            android:text="Total fees:"
-            android:textSize="18sp" />
+            android:layout_marginTop="32dp">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Termsetter.TextButton.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/textFeeTotal"
+                android:onClick="backToMenu"
+                android:text="◀ home"/>
+
+            <TextView
+                android:id="@+id/textFeeTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Total fees:"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+
+
 
 
     </LinearLayout>

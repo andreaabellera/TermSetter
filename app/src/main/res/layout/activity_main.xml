@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="24dp"
-            android:onClick="openEnrolledClassesView"
+            android:onClick="openTranscript"
             android:text="@string/btn_main_view_my_courses" />
 
         <com.google.android.material.button.MaterialButton

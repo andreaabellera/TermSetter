@@ -14,17 +14,17 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/TextAppearance.Termsetter.Title"
+            style="@style/TextAppearance.MaterialComponents.Headline4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Offered Classes"/>
-        
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.Termsetter.TextButton.Small"
+            android:text="Departments"/>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Return to menu"
-            android:onClick="backToMenu"/>
+            android:paddingTop="8dp"
+            android:text="Select department to view available courses."
+            android:textSize="18sp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleViewFaculties"
@@ -33,6 +33,13 @@
             android:layout_marginTop="32dp"
             android:layout_gravity="center" />
 
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Termsetter.TextButton.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:onClick="backToMenu"
+            android:text="◀ home"/>
 
     </LinearLayout>
 </ScrollView>
