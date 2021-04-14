@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="backToMenu"
     android:padding="24dp"
     tools:context=".Presentation.OfferedClassesCategories">
 
@@ -17,29 +16,42 @@
             style="@style/TextAppearance.MaterialComponents.Headline4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Departments"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="8dp"
-            android:text="Select department to view available courses."
-            android:textSize="18sp"/>
+            android:text="Classes and Fees"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycleViewFaculties"
+            android:id="@+id/recycleEnrolledClasses"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:gravity="center"
             android:layout_gravity="center" />
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.Termsetter.TextButton.Small"
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:onClick="backToMenu"
-            android:text="◀ home"/>
+            android:layout_marginTop="32dp">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Termsetter.TextButton.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/textFeeTotal"
+                android:onClick="backToMenu"
+                android:text="◀ home"/>
+
+            <TextView
+                android:id="@+id/textFeeTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Total fees:"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+
+
+
 
     </LinearLayout>
 </ScrollView>

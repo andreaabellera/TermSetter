@@ -120,4 +120,8 @@ public class OfferedClassesDetail extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void backToCategories(View view) {
+        Intent intent = new Intent(this, OfferedClassesView.class);
+        startActivity(intent);
+    }
 }

@@ -2,11 +2,14 @@ package comp3350.termsetter.Presentation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+
 import java.util.List;
 import comp3350.termsetter.Persistence.CourseOffering;
 import comp3350.termsetter.Persistence.Faculty;
@@ -97,6 +100,11 @@ public class OfferedClassesView extends AppCompatActivity {
     public void fourthYearClicked(int position) {
         Intent intent = new Intent(this, OfferedClassesDetail.class);
         intent.putExtra("course", fourthYearCourses.get(position));
+        startActivity(intent);
+    }
+
+    public void backToCategories(View view){
+        Intent intent = new Intent(this, OfferedClassesCategories.class);
         startActivity(intent);
     }
 
