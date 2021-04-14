@@ -45,12 +45,7 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">18sp</item>
         <item name="android:letterSpacing">.15</item>
-    </style>
 
-    <style name="Widget.Termsetter.SubMenuButton" parent="Widget.Termsetter.MenuButton">
-        <item name="android:backgroundTint">@color/tsBlue100</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.Termsetter.ExtraRound</item>
-        <item name="android:textColor">@color/grey100</item>
     </style>
 
     <!-- Confirmation buttons -->
@@ -92,10 +87,5 @@
     <style name="ShapeAppearance.Termsetter.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
-    </style>
-
-    <style name="ShapeAppearance.Termsetter.ExtraRound" parent="ShapeAppearance.Termsetter.SmallComponent">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">42dp</item>
     </style>
 </resources>
