@@ -23,35 +23,35 @@
             android:text="@string/header_account_management"/>
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.Termsetter.SubMenuButton"
+            style="@style/Widget.Termsetter.MenuButton"
             android:id="@+id/buttonManageProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="64dp"
             android:onClick="openManageProfile"
             android:text="@string/btn_account_management_manage_profile"
             app:icon="@drawable/ic_baseline_person_24"
             tools:layout_editor_absoluteX="1dp" />
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.Termsetter.SubMenuButton"
+            style="@style/Widget.Termsetter.MenuButton"
             android:id="@+id/buttonChangePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:onClick="openChangePassword"
             android:text="@string/btn_account_management_change_password"
             app:icon="@drawable/ic_baseline_https_24"
             tools:layout_editor_absoluteX="20dp" />
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.Termsetter.SubMenuButton"
+            style="@style/Widget.Termsetter.MenuButton"
             android:id="@+id/buttonUpdateEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:onClick="openUpdateEmail"
             android:text="@string/btn_account_management_update_email"
             app:icon="@drawable/ic_baseline_mail_outline_24"/>
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:onClick="returnToMainMenu"
             android:text="@string/txtbtn_back"/>
     </LinearLayout>
