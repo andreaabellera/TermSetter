@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class Unenrollment extends AppCompatActivity {
     EnrollAccess enrollAccess;
     Student student;
     RecyclerRemoveClassDataAdapter recyclerAdapter;
+    LinearLayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,20 +66,27 @@ public class Unenrollment extends AppCompatActivity {
 
     private void initWidgets() {
         RecyclerView classes = (RecyclerView)findViewById(R.id.recycleEnrolledClasses);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(this);
         classes.setLayoutManager(layoutManager);
         recyclerAdapter= new RecyclerRemoveClassDataAdapter(enrolledCourses, enrolledSections);
         classes.setAdapter(recyclerAdapter);
-        recyclerAdapter.setOnClick(this::onItemClick);
     }
 
-    public void onItemClick(int position) {
-        Toast.makeText(this, "-checked-", Toast.LENGTH_LONG).show();
-    }
-
-    public void returnToMenu(View view) {
+    public void unenrollmentBackToMainMenu(View view) {
+        unenroll();
         Toast.makeText(this, "Dropped selected classes", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void unenroll(){
+        for(int i = 0; i < enrolledCourses.size(); i++){
+            CheckBox item = layoutManager.findViewByPosition(i).findViewById(R.id.course_id);
+            if(item != null){
+                if(item.isChecked()){
+                    enrollAccess.unenroll(student.getStudentID(), enrolledSections.get(i).getSection(), enrolledCourses.get(i).getCourseCode());
+                }
+            }
+        }
     }
 }

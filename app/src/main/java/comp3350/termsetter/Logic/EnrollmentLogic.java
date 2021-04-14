@@ -48,11 +48,7 @@ public class EnrollmentLogic
             {
                 CourseSection currClass = new CourseSection(tokens[3], tokens[4], tokens[5], tokens[6]);
                 success = addSection(currClass);
-                if(success)
-                {
-                    message = "Successfully enrolled in " + courseCode + " " + selectedClass.getSection() + ".";
-                }
-                else
+                if (!success)
                 {
                     message = "Error: Failed to enroll due to a time conflict with " + tokens[0] + " (" + tokens[4] + ": "+ tokens[5] + ")";
                 }
@@ -61,8 +57,10 @@ public class EnrollmentLogic
                 message = "Error: Already enrolled in this course!";
             }
         }
-        if(success)
+        if(success) {
             confirmEnroll();
+            message = "Successfully enrolled in " + courseCode + " " + selectedClass.getSection() + ".";
+        }
     }
 
     public boolean addSection(CourseSection courseSection)

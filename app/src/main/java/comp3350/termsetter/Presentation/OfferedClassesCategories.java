@@ -3,7 +3,6 @@ package comp3350.termsetter.Presentation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -53,7 +52,7 @@ public class OfferedClassesCategories extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void backToMenu(View view) {
+    public void categoriesBackToMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
