@@ -50,5 +50,9 @@ public class CourseSection implements Serializable
         return occupants < maxOccupancy;
     }
 
+    public boolean equals(CourseSection otherSection){
+        return section.equals(otherSection.getSection()) && days.equals(otherSection.getDays()) && timeSlot.equals(otherSection.getTimeSlot()) && period.equals(otherSection.getPeriod());
+    }
+
 }
 

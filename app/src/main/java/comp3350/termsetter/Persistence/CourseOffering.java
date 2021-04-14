@@ -43,4 +43,9 @@ public class CourseOffering implements Serializable
         sections.add((section));
     }
 
+    public boolean equals(CourseOffering otherCourse){
+        return courseCode.equals(otherCourse.getCourseCode()) && name.equals(otherCourse.getName()) && creditHours == otherCourse.getCreditHours();
+    }
+
+
 }

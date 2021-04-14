@@ -17,9 +17,9 @@ public class TimetableLogicTest {
     List<CourseSection> sectionList;
 
     CourseOffering earlyMWFCourse = new CourseOffering("COMP3010", "Distributed Computing", 3);
-    CourseSection earlyMWFSection = new CourseSection("A01","MW", "10:30-11:30", "2021/01/18-2021/04/18");
+    CourseSection earlyMWFSection = new CourseSection("A01","MWF", "10:30-11:30", "2021/01/18-2021/04/18");
     CourseOffering lateMWFCourse = new CourseOffering("COMP3350", "Software Engineering", 3);
-    CourseSection lateMWFSection = new CourseSection("A01","MWF", "1:30-2:30", "2021/01/18-2021/04/18");
+    CourseSection lateMWFSection = new CourseSection("A01","MWF", "12:30-13:30", "2021/01/18-2021/04/18");
     CourseOffering earlyTRCourse = new CourseOffering("COMP4020", "Human-Computer Interaction 2", 3);
     CourseSection earlyTRSection = new CourseSection("A01","TR", "9:30-10:30", "2021/01/18-2021/04/18");
     CourseOffering lateTRCourse = new CourseOffering("COMP4380", "Database Implementation", 3);
@@ -63,7 +63,8 @@ public class TimetableLogicTest {
         System.out.println("\nStarting testMondaySequential: correct sequence of items\n");
 
         List<CourseOffering> mondayClasses = tL.getCourse("M");
-        // TBD
+        assertTrue(mondayClasses.get(0).equals(earlyMWFCourse));
+        assertTrue(mondayClasses.get(1).equals(lateMWFCourse));
 
         System.out.println("\nEnding testMondaySequential: correct sequence of items\n");
     }
@@ -83,7 +84,10 @@ public class TimetableLogicTest {
         System.out.println("\nStarting testTuesdaySequential: correct sequence of items\n");
 
         List<CourseOffering> tuesdayClasses = tL.getCourse("T");
-        // TBD
+        System.out.println(tuesdayClasses.get(0).getCourseCode());
+        System.out.println(tuesdayClasses.get(1).getCourseCode());
+        assertTrue(tuesdayClasses.get(0).equals(earlyTRCourse));
+        assertTrue(tuesdayClasses.get(1).equals(lateTRCourse));
 
         System.out.println("\nEnding testTuesdaySequential: correct sequence of items\n");
     }
@@ -103,7 +107,8 @@ public class TimetableLogicTest {
         System.out.println("\nStarting testWednesdaySequential: correct sequence of items\n");
 
         List<CourseOffering> wednesdayClasses = tL.getCourse("W");
-        // TBD
+        assertTrue(wednesdayClasses.get(0).equals(earlyMWFCourse));
+        assertTrue(wednesdayClasses.get(1).equals(lateMWFCourse));
 
         System.out.println("\nEnding testWednesdaySequential: correct sequence of items\n");
     }
@@ -123,8 +128,12 @@ public class TimetableLogicTest {
         System.out.println("\nStarting testThursdaySequential: correct sequence of items\n");
 
         List<CourseOffering> thursdayClasses = tL.getCourse("R");
-        // TBD
-
+        System.out.println(thursdayClasses.get(0).getCourseCode());
+        System.out.println(thursdayClasses.get(1).getCourseCode());
+        System.out.println(thursdayClasses.get(2).getCourseCode());
+        assertTrue(thursdayClasses.get(0).equals(thursdayCourse));
+        assertTrue(thursdayClasses.get(1).equals(earlyTRCourse));
+        assertTrue(thursdayClasses.get(2).equals(lateTRCourse));
         System.out.println("\nEnding testThursdaySequential: correct sequence of items\n");
     }
 
@@ -143,7 +152,8 @@ public class TimetableLogicTest {
         System.out.println("\nStarting testFridaySequential: correct sequence of items\n");
 
         List<CourseOffering> fridayClasses = tL.getCourse("F");
-        // TBD
+        assertTrue(fridayClasses.get(0).equals(earlyMWFCourse));
+        assertTrue(fridayClasses.get(1).equals(lateMWFCourse));
 
         System.out.println("\nEnding testFridaySequential: correct sequence of items\n");
     }
@@ -153,7 +163,11 @@ public class TimetableLogicTest {
         System.out.println("\nStarting testCourseSort: correct sequence of items\n");
 
         List<CourseOffering> sortedCourses = tL.sort(courseList, sectionList);
-        // TBD
+        assertTrue(sortedCourses.get(0).equals(thursdayCourse));
+        assertTrue(sortedCourses.get(1).equals(earlyTRCourse));
+        assertTrue(sortedCourses.get(2).equals(earlyMWFCourse));
+        assertTrue(sortedCourses.get(3).equals(lateMWFCourse));
+        assertTrue(sortedCourses.get(4).equals(lateTRCourse));
 
         System.out.println("\nEnding testCourseSort: correct sequence of items\n");
     }
@@ -163,7 +177,17 @@ public class TimetableLogicTest {
         System.out.println("\nStarting testSectionSort: correct sequence of items\n");
 
         List<CourseSection> sortedSections = tL.sort(sectionList);
-        // TBD
+        System.out.println(sortedSections.get(0).getTimeSlot());
+        System.out.println(sortedSections.get(1).getTimeSlot());
+        System.out.println(sortedSections.get(2).getTimeSlot());
+        System.out.println(sortedSections.get(3).getTimeSlot());
+        System.out.println(sortedSections.get(4).getTimeSlot());
+
+        assertTrue(sortedSections.get(0).equals(thursdaySection));
+        assertTrue(sortedSections.get(1).equals(earlyTRSection));
+        assertTrue(sortedSections.get(2).equals(earlyMWFSection));
+        assertTrue(sortedSections.get(3).equals(lateMWFSection));
+        assertTrue(sortedSections.get(4).equals(lateTRSection));
 
         System.out.println("\nEnding testSectionSort: correct sequence of items\n");
     }
