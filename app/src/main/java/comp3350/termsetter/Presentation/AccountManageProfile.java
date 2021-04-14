@@ -1,7 +1,9 @@
 package comp3350.termsetter.Presentation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -41,6 +43,11 @@ public class AccountManageProfile extends AppCompatActivity {
         studentID.setText(student.getStudentID());
         studentEmail.setText(student.getEmailAddress());
         studentPhone.setText(student.getPhoneNumber());
+    }
+
+    public void backToAccountMenu(View view) {
+        Intent intent = new Intent(this, AccountManagementMenu.class);
+        startActivity(intent);
     }
 }
 

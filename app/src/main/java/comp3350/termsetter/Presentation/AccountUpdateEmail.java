@@ -69,6 +69,8 @@ public class AccountUpdateEmail extends AppCompatActivity {
         }
     }
 
-
-
+    public void backToAccountMenu(View view) {
+        Intent intent = new Intent(this, AccountManagementMenu.class);
+        startActivity(intent);
+    }
 }

@@ -2,12 +2,12 @@ package comp3350.termsetter.Presentation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.hsqldb.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +82,4 @@ public class Transcript extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
-
 }
