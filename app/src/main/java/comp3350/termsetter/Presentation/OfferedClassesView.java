@@ -103,7 +103,7 @@ public class OfferedClassesView extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void backToCategories(View view){
+    public void viewBackToCategories(View view){
         Intent intent = new Intent(this, OfferedClassesCategories.class);
         startActivity(intent);
     }

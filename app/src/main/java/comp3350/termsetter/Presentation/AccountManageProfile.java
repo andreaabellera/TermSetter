@@ -45,7 +45,7 @@ public class AccountManageProfile extends AppCompatActivity {
         studentPhone.setText(student.getPhoneNumber());
     }
 
-    public void backToAccountMenu(View view) {
+    public void profileBackToAccountMenu(View view) {
         Intent intent = new Intent(this, AccountManagementMenu.class);
         startActivity(intent);
     }

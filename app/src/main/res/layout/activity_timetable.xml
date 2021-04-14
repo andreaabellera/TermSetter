@@ -37,8 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:layout_alignBaseline="@id/buttonConfirmPassword"
-            android:onClick="backToMenu"
-            android:text="◀ Account Menu"/>
+            android:onClick="timetableBackToMainMenu"
+            android:text="◀ Home"/>
     </LinearLayout>
 </ScrollView>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="24dp"
     tools:context=".Presentation.AccountUpdateEmail">
 
 
@@ -13,7 +14,6 @@
         android:layout_height="wrap_content"
         android:clipChildren="false"
         android:clipToPadding="true"
-        android:padding="24dp"
         android:orientation="vertical">
 
         <TextView
@@ -105,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/buttonConfirmEmail"
-                    android:onClick="backToAccountMenu"
+                    android:onClick="emailBackToAccountMenu"
                     android:text="◀ Account Menu"/>
 
                 <com.google.android.material.button.MaterialButton

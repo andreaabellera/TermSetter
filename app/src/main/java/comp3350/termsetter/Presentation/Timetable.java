@@ -99,7 +99,7 @@ public class Timetable extends AppCompatActivity implements OnItemSelectedListen
         // Another interface callback
     }
 
-    public void backToMenu(View view) {
+    public void timetableBackToMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

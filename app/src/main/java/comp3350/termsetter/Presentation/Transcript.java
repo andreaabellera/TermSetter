@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,7 +77,7 @@ public class Transcript extends AppCompatActivity {
         total_txt.setText("Total Fees: " + Double.toString(total)+" CAD");
     }
 
-    private void backToMenu(View view){
+    public void transcriptBackToMainMenu(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

@@ -74,7 +74,7 @@ public class AccountChangePassword extends AppCompatActivity {
         }
     }
 
-    public void backToAccountMenu(View view) {
+    public void passwordBackToAccountMenu(View view) {
         Intent intent = new Intent(this, AccountManagementMenu.class);
         startActivity(intent);
     }

@@ -171,7 +171,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@id/buttonEnroll"
-                android:onClick="backToCategories"
+                android:onClick="detailBackToView"
                 android:text="◀ Offered classes"/>
 
             <com.google.android.material.button.MaterialButton
