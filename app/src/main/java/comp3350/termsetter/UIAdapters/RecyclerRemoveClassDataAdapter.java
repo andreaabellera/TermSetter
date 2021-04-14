@@ -18,29 +18,19 @@ public class RecyclerRemoveClassDataAdapter extends RecyclerView.Adapter<Recycle
     private List<CourseSection> sectionItems;
     private RecyclerFacultyDataAdapter.OnItemClicked onClick;
 
-    public interface OnItemClicked {
-        void onItemClick(int position);
-    }
-
     public RecyclerRemoveClassDataAdapter(List<CourseOffering> courseItems, List<CourseSection> sectionItems) {
         this.courseItems = courseItems;
         this.sectionItems = sectionItems;
     }
 
-    public interface btnClickListener {
-        void onItemClick(int position);
-    }
-
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView course_id_txt;
         public TextView course_credit_txt;
-        public CardView cardView;
 
         public ViewHolder(View v){
             super(v);
             course_id_txt = (TextView)v.findViewById(R.id.course_id);
             course_credit_txt = (TextView)v.findViewById(R.id.course_credit);
-            cardView = (CardView)v.findViewById(R.id.recycler_card);
         }
     }
 
@@ -62,14 +52,6 @@ public class RecyclerRemoveClassDataAdapter extends RecyclerView.Adapter<Recycle
             if(courseItem != null && sectionItem != null) {
                 holder.course_id_txt.setText(courseItem.getCourseCode() + " - " + courseItem.getName());
                 holder.course_credit_txt.setText("Credit Hours: " + courseItem.getCreditHours() + ".00 CR");
-                holder.cardView.setCardBackgroundColor(Color.rgb(225,225,225));
-
-                holder.cardView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onClick.onItemClick(position);
-                    }
-                });
             }
         }
     }
@@ -81,10 +63,6 @@ public class RecyclerRemoveClassDataAdapter extends RecyclerView.Adapter<Recycle
             ret = courseItems.size();
         }
         return ret;
-    }
-
-    public void setOnClick(RecyclerFacultyDataAdapter.OnItemClicked onClick) {
-        this.onClick=onClick;
     }
 
 }

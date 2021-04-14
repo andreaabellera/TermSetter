@@ -14,17 +14,23 @@
 
         <TextView
             style="@style/TextAppearance.MaterialComponents.Headline4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Classes and Fees"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Displays your unofficial web transcript and fees."
+            android:layout_marginEnd="32dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="32dp"
+            android:textSize="18sp"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleEnrolledClasses"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:gravity="center"
-            android:layout_gravity="center" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
 
         <RelativeLayout
@@ -36,9 +42,18 @@
                 style="@style/Widget.Termsetter.TextButton.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@id/textFeeTotal"
+                android:layout_alignBaseline="@id/textCreditTotal"
                 android:onClick="transcriptBackToMainMenu"
                 android:text="◀ home"/>
+
+            <TextView
+                android:id="@+id/textCreditTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textFeeTotal"
+                android:layout_alignStart="@id/textFeeTotal"
+                android:text="Total Credits:"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/textFeeTotal"
@@ -48,10 +63,6 @@
                 android:text="Total fees:"
                 android:textSize="18sp" />
         </RelativeLayout>
-
-
-
-
 
     </LinearLayout>
 </ScrollView>

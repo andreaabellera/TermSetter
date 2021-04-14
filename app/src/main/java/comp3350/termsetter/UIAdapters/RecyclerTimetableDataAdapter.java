@@ -55,7 +55,7 @@ public class RecyclerTimetableDataAdapter extends RecyclerView.Adapter<RecyclerT
 
             if(courseItem != null && sectionItem != null) {
                 holder.course_id_txt.setText(courseItem.getCourseCode() + " - " + courseItem.getName());
-                holder.course_section_txt.setText("Section " + sectionItem.getSection() + " [ " + sectionItem.getDays() + " | " + sectionItem.getTimeSlot() + " ]");
+                holder.course_section_txt.setText("Section " + sectionItem.getSection() + " [ " + sectionItem.getTimeSlot() + " ]");
                 holder.cardView.setCardBackgroundColor(color);
             }
         }
