@@ -33,25 +33,22 @@ public class RecyclerRemoveClassDataAdapter extends RecyclerView.Adapter<Recycle
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView course_id_txt;
-        public TextView course_section_txt;
+        public TextView course_credit_txt;
         public CardView cardView;
 
         public ViewHolder(View v){
             super(v);
             course_id_txt = (TextView)v.findViewById(R.id.course_id);
-            course_section_txt = (TextView)v.findViewById(R.id.course_section);
+            course_credit_txt = (TextView)v.findViewById(R.id.course_credit);
             cardView = (CardView)v.findViewById(R.id.recycler_card);
         }
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // Get LayoutInflater object.
+        // Get LayoutInflater object
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        // Inflate the RecyclerView item layout xml.
-        View itemView = layoutInflater.inflate(R.layout.widget_currclass_recycler_card, parent, false);
-
-        // Create and return our customRecycler View Holder object.
+        View itemView = layoutInflater.inflate(R.layout.widget_remove_class_recycler_card, parent, false);
         ViewHolder ret = new ViewHolder(itemView);
         return ret;
     }
@@ -64,8 +61,8 @@ public class RecyclerRemoveClassDataAdapter extends RecyclerView.Adapter<Recycle
 
             if(courseItem != null && sectionItem != null) {
                 holder.course_id_txt.setText(courseItem.getCourseCode() + " - " + courseItem.getName());
-                holder.course_section_txt.setText(sectionItem.getSection() + " | " + sectionItem.getDays() + "  " + sectionItem.getTimeSlot() + " | " + sectionItem.getPeriod());
-                holder.cardView.setCardBackgroundColor(Color.rgb(125,140,235));
+                holder.course_credit_txt.setText("Credit Hours: " + courseItem.getCreditHours() + ".00 CR");
+                holder.cardView.setCardBackgroundColor(Color.rgb(225,225,225));
 
                 holder.cardView.setOnClickListener(new View.OnClickListener() {
                     @Override
