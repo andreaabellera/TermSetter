@@ -7,7 +7,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Spinner;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,8 +32,8 @@ public class Timetable extends AppCompatActivity implements OnItemSelectedListen
 
     RecyclerTimetableDataAdapter recyclerAdapter;
     TimetableLogic display;
-    List<List<CourseOffering>> coursesByDay;
-    List<List<CourseSection>> sectionsByDay;
+    List<List<CourseOffering>> coursesByDay = new ArrayList<List<CourseOffering>>();
+    List<List<CourseSection>> sectionsByDay = new ArrayList<List<CourseSection>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +44,8 @@ public class Timetable extends AppCompatActivity implements OnItemSelectedListen
     }
 
     private void initData() {
-        enrolledCourses = new ArrayList<>();
-        enrolledSections = new ArrayList<>();
+        enrolledCourses = new ArrayList<CourseOffering>();
+        enrolledSections = new ArrayList<CourseSection>();
 
         // Get currently enrolled student
         AccessManager accessManager = new AccessManager();
@@ -90,13 +89,6 @@ public class Timetable extends AppCompatActivity implements OnItemSelectedListen
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.days_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
-        //Recycler element
-        RecyclerView classes = (RecyclerView)findViewById(R.id.recycleEnrolledClasses);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        classes.setLayoutManager(layoutManager);
-        recyclerAdapter= new RecyclerTimetableDataAdapter(enrolledCourses, enrolledSections, getResources().getColor(R.color.cardBackground1));
-        classes.setAdapter(recyclerAdapter);
     }
 
     @Override
@@ -104,7 +96,11 @@ public class Timetable extends AppCompatActivity implements OnItemSelectedListen
         // On selecting a spinner item
         List<CourseOffering> courses = coursesByDay.get(position);
         List<CourseSection> sections = sectionsByDay.get(position);
+        RecyclerView classes = (RecyclerView)findViewById(R.id.recycleEnrolledClasses);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        classes.setLayoutManager(layoutManager);
         recyclerAdapter= new RecyclerTimetableDataAdapter(courses, sections, getResources().getColor(R.color.cardBackground1));
+        classes.setAdapter(recyclerAdapter);
     }
 
     public void onNothingSelected(AdapterView<?> parent) {

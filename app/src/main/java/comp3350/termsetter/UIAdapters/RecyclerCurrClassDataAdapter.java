@@ -26,12 +26,14 @@ public class RecyclerCurrClassDataAdapter extends RecyclerView.Adapter<RecyclerC
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView course_id_txt;
         public TextView course_section_txt;
+        public TextView course_credit_txt;
         public CardView cardView;
 
         public ViewHolder(View v){
             super(v);
             course_id_txt = (TextView)v.findViewById(R.id.course_id);
             course_section_txt = (TextView)v.findViewById(R.id.course_section);
+            course_credit_txt = (TextView)v.findViewById(R.id.course_credit);
             cardView = (CardView)v.findViewById(R.id.recycler_card);
         }
     }
@@ -56,8 +58,9 @@ public class RecyclerCurrClassDataAdapter extends RecyclerView.Adapter<RecyclerC
 
             if(courseItem != null && sectionItem != null) {
                 holder.course_id_txt.setText(courseItem.getCourseCode() + " - " + courseItem.getName());
-                holder.course_section_txt.setText(sectionItem.getSection() + " | " + sectionItem.getDays() + "  " + sectionItem.getTimeSlot() + " | " + sectionItem.getPeriod());
-                holder.cardView.setCardBackgroundColor(Color.rgb(125,140,235));
+                holder.course_section_txt.setText(sectionItem.getSection() + " [ " + sectionItem.getDays() + " | " + sectionItem.getTimeSlot() + " ] " + sectionItem.getPeriod());
+                holder.course_credit_txt.setText("Credit Hours: " + courseItem.getCreditHours() + ".00 CR");
+                holder.cardView.setCardBackgroundColor(Color.rgb(225,225,225));
             }
         }
     }
