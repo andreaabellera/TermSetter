@@ -12,6 +12,7 @@ import comp3350.termsetter.Tests.CourseCategoryIntegrationTest;
 import comp3350.termsetter.Tests.EnrollmentLogicTest;
 import comp3350.termsetter.Tests.EnrollAccessTest;
 import comp3350.termsetter.Tests.EnrollmentIntegrationTest;
+import comp3350.termsetter.Tests.TimetableLogicTest;
 
 
 @RunWith(Suite.class)
@@ -23,7 +24,8 @@ import comp3350.termsetter.Tests.EnrollmentIntegrationTest;
         CourseAccessTest.class,
         EnrollmentLogicTest.class,
         EnrollmentIntegrationTest.class,
-        EnrollAccessTest.class
+        EnrollAccessTest.class,
+        TimetableLogicTest.class
 })
 
 
