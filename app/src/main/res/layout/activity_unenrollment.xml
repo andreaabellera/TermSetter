@@ -15,20 +15,31 @@
         <TextView
             android:id="@+id/unenrollmentHeader"
             style="@style/TextAppearance.Termsetter.Title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
-            android:layout_marginBottom="16dp"
-            android:text="Class Unenrollment"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="Class Unenrollment" />
+
+        <TextView
+            android:id="@+id/unenrollmentDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/unenrollmentHeader"
+            android:text="Select all classes to drop, then press the unenroll button."
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="32dp"
+            android:textSize="18sp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleEnrolledClasses"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/unenrollmentHeader"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_below="@+id/unenrollmentDesc"
             android:layout_above="@+id/unenrollButton"
             android:gravity="center"
             android:layout_gravity="center" />

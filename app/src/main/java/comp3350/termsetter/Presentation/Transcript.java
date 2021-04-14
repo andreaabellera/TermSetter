@@ -35,7 +35,8 @@ public class Transcript extends AppCompatActivity {
         setContentView(R.layout.activity_transcript);
         initData();
         initWidgets();
-        updateTotal();
+        updateFeeTotal();
+        updateCreditTotal();
     }
 
     private void initData(){
@@ -70,11 +71,20 @@ public class Transcript extends AppCompatActivity {
         classes.setAdapter(recyclerAdapter);
     }
 
-    private void updateTotal(){
+    private void updateFeeTotal(){
         double total = 562.12 * recyclerAdapter.getItemCount();
         total = Math.round(total * 100.0) / 100.0;  // reduces to 2 decimal places
         TextView total_txt = (TextView) findViewById(R.id.textFeeTotal);
         total_txt.setText("Total Fees: " + Double.toString(total)+" CAD");
+    }
+
+    private void updateCreditTotal(){
+        int total = 0;
+        for(int i = 0; i < enrolledCourses.size(); i++){
+            total += enrolledCourses.get(i).getCreditHours();
+        }
+        TextView total_txt = (TextView) findViewById(R.id.textCreditTotal);
+        total_txt.setText("Total Credits: " + total);
     }
 
     public void transcriptBackToMainMenu(View view){
