@@ -52,13 +52,9 @@ public class TimetableLogic {
             int j = i - 1;
             CourseSection sectionKey = studentSections.get(i);
             int keyTime = parseTime(studentSections.get(i).getTimeSlot());
-            int iterativeTime;
 
-            while (j >= 0) {
-                iterativeTime = parseTime(studentSections.get(j).getTimeSlot());
-                if (iterativeTime > keyTime) {
-                    studentSections.set(j+1, studentSections.get(j));
-                }
+            while (j >= 0 && parseTime(studentSections.get(j).getTimeSlot()) > keyTime) {
+                studentSections.set(j+1, studentSections.get(j));
                 j = j - 1;
             }
             studentSections.set(j+1, sectionKey);
@@ -73,18 +69,14 @@ public class TimetableLogic {
             CourseSection sectionKey = studentSections.get(i);
             CourseOffering courseKey = studentCourses.get(i);
             int keyTime = parseTime(studentSections.get(i).getTimeSlot());
-            int iterativeTime;
 
-            while (j >= 0) {
-                iterativeTime = parseTime(studentSections.get(j).getTimeSlot());
-                if (iterativeTime > keyTime) {
-                    studentCourses.set(j+1, studentCourses.get(j));
-                    studentSections.set(j+1, studentSections.get(j));
-                }
+            while (j >= 0 && parseTime(studentSections.get(j).getTimeSlot()) > keyTime) {
+                studentSections.set(j + 1, studentSections.get(j));
+                studentCourses.set(j + 1, studentCourses.get(j));
                 j = j - 1;
             }
-            studentCourses.set(j+1, courseKey);
-            studentSections.set(j+1, sectionKey);
+            studentCourses.set(j + 1, courseKey);
+            studentSections.set(j + 1, sectionKey);
         }
         return studentCourses;
     }
