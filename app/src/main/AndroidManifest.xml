@@ -11,30 +11,31 @@
         android:roundIcon="@drawable/ts_icon"
         android:supportsRtl="true"
         android:theme="@style/TermsetterBase">
-        <activity android:name=".Presentation.Unenrollment"></activity>
 
         <uses-library
             android:name="com.google.android.wearable"
             android:required="false" />
-        <!--
-               Set to true if your app is Standalone, that is, it does not require the handheld
-               app to run.
-        -->
         <meta-data
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
+        <activity
+            android:name=".Presentation.Unenrollment"
+            android:label="Unenroll from a Class">
+        </activity>
         <activity
             android:name=".Presentation.Timetable"
             android:label="@string/title_activity_timetable">
         </activity>
         <activity
             android:name=".Presentation.Transcript"
-            android:label="View Transcript" />
-        <!-- The default activity is set to Login Page (if otherwise, please check your Edit configuration) -->
+            android:label="View Transcript">
+        </activity>
         <activity
             android:name=".Presentation.AccountChangePassword"
-            android:label="Change Password" />
+            android:label="Change Password">
+
+        </activity>
         <activity
             android:name=".Presentation.AccountUpdateEmail"
             android:label="Update Email" />

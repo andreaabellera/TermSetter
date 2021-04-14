@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:onClick="backToMenu"
-    android:padding="@dimen/box_inset_layout_padding"
+    android:padding="24dp"
     tools:context=".Presentation.OfferedClassesCategories">
 
     <LinearLayout
@@ -15,22 +15,24 @@
 
         <TextView
             style="@style/TextAppearance.Termsetter.Title"
-            android:id="@+id/buttonBackToMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:onClick="backToMenu"
-            android:text="Back to Menu"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="Offered Classes"/>
+        
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Termsetter.TextButton.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Return to menu"
+            android:onClick="backToMenu"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleViewFaculties"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:layout_gravity="center" />
 
 
     </LinearLayout>
-</FrameLayout>
+</ScrollView>

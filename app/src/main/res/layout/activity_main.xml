@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="32dp"
             android:onClick="openAccountManagementMenu"
             android:text="@string/btn_main_manage_account"/>
 
@@ -72,7 +72,7 @@
             android:text="@string/btn_main_unenroll" />
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.Termsetter.MenuButton"
+            style="@style/Widget.Termsetter.TextButton.Large"
             android:id="@+id/homeLogoutBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
