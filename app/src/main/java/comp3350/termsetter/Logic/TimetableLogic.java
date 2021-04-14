@@ -47,7 +47,8 @@ public class TimetableLogic {
     }
 
     public List<CourseSection> sort(List<CourseSection> studentSections) {
-        for (int i = 1; i < coursesNum; ++i) {
+        int size = studentSections.size();
+        for (int i = 1; i < size; ++i) {
             int j = i - 1;
             CourseSection sectionKey = studentSections.get(i);
             int keyTime = parseTime(studentSections.get(i).getTimeSlot());
@@ -57,8 +58,8 @@ public class TimetableLogic {
                 iterativeTime = parseTime(studentSections.get(j).getTimeSlot());
                 if (iterativeTime > keyTime) {
                     studentSections.set(j+1, studentSections.get(j));
-                    j = j - 1;
                 }
+                j = j - 1;
             }
             studentSections.set(j+1, sectionKey);
         }
@@ -66,7 +67,8 @@ public class TimetableLogic {
     }
 
     public List<CourseOffering> sort(List<CourseOffering> studentCourses, List<CourseSection> studentSections) {
-        for (int i = 1; i < coursesNum; ++i) {
+        int size = studentSections.size();
+        for (int i = 1; i < size; ++i) {
             int j = i - 1;
             CourseSection sectionKey = studentSections.get(i);
             CourseOffering courseKey = studentCourses.get(i);
@@ -78,8 +80,8 @@ public class TimetableLogic {
                 if (iterativeTime > keyTime) {
                     studentCourses.set(j+1, studentCourses.get(j));
                     studentSections.set(j+1, studentSections.get(j));
-                    j = j - 1;
                 }
+                j = j - 1;
             }
             studentCourses.set(j+1, courseKey);
             studentSections.set(j+1, sectionKey);
