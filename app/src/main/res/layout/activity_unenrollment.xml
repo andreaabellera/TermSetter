@@ -30,8 +30,19 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:paddingTop="8dp"
-            android:paddingBottom="32dp"
+            android:paddingBottom="8dp"
             android:textSize="18sp"/>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Termsetter.TextButton.Small"
+            android:id="@+id/unenrollmentBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="unenrollmentBackToMainMenu"
+            android:layout_below="@+id/unenrollmentDesc"
+            android:paddingStart="32dp"
+            android:paddingBottom="16dp"
+            android:text="◀ home"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleEnrolledClasses"
@@ -39,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_below="@+id/unenrollmentDesc"
+            android:layout_below="@+id/unenrollmentBackButton"
             android:layout_above="@+id/unenrollButton"
             android:gravity="center"
             android:layout_gravity="center" />
