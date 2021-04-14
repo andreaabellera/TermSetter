@@ -53,7 +53,7 @@ public class OfferedClassesCategories extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void backToMenu(View view) {
+    public void categoriesBackToMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

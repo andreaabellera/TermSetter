@@ -107,7 +107,7 @@ public class Timetable extends AppCompatActivity implements OnItemSelectedListen
         parent.setSelection(0);
     }
 
-    public void returnToMenu() {
+    public void timetableBackToMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

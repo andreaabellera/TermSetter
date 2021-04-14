@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openEnrolledClassesView(View view) {
+    public void openTranscript(View view) {
         Toast.makeText(this, "Opening my courses.", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, Transcript.class);
         startActivity(intent);

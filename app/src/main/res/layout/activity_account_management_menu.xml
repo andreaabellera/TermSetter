@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="24dp"
     tools:context=".Presentation.AccountManagementMenu">
 
     <LinearLayout
@@ -11,7 +12,6 @@
         android:layout_height="wrap_content"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:padding="24dp"
         android:orientation="vertical">
 
         <TextView
@@ -23,7 +23,7 @@
             android:text="@string/header_account_management"/>
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.Termsetter.OutlinedButton"
+            style="@style/Widget.Termsetter.MenuButton"
             android:id="@+id/buttonManageProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             tools:layout_editor_absoluteX="1dp" />
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.Termsetter.OutlinedButton"
+            style="@style/Widget.Termsetter.MenuButton"
             android:id="@+id/buttonChangePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
             tools:layout_editor_absoluteX="20dp" />
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.Termsetter.OutlinedButton"
+            style="@style/Widget.Termsetter.MenuButton"
             android:id="@+id/buttonUpdateEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,14 +57,14 @@
             app:icon="@drawable/ic_baseline_mail_outline_24"/>
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            style="@style/Widget.Termsetter.TextButton.Large"
             android:id="@+id/buttonReturn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="32dp"
-            android:onClick="returnToMainMenu"
-            android:text="@string/txtbtn_back"/>
+            android:onClick="accountBackToMainMenu"
+            android:text="◀ Home"/>
     </LinearLayout>
 
 </ScrollView>

@@ -28,7 +28,7 @@ public class AccountManagementMenu extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void returnToMainMenu(View view) {
+    public void accountBackToMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

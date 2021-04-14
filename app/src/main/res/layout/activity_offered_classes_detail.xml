@@ -1,202 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/box_inset_layout_padding"
+    android:padding="24dp"
     tools:context=".Presentation.OfferedClassesDetail">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            style="@style/TextAppearance.MaterialComponents.Headline4"
-            android:id="@+id/headerCourseCode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:text="COMP1010"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textCourseCredits"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:text="3.00CR"
-            android:textSize="18sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/headerCourseCode"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Headline4"
+                android:id="@+id/headerCourseCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="COMP1010"/>
+            <TextView
+                android:id="@+id/textCourseCredits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_gravity="center"
+                android:text="3.00CR"
+                android:textSize="18sp"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/headerCourseName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
+            android:paddingTop="8dp"
             android:text="Introductory Computer Science 1"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/headerCourseCode" />
+            android:textSize="18sp"/>
 
-        <RadioGroup
-            android:id="@+id/radioGroupSections"
-            android:layout_width="96dp"
-            android:layout_height="300dp"
-            android:checkedButton="@id/radioButtonS1"
-            app:layout_constraintEnd_toStartOf="@+id/textS1Days"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/headerCourseName">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/radioButtonS1"
+            <RadioGroup
+                android:id="@+id/radioGroupSections"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="48dp"
-                android:text="A01"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/headerCourseName" />
+                android:paddingStart="16dp"
+                android:checkedButton="@id/radioButtonS1">
 
-            <RadioButton
-                android:id="@+id/radioButtonS2"
+                <RadioButton
+                    android:id="@+id/radioButtonS1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:text="A01"
+                    android:textSize="18sp"/>
+                <RadioButton
+                    android:id="@+id/radioButtonS2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:text="A02"
+                    android:textSize="18sp"/>
+                <RadioButton
+                    android:id="@+id/radioButtonS3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:text="A03"
+                    android:textSize="18sp"/>
+            </RadioGroup>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="48dp"
-                android:text="A02"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textS1Period" />
+                android:layout_marginTop="54dp"
+                android:layout_marginStart="42dp"
+                android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/radioButtonS3"
-                android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/textS1Days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MWF"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/textS2Days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:text="TR"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/textS3Days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:text="MWF"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="54dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="48dp"
-                android:text="A03"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textS2Period" />
+                android:orientation="vertical">
 
-        </RadioGroup>
+                <TextView
+                    android:id="@+id/textS1Time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8:30-9:20"
+                    android:textSize="14sp"/>
 
-        <TextView
-            android:id="@+id/textS1Days"
+                <TextView
+                    android:id="@+id/textS1Period"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="2021/01/18-2021/04/18"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/textS2Time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="10:30-11:45"
+                    android:textSize="14sp"/>
+
+
+                <TextView
+                    android:id="@+id/textS2Period"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="2021/01/18-2021/04/18"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/textS3Time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="10:30-11:45"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/textS3Period"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="2021/01/18-2021/04/18"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp"
-            android:text="MWF"
-            android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/radioGroupSections"
-            app:layout_constraintTop_toBottomOf="@+id/headerCourseName" />
+            android:layout_marginTop="54dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textS1Time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="48dp"
-            android:text="8:30-9:20"
-            android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/radioGroupSections"
-            app:layout_constraintTop_toBottomOf="@+id/headerCourseName" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Termsetter.TextButton.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/buttonEnroll"
+                android:onClick="detailBackToView"
+                android:text="◀ Offered classes"/>
 
-        <TextView
-            android:id="@+id/textS1Period"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
-            android:text="2021/01/18-2021/04/18"
-            android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/radioGroupSections"
-            app:layout_constraintTop_toBottomOf="@+id/textS1Time" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Termsetter.ConfirmButton"
+                android:id="@+id/buttonEnroll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:onClick="openCategories"
+                android:text="ENROLL"/>
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/textS2Days"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:text="TR"
-            android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/radioGroupSections"
-            app:layout_constraintTop_toBottomOf="@+id/textS1Period" />
-
-        <TextView
-            android:id="@+id/textS3Days"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:text="MWF"
-            android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/radioGroupSections"
-            app:layout_constraintTop_toBottomOf="@+id/textS2Period" />
-
-        <TextView
-            android:id="@+id/textS2Time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="32dp"
-            android:text="10:30-11:45"
-            android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/radioGroupSections"
-            app:layout_constraintTop_toBottomOf="@+id/textS1Period" />
-
-        <TextView
-            android:id="@+id/textS3Time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="32dp"
-            android:text="10:30-11:45"
-            android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/radioGroupSections"
-            app:layout_constraintTop_toBottomOf="@+id/textS2Period" />
-
-        <TextView
-            android:id="@+id/textS2Period"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
-            android:text="2021/01/18-2021/04/18"
-            android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/radioGroupSections"
-            app:layout_constraintTop_toBottomOf="@+id/textS2Time" />
-
-        <TextView
-            android:id="@+id/textS3Period"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
-            android:text="2021/01/18-2021/04/18"
-            android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/radioGroupSections"
-            app:layout_constraintTop_toBottomOf="@+id/textS3Time" />
-
-        <Button
-            android:id="@+id/buttonEnroll"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:onClick="openCategories"
-            android:text="ENROLL"
-            android:textColor="@color/background"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+    </LinearLayout>
+</ScrollView>

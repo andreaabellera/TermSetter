@@ -75,7 +75,7 @@ public class Unenrollment extends AppCompatActivity {
         Toast.makeText(this, "-checked-", Toast.LENGTH_LONG).show();
     }
 
-    public void returnToMenu(View view) {
+    public void unenrollmentBackToMainMenu(View view) {
         Toast.makeText(this, "Dropped selected classes", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

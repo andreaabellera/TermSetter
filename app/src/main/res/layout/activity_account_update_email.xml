@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="24dp"
     tools:context=".Presentation.AccountUpdateEmail">
 
 
@@ -13,7 +14,6 @@
         android:layout_height="wrap_content"
         android:clipChildren="false"
         android:clipToPadding="true"
-        android:padding="24dp"
         android:orientation="vertical">
 
         <TextView
@@ -95,26 +95,28 @@
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="end"
                 android:layout_marginTop="16dp">
 
-                <Button
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.Termsetter.TextButton.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cancel"/>
+                    android:layout_alignBaseline="@id/buttonConfirmEmail"
+                    android:onClick="emailBackToAccountMenu"
+                    android:text="◀ Account Menu"/>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     style="@style/Widget.Termsetter.ConfirmButton"
                     android:id="@+id/buttonConfirmEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:onClick="updateEmail"
                     android:text="@string/btn_update_email_confirm" />
-            </LinearLayout>
+            </RelativeLayout>
 
         </LinearLayout>
 
