@@ -1,8 +1,6 @@
 package comp3350.termsetter.UIAdapters;
 
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +14,6 @@ public class RecyclerRemoveClassDataAdapter extends RecyclerView.Adapter<Recycle
 
     private List<CourseOffering> courseItems;
     private List<CourseSection> sectionItems;
-    private RecyclerFacultyDataAdapter.OnItemClicked onClick;
 
     public RecyclerRemoveClassDataAdapter(List<CourseOffering> courseItems, List<CourseSection> sectionItems) {
         this.courseItems = courseItems;

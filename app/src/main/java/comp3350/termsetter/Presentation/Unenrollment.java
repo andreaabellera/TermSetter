@@ -82,8 +82,10 @@ public class Unenrollment extends AppCompatActivity {
     public void unenroll(){
         for(int i = 0; i < enrolledCourses.size(); i++){
             CheckBox item = layoutManager.findViewByPosition(i).findViewById(R.id.course_id);
-            if(item.isChecked()){
-                enrollAccess.unenroll(student.getStudentID(), enrolledSections.get(i).getSection(), enrolledCourses.get(i).getCourseCode());
+            if(item != null){
+                if(item.isChecked()){
+                    enrollAccess.unenroll(student.getStudentID(), enrolledSections.get(i).getSection(), enrolledCourses.get(i).getCourseCode());
+                }
             }
         }
     }
