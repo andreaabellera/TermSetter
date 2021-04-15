@@ -23,8 +23,6 @@ public class UnenrollTest {
 
     private String studentID = "new";
     private String password = "new123";
-    private String courseCategory = "Mathematics";
-    private String courseCode = "MATH1010";
     private String course = "MATH1010 - Applied Finite Mathematics";
 
     @Rule
@@ -34,12 +32,20 @@ public class UnenrollTest {
     public void performUnenroll() {
         System.out.println("\nStarting UnenrollTest: student is able to unenroll in a class\n");
 
-        // Log in
+        // Log in and navigate to Unenrollment
         onView(withId(R.id.editTextUserID)).perform(typeText(studentID), closeSoftKeyboard());
         onView(withId(R.id.editTextPassword)).perform(typeText(password), closeSoftKeyboard());
         onView(withId(R.id.buttonLogin)).perform(click());
 
-        // TBD
+        onView(withId(R.id.homeUnenrollBtn)).perform(click());
+
+        // Select class to unenroll from
+        onView(withText(course)).perform(click());
+        onView(withId(R.id.unenrollButton)).perform(click());
+
+        // Verify unenrollment
+        onView(withId(R.id.homeEnrolledClassesBtn)).perform(click());
+        onView(withId(R.id.course_id)).check(doesNotExist());
 
         System.out.println("\nEnd UnenrollTest: student is able to unenroll in a class\n");
     }
