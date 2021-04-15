@@ -102,7 +102,7 @@ public class CreateAccount extends AppCompatActivity {
         }
 
         // 7. Check if Student already exists
-        boolean verifyStudent = !accountValidation.verifyStudent(id,password);
+        boolean verifyStudent = accountValidation.verifyStudent(id,password);
         if(!verifyStudent) {
             eStudentID.setError("Invalid ID. Please try a different ID.",null);
             return false;
