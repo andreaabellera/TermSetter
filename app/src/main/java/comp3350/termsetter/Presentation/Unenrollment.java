@@ -31,6 +31,7 @@ public class Unenrollment extends AppCompatActivity {
     EnrollAccess enrollAccess;
     Student student;
     RecyclerRemoveClassDataAdapter recyclerAdapter;
+    RecyclerView classes;
     LinearLayoutManager layoutManager;
 
     @Override
@@ -65,7 +66,7 @@ public class Unenrollment extends AppCompatActivity {
     }
 
     private void initWidgets() {
-        RecyclerView classes = (RecyclerView)findViewById(R.id.recycleEnrolledClasses);
+        classes = (RecyclerView)findViewById(R.id.recycleEnrolledClasses);
         layoutManager = new LinearLayoutManager(this);
         classes.setLayoutManager(layoutManager);
         recyclerAdapter= new RecyclerRemoveClassDataAdapter(enrolledCourses, enrolledSections);
@@ -73,20 +74,31 @@ public class Unenrollment extends AppCompatActivity {
     }
 
     public void unenrollmentBackToMainMenu(View view) {
-        unenroll();
-        Toast.makeText(this, "Dropped selected classes", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void unenroll(){
+    public void unenrollClicked(View view){
+        boolean unenrolled = false;
+
         for(int i = 0; i < enrolledCourses.size(); i++){
             CheckBox item = layoutManager.findViewByPosition(i).findViewById(R.id.course_id);
+            System.out.println(i + " : " + item.getText());
             if(item != null){
                 if(item.isChecked()){
+                    unenrolled = true;
                     enrollAccess.unenroll(student.getStudentID(), enrolledSections.get(i).getSection(), enrolledCourses.get(i).getCourseCode());
                 }
             }
         }
+
+        if(unenrolled) {
+            Toast.makeText(this, "Dropped selected classes.", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+        else
+            Toast.makeText(this, "No classes selected, choose classes to unenroll from.", Toast.LENGTH_LONG).show();
+
     }
 }

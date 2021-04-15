@@ -62,7 +62,7 @@
             android:layout_alignParentBottom="true"
             android:background="@color/foreground"
             android:gravity="center"
-            android:onClick="unenrollmentBackToMainMenu"
+            android:onClick="unenrollClicked"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:text="UNENROLL"

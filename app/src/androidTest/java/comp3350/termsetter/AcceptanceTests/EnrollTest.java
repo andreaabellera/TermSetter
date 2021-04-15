@@ -44,7 +44,7 @@ public class EnrollTest {
 
         // Navigate to view my classes
         onView(withId(R.id.buttonBackToMenu)).perform(click());
-        onView(withId(R.id.homeScheduleBtn)).perform(click());
+        onView(withId(R.id.homeEnrolledClassesBtn)).perform(click());
 
         // Verify enrolled class is present
         onView(withId(R.id.course_id)).check(matches(withText(course)));

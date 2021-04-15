@@ -41,9 +41,9 @@
 
     <!-- Menu buttons -->
     <style name="Widget.Termsetter.MenuButton" parent="Widget.Termsetter.Button">
-        <item name="android:padding">24dp</item>
+        <item name="android:padding">16dp</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">.15</item>
 
     </style>
@@ -56,10 +56,10 @@
 
     <!-- Text buttons -->
     <style name="Widget.Termsetter.TextButton.Large" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:padding">24dp</item>
+        <item name="android:padding">16dp</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/tsBlue200</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">.15</item>
     </style>
 

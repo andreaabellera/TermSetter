@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import java.util.List;
 import comp3350.termsetter.Persistence.CourseOffering;
@@ -21,13 +22,11 @@ public class RecyclerRemoveClassDataAdapter extends RecyclerView.Adapter<Recycle
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView course_id_txt;
-        public TextView course_credit_txt;
+        public CheckBox course_id_txt;
 
         public ViewHolder(View v){
             super(v);
-            course_id_txt = (TextView)v.findViewById(R.id.course_id);
-            course_credit_txt = (TextView)v.findViewById(R.id.course_credit);
+            course_id_txt = (CheckBox)v.findViewById(R.id.course_id);
         }
     }
 
@@ -48,7 +47,6 @@ public class RecyclerRemoveClassDataAdapter extends RecyclerView.Adapter<Recycle
 
             if(courseItem != null && sectionItem != null) {
                 holder.course_id_txt.setText(courseItem.getCourseCode() + " - " + courseItem.getName());
-                holder.course_credit_txt.setText("Credit Hours: " + courseItem.getCreditHours() + ".00 CR");
             }
         }
     }
