@@ -49,6 +49,7 @@ public class ChangePasswordTest {
 
         // Log out
         onView(withId(R.id.buttonReturn)).perform(click());
+
         onView(withId(R.id.homeLogoutBtn)).perform(click());
 
         // Log in with new password
