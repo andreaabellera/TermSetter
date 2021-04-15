@@ -58,8 +58,13 @@ public class EnrollmentLogic
             }
         }
         if(success) {
-            confirmEnroll();
-            message = "Successfully enrolled in " + courseCode + " " + selectedClass.getSection() + ".";
+            if(results.size() < 6){
+                confirmEnroll();
+                message = "Successfully enrolled in " + courseCode + " " + selectedClass.getSection() + ".";
+            }
+            else{
+                message = "You cannot enroll in more than six courses. You must drop a class to add a new one.";
+            }
         }
     }
 
