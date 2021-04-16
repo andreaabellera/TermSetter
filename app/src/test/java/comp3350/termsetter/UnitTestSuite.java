@@ -5,6 +5,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 import comp3350.termsetter.Tests.AccountValidationTest;
+import comp3350.termsetter.Tests.CourseAccessTestM;
+import comp3350.termsetter.Tests.EnrollAccessTestM;
+import comp3350.termsetter.Tests.EnrollmentLogicTestM;
 import comp3350.termsetter.Tests.StudentAccessTestM;
 import comp3350.termsetter.Tests.StudentIntegrationTest;
 import comp3350.termsetter.Tests.StudentTest;
@@ -29,7 +32,10 @@ import comp3350.termsetter.Tests.TimetableLogicTest;
         EnrollmentIntegrationTest.class,
         EnrollAccessTest.class,
         TimetableLogicTest.class,
-        StudentAccessTestM.class
+        CourseAccessTestM.class,
+        EnrollAccessTestM.class,
+        EnrollmentLogicTestM.class,
+        StudentAccessTestM.class,
 })
 
 
