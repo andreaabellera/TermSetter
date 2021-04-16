@@ -5,6 +5,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 import comp3350.termsetter.Tests.AccountValidationTest;
+import comp3350.termsetter.Tests.StudentAccessTestM;
+import comp3350.termsetter.Tests.StudentIntegrationTest;
 import comp3350.termsetter.Tests.StudentTest;
 import comp3350.termsetter.Tests.ClassDataStructureTest;
 import comp3350.termsetter.Tests.CourseAccessTest;
@@ -18,6 +20,7 @@ import comp3350.termsetter.Tests.TimetableLogicTest;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         StudentTest.class,
+        StudentIntegrationTest.class,
         AccountValidationTest.class,
         ClassDataStructureTest.class,
         CourseCategoryIntegrationTest.class,
@@ -25,7 +28,8 @@ import comp3350.termsetter.Tests.TimetableLogicTest;
         EnrollmentLogicTest.class,
         EnrollmentIntegrationTest.class,
         EnrollAccessTest.class,
-        TimetableLogicTest.class
+        TimetableLogicTest.class,
+        StudentAccessTestM.class
 })
 
 
