@@ -55,17 +55,21 @@ public class CreateAccount extends AppCompatActivity {
 
         // 1. Check Name
         boolean validName = accountValidation.validName(name);
+
         if (!validName) {
             eName.setError("Name is blank, or contains invalid symbols.",null);
-            //Toast.makeText(mContext, "The name should consist of Uppercase or lowercase characters only.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        // 2. Check ID (must start with a character, then some numbers)
+
+        // 2. Check ID (must start with a character, then some numbers) and Verify student ID isn't already in use
         boolean validID = accountValidation.validID(id);
+        boolean studentExists = accountValidation.studentExists(id);
         if (!validID) {
             eStudentID.setError("ID must begin with a letter.",null);
-            //Toast.makeText(mContext, "Your student ID must begin with a character.", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if(studentExists) {
+            eStudentID.setError("Invalid Account ID. Please create a new ID.",null);
             return false;
         }
 
@@ -73,7 +77,6 @@ public class CreateAccount extends AppCompatActivity {
         boolean validPassword = accountValidation.validPassword(password);
         if (!validPassword) {
             ePassword.setError("Password invalid");
-            //Toast.makeText(mContext, "Password should have minimum length of 6, starts with a letter, and consist of at least one letter and number!", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -81,7 +84,6 @@ public class CreateAccount extends AppCompatActivity {
         boolean validConfirmPassword = accountValidation.validPassword(confirmPassword);
         if(!validConfirmPassword){
             eConfirmPassword.setError("Entry does not match password.");
-            //Toast.makeText(mContext, "Please check confirm password again!", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -89,7 +91,6 @@ public class CreateAccount extends AppCompatActivity {
         boolean validEmail = accountValidation.validEmail(email);
         if (!validEmail) {
             eMail.setError("Invalid email.");
-            //Toast.makeText(mContext, "Your email domain should contain @myumanitoba.ca and some strings in front.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -97,10 +98,8 @@ public class CreateAccount extends AppCompatActivity {
         boolean validPhone = accountValidation.validPhone(phone);
         if(!validPhone){
             ePhone.setError("Invalid phone number");
-            //Toast.makeText(mContext, "Please provide phone number (without dashes) as XXXYYYZZZZ format.", Toast.LENGTH_SHORT).show();
             return false;
         }
-
         return true;
     }
 
