@@ -18,7 +18,7 @@
     <string name="btn_main_logout">Logout</string>
 
     <string name="header_account_management">Account Management</string>
-    <string name="btn_account_management_manage_profile">Manage Profile</string>
+    <string name="btn_account_management_manage_profile">View My Profile</string>
     <string name="btn_account_management_update_email">Update Email</string>
     <string name="btn_account_management_change_password">Change Password</string>
     <string name="btn_account_management_settings">Settings</string>

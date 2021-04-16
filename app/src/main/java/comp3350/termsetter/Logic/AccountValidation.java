@@ -5,32 +5,32 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import comp3350.termsetter.Persistence.DomainSpecific.Student;
 
-public class AccountValidation{
+public class AccountValidation {
     AccessManager database = new AccessManager();
 
-    public AccountValidation(){
+    public AccountValidation() {
         // Nothing to initialize
     }
 
-    public boolean validAccount(String name, String id, String password, String email, String phone){
+    public boolean validAccount(String name, String id, String password, String email, String phone) {
         return validName(name) && validID(id) && validPassword(password) && validEmail(email) && validPhone(phone);
     }
 
-    public boolean validName(String name){
+    public boolean validName(String name) {
         Pattern p = Pattern.compile("^[a-zA-Z ]{1,20}$");
         Matcher m = p.matcher(name);
 
         return m.matches();
     }
 
-    public boolean validID(String id){
+    public boolean validID(String id) {
         Pattern p = Pattern.compile("^([a-zA-Z]+[0-9]*){1,20}$");
         Matcher m = p.matcher(id);
 
         return m.matches();
     }
 
-    public boolean validPassword(String password){
+    public boolean validPassword(String password) {
         // Minimum length of 6, starts with a letter, and at least one letter and number each
         Pattern p = Pattern.compile("^(?=.*?[a-zA-Z])(?=.*?[0-9]).{6,20}$");
         Matcher m = p.matcher(password);
@@ -38,7 +38,7 @@ public class AccountValidation{
         return m.matches();
     }
 
-    public boolean validEmail(String email){
+    public boolean validEmail(String email) {
         /*
         At least one letter (number is optional) then @myumanitoba.ca
         */
@@ -48,7 +48,7 @@ public class AccountValidation{
         return m.matches();
     }
 
-    public boolean validPhone(String phone){
+    public boolean validPhone(String phone) {
         /*
         Following phone number formats will match:
             1. 1234567890
@@ -76,9 +76,14 @@ public class AccountValidation{
         return newEmail.equals(newEmailConfirm);
     }
 
+    public boolean studentExists(String sID){
+        Student student = database.getStudent(sID);
+        return student != null;
+    }
+
     public boolean verifyStudent(String sID, String password) {
         Student student = database.getStudent(sID);
-        return student != null && student.getPassword().equals(password);
+        return studentExists(sID) && student.getPassword().equals(password);
     }
 
 }
