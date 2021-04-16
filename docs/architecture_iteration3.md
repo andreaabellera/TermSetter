@@ -36,17 +36,18 @@ UI that displays the student's current enrollment in all courses.
 ***OfferedCourse activities***
 UIs that facilitate the viewing of offered courses.
 - **OfferedCourseCategoriesActivity**
-UI that facilitates the viewing of available course categories.
+UI that displays available departments for course enrollment.
 - **OfferedCourseViewActivity**
+UI that displays available courses for each department.
 - **OfferedCourseDetailsActivity**
-
+UI that displays 
 **Unenrollment**
 UI that facilitates the unenrollment in any currently enrolled courses.
 
 ## Logic Layer
 
 **AccessManager**
-Class that __
+A class that serves as an access switch, allowing the hdqldb to toggle between different Logic layers. 
 
 **AccountValidation**
 Class that handles the validation of student information upon creating an account.
@@ -57,11 +58,9 @@ Class that handles the enrolling of users into courses.
 **OfferedClassesLogic**
 Class that supplies the OfferedClasses activities with information. 
 
-**AccessStudents**
-Class that connect account creation, login, and management with associated Persistence objects.
-
 **Services**
 Class that retrieves a static instance of the database.
+
 
 
 ## Persistence Layer
@@ -69,52 +68,52 @@ Class that retrieves a static instance of the database.
 ***CourseCategories***
 The parent class faculty.
 -**CourseCategoryDriver**
-__
+Loads contents into StubDatabase from a raw file.
 -**CourseCategoryPersistence**
-__
-
+Interface between OfferedClassLogic and the Faculty class.
 -**CourseCategorySQLDriver**
-__
+Enables the retrieval of hsqldb records for the AccessManager.
 
 **CourseOffering**
-__
+Describes primary keys for database record retrieval.
 
 **CourseSection**
-__
+Describes primary keys for database record retrival.
 
 **DBImporter**
-Initializes hscodedb and copies database to device.
+Initializes hscodedb and copies database to a selected device.
 
 **Faculty**
 Class the holds a list of offered classes in each faculty.
 
 **Main**
-__
+Class that handles the importing of a specified database.
 
 **StudentPersistence**
-Interface for handling student account information (updating information).
+Interface for managing student account information.
 
 
 ## Domain Specific Objects
 
 **CoursePersistence**
-__
+Interface used by the AccessManager to connect to CourseAccess.
 
 **EnrollPersistence**
+Interfaces used by the AccessManager to connect to EnrollAccess.
 
 **StubDatabase**
-A stub implementation for storing Users (student).
+Stub database implementation used to store Students.
 
 **Student**
 The Student object.
 
 ***HSQLDB Objects***
 - **CourseAccess**
-Responsible for connecting to hscodedb table called Courses retrieve courses in the database.
+Connects calling class to hscodedb table 'Courses' to retrieve courses in the database.
 - **EnrollAccess**
-Responsible for connecting to hscodedb table callled Enrollment, handling the enrollment of users in courses.
+Connects calling class to hscodedb table 'Enrollment', handling the enrollment of users in courses.
 - **StudentAccess**
-Connects to hscodedb table called Student, responsible for executing sql statements in hscodedb.
+Connects calling class to hscodedb table 'Student', responsible for executing sql statements in hscodedb.
 
 ## Iteration 3 Diagram
 
