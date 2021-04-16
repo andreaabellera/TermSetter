@@ -22,8 +22,6 @@ public class Services
     {
         if (studentAccess == null)
         {
-
-
             studentAccess = new StudentAccess(Main.getDBPathName());
         }
 
