@@ -9,7 +9,7 @@ import java.util.List;
 import comp3350.termsetter.Persistence.*;
 import static org.junit.Assert.*;
 
-public class ClassDatabaseTest {
+public class ClassDataStructureTest {
 
     @Test
     public void testCreateCourseCategories() {
@@ -145,6 +145,28 @@ public class ClassDatabaseTest {
     }
 
     @Test
+    public void testCourseEqual() {
+        System.out.println("\nStarting testCourseEqual: objects are equal\n");
+        String courseCode = "TEST1000";
+        String name = "How to test";
+        int creditHours = 9;
+        CourseOffering c = new CourseOffering(courseCode, name, creditHours);
+        assertTrue(c.equals(new CourseOffering(courseCode, name, creditHours)));
+        System.out.println("\nEnd testCourseEqual: objects are equal\n");
+    }
+
+    @Test
+    public void testCourseNotEqual() {
+        System.out.println("\nStarting testCourseNotEqual: objects are not equal\n");
+        String courseCode = "TEST1000";
+        String name = "How to test";
+        int creditHours = 9;
+        CourseOffering c = new CourseOffering(courseCode, name, creditHours);
+        assertFalse(c.equals(new CourseOffering(courseCode, name, 10)));
+        System.out.println("\nEnd testCourseNotEqual: objects are not equal\n");
+    }
+
+    @Test
     public void testCreateSection() {
         System.out.println("\nStarting testCreateSection: object exists after creation\n");
         CourseSection s = new CourseSection("T01", "MTWRF", "8:30-9:30", "Test Dr.");
@@ -213,6 +235,30 @@ public class ClassDatabaseTest {
         }
         assertFalse(s.courseAvailable());
         System.out.println("\nEnd testCourseNotAvailable: value is false\n");
+    }
+
+    @Test
+    public void testSectionEqual() {
+        System.out.println("\nStarting testSectionEqual: objects are equal\n");
+        String section = "T01";
+        String days = "MTWRF";
+        String timeSlot = "8:30-9:30";
+        String period = "2021/01/18-2021/04/18";
+        CourseSection s = new CourseSection(section, days, timeSlot, period);
+        assertTrue(s.equals(new CourseSection(section, days, timeSlot, period)));
+        System.out.println("\nEnd testSectionEqual: objects are equal\n");
+    }
+
+    @Test
+    public void testSectionNotEqual() {
+        System.out.println("\nStarting testSectionNotEqual: objects are not equal\n");
+        String section = "T01";
+        String days = "MTWRF";
+        String timeSlot = "8:30-9:30";
+        String period = "2021/01/18-2021/04/18";
+        CourseSection s = new CourseSection(section, days, timeSlot, period);
+        assertFalse(s.equals(new CourseSection(section, "MTWR", timeSlot, period)));
+        System.out.println("\nEnd testSectionNotEqual: objects are not equal\n");
     }
 
 }

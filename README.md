@@ -1,3 +1,13 @@
+# TermSetter
+
+Termsetter is a mobile application that will allow students to enroll in university courses. Termsetter will display student information, current timetables, tuition fees, providing an environment for students to explore and manage their choice of classes for a particular term (Winter 2021). Termsetter is intended to be used primarily by the Univeristy of Manitoba students, motivated by the necessity to improve upon the current Aurora system used for class enrollment. Basic features provided include an interface allowing student registration.
+
+# How to run TermSetter
+
+1. Clone the repository
+2. Open the source code with Android Studio (i.e. Open an Existing Project)
+3. Run the app (or press `Shift + F10`) after gradle sync is completed
+
 # NOTE
 
 In case any of the links below are not working, most of the documents (Vision statement, Architecture, etc.) are available under /docs directory.

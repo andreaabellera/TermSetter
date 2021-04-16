@@ -27,6 +27,12 @@ UI that facilitates the changing of the student password.
 - **AccountManagementUpdateEmailActivity**
 UI that facilitate the updating of the student email.
 
+**Timetable/"View My Schedule"**
+UI that displays the student's current course enrollment per weekday.
+
+**Transcript/"View My Classes"**
+UI that displays the student's current enrollment in all courses.
+
 ***OfferedCourse activities***
 UIs that facilitate the viewing of offered courses.
 - **OfferedCourseCategoriesActivity**
@@ -34,10 +40,19 @@ UI that facilitates the viewing of available course categories.
 - **OfferedCourseViewActivity**
 - **OfferedCourseDetailsActivity**
 
+**Unenrollment**
+UI that facilitates the unenrollment in any currently enrolled courses.
+
 ## Logic Layer
+
+**AccessManager**
+Class that __
 
 **AccountValidation**
 Class that handles the validation of student information upon creating an account.
+
+**Enrollment Logic**
+Class that handles the enrolling of users into courses.
 
 **OfferedClassesLogic**
 Class that supplies the OfferedClasses activities with information. 
@@ -48,22 +63,50 @@ Class that connect account creation, login, and management with associated Persi
 **Services**
 Class that retrieves a static instance of the database.
 
-**Enrollment Logic**
-Class that handles the enrolling of users into courses.
 
 ## Persistence Layer
+
+***CourseCategories***
+The parent class faculty.
+-**CourseCategoryDriver**
+__
+-**CourseCategoryPersistence**
+__
+
+-**CourseCategorySQLDriver**
+__
+
+**CourseOffering**
+__
+
+**CourseSection**
+__
 
 **DBImporter**
 Initializes hscodedb and copies database to device.
 
-**CourseCategories**
-The parent class faculty.
-
 **Faculty**
 Class the holds a list of offered classes in each faculty.
 
-**UserPersistence**
+**Main**
+__
+
+**StudentPersistence**
 Interface for handling student account information (updating information).
+
+
+## Domain Specific Objects
+
+**CoursePersistence**
+__
+
+**EnrollPersistence**
+
+**StubDatabase**
+A stub implementation for storing Users (student).
+
+**Student**
+The Student object.
 
 ***HSQLDB Objects***
 - **CourseAccess**
@@ -73,15 +116,7 @@ Responsible for connecting to hscodedb table callled Enrollment, handling the en
 - **StudentAccess**
 Connects to hscodedb table called Student, responsible for executing sql statements in hscodedb.
 
-## Domain Specific Objects
-
-**StubDatabase**
-A stub implementation for storing Users (student).
-
-**User**
-The User (student) object.
-
-## Iteration 1 Diagram
+## Iteration 3 Diagram
 
 Please refer to https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/shadow-master/docs/ARCHITECTURE_DIAGRAM_ITERATION2.PNG
 

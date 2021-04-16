@@ -1,11 +1,10 @@
 package comp3350.termsetter.UIAdapters;
 
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import java.util.List;
 import comp3350.termsetter.Persistence.CourseOffering;
@@ -16,42 +15,26 @@ public class RecyclerRemoveClassDataAdapter extends RecyclerView.Adapter<Recycle
 
     private List<CourseOffering> courseItems;
     private List<CourseSection> sectionItems;
-    private RecyclerFacultyDataAdapter.OnItemClicked onClick;
-
-    public interface OnItemClicked {
-        void onItemClick(int position);
-    }
 
     public RecyclerRemoveClassDataAdapter(List<CourseOffering> courseItems, List<CourseSection> sectionItems) {
         this.courseItems = courseItems;
         this.sectionItems = sectionItems;
     }
 
-    public interface btnClickListener {
-        void onItemClick(int position);
-    }
-
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView course_id_txt;
-        public TextView course_section_txt;
-        public CardView cardView;
+        public CheckBox course_id_txt;
 
         public ViewHolder(View v){
             super(v);
-            course_id_txt = (TextView)v.findViewById(R.id.course_id);
-            course_section_txt = (TextView)v.findViewById(R.id.course_section);
-            cardView = (CardView)v.findViewById(R.id.recycler_card);
+            course_id_txt = (CheckBox)v.findViewById(R.id.course_id);
         }
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // Get LayoutInflater object.
+        // Get LayoutInflater object
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        // Inflate the RecyclerView item layout xml.
-        View itemView = layoutInflater.inflate(R.layout.widget_currclass_recycler_card, parent, false);
-
-        // Create and return our customRecycler View Holder object.
+        View itemView = layoutInflater.inflate(R.layout.widget_remove_class_recycler_card, parent, false);
         ViewHolder ret = new ViewHolder(itemView);
         return ret;
     }
@@ -64,15 +47,6 @@ public class RecyclerRemoveClassDataAdapter extends RecyclerView.Adapter<Recycle
 
             if(courseItem != null && sectionItem != null) {
                 holder.course_id_txt.setText(courseItem.getCourseCode() + " - " + courseItem.getName());
-                holder.course_section_txt.setText(sectionItem.getSection() + " | " + sectionItem.getDays() + "  " + sectionItem.getTimeSlot() + " | " + sectionItem.getPeriod());
-                holder.cardView.setCardBackgroundColor(Color.rgb(125,140,235));
-
-                holder.cardView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onClick.onItemClick(position);
-                    }
-                });
             }
         }
     }
@@ -84,10 +58,6 @@ public class RecyclerRemoveClassDataAdapter extends RecyclerView.Adapter<Recycle
             ret = courseItems.size();
         }
         return ret;
-    }
-
-    public void setOnClick(RecyclerFacultyDataAdapter.OnItemClicked onClick) {
-        this.onClick=onClick;
     }
 
 }

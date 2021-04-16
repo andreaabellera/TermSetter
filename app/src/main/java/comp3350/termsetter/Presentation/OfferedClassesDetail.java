@@ -16,6 +16,7 @@ import comp3350.termsetter.Logic.EnrollmentLogic;
 import comp3350.termsetter.Persistence.CourseOffering;
 import comp3350.termsetter.Persistence.CourseSection;
 import comp3350.termsetter.Persistence.DomainSpecific.Student;
+import comp3350.termsetter.Persistence.Faculty;
 import comp3350.termsetter.Persistence.StudentPersistence;
 import comp3350.termsetter.R;
 
@@ -24,6 +25,7 @@ public class OfferedClassesDetail extends AppCompatActivity {
     CourseOffering course;
     EnrollmentLogic eL;
     Student student;
+    Faculty faculty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class OfferedClassesDetail extends AppCompatActivity {
     }
 
     private void initWidgets() {
+        faculty = (Faculty) getIntent().getSerializableExtra("faculty");
         course = (CourseOffering) getIntent().getSerializableExtra("course");
         TextView selectedClass = findViewById(R.id.headerCourseCode);
         selectedClass.setText(course.getCourseCode());
@@ -120,4 +123,9 @@ public class OfferedClassesDetail extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void detailBackToView(View view) {
+        Intent intent = new Intent(this, OfferedClassesView.class);
+        intent.putExtra("faculty", faculty);
+        startActivity(intent);
+    }
 }

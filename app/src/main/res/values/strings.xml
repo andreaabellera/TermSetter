@@ -18,7 +18,7 @@
     <string name="btn_main_logout">Logout</string>
 
     <string name="header_account_management">Account Management</string>
-    <string name="btn_account_management_manage_profile">Manage Profile</string>
+    <string name="btn_account_management_manage_profile">View My Profile</string>
     <string name="btn_account_management_update_email">Update Email</string>
     <string name="btn_account_management_change_password">Change Password</string>
     <string name="btn_account_management_settings">Settings</string>
@@ -42,13 +42,13 @@
     <string name="txt_update_email_current_email">[ current.email@myumanitoba.ca ]</string>
     <string name="txt_update_email_hint1">e.g. new.email@myumanitoba.ca</string>
     <string name="txt_update_email_hint2">e.g. new.email@myumanitoba.ca</string>
-    <string name="btn_update_email_confirm">Confirm email</string>
+    <string name="btn_update_email_confirm">Save</string>
 
     <string name="header_change_password">Change Password</string>
     <string name="txt_change_password_prompt1">Current password:</string>
     <string name="txt_change_password_prompt2">New password:</string>
     <string name="txt_change_password_prompt3">Confirm new password:</string>
-    <string name="btn_change_password_confirm">Confirm change</string>
+    <string name="btn_change_password_confirm">Save</string>
 
     <string name="header_settings">Settings</string>
 

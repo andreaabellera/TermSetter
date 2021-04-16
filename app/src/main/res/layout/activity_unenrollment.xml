@@ -15,20 +15,42 @@
         <TextView
             android:id="@+id/unenrollmentHeader"
             style="@style/TextAppearance.Termsetter.Title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
-            android:layout_marginBottom="16dp"
-            android:text="Class Unenrollment"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="Class Unenrollment" />
+
+        <TextView
+            android:id="@+id/unenrollmentDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/unenrollmentHeader"
+            android:text="Select all classes to drop, then press the unenroll button."
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="18sp"/>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Termsetter.TextButton.Small"
+            android:id="@+id/unenrollmentBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="unenrollmentBackToMainMenu"
+            android:layout_below="@+id/unenrollmentDesc"
+            android:paddingStart="32dp"
+            android:paddingBottom="16dp"
+            android:text="◀ home"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleEnrolledClasses"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/unenrollmentHeader"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_below="@+id/unenrollmentBackButton"
             android:layout_above="@+id/unenrollButton"
             android:gravity="center"
             android:layout_gravity="center" />
@@ -40,7 +62,7 @@
             android:layout_alignParentBottom="true"
             android:background="@color/foreground"
             android:gravity="center"
-            android:onClick="returnToMenu"
+            android:onClick="unenrollClicked"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:text="UNENROLL"

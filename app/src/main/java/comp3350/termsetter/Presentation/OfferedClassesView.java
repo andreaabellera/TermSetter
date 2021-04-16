@@ -2,11 +2,14 @@ package comp3350.termsetter.Presentation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+
 import java.util.List;
 import comp3350.termsetter.Persistence.CourseOffering;
 import comp3350.termsetter.Persistence.Faculty;
@@ -79,24 +82,33 @@ public class OfferedClassesView extends AppCompatActivity {
     public void firstYearClicked(int position) {
         Intent intent = new Intent(this, OfferedClassesDetail.class);
         intent.putExtra("course", firstYearCourses.get(position));
+        intent.putExtra("faculty", faculty);
         startActivity(intent);
     }
 
     public void secondYearClicked(int position) {
         Intent intent = new Intent(this, OfferedClassesDetail.class);
         intent.putExtra("course", secondYearCourses.get(position));
+        intent.putExtra("faculty", faculty);
         startActivity(intent);
     }
 
     public void thirdYearClicked(int position) {
         Intent intent = new Intent(this, OfferedClassesDetail.class);
         intent.putExtra("course", thirdYearCourses.get(position));
+        intent.putExtra("faculty", faculty);
         startActivity(intent);
     }
 
     public void fourthYearClicked(int position) {
         Intent intent = new Intent(this, OfferedClassesDetail.class);
         intent.putExtra("course", fourthYearCourses.get(position));
+        intent.putExtra("faculty", faculty);
+        startActivity(intent);
+    }
+
+    public void viewBackToCategories(View view){
+        Intent intent = new Intent(this, OfferedClassesCategories.class);
         startActivity(intent);
     }
 

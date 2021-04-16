@@ -16,31 +16,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openAccountManagementMenu(View view) {
-        Toast.makeText(this, "Opening my profile management.", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, AccountManagementMenu.class);
         startActivity(intent);
     }
 
     public void openTimetableView(View view) {
-        Toast.makeText(this, "Opening timetable.", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, Timetable.class);
         startActivity(intent);
     }
 
-    public void openEnrolledClassesView(View view) {
-        Toast.makeText(this, "Opening my courses.", Toast.LENGTH_LONG).show();
+    public void openTranscript(View view) {
         Intent intent = new Intent(this, Transcript.class);
         startActivity(intent);
     }
 
     public void openOfferedClassesCategories(View view) {
-        Toast.makeText(this, "Opening offered classes.", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, OfferedClassesCategories.class);
         startActivity(intent);
     }
 
     public void openUnenrollmentView(View view) {
-        Toast.makeText(this, "Opening unenrollment.", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, Unenrollment.class);
         startActivity(intent);
     }
