@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 import static org.junit.Assert.*;
 import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.EnrollAccess;
-import comp3350.termsetter.utils.TestUtils;;
+import comp3350.termsetter.utils.TestUtils;
 
 public class EnrollAccessTest {
 

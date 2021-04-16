@@ -6,7 +6,6 @@ import org.mockito.ArgumentMatchers;
 
 import static org.junit.Assert.*;
 
-import static org.mockito.ArgumentMatchers.same;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -17,8 +16,8 @@ import comp3350.termsetter.Persistence.DomainSpecific.hsqldbObjects.StudentAcces
 
 public class StudentAccessTestM {
 
-    private StudentAccess sa;
-    private Student test1;
+    StudentAccess sa;
+    Student test1;
 
     @Before
     public void setUp(){
