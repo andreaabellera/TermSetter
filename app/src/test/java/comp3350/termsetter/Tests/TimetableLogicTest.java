@@ -6,7 +6,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import comp3350.termsetter.Logic.EnrollmentLogic;
 import comp3350.termsetter.Logic.TimetableLogic;
 import comp3350.termsetter.Persistence.*;
 import static org.junit.Assert.*;

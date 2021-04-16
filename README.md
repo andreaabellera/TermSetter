@@ -56,3 +56,4 @@ Please refer to [coding_standards.md](https://code.cs.umanitoba.ca/3350-winter-2
 
 Under **/website** directory, please refer to [index.html](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/website/index.html)
 
+Please note that the embedded YouTube video (our presentation) will stay in tact, unless if a button in the navigation bar (top right) is clicked.
