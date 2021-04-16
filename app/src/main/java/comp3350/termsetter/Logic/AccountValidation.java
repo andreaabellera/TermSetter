@@ -76,13 +76,14 @@ public class AccountValidation {
         return newEmail.equals(newEmailConfirm);
     }
 
-    public boolean studentExists(Student student){
+    public boolean studentExists(String sID){
+        Student student = database.getStudent(sID);
         return student != null;
     }
 
     public boolean verifyStudent(String sID, String password) {
         Student student = database.getStudent(sID);
-        return studentExists(student) && student.getPassword().equals(password);
+        return studentExists(sID) && student.getPassword().equals(password);
     }
 
 }
