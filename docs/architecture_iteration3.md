@@ -47,7 +47,7 @@ UI that facilitates the unenrollment in any currently enrolled courses.
 ## Logic Layer
 
 **AccessManager**
-Class that connect account creation, login, and management with associated Persistence objects.
+A class that serves as an access switch, allowing the hdqldb to toggle between different Logic layers. 
 
 **AccountValidation**
 Class that handles the validation of student information upon creating an account.
@@ -81,7 +81,7 @@ Describes primary keys for database record retrieval.
 Describes primary keys for database record retrival.
 
 **DBImporter**
-Initializes hscodedb and copies database to device.
+Initializes hscodedb and copies database to a selected device.
 
 **Faculty**
 Class the holds a list of offered classes in each faculty.
@@ -90,7 +90,7 @@ Class the holds a list of offered classes in each faculty.
 Class that handles the importing of a specified database.
 
 **StudentPersistence**
-Interface for handling student account information (updating information).
+Interface for managing student account information.
 
 
 ## Domain Specific Objects
@@ -102,7 +102,7 @@ Interface used by the AccessManager to connect to CourseAccess.
 Interfaces used by the AccessManager to connect to EnrollAccess.
 
 **StubDatabase**
-Stub implementation for storing Users (student).
+Stub database implementation used to store Students.
 
 **Student**
 The Student object.
