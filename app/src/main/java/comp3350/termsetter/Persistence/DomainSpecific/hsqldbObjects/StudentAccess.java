@@ -48,7 +48,7 @@ public class StudentAccess implements StudentPersistence {
             connect.close();
         }
         catch (SQLException e){
-
+            e.printStackTrace();
         }
         return student;
     }

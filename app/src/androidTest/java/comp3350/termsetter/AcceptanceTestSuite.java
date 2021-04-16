@@ -6,6 +6,7 @@ import comp3350.termsetter.AcceptanceTests.EnrollTest;
 import comp3350.termsetter.AcceptanceTests.LoginTest;
 import comp3350.termsetter.AcceptanceTests.UnenrollTest;
 import comp3350.termsetter.AcceptanceTests.UpdateEmailTest;
+import comp3350.termsetter.AcceptanceTests.ViewClassesTest;
 import comp3350.termsetter.AcceptanceTests.ViewScheduleTest;
 
 import org.junit.runner.RunWith;
@@ -17,6 +18,7 @@ import org.junit.runners.Suite;
         CreateAccountTest.class,
         UpdateEmailTest.class,
         ChangePasswordTest.class,
+        ViewClassesTest.class,
         EnrollTest.class,
         ViewScheduleTest.class,
         UnenrollTest.class

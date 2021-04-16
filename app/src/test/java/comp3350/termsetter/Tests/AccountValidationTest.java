@@ -38,9 +38,9 @@ public class AccountValidationTest {
     String newPass = "Tuan123";
     String newPassFalse = "Tuan321";
     String newPassTrue = "Tuan123";
-
     String newEmail = "mailAndrea@myumanitoba.ca";
     String confirmEmailTrue = "mailAndrea@myumanitoba.ca";
+    String confirmEmailFalse = "mailAndreaBunt@myumanitoba.ca";
 
     Student currentStudent = new Student(validName, validPasswd, validEmail, validPhone, validID);
 
@@ -236,33 +236,29 @@ public class AccountValidationTest {
 
     @Test
     public void testConfirmPasswordTrue() {
-        System.out.println("\nStarting testConfirmPasswordTrue: given 2 passwords are valid\n");
-        boolean result = newPass.equals(newPassTrue);
-        assertTrue(result);
-        System.out.println("End testConfirmPasswordTrue: given 2 passwords are valid\n");
+        System.out.println("\nStarting testConfirmPasswordTrue: given 2 passwords are equal\n");
+        assertTrue(av.confirmPassword(newPass, newPassTrue));
+        System.out.println("End testConfirmPasswordTrue: given 2 passwords are equal\n");
     }
 
     @Test
     public void testConfirmPasswordFalse() {
-        System.out.println("\nStarting testConfirmPasswordFalse: given 2 passwords are invalid\n");
-        boolean result = newPass.equals(newPassFalse);
-        assertFalse(result);
-        System.out.println("End testConfirmPasswordFalse: given 2 passwords are invalid\n");
+        System.out.println("\nStarting testConfirmPasswordFalse: given 2 passwords are not equal\n");
+        assertFalse(av.confirmPassword(newPass, newPassFalse));
+        System.out.println("End testConfirmPasswordFalse: given 2 passwords are not equal\n");
     }
 
     @Test
     public void testConfirmEmailTrue() {
         System.out.println("\nStarting testConfirmEmailTrue: given 2 emails are valid\n");
-        boolean result = newEmail.equals(confirmEmailTrue);
-        assertTrue(result);
+        assertTrue(av.confirmEmail(newEmail, confirmEmailTrue));
         System.out.println("End testConfirmEmailTrue: given 2 emails are valid\n");
     }
 
     @Test
     public void testConfirmEmailFalse() {
         System.out.println("\nStarting testConfirmEmailTrue: given 2 emails are valid\n");
-        boolean result = newEmail.equals(confirmEmailTrue);
-        assertTrue(result);
+        assertFalse(av.confirmEmail(newEmail, confirmEmailFalse));
         System.out.println("End testConfirmEmailTrue: given 2 emails are valid\n");
     }
 
