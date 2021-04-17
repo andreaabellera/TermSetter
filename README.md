@@ -54,5 +54,4 @@ Please refer to [coding_standards.md](/documentation/coding_standards.md)
 
 # Website
 
-For this Github repository, the current website is hosted in andreaabellera.github.io/termsetter/
-The source files live in [docs](/docs)
+For this Github repository, the current website is hosted in [Github Pages](https://andreaabellera.github.io/TermSetter/). The website source files have been moved to [docs](/docs)
