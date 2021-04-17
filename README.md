@@ -8,10 +8,6 @@ Termsetter is a mobile application that will allow students to enroll in univers
 2. Open the source code with Android Studio (i.e. Open an Existing Project)
 3. Run the app (or press `Shift + F10`) after gradle sync is completed
 
-# NOTE
-
-In case any of the links below are not working, most of the documents (Vision statement, Architecture, etc.) are available under /docs directory.
-
 # Iteration 0
 
 Vision statement (Iteration 0)
