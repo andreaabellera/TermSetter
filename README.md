@@ -15,7 +15,7 @@ In case any of the links below are not working, most of the documents (Vision st
 # Iteration 0
 
 Vision statement (Iteration 0)
-- Please refer to [vision_statement.md](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/vision_statement.md)
+- Please refer to [vision_statement.md](/documentation/vision_statement.md)
  
 # Iteration 1
 
