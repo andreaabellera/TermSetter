@@ -20,40 +20,39 @@ Vision statement (Iteration 0)
 # Iteration 1
 
 Architecture (Iteration 1)
-- Please refer to [architecture_iteration1.md](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/architecture_iteration1.md)
+- Please refer to [architecture_iteration1.md](/documentation/architecture_iteration1.md)
 - For the diagram, please refer to [architecture_diagram_iteration1.png](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/architecture_diagram_iteration1.png)
 
 Worksheet (Iteration 1)
-- Please refer to [worksheet_iteration1.md](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/worksheet_iteration1.md)
+- Please refer to [worksheet_iteration1.md](/documentation/worksheet_iteration1.md)
 
 # Iteration 2
 
 Architecture (Iteration 2)
-- Please refer to [architecture_iteration2.md](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/architecture_iteration2.md)
-- For the diagram, please refer to [architecture_diagram_iteration2.png](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/architecture_diagram_iteration2.png)
+- Please refer to [architecture_iteration2.md](/documentation/architecture_iteration2.md)
+- For the diagram, please refer to [architecture_diagram_iteration2.png](/documentation/architecture_diagram_iteration2.png)
 
 Worksheet (Iteration 2)
-- Please refer to [worksheet_iteration2.md](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/worksheet_iteration2.md)
+- Please refer to [worksheet_iteration2.md](/documentation/worksheet_iteration2.md)
 
 # Iteration 3
 
 Architecture (Iteration 3)
-- Please refer to [architecture_iteration3.md](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/architecture_iteration3.md)
-- For the diagram, please refer to [architecture_diagram_iteration3.png](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/architecture_diagram_iteration3.png)
+- Please refer to [architecture_iteration3.md](/documentation/architecture_iteration3.md)
+- For the diagram, please refer to [architecture_diagram_iteration3.png](/documentation/architecture_diagram_iteration3.png)
 
 Worksheet (Iteration 3)
-- Please refer to [worksheet_iteration3.md](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/worksheet_iteration3.md)
+- Please refer to [worksheet_iteration3.md](/documentation/worksheet_iteration3.md)
 
 # Branching Strategy
 
-Please refer to [branching_strategy.md](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/branching_strategy.md)
+Please refer to [branching_strategy.md](/documentation/branching_strategy.md)
 
 # Coding Standards
 
-Please refer to [coding_standards.md](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/docs/coding_standards.md)
+Please refer to [coding_standards.md](/documentation/coding_standards.md)
 
 # Website
 
-Under **/website** directory, please refer to [index.html](https://code.cs.umanitoba.ca/3350-winter-2021-a02/group-6/aurora-but-better-a02-group-6/-/blob/master/website/index.html)
-
-Please note that the embedded YouTube video (our presentation) will stay in tact, unless if a button in the navigation bar (top right) is clicked.
+For this Github repository, the current website is hosted in andreaabellera.github.io/termsetter/
+The source files live in [docs](/docs)
